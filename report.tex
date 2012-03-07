@@ -1,0 +1,80 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{datetime}
+\usepackage{color}
+\usepackage{microtype}
+
+%% Nicely format and linebreak URLs in the bibliography (and elsewhere).
+\usepackage{url}
+%% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+
+%% Nicer formatting of figure captions.
+\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+
+%\newcommand{\hi}[1]{{\color{red}\tiny \em #1\/}\\}
+\newcommand{\todo}[1]{\footnote{{\color{red} {\bf TODO:} #1}}}
+
+% ------------------------------------------------------------------------------
+% Metadata
+% ------------------------------------------------------------------------------
+\title{Ontology Learning from Swedish Text}
+
+\author{Jan Daniel Bothma}
+
+
+\maketitle
+
+\abstract{}
+
+\tableofcontents
+
+
+\begin{document}
+
+
+
+\chapter{Introduction}
+
+\section{Background}
+
+\section{Problem}
+
+\section{Objective}
+
+\section{Research Questions}
+
+\section{Approach}
+
+\section{Delimitations}
+
+\section{Report Structure}
+
+
+\chapter{Evaluation Method}
+
+
+\chapter{Evaluation Results}
+
+
+\chapter{Conclusion}
+
+
+\chapter{Further Work}
+
+\clearpage
+\addcontentsline{toc}{chapter}{References}
+
+\renewcommand\bibname{References}
+\bibliographystyle{unsrtnat}
+\bibliography{report}
+
+\end{document}
