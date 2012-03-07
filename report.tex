@@ -6,6 +6,9 @@
 \usepackage{datetime}
 \usepackage{color}
 \usepackage{microtype}
+\usepackage{draftwatermark}
+
+\SetWatermarkScale{5}
 
 %% Nicely format and linebreak URLs in the bibliography (and elsewhere).
 \usepackage{url}
@@ -40,9 +43,26 @@
 
 \chapter{Introduction}
 
+In this chapter we will introduce the concept of Ontology Learning (OL), briefly identify some recent and significant work in OL and summarize open research questions identified in our literature review.
+We will then propose the objective of this thesis along with research questions, how we intend to answer those questions, and delimitations to clarify the scope of this thesis. Finally, we will describe the layout of the remainder of this report.
+
 \section{Background}
 
+During the past decade, the Semantic Web has emerged as a promising evolution of the human readable web. By adding formal semantics in the form of ontologies to data on the web, it can be consumed and utilized by software agents and services in an automatic fashion.
+\todo{what are ontologies used for more?}
+
 \section{Problem}
+
+\todo{knowledge acquisition bottleneck}.
+
+The field of Ontology Learning has evolved to try and tackle this problem.
+Ontology Learning commonly involves some combination of preprocesing, term extraction, concept formation, concept hierarchy induction, non-taxonomic relation learning, axiom extraction and construction of the ontology from these extracted elements in a form suitable for its application.
+\todo{Eva's explaination connecting with evaluation and OE is intuitively more realistic than Ciamiano's disconnected explanation}
+\todo{explain more + graphic + cite}
+
+Many existing methods rely on domain-specific models which need to be trained.
+This training often involves manually annotated corpora which are time-consuming to produce, require domain expertise and aren't error-free.
+There has been relatively little research in combining evidence from various languages.
 
 \section{Objective}
 
@@ -53,6 +73,9 @@
 \section{Delimitations}
 
 \section{Report Structure}
+
+
+\chapter{Current Techniques}
 
 
 \chapter{Evaluation Method}
