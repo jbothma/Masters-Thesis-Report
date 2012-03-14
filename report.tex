@@ -6,12 +6,16 @@
 \usepackage{datetime}
 \usepackage{color}
 \usepackage{microtype}
-\usepackage{draftwatermark}
+%\usepackage{draftwatermark}
 
-\SetWatermarkScale{5}
-
-%% Nicely format and linebreak URLs in the bibliography (and elsewhere).
+%% Nicely format and linebreak URLs in the bibliography
 \usepackage{url}
+
+%% Nicer formatting of figure captions.
+\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+
+%\SetWatermarkScale{5}
+
 %% Define a new 'leo' style for the package that will use a smaller font.
 \makeatletter
 \def\url@leostyle{%
@@ -19,9 +23,6 @@
 \makeatother
 %% Now actually use the newly defined style.
 \urlstyle{leo}
-
-%% Nicer formatting of figure captions.
-\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
 
 %\newcommand{\hi}[1]{{\color{red}\tiny \em #1\/}\\}
 \newcommand{\todo}[1]{\footnote{{\color{red} {\bf TODO:} #1}}}
@@ -37,13 +38,19 @@
 
 \maketitle
 
-\abstract{}
+\abstract{
+Ontology learning is the process of analysing text to construct an ontology which represents the meaning encoded in the text.
+Many methods have been proposed and evaluated for extracting concepts, relations, hierarchies and axioms from text, particularly for the earlier stages of the process.
+Open questions in this field include researching new methods; exploiting social, structured and collaboratively curated data; evaluating, comparing and combining methods; scaling to larger corpora; supporting various and cross-language corpora; supporting ongoing ontology development; and improving user interaction.
+This thesis contributes a survey of high level requirements for application and ongoing research of ontology learning, and applies several existing methods to learn ontologies from Swedish text.
+This application is evaluated using \todo{which evaluation methods?}
+}
 
 \tableofcontents
 
 \chapter{Introduction}
 
-In this chapter we will introduce the concept of Ontology Learning (OL), briefly identify some recent and significant work in OL and summarize open research questions identified in our literature review.
+In this chapter we will introduce the concept of \emph{ontology learning} (OL), briefly identify some recent and significant work in OL and summarize open research questions identified in our literature review.
 We will then propose the objective of this thesis along with research questions, how we intend to answer those questions, and delimitations to clarify the scope of this thesis. Finally, we will describe the layout of the remainder of this report.
 
 \section{Background}
@@ -71,24 +78,86 @@ There has been relatively little research in combining evidence from various lan
 
 \section{Objective}
 
-The objective of this thesis is to support ongoing research in Ontology Learning by researching the high level requirements for ongoing ontology learning research and application, and by applying a limited number existing methods to learning domain ontologies from Swedish text.
-\cite{expand and clarify}
+given this background, the objectives of this thesis are
+
+\begin{itemize}
+  \item to provide a prototype system for learning domain ontologies from Swedish domain corpora
+  \item to learn more about the tool framework needed to support application and ongoing research of Ontology Learning
+\end{itemize}
 
 \section{Research Questions}
 
-\begin{itemize}
-  \item{What are the requirements on a general Ontology Learning research and application}
-\end{itemize}
+We will fulfill these objectives by answering these research questions:
+
+\begin{enumerate}
+  \item{What are the general requirements for ontology learning research and application?}
+  \item{How do common ontology learning methods need to be modified to extract ontologies from Swedish text?}
+  \item{How do these modified methods perform compared to \todo{some baseline??? evaluation}?}
+\end{enumerate}
 
 \section{Approach}
 
+To adress these questions, we will...
+
+\begin{itemize}
+  \item produce a list of requirements
+  \item sketch an architecture
+  \item implement a prototype system
+    \begin{itemize}
+      \item reusing as much as possible
+      \item describing how techniques had to be modified to work for swedish
+    \end{itemize}
+  \item evaluate somehow
+\end{itemize}
+
 \section{Delimitations}
+
+Ontological Architecture is how an ontology is constructed to be most useful where it is applied \cite{OntArchChapter}. While flexibility to support architectural decisions was considered, this area was not thoroughly researched in this thesis.
+
+The prototype is intended to elicit issues where the proposed requirements and architecture can be improved upon.
+It is not intended to be the final platform implementation.
+
+The implications of following one school of thought in meaning representation with regard to semantic parsing (e.g. Davidsonian \cite{DavidsonianSemantics}) over another have not been taken into account.
+This factor is expected to introduce some bias in the knowledge extracted, but the lack of thorough investigation of its implications on the requirements discussed in this research is a limitation of this work.
 
 \section{Report Structure}
 
+The rest of this report will be structured as follows:
 
-\chapter{Current Techniques}
+\chapter{Ontology Learning}
 
+This chapter reviews the state of Ontology Learning research.
+We will discuss several end-to-end ontology learning systems which propose novel approaches to the problem, several approaches to particular ontology learning tasks.
+Finally, shortcomings and suggested research areas identified in existing research will be summarised.
+
+An interesting new approach is described in \cite{Poon2010OntoUSP}...
+\begin{itemize}
+  \item{input is dependency parse}
+  \item{output is formulas representing classes, relations, clusters of those}
+  \item{evaluation was based proprocessing with domain-trained syntactic parser}
+\end{itemize}
+
+\chapter{Application to Swedish Text}
+
+\section{Architecture and High Level Design}
+
+In this chapter we will discuss the design and implementation of a prototype system for automatically or semi-automatically extracting a domain ontology from domain-specific corpora in the Swedish language.
+
+\section{Preprocessing Swedish text}
+
+\section{Term Extraction}
+
+\section{Concept Formation}
+
+\section{Concept Hierarchy}
+
+\section{Relation Extraction}
+
+\section{Ontology Construction}
+
+Here we describe how the evidence from the various stages can be use to build an ontology ready for validation.
+
+\section{Method evaluation}
 
 \chapter{Evaluation Method}
 
@@ -101,11 +170,16 @@ The objective of this thesis is to support ongoing research in Ontology Learning
 
 \chapter{Further Work}
 
+
+\nocite{*}
+
+
 \clearpage
+%\addcontentsline{toc}{chapter}{References}
+%\renewcommand\bibname{References}
 
-\addcontentsline{toc}{chapter}{References}
-
-\renewcommand\bibname{References}
+%\renewcommand{\refname}{}
+%\chapter{References}
 \bibliographystyle{unsrtnat}
 \bibliography{report}
 
