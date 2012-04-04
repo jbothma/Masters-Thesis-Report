@@ -39,7 +39,7 @@
 \maketitle
 
 \abstract{
-Ontology learning is the process of analysing text to construct an ontology which represents the meaning encoded in the text.
+Ontology learning is the process of analyzing text to construct an ontology which represents the meaning encoded in the text.
 Many methods have been proposed and evaluated for extracting concepts, relations, hierarchies and axioms from text, particularly for the earlier stages of the process.
 Open questions in this field include researching new methods; exploiting social, structured and collaboratively curated data; evaluating, comparing and combining methods; scaling to larger corpora; supporting various and cross-language corpora; supporting ongoing ontology development; and improving user interaction.
 This thesis contributes a survey of high level requirements for application and ongoing research of ontology learning, and applies several existing methods to learn ontologies from Swedish text.
@@ -57,24 +57,32 @@ We will then propose the objective of this thesis along with research questions,
 
 A commonly-cited definition of ontologies in the field of knowledge engineering is as \emph{``a formal, explicit specification of a shared conceptualization''} \cite{StuderEtAl1998KEPM}.
 Here, a \emph{conceptualization} is the objects, concepts and relations between them, in an abstract view of the world intended for a particular purpose.
-The conceptualisation should be \emph{shared} within the context of its application.
+The conceptualization should be \emph{shared} within the context of its application.
 The objective with this explicit specification is to allow computer agents to operate on this view of the world or for its integration in human-operated software.
+This is the sense of ontologies that this thesis is concerned with.
 Ontologies have, for example, been applied in decision support systems, information bookmarking and retrieval, and in natural language processing.
 
-Creating ontologies with more than a trivial amount of coverage and expressivity is a time-consuming, challenging process.
-In 1977 Feigenbaum described 
+Creating ontologies is a time-consuming and challenging process.
+\todo{knowledge acquisition bottleneck}
 
-The field of Ontology Learning has evolved to try and tackle this problem.
-Ontology Learning commonly involves some combination of preprocesing, term extraction, concept formation, concept hierarchy induction, non-taxonomic relation learning, axiom extraction and construction of the ontology from these extracted elements in a form suitable for its application.
+The automatic or semi-automatic construction of ontologies is called Ontology Learning \cite{Cimiano06}.
+Ontology Learning commonly involves some combination of preprocesing, term extraction, concept formation, concept hierarchy induction, non-taxonomic relation learning, and axiom extraction.
+Most approaches to these tasks can be divided into being of logic, statistic or linguistic nature, as shown in Fig.~\ref{fig:tasktechout}\cite{Wong11Survey}.
+\begin{figure}
+  \includegraphics[width=\textwidth]{graphics/output-task-technique-WongLiuBennamoun.png}
+  \caption{Tasks, techniques and outputs in ontology learning. Awaiting permission for reuse from \cite{Wong2009PhD}.}
+  \label{fig:tasktechout}
+\end{figure}
+An additional task of ontology learning that is that of construction of the ontology from the extracted elements in a form suitable for its application.
+This task is not necessarily strictly creating new ontologies, but is where ontology learning provides input of the greater ontology engineering process.
+In this thesis we are avoiding the complexity of updating existing ontologies and other ontology engineering tasks, and \emph{simply} attempting to create new, valid\todo{perhaps define valid} ontologies.
 \todo{Eva's explanation connecting with evaluation and OE is intuitively more realistic than Ciamiano's disconnected explanation}
-\todo{explain more + graphic + cite}
-
 \todo{give some examples of well-evaluated and newer techniques and their evaluation}
 
 \section{Problem}
 
 While many techniques for extracting terms and concepts have matured and have been evaluated against various competing techniques and in various settings, many areas of research are still somewhat unexplored.
-Additionally, new technologies and online communities are providing new opportunities for supporting ontology learning.
+Additionally, new technologies and on-line communities are providing new opportunities for supporting ontology learning.
 
 Many existing methods rely on domain-specific models which need to be trained.
 This training often involves manually annotated corpora which are time-consuming to produce, require domain expertise and aren't error-free.
@@ -101,7 +109,7 @@ We will fulfill these objectives by answering these research questions:
 
 \section{Approach}
 
-To adress these questions, we will...
+To address these questions, we will...
 
 \begin{itemize}
   \item produce a list of requirements
@@ -109,7 +117,7 @@ To adress these questions, we will...
   \item implement a prototype system
     \begin{itemize}
       \item reusing as much as possible
-      \item describing how techniques had to be modified to work for swedish
+      \item describing how techniques had to be modified to work for Swedish
     \end{itemize}
   \item evaluate somehow
 \end{itemize}
@@ -132,13 +140,13 @@ The rest of this report will be structured as follows:
 
 This chapter reviews the state of Ontology Learning research.
 We will discuss several end-to-end ontology learning systems which propose novel approaches to the problem, several approaches to particular ontology learning tasks.
-Finally, shortcomings and suggested research areas identified in existing research will be summarised.
+Finally, shortcomings and suggested research areas identified in existing research will be summarized.
 
 An interesting new approach is described in \cite{Poon2010OntoUSP}...
 \begin{itemize}
   \item{input is dependency parse}
   \item{output is formulas representing classes, relations, clusters of those}
-  \item{evaluation was based proprocessing with domain-trained syntactic parser}
+  \item{evaluation was based prepossessing with domain-trained syntactic parser}
 \end{itemize}
 
 \chapter{Application to Swedish Text}
