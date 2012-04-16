@@ -25,7 +25,7 @@
 \urlstyle{leo}
 
 %\newcommand{\hi}[1]{{\color{red}\tiny \em #1\/}\\}
-\newcommand{\todo}[1]{\footnote{{\color{red} {\bf TODO:} #1}}}
+\newcommand{\todo}[1]{\footnote{{\color{red} TODO: #1}}}
 
 % ------------------------------------------------------------------------------
 % Metadata
@@ -43,17 +43,21 @@ Ontology learning is the process of analyzing text to construct an ontology whic
 Many methods have been proposed and evaluated for extracting concepts, relations, hierarchies and axioms from text, particularly for the earlier stages of the process.
 Open questions in this field include researching new methods; exploiting social, structured and collaboratively curated data; evaluating, comparing and combining methods; scaling to larger corpora; supporting various and cross-language corpora; supporting ongoing ontology development; and improving user interaction.
 This thesis contributes a survey of high level requirements for application and ongoing research of ontology learning, and applies several existing methods to learn ontologies from Swedish text.
-This application is evaluated using \todo{which evaluation methods?}
+This application is evaluated using %\todo{which evaluation methods?}
 }
 
 \tableofcontents
 
 \chapter{Introduction}
+%ONE-SENT Ontology learning learning tools significantly speed up the knowledge extraction part of the Knowledge Engineering process.
+%%UU-CHAP Motivation for the Project
+%%UU-CHAP Background to the problem or system
 
 In this chapter we will introduce the concept of \emph{ontology learning} (OL), briefly identify some recent and significant work in OL and summarize open research questions identified in our literature review.
 We will then propose the objective of this thesis along with research questions, how we intend to answer those questions, and delimitations to clarify the scope of this thesis. Finally, we will describe the layout of the remainder of this thesis report.
 
 \section{Background}
+% summarise background chapter? or is the section name confusing it with the background chapter and it should be somewhat different?
 
 A commonly-cited definition of ontologies in the field of knowledge engineering is as \emph{``a formal, explicit specification of a shared conceptualization''} \cite{StuderEtAl1998KEPM}.
 Here, a \emph{conceptualization} is the objects, concepts and relations between them, in an abstract view of the world intended for a particular purpose.
@@ -67,21 +71,26 @@ Creating ontologies is a time-consuming and challenging process.
 
 The automatic or semi-automatic construction of ontologies is called Ontology Learning \cite{Cimiano06}.
 Ontology Learning commonly involves some combination of preprocesing, term extraction, concept formation, concept hierarchy induction, non-taxonomic relation learning, and axiom extraction.
-Most approaches to these tasks can be divided into being of logic, statistic or linguistic nature, as shown in Fig.~\ref{fig:tasktechout}\cite{Wong11Survey}.
+Most approaches to these tasks are commonly mainly logical, statistical or linguistic in nature\cite{Wong11Survey}.
+Such a categorisation is shown in Fig.~\ref{fig:tasktechout}.
 \begin{figure}
   \includegraphics[width=\textwidth]{graphics/output-task-technique-WongLiuBennamoun.png}
   \caption{Tasks, techniques and outputs in ontology learning. Awaiting permission for reuse from \cite{Wong2009PhD}.}
   \label{fig:tasktechout}
 \end{figure}
-An additional task of ontology learning that is that of construction of the ontology from the extracted elements in a form suitable for its application.
-This task is not necessarily strictly creating new ontologies, but is where ontology learning provides input of the greater ontology engineering process.
-In this thesis we are avoiding the complexity of updating existing ontologies and other ontology engineering tasks, and \emph{simply} attempting to create new, valid\todo{perhaps define valid} ontologies.
-\todo{Eva's explanation connecting with evaluation and OE is intuitively more realistic than Ciamiano's disconnected explanation}
+The task of \emph{ontology construction} is where ontology learning meets ontology engineering.
+Ontology learning might produce an initial ontology used as a basis for further ontology development \cite{Voelkner2008Spanish}, or it can be used to suggest changes as part of an ongoing ontology engineering process.
+
+Many methods for extracting the various ontology elements have been proposed and evaluated, often in comparison with other methods.
+Preprocessing is mainly concerned with syntactic analysis of the corpora \todo{define corpora} and methods taken from the field of Natural Language Processing are applied.
+The subsequent stages - concerned with \emph{semantic analysis} - 
+
 \todo{give some examples of well-evaluated and newer techniques and their evaluation}
 
 \section{Problem}
+%ONE-SENT Hoewever, there is no Ontology Learning System for learning ontologies from Swedish text.
 
-While many techniques for extracting terms and concepts have matured and have been evaluated against various competing techniques and in various settings, many areas of research are still somewhat unexplored.
+While blah many techniques for extracting terms and concepts have matured and have been evaluated against various competing techniques and in various settings, many areas of research are still somewhat unexplored.
 Additionally, new technologies and on-line communities are providing new opportunities for supporting ontology learning.
 
 Many existing methods rely on domain-specific models which need to be trained.
@@ -108,6 +117,14 @@ We will fulfill these objectives by answering these research questions:
 \end{enumerate}
 
 \section{Approach}
+%ONE-SENT
+
+We expect many of the existing methods to work similarly well for Swedish as they do for English and other languages.
+Intuitively, any method should work as well for Swedish as it does for English, as long as the assumptions behind it hold.
+For example, term extraction based on the frequency of nouns should be very similar, but might be affected by word compounding in Swedish, which hardly occurs in English.
+
+We will evaluate one or more existing approach for extracting terms, forming concepts, and extracting taxonomic and non-taxonomic relations on Swedish text with preprocessing tools for Swedish.
+
 
 To address these questions, we will...
 
@@ -136,7 +153,9 @@ This factor is expected to introduce some bias in the knowledge extracted, but t
 
 The rest of this report will be structured as follows:
 
-\chapter{Ontology Learning}
+\chapter{Background}
+%%UU-CHAP Overview of relevant research and development that is used in specifying the problem and obtaining and evaluating appropriate solutions.
+%%ONE-SENT Many methods for the subtasks are available for other languages, and some have already been applied to Swedish, but they have not been combined and evaluated as a pipeline. Furthermore, none of the existing OL systems are suitable to be extended to Swedish, nor support the necessary evaluation approaches.
 
 This chapter reviews the state of Ontology Learning research.
 We will discuss several end-to-end ontology learning systems which propose novel approaches to the problem, several approaches to particular ontology learning tasks.
@@ -149,7 +168,13 @@ An interesting new approach is described in \cite{Poon2010OntoUSP}...
   \item{evaluation was based prepossessing with domain-trained syntactic parser}
 \end{itemize}
 
-\chapter{Application to Swedish Text}
+\chapter{Method}
+%UU-CHAP Methods and techniques required
+%ONE-SENT By making X modifications to existing methods, we can improve on the baseline of Y.   We evaluate these methods in by Z. We might even evaluate our evaluation tools.
+
+\chapter{Solution}
+%UU-CHAP Implementation and formulation of the solution chosen
+%ONE-SENT We implement a system that allows easy selection or combination of methods and their results, and allow the evaluation of these methods individually, in combination, and in pipeline.
 
 \section{Architecture and High Level Design}
 
@@ -169,16 +194,16 @@ In this chapter we will discuss the design and implementation of a prototype sys
 
 Here we describe how the evidence from the various stages can be use to build an ontology ready for validation.
 
-\section{Method evaluation}
 
-\chapter{Evaluation Method}
-
-
-\chapter{Evaluation Results}
-
+\chapter{Evaluation}
+%%UU-REQ Evidence that the student has made a critical evaluation of the signiﬁcance of the project outcomes, limitations of the results
+%ONE-SENT We achieved results comparable to what was done with language Q in R. We can extract concepts and relations from Swedish text with evaluation metric S result of T.
+%UU-CHAP Data collection and analysis where relevant, or testing of the solution of product.
 
 \chapter{Conclusion}
-
+%%UU-CHAP Conclusions reached and future enhancement or work that could be conducted to reﬁne the system.
+%%UU-REQ Strength of the conclusions reached, including the ability to provide a concise summary of the signiﬁcance of the work and reﬂect on work practice and outcomes with the intent to improve performance in future projects.
+% summarise introduction with detail from Solution and Evaluation
 
 \chapter{Further Work}
 
