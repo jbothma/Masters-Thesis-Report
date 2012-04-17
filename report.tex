@@ -3,26 +3,26 @@
 \usepackage[numbers]{natbib}
 \usepackage{hyperref}
 \usepackage{graphicx}
-\usepackage{datetime}
+%\usepackage{datetime}
 \usepackage{color}
-\usepackage{microtype}
+%\usepackage{microtype}
 %\usepackage{draftwatermark}
 
 %% Nicely format and linebreak URLs in the bibliography
-\usepackage{url}
+%\usepackage{url}
 
 %% Nicer formatting of figure captions.
-\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+%\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
 
 %\SetWatermarkScale{5}
 
 %% Define a new 'leo' style for the package that will use a smaller font.
-\makeatletter
-\def\url@leostyle{%
-  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
-\makeatother
+%\makeatletter
+%\def\url@leostyle{%
+%  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+%\makeatother
 %% Now actually use the newly defined style.
-\urlstyle{leo}
+%\urlstyle{leo}
 
 %\newcommand{\hi}[1]{{\color{red}\tiny \em #1\/}\\}
 \newcommand{\todo}[1]{\footnote{{\color{red} TODO: #1}}}
@@ -34,24 +34,28 @@
 
 \author{Jan Daniel Bothma}
 
+% ------------------------------------------------------------------------------
+% Document
+% ------------------------------------------------------------------------------
 \begin{document}
 
 \maketitle
 
-\abstract{
+\begin{abstract}
 Ontology learning is the process of analyzing text to construct an ontology which represents the meaning encoded in the text.
 Many methods have been proposed and evaluated for extracting concepts, relations, hierarchies and axioms from text, particularly for the earlier stages of the process.
 Open questions in this field include researching new methods; exploiting social, structured and collaboratively curated data; evaluating, comparing and combining methods; scaling to larger corpora; supporting various and cross-language corpora; supporting ongoing ontology development; and improving user interaction.
 This thesis contributes a survey of high level requirements for application and ongoing research of ontology learning, and applies several existing methods to learn ontologies from Swedish text.
-This application is evaluated using %\todo{which evaluation methods?}
-}
+Result is TODO.
+\end{abstract}	
 
 \tableofcontents
 
 \chapter{Introduction}
-%ONE-SENT Ontology learning learning tools significantly speed up the knowledge extraction part of the Knowledge Engineering process.
+%ONE-SENT Ontology learning learning tools significantly speed up the knowledge extraction part of the Knowledge Engineering process. I'm going to investigate ontology learning from Swedish text.
 %%UU-CHAP Motivation for the Project
 %%UU-CHAP Background to the problem or system
+%%"I am going to look at the following things"
 
 In this chapter we will introduce the concept of \emph{ontology learning} (OL), briefly identify some recent and significant work in OL and summarize open research questions identified in our literature review.
 We will then propose the objective of this thesis along with research questions, how we intend to answer those questions, and delimitations to clarify the scope of this thesis. Finally, we will describe the layout of the remainder of this thesis report.
@@ -155,7 +159,11 @@ The rest of this report will be structured as follows:
 
 \chapter{Background}
 %%UU-CHAP Overview of relevant research and development that is used in specifying the problem and obtaining and evaluating appropriate solutions.
-%%ONE-SENT Many methods for the subtasks are available for other languages, and some have already been applied to Swedish, but they have not been combined and evaluated as a pipeline. Furthermore, none of the existing OL systems are suitable to be extended to Swedish, nor support the necessary evaluation approaches.
+%%ONE-SENT Many methods for the subtasks have been developed for other languages, and some have already been applied to Swedish, but they have not been combined and evaluated as a pipeline. Furthermore, none of the existing OL systems are suitable to be extended to Swedish, nor support the necessary evaluation approaches.
+%%UU-REQ Awareness of relevant prior research and development literature
+%% -- comment on its relevance. In what way _is_ it relevant and in what way is it _not_ relevant.
+%%UU-REQ critical appraisal of that literature as a basis for the formulation of project objectives and the conduct of the project.
+%% -- quality of the literature affects its bearing on the project. Note on the quality of an evaluation keeping in mind whether a plain olde eval would have been suitable in the first place - what's the objective of the publication?
 
 This chapter reviews the state of Ontology Learning research.
 We will discuss several end-to-end ontology learning systems which propose novel approaches to the problem, several approaches to particular ontology learning tasks.
@@ -171,10 +179,14 @@ An interesting new approach is described in \cite{Poon2010OntoUSP}...
 \chapter{Method}
 %UU-CHAP Methods and techniques required
 %ONE-SENT By making X modifications to existing methods, we can improve on the baseline of Y.   We evaluate these methods in by Z. We might even evaluate our evaluation tools.
+%%Philosophy of Approach - show you can pick out important ideas succinctly
+%%Plan of Attack - show you approached the problem in a systematic way
 
-\chapter{Solution}
+\chapter{Realisation}
 %UU-CHAP Implementation and formulation of the solution chosen
 %ONE-SENT We implement a system that allows easy selection or combination of methods and their results, and allow the evaluation of these methods individually, in combination, and in pipeline.
+%%Description of the work - details, so that others can follow what you did
+%%  -> reproducibility
 
 \section{Architecture and High Level Design}
 
@@ -199,6 +211,7 @@ Here we describe how the evidence from the various stages can be use to build an
 %%UU-REQ Evidence that the student has made a critical evaluation of the signiﬁcance of the project outcomes, limitations of the results
 %ONE-SENT We achieved results comparable to what was done with language Q in R. We can extract concepts and relations from Swedish text with evaluation metric S result of T.
 %UU-CHAP Data collection and analysis where relevant, or testing of the solution of product.
+%% Critical analysis of the results - show you know its limitations
 
 \chapter{Conclusion}
 %%UU-CHAP Conclusions reached and future enhancement or work that could be conducted to reﬁne the system.
@@ -206,9 +219,7 @@ Here we describe how the evidence from the various stages can be use to build an
 % summarise introduction with detail from Solution and Evaluation
 
 \chapter{Further Work}
-
-
-\nocite{*}
+%% show you know what’s missing
 
 
 \clearpage
@@ -217,7 +228,7 @@ Here we describe how the evidence from the various stages can be use to build an
 
 %\renewcommand{\refname}{}
 %\chapter{References}
-\bibliographystyle{unsrtnat}
+\bibliographystyle{unsrt}
 \bibliography{report}
 
 \end{document}
