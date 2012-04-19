@@ -1,6 +1,6 @@
 \documentclass[a4paper]{report}
 \usepackage[utf8]{inputenc}
-\usepackage[numbers]{natbib}
+\usepackage[numbers]{natbib} % scientific references in the bibliography
 \usepackage{hyperref}
 \usepackage{graphicx}
 %\usepackage{datetime}
@@ -57,21 +57,42 @@ Result is TODO.
 %%UU-CHAP Background to the problem or system
 %%"I am going to look at the following things"
 
-In this chapter we will introduce the concept of \emph{ontology learning} (OL), briefly identify some recent and significant work in OL and summarize open research questions identified in our literature review.
-We will then propose the objective of this thesis along with research questions, how we intend to answer those questions, and delimitations to clarify the scope of this thesis. Finally, we will describe the layout of the remainder of this thesis report.
+By encoding semantic information about the world in a form that can be processed by computers, computers can provide better support in many tasks.
+For example, the \emph{semantically enabled} IURISERVICE iFAQ database of legal questions and answers given by experienced Spanish judges, aims to support inexperienced judges in answering legal questions\cite{IURISERVICEPerformance2007}.
+Important terms in the questions and answers are associated with their synonyms and the domain of law that they apply to.
+When a question is entered to search for related question-answer pairs, the semantic information is used to improve the results over a plain text search, even when considering different forms of the words in the query.
+The query is expanded to include exact matches, morphological variations\footnote{In the linguistic sense, such as \emph{car} to \emph{cars} for plurality}, and synonyms.
+The similarity of the result questions to the query question is then calculated, considering the similarity of concepts and the grammatical structure of the questions, to provide the most-similar results to the user.
+The semantic information is further used to provide suggestions of relevant legal cases whose decisions might have an impact on the issue at hand.
 
-\section{Background}
-% summarise background chapter? or is the section name confusing it with the background chapter and it should be somewhat different?
+\section{Semantic Web}
+
+By making semantic information available over the internet, many resources can be combined to support complex tasks involving many parties.
+The Semantic Web\footnote{http://www.w3.org/2001/sw/} is the manifestation of this.
+In a hypothetical example, Tim Berners-Lee et al. \footnote{Tim Berners-Lee, James Hendler and Ora Lassila. The Semantic Web. \emph{Scientific American}, 284(August), p.3863170-3863170 2001} describe a scenario where a brother and a sister try to book medical appointments for their mother with a nearby treatment centre available to their mother's health insurance policy, on dates that they can alternate driving their mother.
+Information about their availability, the clinics (including treatments they offer and their schedules) and the insurance policy must be available to the computers involved in proposing a solution.
+Furthermore, the meaning of this information, and how it relates to the other information involved in the computation, must be available.
+For example, the computer must be able to distinguish between the treatment centre's postal address and their visiting address.
+This information is encoded in ontologies and mappings between semantic entities in standardised formats such as OWL\cite{OWLOverview2004} to support this interoperability.
+
+\section{Ontologies}
 
 A commonly-cited definition of ontologies in the field of knowledge engineering is as \emph{``a formal, explicit specification of a shared conceptualization''} \cite{StuderEtAl1998KEPM}.
 Here, a \emph{conceptualization} is the objects, concepts and relations between them, in an abstract view of the world intended for a particular purpose.
 The conceptualization should be \emph{shared} within the context of its application.
 The objective with this explicit specification is to allow computer agents to operate on this view of the world or for its integration in human-operated software.
-This is the sense of ontologies that this thesis is concerned with.
-Ontologies have, for example, been applied in decision support systems, information bookmarking and retrieval, and in natural language processing.
 
-Creating ontologies is a time-consuming and challenging process.
-\todo{knowledge acquisition bottleneck}
+Top level ontologies, domain ontologies
+
+\section{Ontology Engineering}
+
+stages of OE, ongoing process, facts change
+
+place of OE w.r.t. information extraction, knowledge representation
+
+place of ontology learning within OE
+
+\section{Ontology Learning}
 
 The automatic or semi-automatic construction of ontologies is called Ontology Learning \cite{Cimiano06}.
 Ontology Learning commonly involves some combination of preprocesing, term extraction, concept formation, concept hierarchy induction, non-taxonomic relation learning, and axiom extraction.
