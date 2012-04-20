@@ -85,15 +85,15 @@ The objective with this explicit specification is to allow computer agents to op
 Ontologies that represent a particular domain are known as \emph{Domain Ontologies}.
 One way to support integration of several domain ontologies is by defining elements common to many domains in an \emph{upper ontology}\cite{SemanticIntegration2004Noy}.
 
-\todo{possibly something on the "ontology" scale from taxonomy to formal ontology}
+\todo{possibly something on the "ontology" scale from taxonomy to formal ontology. This is part of ontological architecture.}
 
 \section{Ontology Engineering}
 
-stages of OE, ongoing process, facts change
-
-place of OE w.r.t. information extraction, knowledge representation
-
-place of ontology learning within OE
+The discipline of specifying, developing, introducing and maintaining ontologies for some application is known as \emph{Ontology Engineering} (OE)\cite{HOO2009OntEngMeth}.
+Along with broader considerations of OE such as the intended users and software engineering issues, the domain expert(s) and ontology engineer must gather relevant domain knowledge (Knowledge Acquisition) and encode it in a computer-readable form (Knowledge Representation)\cite{OntMethOverv1999}.
+This is challenging and repetitive and is known as the Knowledge Acquisition Bottleneck\cite{OLforSemWeb2001}.
+As an example, a "tasks and skills" ontology in the study in \cite{HOO2009OntEngMeth} consisted of about 700 concepts after refinement. 
+Automating as much as possible of the knowledge acquisition and representation can reduce the effort for domain experts and ontology engineers when developing and maintaining ontologies\todo{need to back this up}.
 
 \section{Ontology Learning}
 
@@ -106,7 +106,7 @@ Such a categorisation is shown in Fig.~\ref{fig:tasktechout}.
   \caption{Tasks, techniques and outputs in ontology learning. Awaiting permission for reuse from \cite{Wong2009PhD}.}
   \label{fig:tasktechout}
 \end{figure}
-The task of \emph{ontology construction} is where ontology learning meets ontology engineering.
+
 Ontology learning might produce an initial ontology used as a basis for further ontology development \cite{Voelkner2008Spanish}, or it can be used to suggest changes as part of an ongoing ontology engineering process.
 
 Many methods for extracting the various ontology elements have been proposed and evaluated, often in comparison with other methods.
@@ -168,14 +168,6 @@ To address these questions, we will...
 \end{itemize}
 
 \section{Delimitations}
-
-Ontological Architecture is how an ontology is constructed to be most useful where it is applied \cite{OntArchChapter}. While flexibility to support architectural decisions was considered, this area was not thoroughly researched in this thesis.
-
-The prototype is intended to elicit issues where the proposed requirements and architecture can be improved upon.
-It is not intended to be the final platform implementation.
-
-The implications of following one school of thought in meaning representation with regard to semantic parsing (e.g. Davidsonian \cite{DavidsonianSemantics}) over another have not been taken into account.
-This factor is expected to introduce some bias in the knowledge extracted, but the lack of thorough investigation of its implications on the requirements discussed in this research is a limitation of this work.
 
 \section{Report Structure}
 
