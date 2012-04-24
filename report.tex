@@ -5,6 +5,8 @@
 \usepackage{graphicx}
 %\usepackage{datetime}
 \usepackage{color}
+\usepackage{perpage} %the perpage package
+\MakePerPage{footnote} %the perpage package command
 %\usepackage{microtype}
 %\usepackage{draftwatermark}
 
@@ -58,7 +60,7 @@ Result is TODO.
 %%"I am going to look at the following things"
 
 By encoding semantic information about the world in a form that can be processed by computers, computers can provide better support in many tasks.
-For example, the \emph{semantically enabled} IURISERVICE iFAQ database of legal questions and answers given by experienced Spanish judges, aims to support inexperienced judges in answering legal questions\cite{IURISERVICEPerformance2007}.
+For example, the \emph{semantically enabled} IURISERVICE iFAQ database of legal questions and answers given by experienced Spanish judges aims to support inexperienced judges in answering legal questions\cite{IURISERVICEPerformance2007}.
 Important terms in the questions and answers are associated with their synonyms and the domain of law that they apply to.
 When a question is entered to search for related question-answer pairs, the semantic information is used to improve the results over a plain text search, even when considering different forms of the words in the query.
 The query is expanded to include exact matches, morphological variations\footnote{In the linguistic sense, such as \emph{car} to \emph{cars} for plurality}, and synonyms.
@@ -92,38 +94,25 @@ One way to support integration of several domain ontologies is by defining eleme
 The discipline of specifying, developing, introducing and maintaining ontologies for some application is known as \emph{Ontology Engineering} (OE)\cite{HOO2009OntEngMeth}.
 Along with broader considerations of OE such as the intended users and software engineering issues, the domain expert(s) and ontology engineer must gather relevant domain knowledge (Knowledge Acquisition) and encode it in a computer-readable form (Knowledge Representation)\cite{OntMethOverv1999}.
 This is challenging and repetitive and is known as the Knowledge Acquisition Bottleneck\cite{OLforSemWeb2001}.
-As an example, a "tasks and skills" ontology in the study in \cite{HOO2009OntEngMeth} consisted of about 700 concepts after refinement. 
+As an example, a "tasks and skills" ontology in the case study in \cite{HOO2009OntEngMeth} consisted of about 700 concepts after refinement. 
 Automating as much as possible of the knowledge acquisition and representation can reduce the effort for domain experts and ontology engineers when developing and maintaining ontologies\todo{need to back this up}.
 
 \section{Ontology Learning}
 
-The automatic or semi-automatic construction of ontologies is called Ontology Learning \cite{Cimiano06}.
-Ontology Learning commonly involves some combination of preprocesing, term extraction, concept formation, concept hierarchy induction, non-taxonomic relation learning, and axiom extraction.
-Most approaches to these tasks are commonly mainly logical, statistical or linguistic in nature\cite{Wong11Survey}.
-Such a categorisation is shown in Fig.~\ref{fig:tasktechout}.
-\begin{figure}
-  \includegraphics[width=\textwidth]{graphics/output-task-technique-WongLiuBennamoun.png}
-  \caption{Tasks, techniques and outputs in ontology learning. Awaiting permission for reuse from \cite{Wong2009PhD}.}
-  \label{fig:tasktechout}
-\end{figure}
+The automatic or semi-automatic construction of ontologies from domain data is called Ontology Learning \cite{Cimiano06}. 
+Ontology Learning (OL) can start with structured, semi-structured or unstructured data as input \cite{Cimiano2009OL}.
+Structured data, such as databases, can be somewhat independent of language and its semantics are described by its schema or structure \todo{I think \cite{Cimiano2009OL} is sufficient but need to check}.
+Most methods for ontology learning from semi-structured data such as wikis and unstructured data in the form of plain text depend on preprocessing techniques from the field of Natural Language Processing (NLP) to provide syntactic annotations like part of speech or syntactic dependencies.
+OL methods are then applied to the annotated corpus, each method extracting one or more kind of ontology element.
 
-Ontology learning might produce an initial ontology used as a basis for further ontology development \cite{Voelkner2008Spanish}, or it can be used to suggest changes as part of an ongoing ontology engineering process.
+Ontology learning software systems have been implemented that provide one or more algorithms for extracting concepts, relations and axioms from a text corpus.
+Such systems are often integrated with dedicated NLP tools to provide the required preprocessing facilities.
+Extracted elements are manually or automatically added to an ontology and can often be output in a standard ontology serialisation format like OWL\cite{OWLOverview2004}.
 
-Many methods for extracting the various ontology elements have been proposed and evaluated, often in comparison with other methods.
-Preprocessing is mainly concerned with syntactic analysis of the corpora \todo{define corpora} and methods taken from the field of Natural Language Processing are applied.
-The subsequent stages - concerned with \emph{semantic analysis} - 
-
-\todo{give some examples of well-evaluated and newer techniques and their evaluation}
+Ontology learning methods have varying degrees of language dependence.
 
 \section{Problem}
 %ONE-SENT Hoewever, there is no Ontology Learning System for learning ontologies from Swedish text.
-
-While blah many techniques for extracting terms and concepts have matured and have been evaluated against various competing techniques and in various settings, many areas of research are still somewhat unexplored.
-Additionally, new technologies and on-line communities are providing new opportunities for supporting ontology learning.
-
-Many existing methods rely on domain-specific models which need to be trained.
-This training often involves manually annotated corpora which are time-consuming to produce, require domain expertise and aren't error-free.
-There has been relatively little research in combining evidence from various languages.
 
 \section{Objective}
 
