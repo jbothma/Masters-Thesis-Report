@@ -44,11 +44,6 @@
 \maketitle
 
 \begin{abstract}
-Ontology learning is the process of analyzing text to construct an ontology which represents the meaning encoded in the text.
-Many methods have been proposed and evaluated for extracting concepts, relations, hierarchies and axioms from text, particularly for the earlier stages of the process.
-Open questions in this field include researching new methods; exploiting social, structured and collaboratively curated data; evaluating, comparing and combining methods; scaling to larger corpora; supporting various and cross-language corpora; supporting ongoing ontology development; and improving user interaction.
-This thesis contributes a survey of high level requirements for application and ongoing research of ontology learning, and applies several existing methods to learn ontologies from Swedish text.
-Result is TODO.
 \end{abstract}	
 
 \tableofcontents
@@ -109,58 +104,61 @@ Ontology learning software systems have been implemented that provide one or mor
 Such systems are often integrated with dedicated NLP tools to provide the required preprocessing facilities.
 Extracted elements are manually or automatically added to an ontology and can often be output in a standard ontology serialisation format like OWL\cite{OWLOverview2004}.
 
-Ontology learning methods have varying degrees of language dependence.
+Ontology learning methods have varying degrees of language dependence. 
+In the simplest case, an OL system can be applied to another natural language by replacing the language models in the NLP components with models trained on the other language. 
+However, often the syntactic and semantic structure of languages vary enough to require modifications to OL methods or the process as a whole \cite{Voelkner2008Spanish}\todo{saying "often" probably means we need more than one example}.
 
 \section{Problem}
 %ONE-SENT Hoewever, there is no Ontology Learning System for learning ontologies from Swedish text.
 
+There appears to be no ontology learning software system that has been applied to learn ontologies from Swedish text.
+\todo{Hjelm's thesis\cite{Hjelm09Thesis} learnt a "prototypal" ontology from several languages including swedish.
+We can learn a bit from it, but he used terms from an existing ontology, and we need to check if the relations they learnt are applicable.
+Given this, this sentence might be too strong}
+There are some efforts to extract semantic data from Swedish text for some specific applications and domains
+\todo{maybe need to be clearer why these aren't directly suitable, domain independence etc}, but to our knowledge, these have not been combined to extract concepts and relations and induce axioms from Swedish domain text.
+\todo{cite what we know about here to demonstrate we have actually done a bit of searching}
+
 \section{Objective}
 
-given this background, the objectives of this thesis are
-
-\begin{itemize}
-  \item to provide a prototype system for learning domain ontologies from Swedish domain corpora
-  \item to learn more about the tool framework needed to support application and ongoing research of Ontology Learning
-\end{itemize}
+The objective of this thesis is thus to investigate the application of Ontology Learning methods to Swedish text for the construction of domain ontologies. \todo{When I've chosen the methods I'm focusing on I can probably add another line or two to be more specific and why}
 
 \section{Research Questions}
 
-We will fulfill these objectives by answering these research questions:
+To fulfill this objective, this report attempts to answer the following research questions:
 
 \begin{enumerate}
-  \item{What are the general requirements for ontology learning research and application?}
-  \item{How do common ontology learning methods need to be modified to extract ontologies from Swedish text?}
+  \item{What are the general requirements for ontology learning research and application?\todo{how we derived this question isn't clear from the introduction. Either this becomes a side effect part of the method, or we need to justify this "product" in the intro before the questions}}
+  \item{How do common ontology learning methods need to be modified to extract ontologies from Swedish text?\todo{I think we said this was too broad and I need to replace it with a comparison between two methods when I choose them. Perhaps the idea was just to compare our work compared to some baseline?}}
   \item{How do these modified methods perform compared to \todo{some baseline??? evaluation}?}
 \end{enumerate}
 
 \section{Approach}
 %ONE-SENT
 
-We expect many of the existing methods to work similarly well for Swedish as they do for English and other languages.
-Intuitively, any method should work as well for Swedish as it does for English, as long as the assumptions behind it hold.
-For example, term extraction based on the frequency of nouns should be very similar, but might be affected by word compounding in Swedish, which hardly occurs in English.
+This section needs to identify and show how we avoid possible sources of bias.
 
-We will evaluate one or more existing approach for extracting terms, forming concepts, and extracting taxonomic and non-taxonomic relations on Swedish text with preprocessing tools for Swedish.
+The basis of our method is how OL has been applied to other comparable languages like German with its compounding, and what's been learnt from the existing work on information extraction from Swedish.
 
+The implementation should probably be based on the architecture proposed in \cite{Cimiano2009OL}
 
-To address these questions, we will...
+NLP tools for the common annotations are available and under further development, partly as a result of the BLARK for Swedish project.
 
-\begin{itemize}
-  \item produce a list of requirements
-  \item sketch an architecture
-  \item implement a prototype system
-    \begin{itemize}
-      \item reusing as much as possible
-      \item describing how techniques had to be modified to work for Swedish
-    \end{itemize}
-  \item evaluate somehow
-\end{itemize}
+The procedure is something like set up preprocessing, apply existing methods to swedish, evaluate, tweak for swedish, evaluate.
+
+Ideally we can repeat an experiment for English and reproduce their results, to support the assertion that our implementation is ok.
+
+I think I'll evaluate taxonomy extraction against the Eurovoc thesaurus since I can probably get hold of corpora for one or more of the topics they cover.
+
+The implementation will probably be integrated with some OE system. Protege 4+ looks nice since it has decent, modern libraries and tools and plugin framework.
 
 \section{Delimitations}
 
-\section{Report Structure}
+it'd be nice but I probably won't be able to ground my ontologies in any upper ontologies (ontology matching and ontological architecture). Maybe this is easy or critical and I can revise this entry.
 
-The rest of this report will be structured as follows:
+There's a lot of research into using internet phenomena like croud sourced data and stuff. We're focusing in extracting information from any Swedish text. This means we can produce results for domains that have very little or unrepresentative data online (but depends on finding some representative corpus). These approaches also have issues like access to the services and reliability of the data. For these reasons, we're not trying the web-sourced stuff specifically.
+
+\section{Report Structure}
 
 \chapter{Background}
 %%UU-CHAP Overview of relevant research and development that is used in specifying the problem and obtaining and evaluating appropriate solutions.
