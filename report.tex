@@ -9,6 +9,7 @@
 \MakePerPage{footnote} %the perpage package command
 %\usepackage{microtype}
 %\usepackage{draftwatermark}
+\usepackage{tikz}
 
 %% Nicely format and linebreak URLs in the bibliography
 %\usepackage{url}
@@ -55,42 +56,13 @@
 %%"I am going to look at the following things"
 
 By encoding semantic information about the world in a form that can be processed by computers, computers can provide better support in many tasks.
-For example, the \emph{semantically enabled} IURISERVICE iFAQ database of legal questions and answers given by experienced Spanish judges aims to support inexperienced judges in answering legal questions\cite{IURISERVICEPerformance2007}.
-Important terms in the questions and answers are associated with their synonyms and the domain of law that they apply to.
-When a question is entered to search for related question-answer pairs, the semantic information is used to improve the results over a plain text search, even when considering different forms of the words in the query.
-The query is expanded to include exact matches, morphological variations\footnote{In the linguistic sense, such as \emph{car} to \emph{cars} for plurality}, and synonyms.
-The similarity of the result questions to the query question is then calculated, considering the similarity of concepts and the grammatical structure of the questions, to provide the most-similar results to the user.
-The semantic information is further used to provide suggestions of relevant legal cases whose decisions might have an impact on the issue at hand.
+
 
 \section{Semantic Web}
 
-By making semantic information available over the internet, many resources can be combined to support complex tasks involving many parties.
-The Semantic Web\footnote{http://www.w3.org/2001/sw/} is the manifestation of this.
-In a hypothetical example, Tim Berners-Lee et al. \footnote{Tim Berners-Lee, James Hendler and Ora Lassila. The Semantic Web. \emph{Scientific American}, 284(August), p.3863170-3863170 2001} describe a scenario where a brother and a sister try to book medical appointments for their mother with a nearby treatment centre available to their mother's health insurance policy, on dates that they can alternate driving their mother.
-Information about their availability, the clinics (including treatments they offer and their schedules) and the insurance policy must be available to the computers involved in proposing a solution.
-Furthermore, the meaning of this information, and how it relates to the other information involved in the computation, must be available.
-For example, the computer must be able to distinguish between the treatment centre's postal address and their visiting address.
-This information is encoded in ontologies and mappings between semantic entities in standardised formats such as OWL\cite{OWLOverview2004} to support this interoperability.
-
 \section{Ontologies}
 
-A commonly-cited definition of ontologies in the field of knowledge engineering is as \emph{``a formal, explicit specification of a shared conceptualization''} \cite{StuderEtAl1998KEPM}.
-Here, a \emph{conceptualization} is the objects, concepts and relations between them, in an abstract view of the world intended for a particular purpose.
-The conceptualization should be \emph{shared} within the context of its application.
-The objective with this explicit specification is to allow computer agents to operate on this view of the world or for its integration in human-operated software.
-
-Ontologies that represent a particular domain are known as \emph{Domain Ontologies}.
-One way to support integration of several domain ontologies is by defining elements common to many domains in an \emph{upper ontology}\cite{SemanticIntegration2004Noy}.
-
-\todo{possibly something on the "ontology" scale from taxonomy to formal ontology. This is part of ontological architecture.}
-
 \section{Ontology Engineering}
-
-The discipline of specifying, developing, introducing and maintaining ontologies for some application is known as \emph{Ontology Engineering} (OE)\cite{HOO2009OntEngMeth}.
-Along with broader considerations of OE such as the intended users and software engineering issues, the domain expert(s) and ontology engineer must gather relevant domain knowledge (Knowledge Acquisition) and encode it in a computer-readable form (Knowledge Representation)\cite{OntMethOverv1999}.
-This is challenging and repetitive and is known as the Knowledge Acquisition Bottleneck\cite{OLforSemWeb2001}.
-As an example, a "tasks and skills" ontology in the case study in \cite{HOO2009OntEngMeth} consisted of about 700 concepts after refinement. 
-Automating as much as possible of the knowledge acquisition and representation can reduce the effort for domain experts and ontology engineers when developing and maintaining ontologies\todo{need to back this up}.
 
 \section{Ontology Learning}
 
@@ -170,27 +142,102 @@ There's a lot of research into using internet phenomena like croud sourced data 
 
 This chapter gives an overview of the theoretical background to this thesis. The relationships between Ontology Learning from Text and its surrounding disciplines are identified in Sec.\ref{sec:lit-rev:parents}, then work and issues relevant to this field and this thesis specifically are discussed in Sec.\ref{sec:lit-rev:immediate}.
 
-\section{Parent disciplines}\label{sec:lit-rev:parents}
+\section{Parent disciplines}
+\label{sec:lit-rev:parents}
 
-This section identifies the relationships between Ontology Learning from Text, and the surrounding disciplines. First, Ontology Learning from Text is defined. 
+This section identifies the relationships between Ontology Learning from Text, and the surrounding disciplines................Knowledge Management and the Semantic Web. Ontology Learning is related with Knowledge Acquisition and Representation as a specific form of these processes, and the relation between Machine Reading and Ontology Learning is covered briefly. Some of the parts Ontology Learning plays in Ontology Engineering are identified, and finally the broader field Ontology Learning is described around Ontology Learning from Text.
 
-\subsection{Ontology Learning from Text}
+\begin{figure}
+  \includegraphics[width=\textwidth]{graphics/related-research-fields.png}
+  \caption{Related research fields}
+  \label{fig:related-research}
+\end{figure}
+
+
 
 \subsection{Knowledge Management}
 
+Knowledge Management involves creation, storage, retrieval, transfer and application of the tacit and explicit knowledge pertaining to an organisation \citep{AlaviLeidner2001KM}.
+Knowledge has been shown to be a significant asset in organisations, and information technology can help making such knowledge available to areas where the knowledge is not transferred easily \citep{AlaviLeidner2001KM}.
+
+An example of using information technology to collect, store and apply valuable organisational knowledge is the \emph{semantically enabled} IURISERVICE iFAQ database of legal questions and answers given by experienced Spanish judges aims to support inexperienced judges in answering legal questions\cite{IURISERVICEPerformance2007}.
+Important terms in the questions and answers are associated with their synonyms and the domain of law that they apply to.
+When a question is entered to search for related question-answer pairs, the semantic information is used to improve the results over a plain text search, even when considering different forms of the words in the query.
+The query is expanded to include exact matches, morphological variations\footnote{In the linguistic sense, such as \emph{car} to \emph{cars} for plurality}, and synonyms.
+The similarity of the result questions to the query question is then calculated, considering the similarity of concepts and the grammatical structure of the questions, to provide the most-similar results to the user.
+The semantic information is further used to provide suggestions of relevant legal cases whose decisions might have an impact on the issue at hand.
+
 \subsection{Semantic Web}
+
+By making semantically annotated information available over the internet, many resources can be combined to support complex tasks involving many parties.
+The Semantic Web\footnote{http://www.w3.org/2001/sw/} is the manifestation of this.
+In a hypothetical example, Tim Berners-Lee et al. \footnote{Tim Berners-Lee, James Hendler and Ora Lassila. The Semantic Web. \emph{Scientific American}, 284(August), p.3863170-3863170 2001} describe a scenario where a brother and a sister try to book medical appointments for their mother with a nearby treatment centre available to their mother's health insurance policy, on dates that they can alternate driving their mother.
+Information about their availability, the clinics (including treatments they offer and their schedules) and the insurance policy must be available to the computers involved in proposing a solution.
+Furthermore, the meaning of this information, and how it relates to the other information involved in the computation, must be available.
+For example, the computer must be able to distinguish between the treatment centre's postal address and their visiting address.
+This information is encoded in ontologies and mappings between semantic entities in standardised formats such as OWL\cite{OWLOverview2004} to support this interoperability.
+
+The masses of information available as plain text is not directly usable in the semantic web. Knowledge must be encoded in machine-readable forms compatible with the Semantic Web. That knowledge can come from a variety of sources, and the process of gathering knowledge for storage and application in semantically-enabled systems is known as Knowledge Acquisition.
 
 \subsection{Knowledge Acquisition}
 
+
+
 \subsection{Knowledge Representation}
 
-\subsection{Machine Reading}
+
+\subsection{Ontologies}
+\label{sec:lit-rev:ontologies}
+
+A commonly-cited definition of ontologies in the field of knowledge engineering is as \emph{``a formal, explicit specification of a shared conceptualization''} \cite{StuderEtAl1998KEPM}.
+Here, a \emph{conceptualization} is the objects, concepts and relations between them, in an abstract view of the world intended for a particular purpose.
+The conceptualization should be \emph{shared} within the context of its application.
+The objective with this explicit specification is to allow computer agents to operate on this view of the world or for its integration in human-operated software.
+
+Ontologies that represent a particular domain are known as \emph{Domain Ontologies}.
+One way to support integration of several domain ontologies is by defining elements common to many domains in an \emph{upper ontology}\cite{SemanticIntegration2004Noy}.
 
 \subsection{Ontology Engineering}
 
+The discipline of specifying, developing, introducing and maintaining ontologies for some application is known as \emph{Ontology Engineering} (OE)\cite{HOO2009OntEngMeth}.
+Along with broader considerations of OE such as the intended users and software engineering issues, the domain expert(s) and ontology engineer must gather relevant domain knowledge (Knowledge Acquisition) and encode it in a computer-readable form (Knowledge Representation)\cite{OntMethOverv1999}.
+This is challenging and repetitive and is known as the Knowledge Acquisition Bottleneck\cite{OLforSemWeb2001}.
+As an example, a "tasks and skills" ontology in the case study in \cite{HOO2009OntEngMeth} consisted of about 700 concepts after refinement. 
+Automating as much as possible of the knowledge acquisition and representation can reduce the effort for domain experts and ontology engineers when developing and maintaining ontologies\todo{need to back this up}.
+
 \subsection{Ontology Learning}
 
-\section{Immediate discipline}\label{sec:lit-rev:immediate}
+\subsection{Ontology Learning from Text}
+
+This section defines Ontology Learning from text and discusses important work in this field. More detail of the tasks and methods of Ontology Learning from Text is covered in Sec.\ref{sec:lit-rev:immediate}
+
+Ontology Learning from Text is the process of building a formal ontology from a semi-structured or unstructured text corpus from a particular domain \citep[p.3-7]{Cimiano06}. The ontology is intended to model the concepts and the semantic relationships between the concepts in the domain. Ontologies are further described in Sec.\ref{sec:lit-rev:ontologies}. 
+
+
+The typical tasks and their outputs are shown in Fig.\ref{fig:output-task-technique}. 
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{graphics/output-task-technique-WongLiuBennamoun.png}
+  \caption{Tasks, techniques and outputs in ontology learning. \cite{Wong2009PhD}}
+  \label{fig:output-task-technique}
+\end{figure}
+
+
+\subsection{Machine Reading}
+
+Machine Reading is the automatic, unsupervised \emph{'understanding'} of text where understanding means formation of beliefs supporting some level of reasoning from a textual corpus \citep{EtzioniEtAll06MachineReading}. Machine Reading is distinguished from Information Retrieval where this is done in a in a highly supervised, manual manner - for example where patterns for extracting desired entities are hand-written or manually selected from an extracted list - striving instead for extracting arbitrary semantic relations without human supervision \citep{EtzioniEtAll06MachineReading}.
+
+While Cimiano concluded that some level of supervision is necessary in Ontology Learning from Text \citep{Cimiano06}, recent work in Ontology Learning from Text such as OntoUSP\citep{Poon2010OntoUSP} and OntoCMaps \citep{Zouaq11OntoCmaps} shows progress towards learning arbitrary relations with high accuracy and recall in an unsupervised manner.
+
+
+\section{Immediate discipline}
+\label{sec:lit-rev:immediate}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{graphics/ontology-learning-system-issues.png}
+  \caption{Issues for Ontology Learning systems}
+  \label{fig:related-research}
+\end{figure}
 
 \subsection{Ontology Learning Steps}
 
