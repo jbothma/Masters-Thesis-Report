@@ -66,19 +66,6 @@ By encoding semantic information about the world in a form that can be processed
 
 \section{Ontology Learning}
 
-The automatic or semi-automatic construction of ontologies from domain data is called Ontology Learning \cite{Cimiano06}. 
-Ontology Learning (OL) can start with structured, semi-structured or unstructured data as input \cite{Cimiano2009OL}.
-Structured data, such as databases, can be somewhat independent of language and its semantics are described by its schema or structure \todo{I think \cite{Cimiano2009OL} is sufficient but need to check}.
-Most methods for ontology learning from semi-structured data such as wikis and unstructured data in the form of plain text depend on preprocessing techniques from the field of Natural Language Processing (NLP) to provide syntactic annotations like part of speech or syntactic dependencies.
-OL methods are then applied to the annotated corpus, each method extracting one or more kind of ontology element.
-
-Ontology learning software systems have been implemented that provide one or more algorithms for extracting concepts, relations and axioms from a text corpus.
-Such systems are often integrated with dedicated NLP tools to provide the required preprocessing facilities.
-Extracted elements are manually or automatically added to an ontology and can often be output in a standard ontology serialisation format like OWL\cite{OWLOverview2004}.
-
-Ontology learning methods have varying degrees of language dependence. 
-In the simplest case, an OL system can be applied to another natural language by replacing the language models in the NLP components with models trained on the other language. 
-However, often the syntactic and semantic structure of languages vary enough to require modifications to OL methods or the process as a whole \cite{Voelkner2008Spanish}\todo{saying "often" probably means we need more than one example}.
 
 \section{Problem}
 %ONE-SENT Hoewever, there is no Ontology Learning System for learning ontologies from Swedish text.
@@ -207,12 +194,25 @@ Automating as much as possible of the knowledge acquisition and representation c
 
 \subsection{Ontology Learning}
 
+The automatic or semi-automatic construction of ontologies from domain data is called Ontology Learning \cite{Cimiano06}. 
+Ontology Learning (OL) can start with structured, semi-structured or unstructured data as input \cite{Cimiano2009OL}.
+Structured data, such as databases, can be somewhat independent of language and its semantics are described by its schema or structure \todo{I think \cite{Cimiano2009OL} is sufficient but need to check}.
+Most methods for ontology learning from semi-structured data such as wikis and unstructured data in the form of plain text depend on preprocessing techniques from the field of Natural Language Processing (NLP) to provide syntactic annotations like part of speech or syntactic dependencies.
+OL methods are then applied to the annotated corpus, each method extracting one or more kind of ontology element.
+
+Ontology learning software systems have been implemented that provide one or more algorithms for extracting concepts, relations and axioms from a text corpus.
+Such systems are often integrated with dedicated NLP tools to provide the required preprocessing facilities.
+Extracted elements are manually or automatically added to an ontology and can often be output in a standard ontology serialisation format like OWL\cite{OWLOverview2004}.
+
+Ontology learning methods have varying degrees of language dependence. 
+In the simplest case, an OL system can be applied to another natural language by replacing the language models in the NLP components with models trained on the other language. 
+However, often the syntactic and semantic structure of languages vary enough to require modifications to OL methods or the process as a whole \cite{Voelkner2008Spanish}\todo{saying "often" probably means we need more than one example}.
+
 \subsection{Ontology Learning from Text}
 
 This section defines Ontology Learning from text and discusses important work in this field. More detail of the tasks and methods of Ontology Learning from Text is covered in Sec.\ref{sec:lit-rev:immediate}
 
 Ontology Learning from Text is the process of building a formal ontology from a semi-structured or unstructured text corpus from a particular domain \citep[p.3-7]{Cimiano06}. The ontology is intended to model the concepts and the semantic relationships between the concepts in the domain. Ontologies are further described in Sec.\ref{sec:lit-rev:ontologies}. 
-
 
 The typical tasks and their outputs are shown in Fig.\ref{fig:output-task-technique}. 
 
@@ -242,6 +242,17 @@ While Cimiano concluded that some level of supervision is necessary in Ontology 
 \subsection{Ontology Learning Steps}
 
 \subsection{Corpus Management}
+
+Corpus management involves selection of suitable corpora and storage of changes and annotations made during Preprocessing and Information Extraction.
+A corpus is a collection of documents compiled for linguistic investigation or processing \citep{KokkinakisGerdin10MedCorp}.
+When performing ontology learning from text, a corpus must be compiled which contains the text from which the domain model must be extracted.
+Selection of suitable corpora is important since the authority of the derived ontology depends on the authority and relevance of the source text for the domain.
+Annotations are generally made by NLP tools to identify linguistic features of text such as parts of speech or syntactic dependencies.
+These features are then used by one or more information extraction techniques.
+
+Maintaining the annotations of these features in the context they occur in, as opposed to simply extracting fragments and their features to a database, is necessary for some information extraction methods\citep{Frantzi98CNCValue, NenadicEtAl02TermSim, Srikant95GenAssocRul} and helps with ontology learning evaluation and research.
+
+Many annotation formats exist...
 
 \subsection{Preprocessing}
 
