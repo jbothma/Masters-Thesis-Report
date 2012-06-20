@@ -252,7 +252,11 @@ These features are then used by one or more information extraction techniques.
 
 Maintaining the annotations of these features in the context they occur in, as opposed to simply extracting fragments and their features to a database, is necessary for some information extraction methods\citep{Frantzi98CNCValue, NenadicEtAl02TermSim, Srikant95GenAssocRul} and helps with ontology learning evaluation and research.
 
-Many annotation formats exist...
+Many annotation formats exist including XML, other plain text formats and more complex binary formats. Various NLP tools such as the Stanford parser \citep{Marneffe06StanfPars} and FM-SBLEX morphology tools support input and output in XML and several other formats for different applications. A common plain text annotation format consists of one string token and its corresponding annotation on the same line, with only one token per line. This format is output by the HunPos tagger, for example, and can be accepted as input by MaltParser\citep{Nivre06maltparser} and FM-SBLEX. XML facilitates programmatic transformation and processing, although the XML schemas vary significantly meaning tools are often not directly compatible. For example, the XML formats of the Genia corpus \citep{KimEtAl03GeniaCorpus}, the FM-SBLEX tools and the Stanford NLP tools are significantly different.
+
+The Korp pipeline supports some variety in input XML format... overlapping tags...
+
+GATE supports many input formats and can combine annotations from the input and its PRs in one output XML format and a more powerful DAG format, serialized as Java objects.
 
 \subsection{Preprocessing}
 
