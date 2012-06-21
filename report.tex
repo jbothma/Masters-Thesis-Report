@@ -127,12 +127,16 @@ There's a lot of research into using internet phenomena like croud sourced data 
 %%UU-REQ critical appraisal of that literature as a basis for the formulation of project objectives and the conduct of the project.
 %% -- quality of the literature affects its bearing on the project. Note on the quality of an evaluation keeping in mind whether a plain olde eval would have been suitable in the first place - what's the objective of the publication?
 
-This chapter gives an overview of the theoretical background to this thesis. The relationships between Ontology Learning from Text and its surrounding disciplines are identified in Sec.\ref{sec:lit-rev:parents}, then work and issues relevant to this field and this thesis specifically are discussed in Sec.\ref{sec:lit-rev:immediate}.
+This chapter gives an overview of the theoretical background to this thesis.
+The relationships between Ontology Learning from Text and its surrounding disciplines are identified in Sec.\ref{sec:lit-rev:parents}, then work and issues relevant to this field and this thesis specifically are discussed in Sec.\ref{sec:lit-rev:immediate}.
 
 \section{Parent disciplines}
 \label{sec:lit-rev:parents}
 
-This section identifies the relationships between Ontology Learning from Text, and the surrounding disciplines. At a high level, Knowledge Management and the Semantic Web form the basis of applications that are supported by semantics encoded in a manner that allows automated reasoning. Ontology Learning is related with Knowledge Acquisition and Representation as a specific form of these processes, and the relation between Machine Reading and Ontology Learning is covered briefly. Some of the parts Ontology Learning plays in Ontology Engineering are identified, and finally the broader field of Ontology Learning is described, leading to a definition of Ontology Learning from Text.
+This section identifies the relationships between Ontology Learning from Text, and the surrounding disciplines.
+At a high level, Knowledge Management and the Semantic Web form the basis of applications that are supported by semantics encoded in a manner that allows automated reasoning.
+Ontology Learning is related with Knowledge Acquisition and Representation as a specific form of these processes, and the relation between Machine Reading and Ontology Learning is covered briefly.
+Some of the parts Ontology Learning plays in Ontology Engineering are identified, and finally the broader field of Ontology Learning is described, leading to a definition of Ontology Learning from Text.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{graphics/related-research-fields.png}
@@ -158,17 +162,20 @@ The semantic information is further used to provide suggestions of relevant lega
 
 By making semantically annotated information available over the internet, many resources can be combined to support complex tasks involving many parties.
 The Semantic Web\footnote{http://www.w3.org/2001/sw/} is the manifestation of this.
-In a hypothetical example, Tim Berners-Lee et al. \footnote{Tim Berners-Lee, James Hendler and Ora Lassila. The Semantic Web. \emph{Scientific American}, 284(August), p.3863170-3863170 2001} describe a scenario where a brother and a sister try to book medical appointments for their mother with a nearby treatment centre available to their mother's health insurance policy, on dates that they can alternate driving their mother.
+In a hypothetical example, Tim Berners-Lee et al. \footnote{Tim Berners-Lee, James Hendler and Ora Lassila. The Semantic Web. \emph{Scientific American}, 284(August), 2001} describe a scenario where a brother and a sister try to book medical appointments for their mother with a nearby treatment centre available to their mother's health insurance policy, on dates that they can alternate driving their mother.
 Information about their availability, the clinics (including treatments they offer and their schedules) and the insurance policy must be available to the computers involved in proposing a solution.
 Furthermore, the meaning of this information, and how it relates to the other information involved in the computation, must be available.
 For example, the computer must be able to distinguish between the treatment centre's postal address and their visiting address.
 This information is encoded in ontologies and mappings between semantic entities in standardised formats such as OWL\cite{OWLOverview2004} to support this interoperability.
 
-The masses of information available as plain text is not directly usable in the semantic web. Knowledge must be encoded in machine-readable forms compatible with the Semantic Web. That knowledge can come from a variety of sources, and the process of gathering knowledge for storage and application in semantically-enabled systems is known as Knowledge Acquisition.
+The masses of information available as plain text is not directly usable in the semantic web.
+Knowledge must be encoded in machine-readable forms compatible with the Semantic Web.
+That knowledge can come from a variety of sources, and the process of gathering knowledge for storage and application in semantically-enabled systems is known as Knowledge Acquisition.
 
 \subsection{Knowledge Acquisition}
 
-Knowledge Acquisition in the context of information technology is the elicitation and interpretation of knowledge about a particular domain for use in knowledge-based systems \citep{anjewierden1987KATools}. This corresponds to the acquisition part of Knowledge Management and is a precursor to Knowledge Representation. 
+Knowledge Acquisition in the context of information technology is the elicitation and interpretation of knowledge about a particular domain for use in knowledge-based systems \citep{anjewierden1987KATools}.
+This corresponds to the acquisition part of Knowledge Management and is a precursor to Knowledge Representation. 
 
 \subsection{Knowledge Representation}
 
@@ -257,20 +264,25 @@ Maintaining the annotations of these features in the context they occur in, as o
 
 Many annotation formats exist including XML, other plain text formats and more complex binary formats.
 Various NLP tools such as the Stanford parser \citep{Marneffe06StanfPars} and FM-SBLEX morphology tools support input and output in XML and several other formats for different applications. 
-A common plain text annotation format consists of one string token and its corresponding annotation on the same line, with only one token per line. This format is output by the HunPos tagger, for example, and can be accepted as input by MaltParser\citep{Nivre06maltparser} and FM-SBLEX. 
+A common plain text annotation format consists of one token string and its corresponding annotation on the same line, with only one token per line.
+This format is output by the HunPos tagger, for example, and can be accepted as input by MaltParser\citep{Nivre06maltparser} and FM-SBLEX. 
 XML facilitates programmatic transformation and processing, although the XML schemas vary significantly meaning tools are often not directly compatible.
 For example, the XML formats of the Genia corpus \citep{KimEtAl03GeniaCorpus}, the FM-SBLEX tools and the Stanford NLP tools are significantly different.
 
-Existing corpora and common document formats often already contain features and annotations that can be useful in ontology learning. For example, section headings can be extracted from HTML, PDF and Word documents, and coreferences (See Sec.\ref{sec:lit-rev:preproc}) are identified using XML in the Genia corpus. GATE can accept a variety of input document formats and normalises the structure of non-plain-text formats like HTML, Microsoft Word documents and PDF to its internal annotation format with common labels for annotation types among all normalised input formats \citep{Cunningham2011GATEBook}.
+Existing corpora and common document formats often already contain features and annotations that can be useful in ontology learning.
+For example, section headings can be extracted from HTML, PDF and Word documents, and coreferences (See Sec.\ref{sec:lit-rev:preproc}) are identified using XML in the Genia corpus.
+GATE can accept a variety of input document formats and normalises the structure of non-plain-text formats like HTML, Microsoft Word documents and PDF to its internal annotation format with common labels for annotation types among all normalised input formats \citep{Cunningham2011GATEBook}.
 The Korp annotation pipeline can accept various XML formats, and strip, copy or ignore and in some cases use existing annotations \cite{Borin12Korp}.
 
-The multitude of annotation formats forming input and output of the numerous tools creates a challenge for corpus management. GATE helps deal with this challenge with over ten years of refinement. 
-The GATE Developer application provides user interfaces to review and edit annotations manually, while the GATE Java libraries can be used programmatically to integrate various NLP tools during preprocessing and annotation. References to annotations can be stored by external applications to retrieve annotations for the change management tasks.
+The multitude of annotation formats forming input and output of the numerous tools creates a challenge for corpus management.
+GATE helps deal with this challenge with over ten years of refinement. 
+The GATE Developer application provides user interfaces to review and edit annotations manually, while the GATE Java libraries can be used programmatically to integrate various NLP tools during preprocessing and annotation.
+References to annotations can be stored by external applications to retrieve annotations for the change management tasks.
 
 \subsection{Preprocessing}
 \label{sec:lit-rev:preproc}
 
-Preprocessing is the task of ensuring the corpus is in a suitable state for the information extraction methods to be effective and annotating the corpus with linguistic features needed by certain information extraction methods.
+Preprocessing is the task of ensuring the corpus is in a suitable state for the information extraction methods to be effective, and annotating the corpus with linguistic features needed by certain information extraction methods.
 Common preprocessing tasks for ontology learning include
 \begin{itemize}
   \item tokenisation
@@ -299,7 +311,8 @@ Sentence splitting identifies individual sentences - sometimes taking document l
 \subsubsection{Part of speech and morphology analysis}
 
 Part of speech tagging, or POS-tagging, assigns grammatical word categories to individual words or other tokens such as numbers.
-A tagset defines how certain features are represented. For example in the Penn Treebank tagset, a singular common noun is tagged NN, while a plural common noun is tagged NNS \citep{Marcus93Penn}.
+A tagset defines how certain features are represented.
+For example in the Penn Treebank tagset, a singular common noun is tagged NN, while a plural common noun is tagged NNS \citep{Marcus93Penn}.
 Tagsets often include morphosyntactic categories such as gender, number and case.
 
 Two interchangeable tagsets are commonly used for swedish: the PAROLE tagset and the SUC tagset \citep{Forsbom08Tagging}.
@@ -319,10 +332,34 @@ Lemmatisation is preferred in ontology learning since it is useful to distinguis
 Stemming is usually quite a course, rule-based approach which can lose important parts of words that look like pre- or suffixes but are part of the lemma \todo{ought to cite this}, meaning many more senses of the same word would be coalesced than with lemmatisation.
 The Saldo lexicon \cite{Borin09Saldo} goes a step further, by assigning unique identifiers based on the lemma to distinguish between different senses of words with the same lemma.
 
-When lemmatising words, the appropriate sense of the word must be chosen to select the correct lemma. Unsupervised preprocessing means that a native speaker is not available to identify the sense of the word by its meaning. The Korp pipeline attempts to improve sense selection by choosing the sense with the most-similar morphology, such that a noun would be chosen over a verb given a word tagged as a noun, for example.
+When lemmatising words, the appropriate sense of the word must be chosen to select the correct lemma.
+Unsupervised preprocessing means that a native speaker is not available to identify the sense of the word by its meaning.
+The Korp pipeline attempts to improve sense selection by choosing the sense with the most-similar morphology, such that a noun would be chosen over a verb given a word tagged as a noun, for example.
 
-The FM-SBLEX word analysis tools and the Korp pipeline are based on the Saldo lexicon. The FM-SBLEX tool can lemmatise words not in the lexicon, such as \emph{kommunerna} (english \emph{the municipalities}).
+The FM-SBLEX word analysis tools and the Korp pipeline are based on the Saldo lexicon.
+The FM-SBLEX tool can lemmatise words not in the lexicon, such as \emph{kommunerna} (english \emph{the municipalities}).
 
+
+\subsubsection{Named Entity Recognition}
+
+\subsubsection{Coreference Resolution}
+
+\subsubsection{Chunking}
+
+Chunking, or shallow parsing, identifies non-overlapping parts of sentences playing various roles in the sentence, for example identifying the noun phrases making the subject and object parts in the sentence.
+The SweSPARK chunker employs a parser for chunking Swedish text \cite{Megyesi02Thesis}.
+
+\subsubsection{Syntactic Dependency Parsing}
+
+The OntoUSP \citep{Poon2010OntoUSP} method and the methods in the OntoCMaps system \citep{Zouaq11OntoCmaps} make use of syntactic dependencies for identifying roles of phrases in the corpus.
+
+\subsubsection{Compound Splitting}
+
+FM-SBLEX provides compound analysis, giving sets of two or more word senses from its lexicon that might have been compounded to form the word in question.
+
+The relation extraction method in \cite{Kokkinakis08SolidComp} used a glossary of domain terms to select likely compound parts from the possible part pairs.
+
+A statistical model of the swedish language is used in \citep{Sjobergh04Compounds} to split compounds. This was used for the Swedish compund splitting in \citep{Hjelm09Thesis}.
 
 \subsection{Information Extraction}
 
@@ -335,6 +372,10 @@ The FM-SBLEX word analysis tools and the Korp pipeline are based on the Saldo le
 \subsection{Change Management}
 
 \subsection{User Interaction}
+
+\subsection{Open research issues}
+
+\emph{perhaps a section summarising the open research issues identified in this chapter forming the basis of the problem statement}
 
 \chapter{Methodology}
 %UU-CHAP Methods and techniques required
