@@ -119,7 +119,7 @@ There's a lot of research into using internet phenomena like croud sourced data 
 
 \section{Report Structure}
 
-\chapter{Literature Review}
+\chapter{Background}
 %%UU-CHAP Overview of relevant research and development that is used in specifying the problem and obtaining and evaluating appropriate solutions.
 %%ONE-SENT Many methods for the subtasks have been developed for other languages, and some have already been applied to Swedish, but they have not been combined and evaluated as a pipeline. Furthermore, none of the existing OL systems are suitable to be extended to Swedish, nor support the necessary evaluation approaches.
 %%UU-REQ Awareness of relevant prior research and development literature
@@ -239,7 +239,7 @@ While Cimiano concluded that some level of supervision is necessary in Ontology 
 \begin{figure}
   \includegraphics[width=\textwidth]{graphics/ontology-learning-system-issues.png}
   \caption{Issues for Ontology Learning systems}
-  \label{fig:related-research}
+  \label{fig:ol-issues}
 \end{figure}
 
 \subsection{Ontology Learning Steps}
@@ -269,6 +269,60 @@ The GATE Developer application provides user interfaces to review and edit annot
 
 \subsection{Preprocessing}
 \label{sec:lit-rev:preproc}
+
+Preprocessing is the task of ensuring the corpus is in a suitable state for the information extraction methods to be effective and annotating the corpus with linguistic features needed by certain information extraction methods.
+Common preprocessing tasks for ontology learning include
+\begin{itemize}
+  \item tokenisation
+  \item sentence splitting
+  \item part of speech and morphology analysis
+  \item lemmatisation or stemming
+  \item named entity recognition
+  \item coreference resolution
+  \item chunking
+  \item syntactic dependency parsing
+\end{itemize}
+An additional task of \emph{compound splitting} is important for languages where compound words are common without a separating space or hyphen, such as Swedish, German or Russian.
+
+\subsubsection{Tokenisation}
+
+Tokenisation identifies individual word units - mainly separated by spaces but possibly also punctuation characters.
+Many NLP methods operate on individual tokens in the corpus.
+For example, a part of speech tagger assigns a part of speech to individual tokens, perhaps taking the sentence context into account.
+In certain domains word units might include characters that would be classed as token separators in common natural language.
+Generic tokenisation methods might need modification when performing ontology learning on such domains.
+
+\subsubsection{Sentence splitting}
+
+Sentence splitting identifies individual sentences - sometimes taking document layout into account to improve accuracy when full-stops are missing, in headings, for example.
+
+\subsubsection{Part of speech and morphology analysis}
+
+Part of speech tagging, or POS-tagging, assigns grammatical word categories to individual words or other tokens such as numbers.
+A tagset defines how certain features are represented. For example in the Penn Treebank tagset, a singular common noun is tagged NN, while a plural common noun is tagged NNS \citep{Marcus93Penn}.
+Tagsets often include morphosyntactic categories such as gender, number and case.
+
+Two interchangeable tagsets are commonly used for swedish: the PAROLE tagset and the SUC tagset \citep{Forsbom08Tagging}.
+A mapping is available between these tagsets \footnote{http://spraakbanken.gu.se/parole/tags.phtml}.
+These tagsets support common morphosyntactic categories, for example a common singular indefinite noun of neuter gender in the nominative case such as \emph{raketvapen} (english \emph{missile}) would have the tag {\tt NCNPN@IS} in the PAROLE tagset and {\tt NN NEU PLU IND NOM} in the SUC tagset.
+
+Many taggers are available, and they can often be configured to use custom language models. Such language models are specific to the language being tagged and are usually generated from a treebank - a corpus with annotations produced with high-enough accuracy to be used as training data for building language models and performing linguistics research.
+Models for tagging Swedish text are available from Eva Forsbom \footnote{http://stp.lingfil.uu.se/~evafo/resources/taggermodels/models.html} and Beata Megyesi \footnote{http://stp.lingfil.uu.se/~bea/resources/} and embedded in the Korp pipeline. \todo{maybe something about tagger accuracy, some literature, this is lit-rev after all}
+
+\subsubsection{Lemmatisation and stemming}
+
+Lemmatisation and stemming both attempt to normalise words from their inflected forms to some common form.
+Stemming removes common prefixes and suffixes, leaving the 'stem' behind which may not be a word in the language, for example changing \emph{kloster} and \emph{klostret} (\emph{monastery} and \emph{the monastery} respectively) to \emph{klost}.
+Lemmatisation modifies words to their lemma, or uninflected form, changing \emph{klostret} to \emph{kloster} and leaving \emph{kloster} as it is.
+
+Lemmatisation is preferred in ontology learning since it is useful to distinguish different senses of a word while coalescing different inflections of the same sense.
+Stemming is usually quite a course, rule-based approach which can lose important parts of words that look like pre- or suffixes but are part of the lemma \todo{ought to cite this}, meaning many more senses of the same word would be coalesced than with lemmatisation.
+The Saldo lexicon \cite{Borin09Saldo} goes a step further, by assigning unique identifiers based on the lemma to distinguish between different senses of words with the same lemma.
+
+When lemmatising words, the appropriate sense of the word must be chosen to select the correct lemma. Unsupervised preprocessing means that a native speaker is not available to identify the sense of the word by its meaning. The Korp pipeline attempts to improve sense selection by choosing the sense with the most-similar morphology, such that a noun would be chosen over a verb given a word tagged as a noun, for example.
+
+The FM-SBLEX word analysis tools and the Korp pipeline are based on the Saldo lexicon. The FM-SBLEX tool can lemmatise words not in the lexicon, such as \emph{kommunerna} (english \emph{the municipalities}).
+
 
 \subsection{Information Extraction}
 
