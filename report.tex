@@ -212,7 +212,9 @@ However, often the syntactic and semantic structure of languages vary enough to 
 
 This section defines Ontology Learning from text and discusses important work in this field. More detail of the tasks and methods of Ontology Learning from Text is covered in Sec.\ref{sec:lit-rev:immediate}
 
-Ontology Learning from Text is the process of building a formal ontology from a semi-structured or unstructured text corpus from a particular domain \citep[p.3-7]{Cimiano06}. The ontology is intended to model the concepts and the semantic relationships between the concepts in the domain. Ontologies are further described in Sec.\ref{sec:lit-rev:ontologies}. 
+Ontology Learning from Text is the process of building a formal ontology from a semi-structured or unstructured text corpus from a particular domain \citep[p.3-7]{Cimiano06}.
+The ontology is intended to model the concepts and the semantic relationships between the concepts in the domain.
+Ontologies are further described in Sec.\ref{sec:lit-rev:ontologies}. 
 
 The typical tasks and their outputs are shown in Fig.\ref{fig:output-task-technique}. 
 
@@ -225,7 +227,8 @@ The typical tasks and their outputs are shown in Fig.\ref{fig:output-task-techni
 
 \subsection{Machine Reading}
 
-Machine Reading is the automatic, unsupervised \emph{'understanding'} of text where understanding means formation of beliefs supporting some level of reasoning from a textual corpus \citep{EtzioniEtAll06MachineReading}. Machine Reading is distinguished from Information Retrieval where this is done in a in a highly supervised, manual manner - for example where patterns for extracting desired entities are hand-written or manually selected from an extracted list - striving instead for extracting arbitrary semantic relations without human supervision \citep{EtzioniEtAll06MachineReading}.
+Machine Reading is the automatic, unsupervised \emph{'understanding'} of text where understanding means formation of beliefs supporting some level of reasoning from a textual corpus \citep{EtzioniEtAll06MachineReading}.
+Machine Reading is distinguished from Information Retrieval where this is done in a in a highly supervised, manual manner - for example where patterns for extracting desired entities are hand-written or manually selected from an extracted list - striving instead for extracting arbitrary semantic relations without human supervision \citep{EtzioniEtAll06MachineReading}.
 
 While Cimiano concluded that some level of supervision is necessary in Ontology Learning from Text \citep{Cimiano06}, recent work in Ontology Learning from Text such as OntoUSP\citep{Poon2010OntoUSP} and OntoCMaps \citep{Zouaq11OntoCmaps} shows progress towards learning arbitrary relations with high accuracy and recall in an unsupervised manner, which is much closer to machine reading than earlier work in the field.
 
@@ -252,13 +255,20 @@ These features are then used by one or more information extraction techniques.
 
 Maintaining the annotations of these features in the context they occur in, as opposed to simply extracting fragments and their features to a database, is necessary for some information extraction methods\citep{Frantzi98CNCValue, NenadicEtAl02TermSim, Srikant95GenAssocRul} and helps with ontology learning evaluation and research.
 
-Many annotation formats exist including XML, other plain text formats and more complex binary formats. Various NLP tools such as the Stanford parser \citep{Marneffe06StanfPars} and FM-SBLEX morphology tools support input and output in XML and several other formats for different applications. A common plain text annotation format consists of one string token and its corresponding annotation on the same line, with only one token per line. This format is output by the HunPos tagger, for example, and can be accepted as input by MaltParser\citep{Nivre06maltparser} and FM-SBLEX. XML facilitates programmatic transformation and processing, although the XML schemas vary significantly meaning tools are often not directly compatible. For example, the XML formats of the Genia corpus \citep{KimEtAl03GeniaCorpus}, the FM-SBLEX tools and the Stanford NLP tools are significantly different.
+Many annotation formats exist including XML, other plain text formats and more complex binary formats.
+Various NLP tools such as the Stanford parser \citep{Marneffe06StanfPars} and FM-SBLEX morphology tools support input and output in XML and several other formats for different applications. 
+A common plain text annotation format consists of one string token and its corresponding annotation on the same line, with only one token per line. This format is output by the HunPos tagger, for example, and can be accepted as input by MaltParser\citep{Nivre06maltparser} and FM-SBLEX. 
+XML facilitates programmatic transformation and processing, although the XML schemas vary significantly meaning tools are often not directly compatible.
+For example, the XML formats of the Genia corpus \citep{KimEtAl03GeniaCorpus}, the FM-SBLEX tools and the Stanford NLP tools are significantly different.
 
-The Korp pipeline supports some variety in input XML format... overlapping tags...
+Existing corpora and common document formats often already contain features and annotations that can be useful in ontology learning. For example, section headings can be extracted from HTML, PDF and Word documents, and coreferences (See Sec.\ref{sec:lit-rev:preproc}) are identified using XML in the Genia corpus. GATE can accept a variety of input document formats and normalises the structure of non-plain-text formats like HTML, Microsoft Word documents and PDF to its internal annotation format with common labels for annotation types among all normalised input formats \citep{Cunningham2011GATEBook}.
+The Korp annotation pipeline can accept various XML formats, and strip, copy or ignore and in some cases use existing annotations \cite{Borin12Korp}.
 
-GATE supports many input formats and can combine annotations from the input and its PRs in one output XML format and a more powerful DAG format, serialized as Java objects.
+The multitude of annotation formats forming input and output of the numerous tools creates a challenge for corpus management. GATE helps deal with this challenge with over ten years of refinement. 
+The GATE Developer application provides user interfaces to review and edit annotations manually, while the GATE Java libraries can be used programmatically to integrate various NLP tools during preprocessing and annotation. References to annotations can be stored by external applications to retrieve annotations for the change management tasks.
 
 \subsection{Preprocessing}
+\label{sec:lit-rev:preproc}
 
 \subsection{Information Extraction}
 
