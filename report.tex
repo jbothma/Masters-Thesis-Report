@@ -425,8 +425,31 @@ The implementation should be evaluated in its ability to produce domain ontologi
 This thesis should also identify issues for further research in OL from Swedish text.
 These issues shall be grounded in the literature, the limitations identified in the prototype system, and in the experience gained during implementation. \todo{this is still rather rough, isn't it?}
 
-\todo{and now connect the above paragraph with research methods theory}
+This thesis takes a \emph{system development} approach to studying the problem at hand.
+This approach is relevant since the objective of this thesis is also to learn more about a problem area by planning, constructing and evaluating a prototype information system \cite{NunamakerChen90SDResearch}.
+A related approach from the action research perspective\cite{BursteinGregor99SDResearch} was taken to evaluate a significant piece of research in OL which was closer to the organisational context\cite{Blomqvist09Thesis}.
 
+Five criteria of conformance are provided for system research in \cite{NunamakerChen90SDResearch}:
+\begin{enumerate}
+\item The purpose is to study an important phenomenon in areas of information systems through
+system building
+\item The results make a significant contribution to the domain
+\item The system is testable against all the stated objectives and requirements
+\item The new system can provide better solutions to IS problems than existing systems
+\item Experience and design expertise gained from building the system can be generalized for future use
+\end{enumerate}
+
+This thesis approaches these criteria as follows:
+\begin{enumerate}
+\item The importance of Ontology Learning from text and its extension to Swedish is discussed in Chapter 2\todo{justify extension to Swedish text in chapter 2}.
+The suitability of system building as an approach is discussed in \todo{somewhere explain that a prototype system is a useful first step - perhaps a subsection of this chapter}.
+\item The contribution of a Master's thesis is limited, but the objectives of this thesis and how it is intended to contribute are discussed in \todo{where do I tease out objectives?}
+\item The evaluation design of this thesis is discussed in section \todo{evaluation design}
+\item To our knowledge, there is no existing system for learning domain ontologies from Swedish text, so existing systems are not available for comparison.
+The implementations of information extraction techniques are not compared against IE from Swedish text since the goal of this thesis is to perform OL as a whole.
+To achieve this within the given time frame, these methods have been selectively simplified as described in chapter~\ref{chapter:analysis}.
+\item The generalisability of the experience and design are discussed in \todo{probably future work section against the literature, and analysis section where design decisions are discussed}
+\end{enumerate}
 
 \section{Practical stuff}\todo{not the final title}
 
@@ -435,6 +458,7 @@ An informal summary of the development method:
 Basically, the way I'm making this first step toward Ontology Learning from Swedish Text is by finding, choosing and applying/implementing the minimum methods necessary to achieve some ontology learning. This means I simplify some methods (e.g. only C-Value, no NC-value) and skip some steps (e.g. not distinguishing between concepts and instances). I also put in place some of the things considered important for ongoing research in OL, e.g. traceability/evidence for assertions. I put one part in place at a time, and extend existing parts as needed to support subsequently added parts. Evaluation and future work can then indicate where further work is needed, instead of perfecting one step but never achieving ontology learning. There is also little point for me to focus on just one step at this stage. Each step in OL corresponds to well-defined and ongoing research fields. To advance OL, it seems more useful to apply known good methods from other fields. My methodology is based on incremental development. Each step should try to achieve a well-defined goal and no more. For me, minor steps are the boxes in the Issues for Ontology Learning Systems diagram. Having a minimal working level for each box is the goal of this project. In the long term, this project is a first step, and future steps might aim to improve one or more boxes at a time, keeping the other boxes up to date as far as they are affected by the changes.
 
 \chapter{Analysis of data}
+\label{chapter:analysis}
 %%UU-REQ Evidence that the student has made a critical evaluation of the signiﬁcance of the project outcomes, limitations of the results
 %ONE-SENT We achieved results comparable to what was done with language Q in R. We can extract concepts and relations from Swedish text with evaluation metric S result of T.
 %UU-CHAP Data collection and analysis where relevant, or testing of the solution of product.
