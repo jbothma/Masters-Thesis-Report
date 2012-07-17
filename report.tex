@@ -245,6 +245,19 @@ While Cimiano concluded that some level of supervision is necessary in Ontology 
 \section{Immediate discipline}
 \label{sec:lit-rev:immediate}
 
+This section describes relevant research in ontology learning from text.
+The descriptions are organised according to the role the research plays within the field and its processes.
+
+The key issues for ontology learning from text are shown in \ref{fig:ol-issues}.
+OL from text starts with collecting and preparing text corpora. The corpora must be preprocessed as needed by the information extraction methods. Evidence for potential ontology elements might be combined from various methods with overlapping scope. An ontology is constructed using the extracted information, which is generally evaluated during or following construction. As with ontology engineering, change management and user interaction are important aspects throughout the process.
+
+Methods were chosen for inclusion in this review based on their relevance to this thesis and research in general.
+While ontology learning from text includes extraction from structured text, this thesis avoids the specificity of methods for structured data.
+Domain independent methods are preferred over domain-specific such as \cite{LeeEtAl03OLMed} for medicine.
+Methods depending heavily on existing knowledge bases are avoided such as \cite{Gulla08LOUIE} for its dependence on film knowledge bases or \cite{Drumond10PREHE} and \cite{HaiTaoEtAl08Clonto} for dependence on WordNet\cite{Fellbaum98WordNet}.
+While general domain knowledge bases such as WordNet and Cyc\cite{Lenat95Cyc} can help extract so-called \emph{low hanging fruit} and there even exists a WordNet for Swedish\cite{Viberg02SWordNet}, it generally takes a lot of effort to extend such databases to a new domain \footnote{This is in fact closely related to OL for domain ontologies} and they might introduce errors since the senses of words and phrases in specific domains might be different from those in general language.
+Their consideration is left for further research.
+
 \begin{figure}
   \includegraphics[width=\textwidth]{graphics/ontology-learning-system-issues.png}
   \caption{Issues for Ontology Learning systems}
