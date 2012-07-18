@@ -11,23 +11,6 @@
 %\usepackage{draftwatermark}
 \usepackage{tikz}
 
-%% Nicely format and linebreak URLs in the bibliography
-%\usepackage{url}
-
-%% Nicer formatting of figure captions.
-%\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
-
-%\SetWatermarkScale{5}
-
-%% Define a new 'leo' style for the package that will use a smaller font.
-%\makeatletter
-%\def\url@leostyle{%
-%  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
-%\makeatother
-%% Now actually use the newly defined style.
-%\urlstyle{leo}
-
-%\newcommand{\hi}[1]{{\color{red}\tiny \em #1\/}\\}
 \newcommand{\todo}[1]{\footnote{{\color{red} TODO: #1}}}
 
 % ------------------------------------------------------------------------------
@@ -392,6 +375,19 @@ SVENSK is a language processing toolbox for Swedish developed in the late 1990s 
 
 \subsection{User Interaction}
 
+\subsection{Ontology learning systems}
+
+\subsubsection{OntoUSP}
+
+OntoUSP is an ontology learning system and method which builds a \emph{probabilistic ontology} from dependency-parsed text\cite{Poon2010OntoUSP}.
+It builds an ontology comprising of concepts, relations, IS-A (subconcept) and IS-PART relations between relations.
+OntoUSP builds on the USP (Unsupervised Semantic Parsing) system\cite{Poon09USP}.
+Both these systems use Markov Logic networks to determine the most probable parse of the corpus as a whole\todo{explain this more}.
+OntoUSP achieved significantly higher precision and recall than the state of the art in the field of information extraction and question answering systems in an evaluation using the GENIA\citep{KimEtAl03GeniaCorpus} corpus\cite{Poon2010OntoUSP}.
+I discovered by email correspondence with Hoifung Poon, PhD (2012-02-29) that the Stanford parser\cite{Klein03PCFGParser} used for annotating the corpus in this evaluation was trained on the GENIA Treebank\cite{Tatseisi05GENIATB}.
+For this reason, it is unclear how well OntoUSP would perform using a general domain parser, or whether the other systems in the evaluation were also trained for this domain.
+This is important since domain-specific parsers or treebanks are not normally available, and this treebank was constructed from the GENIA corpus.
+
 \subsection{Open research issues}
 
 \emph{perhaps a section summarising the open research issues identified in this chapter forming the basis of the problem statement}
@@ -420,7 +416,7 @@ When theories are difficult or impossible to prove logically, they can still be 
 \todo{possibly expand on this. right now it seems like it's just dumped here out of context. expanding on experimental impl and eval in OL might help}
 
 The outputs of research in the field of Ontology Learning from text are generally new or improved ontology learning methods, algorithms, software systems or approaches for the evaluation of the above \cite{Wong11Survey}.
-Similarly to evaluation in ontology engineering, ontology learning is generally evaluated with respect to a specific application, the coverage of the modeled domain, or according to predefined set of criteria \cite{Wong11Survey}.
+Similarly to evaluation in ontology engineering, ontology learning is generally evaluated with respect to a specific application, the coverage of the modeled domain, or according to a predefined set of criteria \cite{Wong11Survey}.
 \todo{perhaps expand on these. bring out the issue of mutliple corpora and gold standards and (un)generalizability (but evidence towards it)}
 While quantitive methods are valued for the ease with which OL methods can be compared according in various aspects, the fact that human experts are generally needed to verify the accuracy of the model means there is an intrinsic qualitative part to ontology learning evaluation \todo{cite this synthesis/opinion/whatever}.
 
@@ -456,7 +452,8 @@ To achieve this within the given time frame, these methods have been selectively
 \item The generalisability of the experience and design are discussed in \todo{probably future work section against the literature, and analysis section where design decisions are discussed}
 \end{enumerate}
 
-\section{Practical stuff}\todo{not the final title}
+\section{Practical stuff}
+\todo{not the final title}
 
 An informal summary of the development method:
 
