@@ -376,6 +376,10 @@ The relation extraction method in \cite{Kokkinakis08SolidComp} used a glossary o
 
 A statistical model of the swedish language is used in \citep{Sjobergh04Compounds} to split compounds. This was used for the Swedish compund splitting in \citep{Hjelm09Thesis}.
 
+\subsubsection{The SVENSK language processing toolbox for Swedish}
+
+SVENSK is a language processing toolbox for Swedish developed in the late 1990s and 2000\cite{OlssonGamback00SVENSK}. SVENSK aimed to support research and teaching which depended on Swedish language processing by providing common text processing tools such as taggers and parsers in a general purpose language processing framework. SVENSK was based on the GATE language processing framework.
+
 \subsection{Information Extraction}
 
 \subsubsection{Method / Evidence Combination}
@@ -457,12 +461,21 @@ An informal summary of the development method:
 
 Basically, the way I'm making this first step toward Ontology Learning from Swedish Text is by finding, choosing and applying/implementing the minimum methods necessary to achieve some ontology learning. This means I simplify some methods (e.g. only C-Value, no NC-value) and skip some steps (e.g. not distinguishing between concepts and instances). I also put in place some of the things considered important for ongoing research in OL, e.g. traceability/evidence for assertions. I put one part in place at a time, and extend existing parts as needed to support subsequently added parts. Evaluation and future work can then indicate where further work is needed, instead of perfecting one step but never achieving ontology learning. There is also little point for me to focus on just one step at this stage. Each step in OL corresponds to well-defined and ongoing research fields. To advance OL, it seems more useful to apply known good methods from other fields. My methodology is based on incremental development. Each step should try to achieve a well-defined goal and no more. For me, minor steps are the boxes in the Issues for Ontology Learning Systems diagram. Having a minimal working level for each box is the goal of this project. In the long term, this project is a first step, and future steps might aim to improve one or more boxes at a time, keeping the other boxes up to date as far as they are affected by the changes.
 
-\chapter{Analysis of data}
+\chapter{Analysis}
 \label{chapter:analysis}
 %%UU-REQ Evidence that the student has made a critical evaluation of the signiﬁcance of the project outcomes, limitations of the results
 %ONE-SENT We achieved results comparable to what was done with language Q in R. We can extract concepts and relations from Swedish text with evaluation metric S result of T.
 %UU-CHAP Data collection and analysis where relevant, or testing of the solution of product.
 %% Critical analysis of the results - show you know its limitations
+
+\section{System development}
+
+\subsection{Preprocessing}
+
+Informally, I didn't use SVENSK because it was difficult to find\footnote{try googling SVENSK language processing, and the URL in \cite{Olsson98SVENSKTagging} is broken, I only just found the old site in the internet archive wayback machine}, I don't think it was mentioned in the BLARK report\todo{check}, and more recent language processing tools existed than those included in SVENSK and better performance from these could be expected.
+However, I could have learnt something useful by looking at their lessons learnt.
+They also used GATE and talk a lot about what they learnt in trying to make a general purpose language processing tool.
+Keeping the preprocessing general in an OL system would probably help in supporting pluggable IE components and might support related research or benefit from easy integration of new preprocessing tools. \todo{formalize this para}
 
 \chapter{Conclusion and implications}
 %%UU-CHAP Conclusions reached and future enhancement or work that could be conducted to reﬁne the system.
