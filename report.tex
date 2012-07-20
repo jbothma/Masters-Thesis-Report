@@ -394,7 +394,9 @@ This is important since domain-specific parsers or treebanks are not normally av
 
 \section{Open research areas}
 
-The literature identifies many open research areas in OL. These have been organised into the following areas and are discussed further below:
+The literature identifies many open research areas in OL.
+These have been organised into the following areas and are discussed further below. Specific means of addressing these issues are not produced for each of these areas since each problem requires further exploration in future research.
+However, the issues that this thesis attempts to address are made explicit at the end of this section\todo{better to refer to a section number}.
 
 \begin{itemize}
 \item New and improved methods
@@ -416,11 +418,24 @@ For example, OntoUSP and OntoCMaps recently showed significant improvements over
 
 \subsubsection{Change management}
 
-Change management for ontology evolution can involve organisational practices and ontology learning tools. The environment around the ontology is often not stable \cite{Blomqvist09Thesis}. Once deployed in an application, changes might need to be applied in a controlled manner to evaluate and understand the effects of keeping the ontology up to date with its environment\cite{HOO2009OntEngMeth}. Depending on the agility of the organisation, manual evolution of the ontology might not be sufficient\cite{Blomqvist09Thesis}. \cite{Cimiano2009OL} states "As the underlying data changes, the learned ontology should change as well and this requires not only incremental ontology learning algorithms, but also some support for ontology evolution at the ontology management level".
+Change management for ontology evolution can involve organisational practices and ontology learning tools.
+The environment around the ontology is often not stable \cite{Blomqvist09Thesis}.
+Once deployed in an application, changes might need to be applied in a controlled manner to evaluate and understand the effects of keeping the ontology up to date with its environment\cite{HOO2009OntEngMeth}.
+Depending on the agility of the organisation, manual evolution of the ontology might not be sufficient\cite{Blomqvist09Thesis}.
+\cite{Cimiano2009OL} states "As the underlying data changes, the learned ontology should change as well and this requires not only incremental ontology learning algorithms, but also some support for ontology evolution at the ontology management level".
+
+There are many pieces of information that are pertinent to many tasks around ontology engineering.
+Ontology engineering methodologies suggest keeping track of who by, when and why changes were made \cite{HOO2009OntEngMeth}.
+Text2Onto allows algorithm components to register their interest different kinds of changes, and publish such changes to other interested components\cite{Cimiano2005Text2Onto}.
+A formal provenance model approach\citep{Groth09PipeProv}, tracking all data, methods and decisions involved in changes, might be an appropriate way of answering many questions of the researcher and the organisation.
 
 \subsubsection{Corpus quality}
 
-Corpus quality is a concern with regard to the validity of the learned ontology, as well as to the suitability of a given corpus for chosen OL methods. Many methods rely on large corpora \cite{Cimiano06} and the internet makes a huge variety of sources of information available \cite{Wong11Survey}. However, one might question the authority of information gathered from the internet, especially from the increasing trend of using socially generated data \cite{Wong11Survey}. It was shown in \cite{Hjelm09Thesis} that useful results could be obtained from a corpus of Wikipedia articles. They further expect that a bigger corpus would improve the recall of their classifiers and lexico-syntactic patterns but are concerned about the ambiguity introduced by a more general corpus. 
+Corpus quality is a concern with regard to the validity of the learned ontology, as well as to the suitability of a given corpus for chosen OL methods.
+Many methods rely on large corpora\cite{Cimiano06} and the internet makes a huge variety of sources of information available \cite{Wong11Survey}.
+However, one might question the authority of information gathered from the internet, especially from the increasing trend of using socially generated data \cite{Wong11Survey}.
+It was shown in \cite{Hjelm09Thesis} that useful results could be obtained from a corpus of Wikipedia articles.
+They further expect that a bigger corpus would improve the recall of their classifiers and lexico-syntactic patterns but are concerned about the ambiguity introduced by a more general corpus\cite{Hjelm09Thesis}. 
 
 \subsubsection{Evaluation}
 
