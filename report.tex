@@ -426,20 +426,33 @@ Depending on the agility of the organisation, manual evolution of the ontology m
 
 There are many pieces of information that are pertinent to many tasks around ontology engineering.
 Ontology engineering methodologies suggest keeping track of who by, when and why changes were made \cite{HOO2009OntEngMeth}.
-Text2Onto allows algorithm components to register their interest different kinds of changes, and publish such changes to other interested components\cite{Cimiano2005Text2Onto}.
-A formal provenance model approach\citep{Groth09PipeProv}, tracking all data, methods and decisions involved in changes, might be an appropriate way of answering many questions of the researcher and the organisation.
+Text2Onto allows algorithm components to register their interest in different kinds of changes, and publish such changes to other interested components\cite{Cimiano2005Text2Onto}.
+A formal provenance model approach\citep{Groth09PipeProv} which tracks all data, methods and decisions involved in changes might be an appropriate way of answering many questions of the researcher and the organisation.
 
 \subsubsection{Corpus quality}
 
 Corpus quality is a concern with regard to the validity of the learned ontology, as well as to the suitability of a given corpus for chosen OL methods.
 Many methods rely on large corpora\cite{Cimiano06} and the internet makes a huge variety of sources of information available \cite{Wong11Survey}.
-However, one might question the authority of information gathered from the internet, especially from the increasing trend of using socially generated data \cite{Wong11Survey}.
+However, one might question the authority of information gathered from the internet, especially from the increasing trend of using socially generated data, even if this contributes to the consensus aspect of a "shared conceptualisation"\cite{Wong11Survey}.
 It was shown in \cite{Hjelm09Thesis} that useful results could be obtained from a corpus of Wikipedia articles.
 They further expect that a bigger corpus would improve the recall of their classifiers and lexico-syntactic patterns but are concerned about the ambiguity introduced by a more general corpus\cite{Hjelm09Thesis}. 
 
 \subsubsection{Evaluation}
 
+Evaluation can be extended in OL research and in practice during ontology development and ongoing maintenance.
 
+Common issues suggested for further research are the optimisation of parameters \cite{Hjelm09Thesis} and experimentation with combinations of methods \cite{Cimiano2005Text2Onto,Zouaq11OntoCmaps}, requiring comparative evaluation.
+It is also suggested that certain methods or parameters might be more suited to different applications\cite{Gulla08LOUIE, Cimiano06}.
+These endeavors rely on optimising certain criteria\cite{Cimiano2009OL}.
+
+Evaluation should be granular.
+Each stage in OL might introduce errors which might be propagated through the pipeline\cite{Zouaq11OntoCmaps, Hjelm09Thesis}.
+It is therefore important to evaluate each stage separately with controlled input to understand  the effect of errors to its input on its output.
+On the other hand, it is important not to confuse the results with highly accurate input with performance with real life data that might contain many errors.
+
+Evaluation should be frequent.
+By integrating evaluation of various criteria, such as logical consistency or application-specific criteria, an OL system can guide ontology development\cite{Cimiano2009OL}.
+This applies during initial ontology development as well as ongoing maintenance, where updates to the ontology should also be evaluated to ensure important performance aspects are maintained\cite{HOO2009OntEngMeth}.
 
 \subsubsection{Cross-language OL and currently-unsupported languages}
 
