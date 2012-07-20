@@ -175,6 +175,8 @@ The objective with this explicit specification is to allow computer agents to op
 Ontologies that represent a particular domain are known as \emph{Domain Ontologies}.
 One way to support integration of several domain ontologies is by defining elements common to many domains in an \emph{upper ontology}\cite{SemanticIntegration2004Noy}.
 
+\todo{could distinguish between "lexical" and non-lexical ontologies like what Hjelm and I think Cimiano refers to.}
+
 \subsection{Ontology Engineering}
 
 The discipline of specifying, developing, introducing and maintaining ontologies for some application is known as \emph{Ontology Engineering} (OE)\cite{HOO2009OntEngMeth}.
@@ -365,7 +367,7 @@ SVENSK is a language processing toolbox for Swedish developed in the late 1990s 
 
 \subsection{Information Extraction}
 
-\todo{should probably include TextRunner/ReVerb since \cite{Poon2010OntoUSP} says its the state of the art in IE}. At least the ReVerb website only mentions English}
+\todo{should probably include TextRunner/ReVerb since \cite{Poon2010OntoUSP} says its the state of the art in IE. At least the ReVerb website only mentions English}
 
 \subsubsection{Method / Evidence Combination}
 
@@ -390,7 +392,7 @@ I discovered by email correspondence with Hoifung Poon, PhD (2012-02-29) that th
 For this reason, it is unclear how well OntoUSP would perform using a general domain parser, or whether the other systems in the evaluation were also trained for this domain.
 This is important since domain-specific parsers or treebanks are not normally available, and this treebank was constructed from the GENIA corpus.
 
-\subsection{Open research issues}
+\section{Open research areas}
 
 The literature identifies many open research areas in OL. These have been organised into the following areas and are discussed further below:
 
@@ -414,11 +416,11 @@ For example, OntoUSP and OntoCMaps recently showed significant improvements over
 
 \subsubsection{Change management}
 
-
+Change management for ontology evolution can involve organisational practices and ontology learning tools. The environment around the ontology is often not stable \cite{Blomqvist09Thesis}. Once deployed in an application, changes might need to be applied in a controlled manner to evaluate and understand the effects of keeping the ontology up to date with its environment\cite{HOO2009OntEngMeth}. Depending on the agility of the organisation, manual evolution of the ontology might not be sufficient\cite{Blomqvist09Thesis}. \cite{Cimiano2009OL} states "As the underlying data changes, the learned ontology should change as well and this requires not only incremental ontology learning algorithms, but also some support for ontology evolution at the ontology management level".
 
 \subsubsection{Corpus quality}
 
-
+Corpus quality is a concern with regard to the validity of the learned ontology, as well as to the suitability of a given corpus for chosen OL methods. Many methods rely on large corpora \cite{Cimiano06} and the internet makes a huge variety of sources of information available \cite{Wong11Survey}. However, one might question the authority of information gathered from the internet, especially from the increasing trend of using socially generated data \cite{Wong11Survey}. It was shown in \cite{Hjelm09Thesis} that useful results could be obtained from a corpus of Wikipedia articles. They further expect that a bigger corpus would improve the recall of their classifiers and lexico-syntactic patterns but are concerned about the ambiguity introduced by a more general corpus. 
 
 \subsubsection{Evaluation}
 
