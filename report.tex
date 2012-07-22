@@ -397,7 +397,7 @@ This is important since domain-specific parsers or treebanks are not normally av
 
 The literature identifies many open research areas in OL.
 These have been organised into the following areas and are discussed further below. Specific means of addressing these issues are not produced for each of these areas since each problem requires further exploration in future research.
-However, the issues that this thesis attempts to address are made explicit at the end of this chapter in Sec.~\ref{sec:background:our-focus}.
+However, the issues that this thesis attempts to address are made explicit at the end of this chapter in Sec.~\ref{sec:background:objectives}.
 
 \begin{itemize}
 \item New and improved methods
@@ -485,19 +485,19 @@ A survey on Swedish language processing resources showed demand for semantically
 Given this demand, the general utility of OL for various languages, and our context at a Swedish university, exploring OL from Swedish is a worthwhile endeavour.
 
 \section{Focus and objectives for this thesis}
-\label{sec:background:our-focus}
+\label{sec:background:objectives}
 
 Having given the background to ontology learning from text in sections~\ref{sec:lit-rev:parents}-\ref{sec:lit-rev:immediate}, identified open research areas in the field in section~\ref{sec:background:open-areas} and explained our interest in the Swedish language in section~\ref{sec:background:swedish}, this section states the objectives of this thesis.
 
 \subsubsection{A prototype OL system}
 
 At a high level, the objective of this thesis is to investigate ontology learning from Swedish and identify where future research should be focused.
-Towards this end, this thesis aims to produce an prototype ontology learning system which is able to extract domain concepts and taxonomic and non-taxonomic relations between the concepts.
-This prototype system will be evaluated to identify its weaknesses.
+Towards this end, this thesis aims to produce a prototype ontology learning system which is able to extract domain concepts and taxonomic and non-taxonomic relations between the concepts.
+This prototype system will be evaluated to identify errors and limitations.
 Its errors will be investigated to attempt to explain their sources, thus identifying areas to pursue in further research.
 
 Various NLP tools are available for annotating Swedish text with the syntactic annotations needed by typical ontology learning methods.
-There are also information extraction techniques developed specifically for extracting terms and relations of interest in ontology learning\cite{Kokkinakis08SolidComp}.
+There are also information extraction techniques developed specifically for extracting terms and relations of interest in ontology learning\cite{Kokkinakis08SolidComp} from Swedish text.
 However, apart from some knowledge extraction tools for specific applications such as Carsim\cite{JohanssonEtAll04Carsim} or the cross-language approach developed by Hjelm\cite{Hjelm09Thesis}, I am not aware of any open domain ontology learning systems for Swedish text.
 Given the availability of tools for the earlier parts of the OL pipeline, the obvious next step is to combine extracted elements and build domain ontologies.
 
@@ -619,7 +619,7 @@ Basically, the way I'm making this first step toward Ontology Learning from Swed
 
 I should probably have assumed nicely-formatted input rather than being concerned with handling any bunch of PDFs or whatever.
 Handling all sorts of input, a bit like T2O, is a nice idea for a real life OL system but given that my objective is to focus on learning about OL from Swedish, preprocessing crap was out of scope. 
-\todo{obviously make this more formal and structured, but then also add references to the part of the analysis where I identify bad results due to formatting and unclean input.
+\todo{obviously make this more formal and structured, but then also add references to the part of the analysis where I identify bad results due to formatting and unclean input.}
 
 Informally, I didn't use SVENSK because it was difficult to find\footnote{try googling SVENSK language processing, and the URL in \cite{Olsson98SVENSKTagging} is broken, I only just found the old site in the internet archive wayback machine}, I don't think it was mentioned in the BLARK report\todo{check}, and more recent language processing tools existed than those included in SVENSK and better performance from these could be expected.
 However, I could have learnt something useful by looking at their lessons learnt.
