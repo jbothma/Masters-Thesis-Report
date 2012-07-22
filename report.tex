@@ -393,10 +393,11 @@ For this reason, it is unclear how well OntoUSP would perform using a general do
 This is important since domain-specific parsers or treebanks are not normally available, and this treebank was constructed from the GENIA corpus.
 
 \section{Open research areas}
+\label{sec:background:open-areas}
 
 The literature identifies many open research areas in OL.
 These have been organised into the following areas and are discussed further below. Specific means of addressing these issues are not produced for each of these areas since each problem requires further exploration in future research.
-However, the issues that this thesis attempts to address are made explicit at the end of this Sec.~\ref{sec:background:our-focus}.
+However, the issues that this thesis attempts to address are made explicit at the end of this chapter in Sec.~\ref{sec:background:our-focus}.
 
 \begin{itemize}
 \item New and improved methods
@@ -469,6 +470,7 @@ Such data might involve significant organised effort to produce such as WordNet\
 As OL tools improve in support for building on existing ontologies, they might both support ontology maintenance, and upgrading lexical ontologies to more formal ontologies\cite{Wong11Survey}.
 
 \section{Why Swedish?}
+\label{sec:background:swedish}
 
 With the abundance of data in English language and its frequent use as lingua franca in international organisations, one might question the relevance of research in OL from languages other than English.
 However, bringing OL techniques to more languages than just English contributes in various ways.
@@ -482,8 +484,12 @@ At a minimum, syntactic annotation methods need to be adapted for other language
 A survey on Swedish language processing resources showed demand for semantically annotated corpora and knowledge extraction tools\cite{EleniusEtAl08SwedTools}.
 Given this demand, the general utility of OL for various languages, and our context at a Swedish university, exploring OL from Swedish is a worthwhile endeavour.
 
-\section{Problem focus for this thesis}
+\section{Focus and objectives for this thesis}
 \label{sec:background:our-focus}
+
+Having given the background to ontology learning from text in sections~\ref{sec:lit-rev:parents}-\ref{sec:lit-rev:immediate}, identified open research areas in the field in section~\ref{sec:background:open-areas} and explained our interest in the Swedish language in section~\ref{sec:background:swedish}, this section states the issues that this thesis is specifically interested in investigating.
+
+While several 
 
 \chapter{Methods}
 
@@ -563,10 +569,15 @@ Basically, the way I'm making this first step toward Ontology Learning from Swed
 
 \subsection{Preprocessing}
 
+I should probably have assumed nicely-formatted input rather than being concerned with handling any bunch of PDFs or whatever.
+Handling all sorts of input, a bit like T2O, is a nice idea for a real life OL system but given that my objective is to focus on learning about OL from Swedish, preprocessing crap was out of scope. 
+\todo{obviously make this more formal and structured, but then also add references to the part of the analysis where I identify bad results due to formatting and unclean input.
+
 Informally, I didn't use SVENSK because it was difficult to find\footnote{try googling SVENSK language processing, and the URL in \cite{Olsson98SVENSKTagging} is broken, I only just found the old site in the internet archive wayback machine}, I don't think it was mentioned in the BLARK report\todo{check}, and more recent language processing tools existed than those included in SVENSK and better performance from these could be expected.
 However, I could have learnt something useful by looking at their lessons learnt.
 They also used GATE and talk a lot about what they learnt in trying to make a general purpose language processing tool.
 Keeping the preprocessing general in an OL system would probably help in supporting pluggable IE components and might support related research or benefit from easy integration of new preprocessing tools. \todo{formalize this para}
+
 
 \chapter{Conclusion}
 %%UU-CHAP Conclusions reached and future enhancement or work that could be conducted to reﬁne the system.
