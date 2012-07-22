@@ -487,16 +487,64 @@ Given this demand, the general utility of OL for various languages, and our cont
 \section{Focus and objectives for this thesis}
 \label{sec:background:our-focus}
 
-Having given the background to ontology learning from text in sections~\ref{sec:lit-rev:parents}-\ref{sec:lit-rev:immediate}, identified open research areas in the field in section~\ref{sec:background:open-areas} and explained our interest in the Swedish language in section~\ref{sec:background:swedish}, this section states the issues that this thesis is specifically interested in investigating.
+Having given the background to ontology learning from text in sections~\ref{sec:lit-rev:parents}-\ref{sec:lit-rev:immediate}, identified open research areas in the field in section~\ref{sec:background:open-areas} and explained our interest in the Swedish language in section~\ref{sec:background:swedish}, this section states the objectives of this thesis.
 
-While several 
+\subsubsection{A prototype OL system}
+
+At a high level, the objective of this thesis is to investigate ontology learning from Swedish and identify where future research should be focused.
+Towards this end, this thesis aims to produce an prototype ontology learning system which is able to extract domain concepts and taxonomic and non-taxonomic relations between the concepts.
+This prototype system will be evaluated to identify its weaknesses.
+Its errors will be investigated to attempt to explain their sources, thus identifying areas to pursue in further research.
+
+Various NLP tools are available for annotating Swedish text with the syntactic annotations needed by typical ontology learning methods.
+There are also information extraction techniques developed specifically for extracting terms and relations of interest in ontology learning\cite{Kokkinakis08SolidComp}.
+However, apart from some knowledge extraction tools for specific applications such as Carsim\cite{JohanssonEtAll04Carsim} or the cross-language approach developed by Hjelm\cite{Hjelm09Thesis}, I am not aware of any open domain ontology learning systems for Swedish text.
+Given the availability of tools for the earlier parts of the OL pipeline, the obvious next step is to combine extracted elements and build domain ontologies.
+
+Such a prototype implementation is well-suited to identifying specific research areas, as also explained in section~\ref{sec:methods:research}.
+Future research might ask questions such as \emph{which algorithms are more suited to Swedish?} or \emph{which Swedish-specific modifications to IE are needed for OL?}.
+The analysis of the construction and evaluation of this prototype hopes to direct research towards such questions.
+
+\subsubsection{Scope restriction versus interesting contribution}
+
+This is a necessary compromise between restricting scope to a practical breadth and starting towards an interesting contribution to the field.
+OL inherently involves methods from several subfields of linguistics and computer science in a potentially complex pipeline, where the most-interesting artifacts for evaluation are produced towards the end of the pipeline.
+In extending OL to support Swedish, the most language-dependent methods are towards the beginning of the pipeline, while the ontologies are towards the end.
+Reducing scope to a smaller part of the pipeline might mean, for example, focusing on the IE methods.
+This is also an active and interesting research area, but comes short of the goal of studying the ontology output as end product.
+
+\subsubsection{Change management and tracking}
+
+General change management is beyond the scope of this thesis, since it is generally most beneficial for maintenance of ontologies by potentially many people over a long period.
+Identification of what data and which methods and user operations led to specific ontology elements being present in the final ontology might be useful when attempting to explain errors.
+This latter feature will be considered for inclusion although it is not an end in itself.
+
+\subsubsection{Evaluation}
+
+Evaluation is important for understanding if, and how well, the prototype has managed to model the domain from Swedish text.\todo{refer to evaluation in methodology i think}
+
+\subsubsection{Language support}
+
+Support will be limited to Swedish language in the prototype for simplicity.
+Support for multiple languages individually or in combination adds unneeded complexity and the latter is a relatively young research area.
+Evaluation with multiple languages, especially with the multitude parallel corpora becoming available, could be an interesting avenue to explore but demonstrating the validity of a new evaluation strategy is a significant effort in itself.
+
+\subsubsection{Unstructured plain text corpora}
+
+The focus will be on plain text unstructured corpora
+Plain text is more language-dependent than structured corpora, making it more interesting to the objectives of this thesis.
+Methods for structured data are also often more domain-specific while our focus gives the broadest reach while helping precisely with the task of adding structure to organisational data.
+
+\subsubsection{Summary}
+
+To summarise, the objective is to identify important areas for further research by producing a prototype system for building domain ontologies from Swedish text. This will be evaluated and analysed, letting its limitations and more capable methods identified in this chapter guide further research. Unstructured Swedish text will be used for the broadest reach while focusing on our objective.
 
 \chapter{Methods}
 
 This chapter introduces relevant research method theory and the methods applied in this thesis.
 
 \section{Research methods}
-
+\label{sec:methods:research}
 Conflicting philosophical perspectives on research exist.
 The positivist perspective asserts that knowledge of the reality which exists apart from the researcher is gained through observations.
 This perspective tends to favour quantitative methods of data collection and analysis.
