@@ -375,6 +375,39 @@ SVENSK is a language processing toolbox for Swedish developed in the late 1990s 
 
 \subsection{Ontology Evaluation}
 
+Ontology evaluation generally has two main purposes: for selecting the most appropriate existing ontology for an application; and for evaluating the performance of an instance of ontology engineering.
+The latter is the objective when ontology evaluation is performed as part of ontology learning.
+
+Eight main quality criteria for ontology learning are identified from the literature in \cite{HOO2009OntEval}, summarised here as short questions:
+
+\begin{description}
+\item [Accuracy] Does the ontology accurately model the domain?
+\item [Adaptability] Can the ontology easily be adapted to various uses?
+\item [Clarity] Is the meaning implied by the ontology clear?
+\item [Completeness] Does the ontology richly or thoroughly cover the domain?
+\item [Computational efficiency] How easily can automatic reasoners perform typical tasks?
+\item [Conciseness] Does the ontology include unnecessary axioms or assumptions?
+\item [Consistency] Does the ontology lead to logical errors or contradictions?
+\item [Organisational fitness] Is the ontology easily deployed in the application context in question?
+\end{description}
+
+It is noted in \cite{HOO2009OntEval} that not all criteria are applicable in every case, and should be chosen and interpreted according to the requirements of each case.
+Some might even be contradictory, for example completeness might work against conciseness\cite{HOO2009OntEval}.
+This thesis is mainly interested in evaluating accuracy and completeness, as discussed in section~\ref{sec:methods:evaluation}.
+Methods commonly used in ontology learning focusing on accuracy and completeness are discussed below, while \cite{HOO2009OntEval} and \cite{ObrstEtAl07EvalOfOnt} summarise research toward these and other criteria.
+
+One way in which completeness might be evaluated is by \emph{corpus-based evaluation}\cite{Wong11Survey}.
+This approach tries to match how well an ontology covers a domain by identifying terms in the corpus, matching them with the ontology and measuring the differences.
+This, however, involves significant effort and potential error in matching terms and does not lend itself well to evaluating relation coverage\cite{ObrstEtAl07EvalOfOnt}.
+
+Ontology learning research is often evaluated in terms of accuracy and completeness against a gold standard for one or more domains\cite{Hjelm09Thesis, Zouaq11OntoCmaps, Drymonas10OntoGain, Drumond10PREHE}.
+In the survey in \cite{Wong11Survey} this falls under \emph{criteria-based evaluation} while in \cite{ObrstEtAl07EvalOfOnt} it is under \emph{Reality as a Benchmark}.
+The gold standard is generally produced or vetted by one or more domain experts and is assumed to be to accurately and richly model the domain in question.
+Open domain methods tend to evaluate using a corpus plus gold standard ontology from more than one domain to show evidence for their domain independence in a similar manner as open domain information extraction methods like C-Value/NC-value term extraction\cite{Frantzi98CNCValue}.
+
+
+
+
 \subsection{Change Management}
 
 \subsection{User Interaction}
@@ -607,6 +640,9 @@ To achieve this within the given time frame, these methods have been selectively
 An informal summary of the development method:
 
 Basically, the way I'm making this first step toward Ontology Learning from Swedish Text is by finding, choosing and applying/implementing the minimum methods necessary to achieve some ontology learning. This means I simplify some methods (e.g. only C-Value, no NC-value) and skip some steps (e.g. not distinguishing between concepts and instances). I also put in place some of the things considered important for ongoing research in OL, e.g. traceability/evidence for assertions. I put one part in place at a time, and extend existing parts as needed to support subsequently added parts. Evaluation and future work can then indicate where further work is needed, instead of perfecting one step but never achieving ontology learning. There is also little point for me to focus on just one step at this stage. Each step in OL corresponds to well-defined and ongoing research fields. To advance OL, it seems more useful to apply known good methods from other fields. My methodology is based on incremental development. Each step should try to achieve a well-defined goal and no more. For me, minor steps are the boxes in the Issues for Ontology Learning Systems diagram. Having a minimal working level for each box is the goal of this project. In the long term, this project is a first step, and future steps might aim to improve one or more boxes at a time, keeping the other boxes up to date as far as they are affected by the changes.
+
+\subsection{Evaluation}
+\label{sec:methods:evaluation}
 
 \chapter{Analysis}
 \label{chapter:analysis}
