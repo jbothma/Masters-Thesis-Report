@@ -405,8 +405,31 @@ In the survey in \cite{Wong11Survey} this falls under \emph{criteria-based evalu
 The gold standard is generally produced or vetted by one or more domain experts and is assumed to be to accurately and richly model the domain in question.
 Open domain methods tend to evaluate using a corpus plus gold standard ontology from more than one domain to show evidence for their domain independence in a similar manner as open domain information extraction methods like C-Value/NC-value term extraction\cite{Frantzi98CNCValue}.
 
+In the typical gold standard-based evaluation of ontology learning methods, metrics derived from Precision, Recall and F-measure common in the information extraction field are used\cite{Wong11Survey}.
 
+When evaluating concepts, Recall is the number of relevant concepts in the learned ontology (\(|c_{rel}|\)), divided by the total number of concepts in the gold standard ontology (\(|_{gold}|\))\cite{Dellschaft08EvalStrateg}.
+See equation~\ref{eq:recall}.
+Relevant concepts are those that also occur in the gold standard (\(c_{rel} = c_{learned} \bigcap c_{gold}\)).
+All concepts in the gold standard are considered relevant for the domain.
+Recall thus measures how much of the domain is covered by the learned ontology - a high recall indicates much of the domain is covered - a measure towards \emph{completeness}.
 
+\begin{equation}
+\label{eq:recall}
+ Recall = \frac{|c_{rel}|}{|c_{gold}|}
+\end{equation}
+
+Precision for concepts is the number of relevant concepts in the learned ontology (\(|c_{rel}|\)), divided by the total number of concepts in the learned ontology (\(|c_{learned}|\))\cite{Dellschaft08EvalStrateg}.
+See equation~\ref{eq:precision}.
+Precision thus measures how much of the learned concepts are relevant - a high precision indicates high accuracy and few concepts which are irrelevant or totally incorrect - a measure towards \emph{accuracy}.
+
+\begin{equation}
+\label{eq:precision}
+ Precision = \frac{|c_{rel}|}{|c_{learned}|}
+\end{equation}
+
+\todo{possibly add f-measure}
+
+\todo{possibly write about matching up labels for \(c_{rel}\), e.g. OntoCmaps gold was derived from ontocmaps+expert; Hjelm's labels came from the gold standard to start with}
 
 \subsection{Change Management}
 
