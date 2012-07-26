@@ -374,7 +374,7 @@ SVENSK is a language processing toolbox for Swedish developed in the late 1990s 
 \subsection{Ontology Construction}
 
 \subsection{Ontology Evaluation}
-
+\label{sec:background:eval}
 Ontology evaluation generally has two main purposes: for selecting the most appropriate existing ontology for an application; and for evaluating the performance of an instance of ontology engineering.
 The latter is the objective when ontology evaluation is performed as part of ontology learning.
 
@@ -600,7 +600,19 @@ This latter feature will be considered for inclusion although it is not an end i
 
 \subsubsection{Evaluation}
 
-Evaluation is important for understanding if, and how well, the prototype has managed to model the domain from Swedish text.\todo{refer to evaluation in methodology i think}
+Evaluation is important for understanding if, and how well, the prototype has managed to model the domain from Swedish text.
+The limitations of the prototype discovered though evaluation (in addition to conscious design decisions) can identify areas where OL for Swedish text can be improved.
+If all domains the prototype is evaluated against are modeled perfectly, no more research is needed for OL for those domains.
+However it is beyond the scope of this project to try and demonstrate perfect ontology learning in every aspect.
+Furthermore, as stated in section~\ref{sec:background:eval}, different criteria for evaluation work against each other and the criteria to optimise should be chosen for the specific application.
+
+The criteria for the are accuracy and completeness.
+With accuracy, we will identify whether the concepts and relations extracted from the corpora and added to the ontology are relevant to the domain.
+We will also see what percentage of the extracted concepts and relations are irrelevant or completely invalid (noise).
+With completeness, we will identify whether the concepts and relations that are important to the domain, were extracted and added to the ontology.
+This will show what percentage of the elements that are important to the domain were added to the ontology.
+
+The methods by which this evaluation will be carried out are described in section~\ref{sec:methods:evaluation}.
 
 \subsubsection{Language support}
 
