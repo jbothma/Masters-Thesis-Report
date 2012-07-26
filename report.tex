@@ -407,7 +407,7 @@ Open domain methods tend to evaluate using a corpus plus gold standard ontology 
 
 In the typical gold standard-based evaluation of ontology learning methods, metrics derived from Precision, Recall and F-measure common in the information extraction field are used\cite{Wong11Survey}.
 
-When evaluating concepts, Recall is the number of relevant concepts in the learned ontology (\(|c_{rel}|\)), divided by the total number of concepts in the gold standard ontology (\(|_{gold}|\))\cite{Dellschaft08EvalStrateg}.
+When evaluating concepts, Recall is the number of relevant concepts in the learned ontology (\(|c_{rel}|\)), divided by the total number of concepts in the gold standard ontology (\(c|_{gold}|\))\cite{Dellschaft08EvalStrateg}.
 See equation~\ref{eq:recall}.
 Relevant concepts are those that also occur in the gold standard (\(c_{rel} = c_{learned} \bigcap c_{gold}\)).
 All concepts in the gold standard are considered relevant for the domain.
@@ -429,7 +429,22 @@ Precision thus measures how much of the learned concepts are relevant - a high p
 
 \todo{possibly add f-measure}
 
+For evaluating relations, methods vary from simplistic measures like those for concepts to measures that attempt to assess the position and distance between concepts.
+In OntoGain\cite{Drymonas10OntoGain} and OntoCmaps \cite{Zouaq11OntoCmaps}, for example, Precision and Recall are used to measure completeness and accuracy of concept-relation-concept triples with respect to gold standard ontologies.
+For taxonomic relations, the absence of a particular relation might not need to be penalised completely.
+If the gold standard has the hierarchy A~IsA~B~IsA~C but the learned ontology has only A~IsA~C, the learned ontology simply represents the domain slightly more coarsely.
+A measure to penalise small differences from the gold standard such as this example more gradually is presented in \cite{Hjelm09Thesis}.
+
+
+Another type of evaluation is within the intended application, referred to as \emph{task-based} evaluation in \cite{Wong11Survey}.
+One example of this is in evaluating OntoUSP\cite{Poon2010OntoUSP} where the state of the art tools were compared in their ability to perform a question answering task.
+Specifically, the measures were the number and accuracy of concepts returned for questions such as "What regulates MIP-1alpha?" where "regulates" would be matched against relation labels and MIP-1alpha is an example term in the GENIA corpus used in the evaluation.
+This evaluation demonstrates the high number and accuracy of relations extracted by OntoUSP.
+It also demonstrates the utility of OntoUSP's ability to generalise relations (IsA relations between relations) such that the subsumed relations \emph{inhibit} and \emph{induce} would be included in results.
+What this doesn't show directly is how many irrelevant concepts and relations were included in the learned ontology, since the questions were selected from common verbs in the corpus\cite{Poon2010OntoUSP}.
+
 \todo{possibly write about matching up labels for \(c_{rel}\), e.g. OntoCmaps gold was derived from ontocmaps+expert; Hjelm's labels came from the gold standard to start with}
+\todo{possibly write about Hjelm and DellschaftStaab06 using term referring to concept and concept interchangeably for sake of simplicity since that's what we're doing too, but might be redundant if we add it in sec:background:ontologies.}
 
 \subsection{Change Management}
 
