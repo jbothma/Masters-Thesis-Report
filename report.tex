@@ -186,6 +186,7 @@ As an example, a "tasks and skills" ontology in the case study in \cite{HOO2009O
 Automating as much as possible of the knowledge acquisition and representation can reduce the effort for domain experts and ontology engineers when developing and maintaining ontologies\todo{need to back this up}.
 
 \subsection{Ontology Learning}
+\label{sec:background:ontlearning}
 
 The automatic or semi-automatic construction of ontologies from domain data is called Ontology Learning \cite{Cimiano06}. 
 Ontology Learning (OL) can start with structured, semi-structured or unstructured data as input \cite{Cimiano2009OL}.
@@ -202,6 +203,7 @@ In the simplest case, an OL system can be applied to another natural language by
 However, often the syntactic and semantic structure of languages vary enough to require modifications to OL methods or the process as a whole \cite{Voelkner2008Spanish}\todo{saying "often" probably means we need more than one example}.
 
 \subsection{Ontology Learning from Text}
+\label{sec:background:ontlearning-text}
 
 This section defines Ontology Learning from text and discusses important work in this field. More detail of the tasks and methods of Ontology Learning from Text is covered in Sec.\ref{sec:lit-rev:immediate}
 
@@ -655,10 +657,10 @@ In Computer Science, as in other fields, the suitability  of the method depends 
 When theories are difficult or impossible to prove logically, they can still be explored and supported by scientific experimentation \cite{Blomqvist09Thesis,Crnkovic2002SciMethCS}.
 \todo{possibly expand on this. right now it seems like it's just dumped here out of context. expanding on experimental impl and eval in OL might help}
 
-The outputs of research in the field of Ontology Learning from text are generally new or improved ontology learning methods, algorithms, software systems or approaches for the evaluation of the above \cite{Wong11Survey}.
-Similarly to evaluation in ontology engineering, ontology learning is generally evaluated with respect to a specific application, the coverage of the modeled domain, or according to a predefined set of criteria \cite{Wong11Survey}.
+The outputs of research in the field of Ontology Learning from text are generally new or improved ontology learning methods, algorithms, software systems, or approaches for the evaluation of the above \cite{Wong11Survey}.
+Similarly to evaluation in ontology engineering, ontology learning is generally evaluated with respect to a specific application, the coverage of the modeled domain, or according to a predefined set of criteria\cite{Wong11Survey} (See section~\ref{sec:background:eval}).
 \todo{perhaps expand on these. bring out the issue of mutliple corpora and gold standards and (un)generalizability (but evidence towards it)}
-While quantitive methods are valued for the ease with which OL methods can be compared according in various aspects, the fact that human experts are generally needed to verify the accuracy of the model means there is an intrinsic qualitative part to ontology learning evaluation \todo{cite this synthesis/opinion/whatever}.
+While quantitative methods are valued for the ease with which OL methods can be compared in various aspects, the fact that human experts are the ultimate benchmark for the model means there is an intrinsic qualitative part to ontology learning evaluation \todo{cite this synthesis/opinion/whatever}.
 
 The objectives of this thesis are to investigate Ontology Learning from Swedish texts and identify areas of further research.
 This thesis focuses on identifying existing usable tools and methods and the implementation of prototype OL system for Swedish text.
@@ -682,14 +684,14 @@ system building
 
 This thesis approaches these criteria as follows:
 \begin{enumerate}
-\item The importance of Ontology Learning from text and its extension to Swedish is discussed in Chapter 2\todo{justify extension to Swedish text in chapter 2}.
-The suitability of system building as an approach is discussed in \todo{somewhere explain that a prototype system is a useful first step - perhaps a subsection of this chapter}.
-\item The contribution of a Master's thesis is limited, but the objectives of this thesis and how it is intended to contribute are discussed in \todo{where do I tease out objectives?}
-\item The evaluation design of this thesis is discussed in section \todo{evaluation design}
-\item To our knowledge, there is no existing system for learning domain ontologies from Swedish text, so existing systems are not available for comparison.
-The implementations of information extraction techniques are not compared against IE from Swedish text since the goal of this thesis is to perform OL as a whole.
-To achieve this within the given time frame, these methods have been selectively simplified as described in chapter~\ref{chapter:analysis}.
-\item The generalisability of the experience and design are discussed in \todo{probably future work section against the literature, and analysis section where design decisions are discussed}
+\item The importance of Ontology Learning from text is discussed in section~\ref{sec:background:ontlearning}-\ref{sec:background:ontlearning-text} and its extension to Swedish in section~\ref{sec:background:swedish}.
+The suitability of system building as the approach is discussed in this chapter and section~\ref{sec:background:objectives}.
+\item The contribution of a Master's thesis is limited, but the objectives of this thesis and how it is intended to contribute are discussed in section~\ref{sec:background:objectives}.
+\item The evaluation design of this thesis is discussed in section~\ref{sec:methods:evaluation}.
+\todo{Acknowledge that this doesn't cover the validity of the suggestions derived; look up validity of exploratory research and see what's needed for that}
+\item The novelty of the work in this thesis is described in section~\ref{sec:background:objectives}.
+\item For evidence towards generalisation to many domains, the evaluation aims to use corpora from at least two domains (see section~\ref{sec:methods:evaluation}).
+\todo{generalisability comes from generalisability of the work I'm reusing I think. generalisability of my findings?}
 \end{enumerate}
 
 \section{Practical stuff}
@@ -705,9 +707,10 @@ Basically, the way I'm making this first step toward Ontology Learning from Swed
 \chapter{Analysis}
 \label{chapter:analysis}
 %%UU-REQ Evidence that the student has made a critical evaluation of the signiﬁcance of the project outcomes, limitations of the results
-%ONE-SENT We achieved results comparable to what was done with language Q in R. We can extract concepts and relations from Swedish text with evaluation metric S result of T.
 %UU-CHAP Data collection and analysis where relevant, or testing of the solution of product.
 %% Critical analysis of the results - show you know its limitations
+
+
 
 \section{System development}
 
