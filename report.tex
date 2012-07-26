@@ -431,13 +431,18 @@ Precision thus measures how much of the learned concepts are relevant - a high p
 
 For evaluating relations, methods vary from simplistic measures like those for concepts to measures that attempt to assess the position and distance between concepts.
 In OntoGain\cite{Drymonas10OntoGain} and OntoCmaps \cite{Zouaq11OntoCmaps}, for example, Precision and Recall are used to measure completeness and accuracy of concept-relation-concept triples with respect to gold standard ontologies.
+A slightly more advanced measure of the similarity of two taxonomies is \emph{Taxonomic Overlap}\cite{MaedcheStaab02TaxSim}.
+Taxonomic Overlap is based on a local and a global overlap\cite{Dellschaft08EvalStrateg}.
+Local overlap is based on the number of shared concepts between the \emph{semantic cotopy} of a concept in the learned and gold standard ontologies. The semantic cotopy of a concept is the set of its superconcepts and subconcepts\cite{Dellschaft08EvalStrateg}.
+The global taxonomic overlap is then the average of all the local overlaps.
 For taxonomic relations, the absence of a particular relation might not need to be penalised completely.
+Such an approach can also be applied to the evaluation of non-taxonomic relations\cite{Wong11Survey}.
 If the gold standard has the hierarchy A~IsA~B~IsA~C but the learned ontology has only A~IsA~C, the learned ontology simply represents the domain slightly more coarsely.
-A measure to penalise small differences from the gold standard such as this example more gradually is presented in \cite{Hjelm09Thesis}.
+A measure to penalise small differences from the gold standard such as this example more gradually, is presented in \cite{Hjelm09Thesis}.
 
 
 Another type of evaluation is within the intended application, referred to as \emph{task-based} evaluation in \cite{Wong11Survey}.
-One example of this is in evaluating OntoUSP\cite{Poon2010OntoUSP} where the state of the art tools were compared in their ability to perform a question answering task.
+One example of this is in the evaluation of OntoUSP\cite{Poon2010OntoUSP} where the state of the art tools were compared in their ability to perform a question answering task.
 Specifically, the measures were the number and accuracy of concepts returned for questions such as "What regulates MIP-1alpha?" where "regulates" would be matched against relation labels and MIP-1alpha is an example term in the GENIA corpus used in the evaluation.
 This evaluation demonstrates the high number and accuracy of relations extracted by OntoUSP.
 It also demonstrates the utility of OntoUSP's ability to generalise relations (IsA relations between relations) such that the subsumed relations \emph{inhibit} and \emph{induce} would be included in results.
