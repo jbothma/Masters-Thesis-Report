@@ -704,13 +704,45 @@ Basically, the way I'm making this first step toward Ontology Learning from Swed
 \subsection{Evaluation}
 \label{sec:methods:evaluation}
 
+The evaluation should show how accurately and completely the prototype can model domains, as discussed in section~\ref{sec:background:objectives}.
+Specifically, the presence of concepts, subclass relations between concepts, and named non-taxonomic relations between concepts will be evaluated.
+
+The evaluation should ideally be performed for two or more domains.
+Terms and facts can be represented differently in different domains which can result in varying performance of ontology learning methods fitted more to some domains than others.
+While evaluation on multiple domains does not prove support for all domains, it is a common way to give evidence against claims of overfitting.
+
+A gold standard ontology will be used for comparison of the ontology in each domain.
+The gold standard should represent a rich and accurate model of the domain and accepted by domain experts.
+
+The gold standard models should ideally be publicly available.
+Public availability supports reproducibility of the results of this evaluation, and supports standard benchmarks for further research.
+
+The measures of precision and recall will be used for evaluating the accuracy and completeness of concepts and relations in the learned ontology.
+These simplistic measures are limited in their ability to evaluate the complexity of knowledge represented in an ontology, but they are sufficient to identify clearly erroneous items in the ontologies of this prototype for the purpose of this thesis.
+Precision and recall are also still used in evaluation of recent ontology learning publications (see section~\ref{sec:background:eval}).
+Relevant concepts will be concepts whose label could be matched with a concept in the gold standard.
+Relevant relations will be each occurrence of a shared \emph{lexical triple}.
+That is, every instance where a relation label is matched in the gold standard for a relation where domain and range concept combination exists in both ontologies.
+\todo{this is no different to what's done in OntoCmaps and similar, I'm just being more explicit about it.
+This might need to be explained more clearly but hopefully makes enough sense for now.}
+
+The corpora will be preprocessed to remove characters and text irrelevant to the content of the publications they occur in.
+For example, page numbers, reference lists and identifiers, and tables will be removed.
+This is consistent with the objective of evaluating ontology learning from natural language text, and is typical when, like here, automatic preprocessing is not relevant to the evaluation.
+For reproducibility, exactly what and how it is removed will be detailed in \todo{ref to the implementation details bit detailing this}.
+
+The evaluation will be carried out for each domain, allowing for comparison of their results.
+A corpus will be selected for each domain, making sure the concepts and relation labels in the gold standard ontology also occur in the corpus.
+The prototype will be used to produce an ontology from the corpus.
+The corpus will be evaluated against the gold standard, calculating the precision and recall for concepts, subclass, and non-taxonomic relations.
+The irrelevant and missing concepts and relations will be identified, the reason for the error identified, and suggestions for dealing with the problem provided in chapter~\ref{chapter:analysis}.
+
+
 \chapter{Analysis}
 \label{chapter:analysis}
 %%UU-REQ Evidence that the student has made a critical evaluation of the signiﬁcance of the project outcomes, limitations of the results
 %UU-CHAP Data collection and analysis where relevant, or testing of the solution of product.
 %% Critical analysis of the results - show you know its limitations
-
-
 
 \section{System development}
 
