@@ -371,6 +371,14 @@ SVENSK is a language processing toolbox for Swedish developed in the late 1990s 
 
 \todo{should probably include TextRunner/ReVerb since \cite{Poon2010OntoUSP} says its the state of the art in IE. At least the ReVerb website only mentions English}
 
+\subsubsection{Semantics from Syntactic Dependencies}
+
+I've avoided frames, but very relevant is \cite{JohanssonEtAl12RoleFrame} which builds a classifier using syntactic dependency relations as features to identify "semantic roles" for Swedish Framenet frames.
+For example, the sentence "Vi promenerar s\"{o}derut..." has promenerar as frame SELF\_MOTION and subject Vi as SELF\_MOVER.
+\todo{I should probably mention frames somewhere and explain why I've avoided it.
+  One good reason is that swedish frames so far exist only for the general domain, medical domain and art domain\cite{JohanssonEtAl12RoleFrame}.}
+This is similar to OntoUSP mapping dependency relations to different parts of horn clauses and OntoCmaps mapping dependency relations to "linguistic triple" relation parts.
+
 \subsubsection{Method / Evidence Combination}
 
 \subsection{Ontology Construction}
