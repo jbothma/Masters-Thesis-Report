@@ -753,20 +753,41 @@ It is organised according to the artifacts generated, under the usual division o
 The artifacts are shown along the bottom row in figure~\ref{fig:method-artifact}.
 Part of speech and Morphology; lemmatization and the linguistic filter for term candidates are described under Preprocessing.
 Lemmas is not shown as an artifact in figure~\ref{fig:method-artifact} for simplicity since it is used by all methods except subcategorization frames.
-Their use is desribed in each relevant method's description.
+Their use is desribed for each relevant method.
 Terms are descibed under the Concepts section.
 Subconcept relations are described under the Taxonomic relations section.
 Labeled relations are descibed under the Non-taxonomic relations section.
 
+\begin{figure}
+  \includegraphics[width=\textwidth]{graphics/method-element-dependencies.png}
+  \caption{Methods and artifacts of the prototype}
+  \label{fig:method-artifact}
+\end{figure}
+
 \section{Preprocessing}
 
-
+Most of the preprocessing is done within the GATE framework.
+Initially, each tool had to be integrated with GATE manually, but the release of the Korp pipeline on \todo{korp release date} meant that a reliable pipeline providing all the lexical analysis annotations was available as a whole.
+The work done to integrate tools with GATE directly is described briefly for each tool, but when switching to the Korp pipeline, these parts were abandoned as noted below.
 
 \subsection{Part of speech and Morphology}
 
+The HunPos tagger was used to annotate tokens with their part of speech and mophological categories.
+This tagger was used because the source code and recent compiled executables are available for Windows, Linux and OS X, Swedish models are available for it with SUC and PAROLE tags, and it was suggested for use with Saldo.
+The availability of source and executables supports getting started quickly for this prototype and future work.
+The availability of models with different tags gives flexibility and means I did not need to generate models before commencing development.
+Some of these models have also been evaluated for precision, making the tagger's effect on the results of this thesis clearer than using an untested model.
+I could not get the tagger used in the Granska\todo{ref} project working within a short amount of time so I abandonded it.
 
+HunPos was first used directly within GATE, but it is now used as part of the Korp pipeline.
+HunPos can already be used within GATE using the Generic Tagger Framework.
+For use in this form, I used the swedish model provided by \todo{ref fors model}
 
 \subsection{Lemmatization}
+
+
+
+\subsection{Linguistic Filter}
 
 
 
