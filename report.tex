@@ -775,19 +775,32 @@ The work done to integrate tools with GATE directly is described briefly for eac
 The HunPos tagger was used to annotate tokens with their part of speech and mophological categories.
 This tagger was used because the source code and recent compiled executables are available for Windows, Linux and OS X, Swedish models are available for it with SUC and PAROLE tags, and it was suggested for use with Saldo.
 The availability of source and executables supports getting started quickly for this prototype and future work.
-The availability of models with different tags gives flexibility and means I did not need to generate models before commencing development.
+The availability of models with different tags gives flexibility and means I did not need to generate and evaluate models before commencing development.
 Some of these models have also been evaluated for precision, making the tagger's effect on the results of this thesis clearer than using an untested model.
-I could not get the tagger used in the Granska\todo{ref} project working within a short amount of time so I abandonded it.
+I could not get the tagger used in the Granska\todo{ref} project working within a short amount of time so I abandoned it.
 
 HunPos was first used directly within GATE, but it is now used as part of the Korp pipeline.
 HunPos can already be used within GATE using the Generic Tagger Framework.
-For use in this form, I used the swedish model provided by \todo{ref fors model}
+For use in this form, I used the swedish model provided by \todo{ref forsbom model}.
+HunPos is part of the Korp pipeline and a swedish model is provided with the pipeline.
+
+\todo{bit of practical info maybe? the objective is reproducibility so I guess this is sufficient for now.}
 
 \subsection{Lemmatization}
 
 
 
-\subsection{Linguistic Filter}
+\subsection{Linguistic Filter for Term Candidates}
+
+For initial potential terms to be selected by the C-Value method, a linguistic filter of zero or more adjectives, followed by one or more nouns, is used.
+This filter was depicted as Adj*Noun+ in \cite{Frantzi98CNCValue} by analogy to regular expressions over parts of speech.
+The head of these simplistic noun phrases was selected as the last noun in the phrase, as is common with this form of noun phrases.
+
+I initially experimented with noun phrases extracted using the SweSPARK noun phrase chunker, but the Adj*Noun+ form of noun phrase was most-suited to the similarity measure for Hirarchical Agglomerative Clustering.
+The chunker provides many forms of noun phrases including determiners and other parts of speech which are not clearly part of terms.
+Selecting the head noun in certain noun phrase forms such as DetAdj*Noun+PrepNoun is more complex than for Adj*Noun+ phrases, and the similarity measure used in \cite{Drymonas10OntoGain} needs to have the head identified.
+The Adj*Noun+ form performed well for English in the evaluation of C-Value in \cite{Frantzi98CNCValue} and many Swedish noun phrases take this form \todo{cite swedish noun phrase book} so this was a reasonable approximation for the objective of this thesis.
+For better results, more experimentation is needed to identify more effective linguistic filters for Swedish, but as with all patterns and models, the ideal can vary between domains and corpora.
 
 
 
@@ -805,7 +818,9 @@ For use in this form, I used the swedish model provided by \todo{ref fors model}
 
 \subsection{Subconcept Relations}
 
+\subsubsection{Hierarchical agglomerative clustering}
 
+blah blah similarity measure.
 
 \section{Non-taxonomic Relations}
 
