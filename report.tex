@@ -795,6 +795,7 @@ HunPos is part of the Korp pipeline and a swedish model is provided with the pip
 For initial potential terms to be selected by the C-Value method, a linguistic filter of zero or more adjectives, followed by one or more nouns, is used.
 This filter was depicted as Adj*Noun+ in \cite{Frantzi98CNCValue} by analogy to regular expressions over parts of speech.
 The head of these simplistic noun phrases was selected as the last noun in the phrase, as is common with this form of noun phrases.
+I refer to the noun phrases that were selected as potential terms as \emph{term candidates} and they are used in term extraction, subconcept relation extraction and labeled relaton extraction.
 
 I initially experimented with noun phrases extracted using the SweSPARK noun phrase chunker, but the Adj*Noun+ form of noun phrase was most-suited to the similarity measure for Hirarchical Agglomerative Clustering.
 The chunker provides many forms of noun phrases including determiners and other parts of speech which are not clearly part of terms.
@@ -802,7 +803,11 @@ Selecting the head noun in certain noun phrase forms such as DetAdj*Noun+PrepNou
 The Adj*Noun+ form performed well for English in the evaluation of C-Value in \cite{Frantzi98CNCValue} and many Swedish noun phrases take this form \todo{cite swedish noun phrase book} so this was a reasonable approximation for the objective of this thesis.
 For better results, more experimentation is needed to identify more effective linguistic filters for Swedish, but as with all patterns and models, the ideal can vary between domains and corpora.
 
-
+The term candidate selection was performed as annotations in the corpus along with syntactic feature annotation for convenience.
+This was performed using JAPE expressions matching on parts of speech annotations in the corpus.
+This implementation made it easy to implement and verify that it is working as intended.
+The JAPE expression is written in a plain text file which can easily be modified to experiment with different patterns, and separates the concerns of the Java code controlling the entire tool and the linguistic filter itself.
+The JAPE expression defining the filter is shown in \todo{embed and describe the JAPE code}
 
 \section{Concepts}
 
