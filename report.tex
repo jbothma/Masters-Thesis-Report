@@ -34,45 +34,77 @@
 
 \chapter{Introduction}
 %ONE-SENT Ontology learning learning tools significantly speed up the knowledge extraction part of the Knowledge Engineering process. I'm going to investigate ontology learning from Swedish text.
+
 %%UU-CHAP Motivation for the Project
 %%UU-CHAP Background to the problem or system
 %%"I am going to look at the following things"
+Data collection and computer support for many tasks is prevalent.
+Yet a large part of implementation of software support and combining several systems is still manual.
+The precise meaning of data is often encoded directly in the software, which means that interpretation is repeatedly encoded in various systems using that data.
+Software systems can help with smaller tasks, but the combination of various systems is again either done manually by the user, or the interpretation of the systems is encoded in more software.
 
-By encoding semantic information about the world in a form that can be processed by computers, computers can provide better support in many tasks.
+By encoding semantic information about the world in a form that can be processed by computers, computers can provide better support in many tasks, with less manual and repeated definition of the meaning of the data being exchanged.
+In a hypothetical example of this given in \todo{ref TBL semantic web 01}, a brother and sister try to schedule when they can drive their mother to medical facilities can treat her illness and is covered by her medical insurance.
+Instead of manually gathering the data and doing the scheduling, the siblings give the problem to "agents", or computerised actors which together solve the problem using shared ontologies of treatments and facilities, insurance and scheduling, and data from all the parties anotated with relationships to those ontologies.
 
+The task of annotating data with semantics and building the ontologies that define it is a time-consuming process.
+Domain experts are needed to accurately describe the important semantics of each domain.
+Ontology engineers are needed to concisely encode these semantics in a manner that is useful for automated reasoning.
+Mistakes in defining ontologies can result in ontologies from which incorrect or insufficient conclusions are drawn, and can make it difficult to maintain the ontology.
 
-\section{Semantic Web}
+One approach to reduce the demands on domain experts and ontology engineers is ontology learning.
+Ontology learning aims to automatically or semi-automatically construct ontologies, with little or no supervision.
+Ontology learning from text specifically does this from natural language text.
+This is an important area of research because much of the knowledge that would be useful if encoded in ontologies, is already recorded in text documents, for example business memoranda and communication, and scientific papers.
 
-\section{Ontologies}
-
-\section{Ontology Engineering}
-
-\section{Ontology Learning}
-
+Ontology learning from text tends to employ a variety of natural language processing techniques to identify syntactic features in the text, then use stastical and linguistics-based methods for extracting evidence of concepts of the domain, and their relationships and properties.
+Some systems attempt to automatically construct ontologies in formats ready for application in semantically-enabled software, while others present the evidence as an aid to human experts who can then build such ontologies with significantly-reduced effort compared to a manual approach.
 
 \section{Problem}
 %ONE-SENT Hoewever, there is no Ontology Learning System for learning ontologies from Swedish text.
 
+Most ontology learning research forcuses on English language.
+This research is showing useful results and has been applied successfully in various projects, however none of these systems currently support ontology learning from Swedish text.
 There appears to be no ontology learning software system that has been applied to learn ontologies from Swedish text.
 \todo{Hjelm's thesis\cite{Hjelm09Thesis} learnt a "prototypal" ontology from several languages including swedish.
-We can learn a bit from it, but he used terms from an existing ontology, and we need to check if the relations they learnt are applicable.
-Given this, this sentence might be too strong}
-There are some efforts to extract semantic data from Swedish text for some specific applications and domains
-\todo{maybe need to be clearer why these aren't directly suitable, domain independence etc}, but to our knowledge, these have not been combined to extract concepts and relations and induce axioms from Swedish domain text.
-\todo{cite what we know about here to demonstrate we have actually done a bit of searching}
-
+We can learn a bit from it, but he used terms from an existing ontology, and we need to check if the relations they learnt are applicable.}
+While most scientific research in Sweden is now published in English and many businesses are using English internally, there is still a wealth of existing and new literature from the business and scientific domain which would be valuable in semantically-enabled software.
+The problem is therefore that ontology learning should be extended to support Swedish text, making use of existing research in natural language processing and information extraction for Swedish where necessary.
+ 
 \section{Objective}
 
-The objective of this thesis is thus to investigate the application of Ontology Learning methods to Swedish text for the construction of domain ontologies. \todo{When I've chosen the methods I'm focusing on I can probably add another line or two to be more specific and why}
+The objective of this thesis is to develop a system for ontology learning from Swedish text.
+Given the time constraint, only a prototype will be built which will apply a small selection of methods, with the objectives of
+\begin{enumerate}
+  \item Suggesting concepts and relations for building a domain ontology given a corpus of domain text
+  \item Supporting the semi-automatic constuction of such an ontology
+  \item Identifying issues for the further development of such a system
+\end{enumerate}
+
+\section{Delimitations}
+
+The restriction to a small selection of methods means that only certain kinds of concepts and relations can be extracted and important things might be missed.
+This is because certain methods are only suited to particular syntactic or semantic forms.
+
+The construction of an ontology usually needs to take the end application of the ontology into account.
+For example, decisions about which relations should be included, or whether a term is a general concept or a concrete instance, usually depend on the intended application.
+We do not want to favour a particular application and do not make providing such flexibility an explicit objective for this prototype, but will instead attempt to produce a general representation of the domain.
+
+\todo{not sure if the following is relevant to this section but leaving here for now.}
+it'd be nice but I probably won't be able to ground my ontologies in any upper ontologies (ontology matching and ontological architecture).
+Maybe this is easy or critical and I can revise this entry.
+
+There's a lot of research into using internet phenomena like croud sourced data and stuff.
+We're focusing in extracting information from any Swedish text.
+This means we can produce results for domains that have very little or unrepresentative data online (but depends on finding some representative corpus).
+These approaches also have issues like access to the services and reliability of the data.
+For these reasons, we're not trying the web-sourced stuff specifically.
 
 \section{Research Questions}
 
 To fulfill this objective, this report attempts to answer the following research questions:
 
 \begin{enumerate}
-  \item{What are the general requirements for ontology learning research and application?\todo{how we derived this question isn't clear from the introduction. Either this becomes a side effect part of the method, or we need to justify this "product" in the intro before the questions}}
-  \item{How do common ontology learning methods need to be modified to extract ontologies from Swedish text?\todo{I think we said this was too broad and I need to replace it with a comparison between two methods when I choose them. Perhaps the idea was just to compare our work compared to some baseline?}}
-  \item{How do these modified methods perform compared to \todo{some baseline??? evaluation}?}
 \end{enumerate}
 
 \section{Approach}
@@ -92,13 +124,10 @@ Ideally we can repeat an experiment for English and reproduce their results, to 
 
 I think I'll evaluate taxonomy extraction against the Eurovoc thesaurus since I can probably get hold of corpora for one or more of the topics they cover.
 
-The implementation will probably be integrated with some OE system. Protege 4+ looks nice since it has decent, modern libraries and tools and plugin framework.
+The implementation will probably be integrated with some OE system.
+Protege 4+ looks nice since it has decent, modern libraries and tools and plugin framework.
 
-\section{Delimitations}
 
-it'd be nice but I probably won't be able to ground my ontologies in any upper ontologies (ontology matching and ontological architecture). Maybe this is easy or critical and I can revise this entry.
-
-There's a lot of research into using internet phenomena like croud sourced data and stuff. We're focusing in extracting information from any Swedish text. This means we can produce results for domains that have very little or unrepresentative data online (but depends on finding some representative corpus). These approaches also have issues like access to the services and reliability of the data. For these reasons, we're not trying the web-sourced stuff specifically.
 
 \section{Report Structure}
 
@@ -182,13 +211,13 @@ One way to support integration of several domain ontologies is by defining eleme
 The discipline of specifying, developing, introducing and maintaining ontologies for some application is known as \emph{Ontology Engineering} (OE)\cite{HOO2009OntEngMeth}.
 Along with broader considerations of OE such as the intended users and software engineering issues, the domain expert(s) and ontology engineer must gather relevant domain knowledge (Knowledge Acquisition) and encode it in a computer-readable form (Knowledge Representation)\cite{OntMethOverv1999}.
 This is challenging and repetitive and is known as the Knowledge Acquisition Bottleneck\cite{OLforSemWeb2001}.
-As an example, a "tasks and skills" ontology in the case study in \cite{HOO2009OntEngMeth} consisted of about 700 concepts after refinement. 
+As an example, a "tasks and skills" ontology in the case study in \cite{HOO2009OntEngMeth} consisted of about 700 concepts after refinement.
 Automating as much as possible of the knowledge acquisition and representation can reduce the effort for domain experts and ontology engineers when developing and maintaining ontologies\todo{need to back this up}.
 
 \subsection{Ontology Learning}
 \label{sec:background:ontlearning}
 
-The automatic or semi-automatic construction of ontologies from domain data is called Ontology Learning \cite{Cimiano06}. 
+The automatic or semi-automatic construction of ontologies from domain data is called Ontology Learning \cite{Cimiano06}.
 Ontology Learning (OL) can start with structured, semi-structured or unstructured data as input \cite{Cimiano2009OL}.
 Structured data, such as databases, can be somewhat independent of language and its semantics are described by its schema or structure \todo{I think \cite{Cimiano2009OL} is sufficient but need to check}.
 Most methods for ontology learning from semi-structured data such as wikis and unstructured data in the form of plain text depend on preprocessing techniques from the field of Natural Language Processing (NLP) to provide syntactic annotations like part of speech or syntactic dependencies.
@@ -198,20 +227,21 @@ Ontology learning software systems have been implemented that provide one or mor
 Such systems are often integrated with dedicated NLP tools to provide the required preprocessing facilities.
 Extracted elements are manually or automatically added to an ontology and can often be output in a standard ontology serialisation format like OWL\cite{OWLOverview2004}.
 
-Ontology learning methods have varying degrees of language dependence. 
-In the simplest case, an OL system can be applied to another natural language by replacing the language models in the NLP components with models trained on the other language. 
+Ontology learning methods have varying degrees of language dependence.
+In the simplest case, an OL system can be applied to another natural language by replacing the language models in the NLP components with models trained on the other language.
 However, often the syntactic and semantic structure of languages vary enough to require modifications to OL methods or the process as a whole \cite{Voelkner2008Spanish}\todo{saying "often" probably means we need more than one example}.
 
 \subsection{Ontology Learning from Text}
 \label{sec:background:ontlearning-text}
 
-This section defines Ontology Learning from text and discusses important work in this field. More detail of the tasks and methods of Ontology Learning from Text is covered in Sec.\ref{sec:lit-rev:immediate}
+This section defines Ontology Learning from text and discusses important work in this field.
+More detail of the tasks and methods of Ontology Learning from Text is covered in Sec.\ref{sec:lit-rev:immediate}
 
 Ontology Learning from Text is the process of building a formal ontology from a semi-structured or unstructured text corpus from a particular domain \citep[p.3-7]{Cimiano06}.
 The ontology is intended to model the concepts and the semantic relationships between the concepts in the domain.
-Ontologies are further described in Sec.\ref{sec:lit-rev:ontologies}. 
+Ontologies are further described in Sec.\ref{sec:lit-rev:ontologies}.
 
-The typical tasks and their outputs are shown in Fig.\ref{fig:output-task-technique}. 
+The typical tasks and their outputs are shown in Fig.\ref{fig:output-task-technique}.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{graphics/output-task-technique-WongLiuBennamoun.png}
@@ -236,7 +266,11 @@ This section describes relevant research in ontology learning from text.
 The descriptions are organised according to the role the research plays within the field and its processes.
 
 The key issues for ontology learning from text are shown in \ref{fig:ol-issues}.
-OL from text starts with collecting and preparing text corpora. The corpora must be preprocessed as needed by the information extraction methods. Evidence for potential ontology elements might be combined from various methods with overlapping scope. An ontology is constructed using the extracted information, which is generally evaluated during or following construction. As with ontology engineering, change management and user interaction are important aspects throughout the process.
+OL from text starts with collecting and preparing text corpora.
+The corpora must be preprocessed as needed by the information extraction methods.
+Evidence for potential ontology elements might be combined from various methods with overlapping scope.
+An ontology is constructed using the extracted information, which is generally evaluated during or following construction.
+As with ontology engineering, change management and user interaction are important aspects throughout the process.
 
 Methods were chosen for inclusion in this review based on their relevance to this thesis and research in general.
 While ontology learning from text includes extraction from structured text, this thesis avoids the specificity of methods for structured data.
@@ -265,9 +299,9 @@ These features are then used by one or more information extraction techniques.
 Maintaining the annotations of these features in the context they occur in, as opposed to simply extracting fragments and their features to a database, is necessary for some information extraction methods\citep{Frantzi98CNCValue, NenadicEtAl02TermSim, Srikant95GenAssocRul} and helps with ontology learning evaluation and research.
 
 Many annotation formats exist including XML, other plain text formats and more complex binary formats.
-Various NLP tools such as the Stanford parser \citep{Marneffe06StanfPars} and FM-SBLEX morphology tools support input and output in XML and several other formats for different applications. 
+Various NLP tools such as the Stanford parser \citep{Marneffe06StanfPars} and FM-SBLEX morphology tools support input and output in XML and several other formats for different applications.
 A common plain text annotation format consists of one token string and its corresponding annotation on the same line, with only one token per line.
-This format is output by the HunPos tagger, for example, and can be accepted as input by MaltParser\citep{Nivre06maltparser} and FM-SBLEX. 
+This format is output by the HunPos tagger, for example, and can be accepted as input by MaltParser\citep{Nivre06maltparser} and FM-SBLEX.
 XML facilitates programmatic transformation and processing, although the XML schemas vary significantly meaning tools are often not directly compatible.
 For example, the XML formats of the Genia corpus \citep{KimEtAl03GeniaCorpus}, the FM-SBLEX tools and the Stanford NLP tools are significantly different.\todo{Add CoNLL format\citep{NivreEtAl07NoNLL} used by \citep{Nivre06maltparser}}.
 
@@ -277,7 +311,7 @@ GATE can accept a variety of input document formats and normalises the structure
 The Korp annotation pipeline can accept various XML formats, and strip, copy or ignore and in some cases use existing annotations \cite{Borin12Korp}.
 
 The multitude of annotation formats forming input and output of the numerous tools creates a challenge for corpus management.
-GATE helps deal with this challenge with over ten years of refinement. 
+GATE helps deal with this challenge with over ten years of refinement.
 The GATE Developer application provides user interfaces to review and edit annotations manually, while the GATE Embedded Java libraries can be used programmatically to integrate various NLP tools during preprocessing and annotation.
 References to annotations can be stored by external applications to retrieve annotations for the change management tasks.
 
@@ -321,7 +355,8 @@ Two interchangeable tagsets are commonly used for swedish: the PAROLE tagset and
 A mapping is available between these tagsets \footnote{http://spraakbanken.gu.se/parole/tags.phtml}.
 These tagsets support common morphosyntactic categories, for example a common singular indefinite noun of neuter gender in the nominative case such as \emph{raketvapen} (english \emph{missile}) would have the tag {\tt NCNPN@IS} in the PAROLE tagset and {\tt NN NEU PLU IND NOM} in the SUC tagset.
 
-Many taggers are available, and they can often be configured to use custom language models. Such language models are specific to the language being tagged and are usually generated from a treebank - a corpus with annotations produced with high-enough accuracy to be used as training data for building language models and performing linguistics research.
+Many taggers are available, and they can often be configured to use custom language models.
+Such language models are specific to the language being tagged and are usually generated from a treebank - a corpus with annotations produced with high-enough accuracy to be used as training data for building language models and performing linguistics research.
 Models for tagging Swedish text are available from Eva Forsbom \footnote{http://stp.lingfil.uu.se/~evafo/resources/taggermodels/models.html} and Beata Megyesi \footnote{http://stp.lingfil.uu.se/~bea/resources/} and embedded in the Korp pipeline. \todo{maybe something about tagger accuracy, some literature, this is lit-rev after all}
 
 \subsubsection{Lemmatisation and stemming}
