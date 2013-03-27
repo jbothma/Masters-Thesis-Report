@@ -105,6 +105,7 @@ For these reasons, we're not trying the web-sourced stuff specifically.
 To fulfill this objective, this report attempts to answer the following research questions:
 
 \begin{enumerate}
+	\item stuff
 \end{enumerate}
 
 \section{Approach}
@@ -192,6 +193,8 @@ This corresponds to the acquisition part of Knowledge Management and is a precur
 
 \subsection{Knowledge Representation}
 
+Knowledge Representation is the discipline of encoding knowledge in a form that facilitates computer inference based on that knowledge, drawing conclusions not explicitly present in already.
+In this thesis we focus on ontology-based knowledge representation.
 
 \subsection{Ontologies}
 \label{sec:lit-rev:ontologies}
@@ -205,6 +208,8 @@ Ontologies that represent a particular domain are known as \emph{Domain Ontologi
 One way to support integration of several domain ontologies is by defining elements common to many domains in an \emph{upper ontology}\cite{SemanticIntegration2004Noy}.
 
 \todo{could distinguish between "lexical" and non-lexical ontologies like what Hjelm and I think Cimiano refers to.}
+
+In this thesis we focus on description logic ontologies, and in particular on OWL, the Web Ontology Language.
 
 \subsection{Ontology Engineering}
 
@@ -285,7 +290,15 @@ Their consideration is left for further research.
   \label{fig:ol-issues}
 \end{figure}
 
-\subsection{Ontology Learning Steps}
+\subsection{Ontology Learning Tasks}
+
+Ontology learning is typically defined in terms of several tasks, namely Preprocessing, Term Extraction, Concept Extraction, Relation Extraction, Axiom Extraction, Ontology Construction and Evaluation.
+Later tasks tend to build upon the earlier tasks, although tasks are carried out in parallel or revisted in various methods.
+Task definitions are mainly useful for defining the scope of a given part of the ontology learning process.
+
+In figure~\ref{fig:ol-issues} I combined Term, Concept, Relation and Axiom extraction under the issue of Information Extraction.
+I further added Corpus Management; Method and Evidence Combination; Change Management and User Interaction as \emph{issues} of interest in a slightly higher level view of the Ontology Learning process.
+These areas are defined below with the aim of defining the scope of the work in this thesis and the extent to which each issue is given attention here.
 
 \subsection{Corpus Management}
 
