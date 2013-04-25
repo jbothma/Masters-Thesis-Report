@@ -511,9 +511,36 @@ What this doesn't show directly is how many irrelevant concepts and relations we
 
 \subsection{Change Management}
 
+Change management is generally an organisational process of transitioning from one state to another.
+In Ontology Engineering, that means making and tracking the changes to the ontology during construction and ongoing maintenance.
+
 \subsection{User Interaction}
 
+User interfaces need to support non-ontology-engineer users in selecting and configuring appropriate methods, and then help them access important subsets of a potentially large amount of information extracted.
+User interfaces can further help understanding the evidence for parts of the ontology and visualise the ontology's structure.
+
 \subsection{Ontology learning systems}
+
+Ontology learning systems are implementations combining several tasks for actual use or evaluating ontology learning methods. Several recent or significant ontology learning systems are discussed in this section.
+
+\subsubsection{Text2Onto}
+
+Text2Onto is the successor to TextToOnto, and its main contribution is a Probabilistic Ontology Model.
+Evidence for ontology elements extracted via various available methods is stored with an associated \emph{confidence} value as a percentage, as given by the the extraction method and the evidence combination strategy selected when multiple methods for the same kind of elements are selected.
+Evidence can then be reviewed along with its confidence and exported to an OWL ontology.
+
+Text2Onto has been adapted to support OL from English, German and Spanish text.
+
+\subsubsection{OntoCMaps}
+
+OntoCMaps constructs a graph where noun phrases are vertices and syntactic dependencies are edges.
+It then applies various methods from graph theory for determining the importance of edges and nodes.
+Various voting schemes were used for combining evidence from the various methods.
+The performance of each method individually and voting scheme was evaluated.
+
+\subsubsection{OntoGain}
+
+OntoGain is a recent implementation of existing methods, providing comparative evaluation of two methods at each ontology learning step.
 
 \subsubsection{OntoUSP}
 
@@ -525,6 +552,10 @@ OntoUSP achieved significantly higher precision and recall than the state of the
 I discovered by email correspondence with Hoifung Poon, PhD (2012-02-29) that the Stanford parser\cite{Klein03PCFGParser} used for annotating the corpus in this evaluation was trained on the GENIA Treebank\cite{Tatseisi05GENIATB}.
 For this reason, it is unclear how well OntoUSP would perform using a general domain parser, or whether the other systems in the evaluation were also trained for this domain.
 This is important since domain-specific parsers or treebanks are not normally available, and this treebank was constructed from the GENIA corpus.
+
+\subsubsection{Cross-Language OL}
+
+While not implemented as an OL system, Helm's research into using evidence from multiple languages introduced a new form on evidence combination and showed this to be an improvement on using the same techniques on a corpus of a single language.
 
 \section{Open research areas}
 \label{sec:background:open-areas}
