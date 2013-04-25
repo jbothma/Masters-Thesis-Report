@@ -392,7 +392,15 @@ The FM-SBLEX tool can lemmatise words not in the lexicon, such as \emph{kommuner
 
 \subsubsection{Named Entity Recognition}
 
+Named Entity Recognition is the identification of instances of real world entities such as persons or organisations, referenced by name in the corpus.
+This is useful, for example, for identifying attributes and relations of these instances or their classes.
+
 \subsubsection{Coreference Resolution}
+
+Coreference Resolution associates multiple references to the same instance with each other.
+For example, in the sentence "John ate the apple that he picked up", John and he would be identified as references to the same instance.
+This helps deal with data sparseness.
+Without coreference resolution, only full references using the full term, are accurately identified as occurences of the concept as itself and as part of relations.
 
 \subsubsection{Chunking}
 
@@ -417,6 +425,7 @@ SVENSK is a language processing toolbox for Swedish developed in the late 1990s 
 
 \subsection{Information Extraction}
 
+The approaches for extracting knowledge from the preprocessed corpus are usually based primarily on statistics, linguistings or logic. This section 
 \todo{should probably include TextRunner/ReVerb since \cite{Poon2010OntoUSP} says its the state of the art in IE. At least the ReVerb website only mentions English}
 
 \subsubsection{Semantics from Syntactic Dependencies}
