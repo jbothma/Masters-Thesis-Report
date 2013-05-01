@@ -409,7 +409,12 @@ The SweSPARK chunker employs a parser for chunking Swedish text \cite{Megyesi02T
 
 \subsubsection{Syntactic Dependency Parsing}
 
-The OntoUSP \citep{Poon2010OntoUSP} method and the methods in the OntoCMaps system \citep{Zouaq11OntoCmaps} make use of syntactic dependencies for identifying roles of phrases in the corpus.
+Syntactic dependency analysis produces a dependecy graph where the vertices are the words in a sentence and an edge exists between each word and its syntactic head.
+The graph forms a tree rooted at the main verb.
+The edges can be labeled with dependency types.
+
+Syntactic dependencies are often used for extracting labeled relations between terms, and for determining the selectional restriction of the arguments to verbs.
+The OntoUSP \citep{Poon2010OntoUSP} method and the methods in the OntoCMaps system \citep{Zouaq11OntoCmaps} make use of syntactic dependencies for identifying roles of phrases in the corpus, leading to labeled relations.
 
 \subsubsection{Compound Splitting}
 
@@ -425,7 +430,44 @@ SVENSK is a language processing toolbox for Swedish developed in the late 1990s 
 
 \subsection{Information Extraction}
 
-The approaches for extracting knowledge from the preprocessed corpus are usually based primarily on statistics, linguistings or logic. This section 
+Information Extraction is the task of extracting structured information from a corpus of text.
+The units of information generally extracted are terms, concepts, attributes, relations and axioms.
+The approaches for extracting knowledge from the preprocessed corpus are usually based primarily on statistics, linguistings or logic.
+
+\subsubsection{Terms, Concepts and Instances}
+
+Terms are common lexical references to concepts within a domain.
+In this context, \emph{instances} are specific instances of concepts.
+For example, \emph{book} is the term for the concept of a collection of paper bound together, and the copy of \todo{cite noun phrase book} on my book shelf is an instance of a book.
+It is in fact an instance of the named entity \emph{Feature Distribution in Swedish Noun Phrases}, a subclass of book.
+
+The precise distinction between concept and instance depends on the requirements of the application - the level of abstraction varies depending on exactly what is being modeled and how it needs to be interpreted.
+When building ontologies, concepts are elements of the ontology which models the domain, while instances populate the ontology and their meaning are defined by the ontology.
+
+The distinction between concept and term becomes more important towards the formal end of the scale of knowledge representation.
+The less-formal levels like taxonomies and thesauri are based on terms.
+On the other hand, the definition a formal ontology and its use in reasoning is based on unique references to concepts, relations and axioms - a term is merely a human-readable label associated with such a reference.
+
+Terms extraction tends to focus on noun phrases, although any lexical form used to refer to relevant concepts is important.
+Common approaches define a way to select potential candidate terms, and then use some approach of ranking and selecting important terms from those extracted from the corpus.
+Lexico-syntactic patterns on part of speech annotations, and particular subtrees of syntactic dependency trees are common ways of selecting candidate terms.
+The TF-IDF and C/NC-value approaches are well-established statistical ways of ranking terms based on their occurence in the corpus, while a common alternative approach is to select terms based on the importance of the relations to which they are arguments.
+
+The C-Value part of the C-Value/NC-Value method is used in this project.
+This is a method for extracting multi-word terms from a domain corpus, assigning a numeric value to each candidate string, where a high value indicates important candidates - probable terms important to the domain.
+Candidate strings can, for example, be selected via some lexico-syntactic pattern such as NounNoun+ (a series of two or more adjacent nouns) or Adj*Noun+ (zero or more adjectives followed by one or more nouns).
+The frequency of occurrence of a candidate string contributes positively to C-Value.
+The number of words in a candidate string contributes by its logarithm.
+The occurrence of a candidate string nested in longer candidate strings contributes negatively to its C-Value.
+The occurence of nested candidates within a candidate contributes negatively to the C-Value of that candidate.
+These factors encourage longer candidates over shorter ones with the reasoning that longer terms are more specific and thus occur less frequently, and aren't represented fairly by frequency alone.
+Meanwhile nested terms may be more general than terms containing them, or may they may not be terms by themselves at all.
+Candidates which occur frequently within longer candidates but never by themselves are thus discouraged.
+
+\subsubsection{Attributes and Relations}
+
+\subsubsection{Axioms}
+
 \todo{should probably include TextRunner/ReVerb since \cite{Poon2010OntoUSP} says its the state of the art in IE. At least the ReVerb website only mentions English}
 
 \subsubsection{Semantics from Syntactic Dependencies}
