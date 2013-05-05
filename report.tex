@@ -466,6 +466,43 @@ Candidates which occur frequently within longer candidates but never by themselv
 
 \subsubsection{Attributes and Relations}
 
+Relations define the interactions between and attributes of concepts.
+A concept \emph{ball} might have the attribute \emph{colour}, where an intance of the ball has the color \emph{blue}.
+Relations are typically classified as taxonomic or non-taxonomic.
+Taxonomic relations include equivalence and hypynomy.
+In the ball example, ball could be said to be a hyponym of sports equipment in a sports domain, while blue \emph{is a} colour.
+
+Non-taxonomic relations then represent other interactions between concepts.
+This can include merynomy - part-of relations - as well as representing how one concept can act upon another in the given domain.
+Continuing the ball example, a player can kick a ball.
+The \emph{kicks} relation might represent that players kick balls and not vice versa.
+The player's foot is \emph{part of} the player, ie a meronym of the player.
+
+In addition to identifying relationship between concept, some relationships also need extra work to assign a label to represent the semtantic relationship it represents.
+Some approaches to relation learning stem from the label's occurrence in the corpus, like the \emph{kicks} relation above.
+Others might merely be identified by some correlation of the concepts' occurrence in the corpus.
+The difficulty in automting the labelling task means it is sometimes left to domain experts to do manually.
+
+Common approaches to extracting taxonomic relations are \emph{lexico-syntactic patterns}, \emph{agglomerative hierarchical clustering}, \emph{distributional similarity} and \emph{formal concept analysis} (FCA).
+
+{\bfseries Lexico-syntactic patterns} define a pattern on lexical annotations on a corpus which are likely to represent intances of particular relations.
+An example of such a pattern for English is $NP_{super}\ such\ as\ ((NP_{sub}, )* (NP_{sub}\ and))* NP_{sub}$.
+Given a sentence ``Racquet sports such as squash, tennis and badminton are highly challenging", the above pattern would identify squash, tennis and badminton as subclasses of the concept \emph{racquet sport}.
+Lexico-syntactic pattern tend to give high precision but low recall because of the variety of ways these relations can be expressed in natural language.
+Variou approaches for mining these patterns have been developed.
+
+{\bfseries Agglomerative Hierarchical Clustering} of concepts builds a hierarchy of clusters, starting with each concept as a distinct cluster.
+Each clustering step compares each pair of clusters according to some \emph{similarity measure}, and the pair with the highest similarity are merged.
+This repeats until some predicate is satisfied, for example when all clusters have been merged into one.
+
+{\bfseries Distributional Similarity} in its simplest form asserts that there exists a relationship between concepts which occur within some bounded context.
+The strength of the relationship depends on the frequency of their co-occurrence.
+The bounded context can for example be defined as the same document, a window of $n$ adjacent words in the corpus or as part of some subtree of a syntactic dependency graph.
+The nature of the relationship can be inferred by how the concepts co-occur.
+For example, if concept $A$ only occurs in the presence of concept $B$, and concept $B$ occurs more frequently than concept $A$, we might infer that $A$ and $B$ are related and that $B$ is more general than $A$.
+
+{\bfseries Formal Concept Analysis} 
+
 \subsubsection{Axioms}
 
 \todo{should probably include TextRunner/ReVerb since \cite{Poon2010OntoUSP} says its the state of the art in IE. At least the ReVerb website only mentions English}
