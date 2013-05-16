@@ -466,7 +466,7 @@ Candidates which occur frequently within longer candidates but never by themselv
 
 \subsubsection{Attributes and Relations}
 
-Relations define the interactions between and attributes of concepts.
+Relations define the interactions between, and attributes of concepts.
 A concept \emph{ball} might have the attribute \emph{colour}, where an intance of the ball has the color \emph{blue}.
 Relations are typically classified as taxonomic or non-taxonomic.
 Taxonomic relations include equivalence and hypynomy.
@@ -481,8 +481,9 @@ The player's foot is \emph{part of} the player, ie a meronym of the player.
 In addition to identifying relationship between concept, some relationships also need extra work to assign a label to represent the semtantic relationship it represents.
 Some approaches to relation learning stem from the label's occurrence in the corpus, like the \emph{kicks} relation above.
 Others might merely be identified by some correlation of the concepts' occurrence in the corpus.
-The difficulty in automting the labelling task means it is sometimes left to domain experts to do manually.
+The difficulty in automating the labelling task means it is sometimes left to domain experts to do manually.
 
+\medskip
 Common approaches to extracting taxonomic relations are \emph{lexico-syntactic patterns}, \emph{agglomerative hierarchical clustering}, \emph{distributional similarity} and \emph{formal concept analysis} (FCA).
 
 {\bfseries Lexico-syntactic patterns} define a pattern on lexical annotations on a corpus which are likely to represent intances of particular relations.
@@ -494,6 +495,8 @@ Variou approaches for mining these patterns have been developed.
 {\bfseries Agglomerative Hierarchical Clustering} of concepts builds a hierarchy of clusters, starting with each concept as a distinct cluster.
 Each clustering step compares each pair of clusters according to some \emph{similarity measure}, and the pair with the highest similarity are merged.
 This repeats until some predicate is satisfied, for example when all clusters have been merged into one.
+The initial clusters represent the most specific clusters, while the final cluster(s) represent the most general clustering.
+If a clustering represents a concept, its more specific clusters might represent its subclasses.
 
 {\bfseries Distributional Similarity} in its simplest form asserts that there exists a relationship between concepts which occur within some bounded context.
 The strength of the relationship depends on the frequency of their co-occurrence.
@@ -502,6 +505,25 @@ The nature of the relationship can be inferred by how the concepts co-occur.
 For example, if concept $A$ only occurs in the presence of concept $B$, and concept $B$ occurs more frequently than concept $A$, we might infer that $A$ and $B$ are related and that $B$ is more general than $A$.
 
 {\bfseries Formal Concept Analysis} 
+FCA considers the attributes which apply to each concept.
+By analysing the attributes concepts share, a lattice of commonality and subsumption can be constructed.
+
+\medskip
+
+Non-taxonomic relation extraction approaches generally either extract relations where a concept is an argument to the main verb, or try to find some other association between a pair of concepts.
+
+Verb-based approaches usually select candidates based on patterns defined on chunked sentences or paths in syntactic dependency trees.
+These patterns and paths are often manually defined but may also be extracted by machine learning techniques.
+The types of arguments accepted or required by a verb is known as its \emph{subcategorisation frame}.
+The \emph{selectional restriction} of the verb is the instances of words that are valid arguments to the verb.
+By identifying concepts which cover the selectional restriction of relations, the relation can be generlised at a convenient level.
+The importance of the extracted relations is then determined using approaches based on statistical analysis, machine learning or graph theory, for example.
+
+Other associations between concepts are often extracted based on shared features or occurrence in common contexts.
+A common technique for this is based on \emph{association rule mining}.
+This technique extracts rules indicating for a certain confidence value, which items occur only given the presence of others, or which items predict the presence of others.
+
+Common approaches for extracting non-taxonomic relations include association rule mining, lexico-syntactic patterns, and statistical approaches for selecting and generalising verb frames - subject-predicate-object triples where the verb is the main verb of a sentence and the subject and object are terms in the domain.
 
 \subsubsection{Axioms}
 
