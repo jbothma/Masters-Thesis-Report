@@ -102,10 +102,10 @@ For these reasons, we're not trying the web-sourced stuff specifically.
 
 \section{Research Questions}
 
-To fulfill this objective, this report attempts to answer the following research questions:
+To fulfill this objective, this report attempts to answer the following research question:
 
 \begin{enumerate}
-	\item stuff
+	\item How can Swedish Text be used for semi-automatically constructing domain ontologies?
 \end{enumerate}
 
 \section{Approach}
@@ -933,17 +933,33 @@ The corpus will be evaluated against the gold standard, calculating the precisio
 The irrelevant and missing concepts and relations will be identified, the reason for the error identified, and suggestions for dealing with the problem provided in chapter~\ref{chapter:analysis}.
 
 
-\chapter{Prototype development}
+\chapter{Results}
 
-This chapter describes the formulation and implementation of the prototype ontology learning system.
-It is organised according to the artifacts generated, under the usual division of Preprocessing, Concepts, Taxonomic relations and Non-taxonomic relations.
+The results produced as part of this thesis are an ontology learning system prototype supporting Swedish language corpora, and findings of using this prototype on an example ontology development project.
+Section~\ref{sec:results:prototype} documents the prototype implementation while Section~\ref{sec:results:eval} gives the results of using the prototype for ontology learning.
+
+\section{Prototype}
+\label{sec:results:prototype}
+This section describes the design and implementation of the prototype ontology learning system.
+The design is shown in figure~\ref{fig:prototype-design}.
+Designed as a plugin to the Protege ontology editor, it can be embedded inside the Protege editor window alongside other plugins designed to ease ontology development and maintenance.
+The plugin consists of Protege integration, a graphical user interface and an ontology learning project instance.
+The project is used to trigger preprocessing and extraction, and hold references to storage of the corpus and ontology element candidates. After candidate extraction, the Ontology Construction component is used to model the domain in the current OWL ontology in Protege. The project can also be used to extract candidates for use outside of this system.
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{graphics/protege-plugin-components-simple.png}
+  \caption{Prototype design}
+  \label{fig:prototype-design}
+\end{figure}
+
+The rest of this section is organised according to the artifacts generated, under the usual division of Preprocessing, Concepts, Taxonomic relations and Non-taxonomic relations.
 The artifacts are shown along the bottom row in figure~\ref{fig:method-artifact}.
 Part of speech and Morphology; lemmatization and the linguistic filter for term candidates are described under Preprocessing.
 Lemmas is not shown as an artifact in figure~\ref{fig:method-artifact} for simplicity since it is used by all methods except subcategorization frames.
-Their use is desribed for each relevant method.
-Terms are descibed under the Concepts section.
+Their use is described for each relevant method.
+Terms are described under the Concepts section.
 Subconcept relations are described under the Taxonomic relations section.
-Labeled relations are descibed under the Non-taxonomic relations section.
+Labeled relations are described under the Non-taxonomic relations section.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{graphics/method-element-dependencies.png}
@@ -951,13 +967,13 @@ Labeled relations are descibed under the Non-taxonomic relations section.
   \label{fig:method-artifact}
 \end{figure}
 
-\section{Preprocessing}
+\subsection{Preprocessing}
 
-Most of the preprocessing is done within the GATE framework.
+Preprocessing is done partly using the Korp corpus import pipeline, and partly using GATE.
 Initially, each tool had to be integrated with GATE manually, but the release of the Korp pipeline on \todo{korp release date} meant that a reliable pipeline providing all the lexical analysis annotations was available as a whole.
 The work done to integrate tools with GATE directly is described briefly for each tool, but when switching to the Korp pipeline, these parts were abandoned as noted below.
 
-\subsection{Part of speech and Morphology}
+\subsubsection{Part of speech and Morphology}
 
 The HunPos tagger was used to annotate tokens with their part of speech and mophological categories.
 This tagger was used because the source code and recent compiled executables are available for Windows, Linux and OS X, Swedish models are available for it with SUC and PAROLE tags, and it was suggested for use with Saldo.
@@ -973,11 +989,11 @@ HunPos is part of the Korp pipeline and a swedish model is provided with the pip
 
 \todo{bit of practical info maybe? the objective is reproducibility so I guess this is sufficient for now.}
 
-\subsection{Lemmatization}
+\subsubsection{Lemmatization}
 
 
 
-\subsection{Linguistic Filter for Term Candidates}
+\subsubsection{Linguistic Filter for Term Candidates}
 
 For initial potential terms to be selected by the C-Value method, a linguistic filter of zero or more adjectives, followed by one or more nouns, is used.
 This filter was depicted as Adj*Noun+ in \cite{Frantzi98CNCValue} by analogy to regular expressions over parts of speech.
@@ -996,32 +1012,34 @@ This implementation made it easy to implement and verify that it is working as i
 The JAPE expression is written in a plain text file which can easily be modified to experiment with different patterns, and separates the concerns of the Java code controlling the entire tool and the linguistic filter itself.
 The JAPE expression defining the filter is shown in \todo{embed and describe the JAPE code}
 
-\section{Concepts}
+\subsection{Concepts}
 
 
 
-\subsection{Terms}
+\subsubsection{Terms}
 
 
 
-\section{Taxonomic Relations}
+\subsection{Taxonomic Relations}
 
 
 
-\subsection{Subconcept Relations}
+\subsubsection{Subconcept Relations}
 
-\subsubsection{Hierarchical agglomerative clustering}
+Hierarchical agglomerative clustering
 
 blah blah similarity measure.
 
-\section{Non-taxonomic Relations}
+\subsection{Non-taxonomic Relations}
 
 
 
-\subsection{Labeled relations}
+\subsubsection{Labeled relations}
 
 
 
+\section{Ontology learning evaluation}
+\label{sec:results:eval}
 
 \chapter{Analysis}
 
