@@ -1032,9 +1032,9 @@ This method is only used on the 1000 term candidates with highest confidence sin
 
 The syntactic pattern method used a translation of one pattern used in Text2Onto\cite{Cimiano2005Text2Onto}.
 The pattern \(NP such as (NP, |NP and)* NP\) has been implemented with \emph{such as} replaced with \emph{såsom} as shown in Listing~\ref{lst:saasom}.
-The JAPE code before the --> works like a regular expression on annotations.
+The JAPE code before the \verb+-->+ works like a regular expression on annotations.
 The regular expression tries to match one TermCandidate annotation, followed by zero or more commas, then the string "såsom", followed by one or more TermCandidate annotations separated by comma, "och" or "eller".
-Each time this regular expression matches, the part after the --> adds new annotations.
+Each time this regular expression matches, the part after the \verb+-->+ adds new annotations.
 The first matching term candidate is annotated with "Range".
 The subsequent term candidates are annoted with "Domain".
 The entire matching region is annotated with "SubclassOf".
@@ -1059,8 +1059,8 @@ rule: SubclassOfRelation1
 ):subclassOf
 -->
 :subclassOf.SubclassOf = { rule = "SubclassOfRelation1" },
-:subconcept.Domain = { rule = "SubclassOfRelation1" },
-:superconcept.Range = { rule = "SubclassOfRelation1" }
+:subconcept.Domain     = { rule = "SubclassOfRelation1" },
+:superconcept.Range    = { rule = "SubclassOfRelation1" }
 \end{lstlisting}
 
 \subsubsection{Labeled relations}
