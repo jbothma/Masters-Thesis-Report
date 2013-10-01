@@ -9,7 +9,13 @@
 \MakePerPage{footnote} %the perpage package command
 %\usepackage{microtype}
 %\usepackage{draftwatermark}
-\usepackage{tikz}
+\usepackage{listings}
+\lstset{literate=%
+{å}{{\aa}}1
+}
+\lstset{extendedchars=\true}
+\lstset{inputencoding=ansinew}
+
 
 \newcommand{\todo}[1]{\footnote{{\color{red} TODO: #1}}}
 
@@ -647,6 +653,7 @@ Various voting schemes were used for combining evidence from the various methods
 The performance of each method individually and voting scheme was evaluated.
 
 \subsubsection{OntoGain}
+\label{sec:background:ontogain}
 
 OntoGain is a recent implementation of existing methods, providing comparative evaluation of two methods at each ontology learning step.
 
@@ -970,24 +977,12 @@ Labeled relations are described under the Non-taxonomic relations section.
 \subsection{Preprocessing}
 
 Preprocessing is done partly using the Korp corpus import pipeline, and partly using GATE.
-Initially, each tool had to be integrated with GATE manually, but the release of the Korp pipeline on \todo{korp release date} meant that a reliable pipeline providing all the lexical analysis annotations was available as a whole.
-The work done to integrate tools with GATE directly is described briefly for each tool, but when switching to the Korp pipeline, these parts were abandoned as noted below.
+The ontology element extraction methods used need 
 
-\subsubsection{Part of speech and Morphology}
 
-The HunPos tagger was used to annotate tokens with their part of speech and mophological categories.
-This tagger was used because the source code and recent compiled executables are available for Windows, Linux and OS X, Swedish models are available for it with SUC and PAROLE tags, and it was suggested for use with Saldo.
-The availability of source and executables supports getting started quickly for this prototype and future work.
-The availability of models with different tags gives flexibility and means I did not need to generate and evaluate models before commencing development.
-Some of these models have also been evaluated for precision, making the tagger's effect on the results of this thesis clearer than using an untested model.
-I could not get the tagger used in the Granska\todo{ref} project working within a short amount of time so I abandoned it.
+% Remember if we want more detail, look back in git.
 
-HunPos was first used directly within GATE, but it is now used as part of the Korp pipeline.
-HunPos can already be used within GATE using the Generic Tagger Framework.
-For use in this form, I used the swedish model provided by \todo{ref forsbom model}.
-HunPos is part of the Korp pipeline and a swedish model is provided with the pipeline.
 
-\todo{bit of practical info maybe? the objective is reproducibility so I guess this is sufficient for now.}
 
 \subsubsection{Lemmatization}
 
@@ -1006,37 +1001,76 @@ Selecting the head noun in certain noun phrase forms such as DetAdj*Noun+PrepNou
 The Adj*Noun+ form performed well for English in the evaluation of C-Value in \cite{Frantzi98CNCValue} and many Swedish noun phrases take this form \todo{cite swedish noun phrase book} so this was a reasonable approximation for the objective of this thesis.
 For better results, more experimentation is needed to identify more effective linguistic filters for Swedish, but as with all patterns and models, the ideal can vary between domains and corpora.
 
-The term candidate selection was performed as annotations in the corpus along with syntactic feature annotation for convenience.
+The initial term candidate selection was performed as annotations in the corpus along with syntactic feature annotation for convenience.
 This was performed using JAPE expressions matching on parts of speech annotations in the corpus.
 This implementation made it easy to implement and verify that it is working as intended.
 The JAPE expression is written in a plain text file which can easily be modified to experiment with different patterns, and separates the concerns of the Java code controlling the entire tool and the linguistic filter itself.
 The JAPE expression defining the filter is shown in \todo{embed and describe the JAPE code}
 
-\subsection{Concepts}
+\subsection{Candidate Extraction}
 
+For each of the typical layers of ontologies, one or two types of element were extracted to demonstrate some relevant method.
+Methods with an important linguistic component are the most interesting in this case. 
+For concepts, labeled concepts were extracted.
+For taxonomic relations, subconcept relations were extracted.
+For non-taxonomic relations, labeled relations between concepts were extracted.
 
-
-\subsubsection{Terms}
-
-
-
-\subsection{Taxonomic Relations}
-
+\subsubsection{Concepts}
 
 
 \subsubsection{Subconcept Relations}
 
-Hierarchical agglomerative clustering
+Two methods for extracting subclass relations were implemented.
+One method uses hierarchical agglomerative clustering, and the other uses a syntactic pattern.
 
-blah blah similarity measure.
+The hierarchical agglomerative clustering method used takes term candidates as input and creates subclass relations from one term candidate to another.
+The similarity measure is that used in~\cite{Drymonas10OntoGain}.
+Merging for a given cluster stops when no other cluster has a common noun phrase head.
+The noun phrase head is taken as the superconcept of all terms in the cluster.
+Thus a subclass relation candidate is created between each term and its noun phrase head.
+This method is only used on the 1000 term candidates with highest confidence since the implementation has time complexity of \(\mathcal{O}(n^{3})\).
 
-\subsection{Non-taxonomic Relations}
+The syntactic pattern method used a translation of one pattern used in Text2Onto\cite{Cimiano2005Text2Onto}.
+The pattern \(NP such as (NP, |NP and)* NP\) has been implemented with \emph{such as} replaced with \emph{såsom} as shown in Listing~\ref{lst:saasom}.
+The JAPE code before the --> works like a regular expression on annotations.
+The regular expression tries to match one TermCandidate annotation, followed by zero or more commas, then the string "såsom", followed by one or more TermCandidate annotations separated by comma, "och" or "eller".
+Each time this regular expression matches, the part after the --> adds new annotations.
+The first matching term candidate is annotated with "Range".
+The subsequent term candidates are annoted with "Domain".
+The entire matching region is annotated with "SubclassOf".
+This JAPE rule is executed during preprocessing after the other JAPE rules for convenience.
+During extraction, we iterate over all SubclassOf annotations, adding a subclass relation to the term annotated with Range for each term candidate in the contained Domain annotation.
 
-
+\lstset{caption={JAPE for subclass relation annotations by syntactic pattern},
+           captionpos=b,
+           label={lst:saasom}
+}
+\begin{lstlisting}[frame=single]
+rule: SubclassOfRelation1
+(
+	({TermCandidate}):superconcept
+	({w.string==","})?
+	{w.string=="såsom"}
+	({TermCandidate}
+	  ({w.string==","}
+	   |{w.string=="och"}
+	   |{w.string=="eller"})?)+
+	    :subconcept
+):subclassOf
+-->
+:subclassOf.SubclassOf = { rule = "SubclassOfRelation1" },
+:subconcept.Domain = { rule = "SubclassOfRelation1" },
+:superconcept.Range = { rule = "SubclassOfRelation1" }
+\end{lstlisting}
 
 \subsubsection{Labeled relations}
 
+Labeled relation extraction was based on syntactic dependency relations - one per sentence - where the appropriate annotations are found.
+The domain of the relation is the term candidate with a subject relation (SS) to the root.
+The range of the relation is the term candidate with an object relation (OO) to the root.
+The label of the relation is dependency root of the sentence, if it is a verb (VB), potentially followed by an additional verb which has a verb group relation (VG) to the root if one exists.
 
+\subsection{Ontology Construction}
 
 \section{Ontology learning evaluation}
 \label{sec:results:eval}
