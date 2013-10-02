@@ -9,7 +9,12 @@
 \MakePerPage{footnote} %the perpage package command
 %\usepackage{microtype}
 %\usepackage{draftwatermark}
+\usepackage{float}
 \usepackage{listings}
+
+\floatstyle{plain} % optionally change the style of the new float
+\newfloat{Code}{H}{myc}
+
 \lstset{literate=%
 {å}{{\aa}}1
 }
@@ -989,6 +994,7 @@ The ontology element extraction methods used need
 
 
 \subsubsection{Linguistic Filter for Term Candidates}
+\label{sec:results:proto:prepr}
 
 For initial potential terms to be selected by the C-Value method, a linguistic filter of zero or more adjectives, followed by one or more nouns, is used.
 This filter was depicted as Adj*Noun+ in \cite{Frantzi98CNCValue} by analogy to regular expressions over parts of speech.
@@ -1005,7 +1011,20 @@ The initial term candidate selection was performed as annotations in the corpus 
 This was performed using JAPE expressions matching on parts of speech annotations in the corpus.
 This implementation made it easy to implement and verify that it is working as intended.
 The JAPE expression is written in a plain text file which can easily be modified to experiment with different patterns, and separates the concerns of the Java code controlling the entire tool and the linguistic filter itself.
-The JAPE expression defining the filter is shown in \todo{embed and describe the JAPE code}
+The JAPE expression defining the filter is shown in Listing~\ref{lst:termcand}.
+
+\lstset{caption={JAPE for term candidate linguistic filter},
+           captionpos=b,
+           label={lst:termcand}
+}
+\begin{lstlisting}[frame=single]
+(
+  ({w.pos == "JJ"})*
+  ({w.pos == "NN"}|{w.pos == "PM"})+
+): match
+-->
+:match.TermCandidate = {rule= "LingFilter" }
+\end{lstlisting}
 
 \subsection{Candidate Extraction}
 
@@ -1017,6 +1036,14 @@ For non-taxonomic relations, labeled relations between concepts were extracted.
 
 \subsubsection{Concepts}
 
+Concepts are assumed to be represented by terms in the corpus.
+Term candidates are extracted using the C-value part from the C-value NC-value method for extracting multi-word terms.
+The C-value method is applied to the strings annotated with the TermCandidate annotation as described in Section~\ref{sec:results:proto:prepr}.
+The C-value is always a product of \(log_{2} |a|\) where \(a\) is the candidate string and \(|a|\) is the number of words in the string.
+For single-word terms, C-value would normally be \(0\).
+To be able to use C-value as a relevance measure for single- and multi-word terms, we calculate C-value as a product of \(log_{2} (|a|+1)\) instead.
+Single-word terms are thus given useful C-values, instead of being totally disregarded.
+The modified C-value is referred to as \emph{confidence}, representing the confidence that a given term is relevant to the domain being modeled.
 
 \subsubsection{Subconcept Relations}
 
@@ -1041,12 +1068,12 @@ The entire matching region is annotated with "SubclassOf".
 This JAPE rule is executed during preprocessing after the other JAPE rules for convenience.
 During extraction, we iterate over all SubclassOf annotations, adding a subclass relation to the term annotated with Range for each term candidate in the contained Domain annotation.
 
+\begin{Code}
 \lstset{caption={JAPE for subclass relation annotations by syntactic pattern},
            captionpos=b,
            label={lst:saasom}
 }
 \begin{lstlisting}[frame=single]
-rule: SubclassOfRelation1
 (
 	({TermCandidate}):superconcept
 	({w.string==","})?
@@ -1062,6 +1089,7 @@ rule: SubclassOfRelation1
 :subconcept.Domain     = { rule = "SubclassOfRelation1" },
 :superconcept.Range    = { rule = "SubclassOfRelation1" }
 \end{lstlisting}
+\end{Code}
 
 \subsubsection{Labeled relations}
 
@@ -1069,6 +1097,11 @@ Labeled relation extraction was based on syntactic dependency relations - one pe
 The domain of the relation is the term candidate with a subject relation (SS) to the root.
 The range of the relation is the term candidate with an object relation (OO) to the root.
 The label of the relation is dependency root of the sentence, if it is a verb (VB), potentially followed by an additional verb which has a verb group relation (VG) to the root if one exists.
+
+To ease the task of selecting relevant candidates to be used in constructing the ontology, an \emph{importance} value is calculated for each labeled relation candidate.
+This value is intended to indicate importance to the domain being modeled.
+The value is calculated as the sum of the confidence of the domain and range term candidates for each occurrence of the relation.
+Relations between important term candidates are thus favoured, as are frequently-occurring relations.
 
 \subsection{Ontology Construction}
 
