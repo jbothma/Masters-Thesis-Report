@@ -980,18 +980,15 @@ Labeled relations are described under the Non-taxonomic relations section.
 \end{figure}
 
 \subsection{Preprocessing}
-
-Preprocessing is done partly using the Korp corpus import pipeline, and partly using GATE.
-The ontology element extraction methods used need 
-
-
 % Remember if we want more detail, look back in git.
-
-
-
-\subsubsection{Lemmatization}
-
-
+Preprocessing is done partly using the Korp corpus import pipeline, and partly using GATE.
+When a project is created, the corpus can be imported using a filter or simply all files in a given folder.
+This adds the documents to a GATE corpus, which extracts the text from various document formats.
+For syntactic annotation, the corpus is exported to a directory where the Korp pipeline can take it as input.
+The Korp pipeline was configured to annotate the corpus with part of speech tags, lemmas, word boundaries, sentence boundaries, and syntactic dependencies.
+When the Korp pipeline finishes processing the corpus, the annotations are imported to the working GATE corpus.
+Next, the JAPE rules are run to apply higher-level annotations to the corpus.
+The term candidate JAPE rule is described in the next section, while the labeled relation JAPE rule is discussed in Section~\ref{sec:results:proto:cands}.
 
 \subsubsection{Linguistic Filter for Term Candidates}
 \label{sec:results:proto:prepr}
@@ -1013,6 +1010,7 @@ This implementation made it easy to implement and verify that it is working as i
 The JAPE expression is written in a plain text file which can easily be modified to experiment with different patterns, and separates the concerns of the Java code controlling the entire tool and the linguistic filter itself.
 The JAPE expression defining the filter is shown in Listing~\ref{lst:termcand}.
 
+\begin{Code}
 \lstset{caption={JAPE for term candidate linguistic filter},
            captionpos=b,
            label={lst:termcand}
@@ -1025,6 +1023,7 @@ The JAPE expression defining the filter is shown in Listing~\ref{lst:termcand}.
 -->
 :match.TermCandidate = {rule= "LingFilter" }
 \end{lstlisting}
+\end{Code}
 
 \subsection{Candidate Extraction}
 
@@ -1092,6 +1091,7 @@ During extraction, we iterate over all SubclassOf annotations, adding a subclass
 \end{Code}
 
 \subsubsection{Labeled relations}
+\label{sec:results:proto:cands}
 
 Labeled relation extraction was based on syntactic dependency relations - one per sentence - where the appropriate annotations are found.
 The domain of the relation is the term candidate with a subject relation (SS) to the root.
