@@ -954,9 +954,6 @@ Section~\ref{sec:results:prototype} documents the prototype implementation while
 \label{sec:results:prototype}
 This section describes the design and implementation of the prototype ontology learning system.
 The design is shown in figure~\ref{fig:prototype-design}.
-Designed as a plugin to the Protege ontology editor, it can be embedded inside the Protege editor window alongside other plugins designed to ease ontology development and maintenance.
-The plugin consists of Protege integration, a graphical user interface and an ontology learning project instance.
-The project is used to trigger preprocessing and extraction, and hold references to storage of the corpus and ontology element candidates. After candidate extraction, the Ontology Construction component is used to model the domain in the current OWL ontology in Protege. The project can also be used to extract candidates for use outside of this system.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{graphics/protege-plugin-components-simple.png}
@@ -964,14 +961,9 @@ The project is used to trigger preprocessing and extraction, and hold references
   \label{fig:prototype-design}
 \end{figure}
 
-The rest of this section is organised according to the artifacts generated, under the usual division of Preprocessing, Concepts, Taxonomic relations and Non-taxonomic relations.
-The artifacts are shown along the bottom row in figure~\ref{fig:method-artifact}.
-Part of speech and Morphology; lemmatization and the linguistic filter for term candidates are described under Preprocessing.
-Lemmas is not shown as an artifact in figure~\ref{fig:method-artifact} for simplicity since it is used by all methods except subcategorization frames.
-Their use is described for each relevant method.
-Terms are described under the Concepts section.
-Subconcept relations are described under the Taxonomic relations section.
-Labeled relations are described under the Non-taxonomic relations section.
+Designed as a plugin to the Protege ontology editor, it can be embedded inside the Protege editor window alongside other plugins designed to ease ontology development and maintenance.
+The plugin consists of Protege integration, a graphical user interface and an ontology learning project instance.
+The project is used to trigger preprocessing and extraction, and hold references to storage of the corpus and ontology element candidates. After candidate extraction, the Ontology Construction component is used to model the domain in the current OWL ontology in Protege. The project can also be used to extract candidates for use outside of this system.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{graphics/method-element-dependencies.png}
@@ -1104,6 +1096,19 @@ The value is calculated as the sum of the confidence of the domain and range ter
 Relations between important term candidates are thus favoured, as are frequently-occurring relations.
 
 \subsection{Ontology Construction}
+
+The Ontology Construction component is responsible for modelling the domain in an OWL ontology based on the extracted ontology element candidates.
+The user can either add all candidates to the ontology in one step, or select specific candidates and add only them to the ontology.
+
+Concept candidates are added as OWL Classes.
+The IRI of a class is constructed as the concept label in camel case appended to the ontology IRI.
+Thus a term "akut hjärtinfarkt" could be a class at the IRI http://www.semanticweb.org/jdb/ontologies/2013/8/untitled-ontology-24#AkutHjärtinfarkt.
+
+Subconcept relations are modeled as RDFS subClassOf relations.
+This implies that all properties of the superclass are also properties of its subclasses.
+
+Labeled relations are modeled using OWL Object Properties.
+
 
 \section{Ontology learning evaluation}
 \label{sec:results:eval}
