@@ -1102,13 +1102,19 @@ The user can either add all candidates to the ontology in one step, or select sp
 
 Concept candidates are added as OWL Classes.
 The IRI of a class is constructed as the concept label in camel case appended to the ontology IRI.
-Thus a term "akut hjärtinfarkt" could be a class at the IRI http://www.semanticweb.org/jdb/ontologies/2013/8/untitled-ontology-24#AkutHjärtinfarkt.
+Thus a term "akut hjärtinfarkt" could be a class with the IRI fragment as \#AkutHjärtinfarkt.
 
 Subconcept relations are modeled as RDFS subClassOf relations.
 This implies that all properties of the superclass are also properties of its subclasses.
 
 Labeled relations are modeled using OWL Object Properties.
-
+For a relation \(r\) from concept \(a\) to concept \(b\), we express in OWL that \(a\) is a subclass of an anonymous class whose instances have a relation \(r\) to at least one instance of \(b\).
+This does not imply that all instances which have relation \(r\) to an instance of \(b\) are instances of \(a\).
+It only expresses that it is necessary to have a relation \(r\) to an instance of \(b\) to be an instance of \(a\).
+This way of modelling the relation ers on the side of making a weak assertion but remaining correct until more information is available.
+An alternative way to model these relations would be to create an anonymous class for the domain and range of each relation, where the anonymous class is the union of all classes which are in the subject or object position of that relation, respectively.
+That way of modelling it would incorrectly classify any instance with that relation as one of the classes in the union, until that instance's superclass is discovered and added to the union.
+The chosen modelling approach is not always appropriate and more options are needed here.
 
 \section{Ontology learning evaluation}
 \label{sec:results:eval}
