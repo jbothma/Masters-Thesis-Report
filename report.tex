@@ -901,12 +901,27 @@ The suitability of system building as the approach is discussed in this chapter 
 \todo{generalisability comes from generalisability of the work I'm reusing I think. generalisability of my findings?}
 \end{enumerate}
 
-\section{Practical stuff}
-\todo{not the final title}
+\section{Practical method}
 
-An informal summary of the development method:
+As a systems development research process, \cite{NunamakerChen90SDResearch} proposes the following stages:
 
-Basically, the way I'm making this first step toward Ontology Learning from Swedish Text is by finding, choosing and applying/implementing the minimum methods necessary to achieve some ontology learning. This means I simplify some methods (e.g. only C-Value, no NC-value) and skip some steps (e.g. not distinguishing between concepts and instances). I also put in place some of the things considered important for ongoing research in OL, e.g. traceability/evidence for assertions. I put one part in place at a time, and extend existing parts as needed to support subsequently added parts. Evaluation and future work can then indicate where further work is needed, instead of perfecting one step but never achieving ontology learning. There is also little point for me to focus on just one step at this stage. Each step in OL corresponds to well-defined and ongoing research fields. To advance OL, it seems more useful to apply known good methods from other fields. My methodology is based on incremental development. Each step should try to achieve a well-defined goal and no more. For me, minor steps are the boxes in the Issues for Ontology Learning Systems diagram. Having a minimal working level for each box is the goal of this project. In the long term, this project is a first step, and future steps might aim to improve one or more boxes at a time, keeping the other boxes up to date as far as they are affected by the changes.
+\begin{itemize}
+\item Construct a Conceptual Framework
+\item Develop a System Architecture
+\item Analyze and Design the System
+\item Build the Prototype System
+\item Observe and Evaluate the System 
+\end{itemize}
+
+The practical approach taken in this thesis takes inspiration from this process, but applied to iterative software development practice.
+The question this thesis seeks to answer is how ontology learning can be applied to Swedish text.
+This thesis leans on the work done in ontology learning in other languages, and stems from the conceptual framework developed there.
+Step-by-step, methods are implemented to support another artifact of ontology learning and evaluated informally .
+When the typical facilities of ontology learning systems are demonstrable, the system is evaluated as a whole.
+Priority is given to methods which have some dependency on language processing as it is the application to a new language where this thesis deviates from existing work.
+Throughout the process, observations are noted to be presented along with the software artifact of this thesis to contribute to further work in this field.
+The observations and knowledge gained through the implementation and evaluation of the prototype are further analysed.
+This analysis shows how the research question is answered and abstracts the knowledge gained via this thesis.
 
 \subsection{Evaluation}
 \label{sec:methods:evaluation}
