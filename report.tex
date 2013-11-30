@@ -942,7 +942,7 @@ Relevant information can be missed and irrelevant information suggested as candi
 \chapter{Results}
 
 The results produced as part of this thesis are an ontology learning system prototype supporting Swedish language corpora, and findings of using this prototype on an example ontology development project.
-Section~\ref{sec:results:prototype} documents the prototype implementation while Section~\ref{sec:results:eval} gives the results of using the prototype for ontology learning.
+Section~\ref{sec:results:prototype} describes the prototype implementation while Section~\ref{sec:results:eval} documents the results of using the prototype for ontology learning.
 
 \section{Prototype}
 \label{sec:results:prototype}
@@ -1112,6 +1112,19 @@ The chosen modelling approach is not always appropriate and more options are nee
 
 \section{Ontology learning evaluation}
 \label{sec:results:eval}
+
+The evaluation was performed on a corpus of articles available at http://lakartidningen.se/.
+115 articles were downloaded as HTML documents and preprocessed into plain text.
+This processing consisted of
+\begin{enumerate}
+\item Stripping HTML tags and translation of entities to leave only plain text
+\item Stripping reference sections by removing all text after a line consisting only of the text ``referenser''
+\item Replacing common punctuation outside the ASCII character range with ASCII equivalents
+\end{enumerate}
+
+The resulting corpus consisted of 108 831 words.
+My ontology learning tool found 11 069 class candidates, 420 subclass relation candidates and 123 labeled relation candidates.
+These candidates were exported as comma separated variable files for analysis.
 
 \chapter{Analysis}
 \label{chapter:analysis}
