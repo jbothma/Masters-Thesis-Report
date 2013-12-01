@@ -11,6 +11,7 @@
 %\usepackage{draftwatermark}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{pgfplots}
 
 \floatstyle{plain} % optionally change the style of the new float
 \newfloat{Code}{H}{myc}
@@ -1114,6 +1115,8 @@ The chosen modelling approach is not always appropriate and more options are nee
 \label{sec:results:eval}
 
 The evaluation was performed on a corpus of articles available at http://lakartidningen.se/.
+All articles categorised under Cardiovascular Disease were selected, as this was one of the largest categories denoting a specific subdomain of medicine available in Swedish in the HTML format.
+More articles were available in PDF format but it was harder to reliably extract the plain text of the article from the PDF versions.
 115 articles were downloaded as HTML documents and preprocessed into plain text.
 This processing consisted of
 \begin{enumerate}
@@ -1125,6 +1128,63 @@ This processing consisted of
 The resulting corpus consisted of 108 831 words.
 My ontology learning tool found 11 069 class candidates, 420 subclass relation candidates and 123 labeled relation candidates.
 These candidates were exported as comma separated variable files for analysis.
+I assessed a sample of the extracted candidates for their relevance to the domain and manually extracted candidates from a sample of the corpus to assess how the automated tool compared to a manual effort.
+
+\subsection{Automatically-extracted candidates}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=0.5\textwidth]{concepts}
+  \caption{Concept candidate classification}
+  \label{fig:concept-cands}
+\end{figure}
+
+The top 100 and bottom 100 concept candidates according to C-value were classified with the labels \emph{fault}, \emph{this}, \emph{parent}, or \emph{generic}.
+\emph{This} means the candidate is specific to the domain, namely \emph{Cardiovascular Disease}.
+\emph{Parent} means the concept belongs to one of the relevant parent domains, such as medicine or academic research.
+\emph{Generic} means the concept is not specific to a relevant domain.
+\emph{Fault} means that the text does not refer to any specific concept at all.
+Figure~\ref{fig:concept-cands} shows the results of this classification.
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=0.8\textwidth]{concepts-mistakes}
+  \caption{Concept candidate mistakes}
+  \label{fig:concept-cand-mistakes}
+\end{figure}
+
+The candidates classified as \emph{fault} were further classified to describe the nature of the fault.
+The fault categories were defined as follows:
+\begin{itemize}
+  \item \emph{ajd} The candidate is just an adjective
+  \item \emph{adj of qty/qlty} The candidate is an adjective of quantity or quality
+  \item \emph{incomplete term} An incomplete of a term meaning nothing iby itself
+  \item \emph{insufficient lexical analysis} <-- not a fault term
+  \item \emph{lexical filter} <-- could put this with not a term
+  \item \emph{name} The candidate is the name of a person
+  \item \emph{not a term} text that doesn't represent a term for some other reason
+  \item \emph{other language} Text in a language other than swedish
+  \item \emph{unit of measurement} e.g. ml, kg
+\end{itemize}
+The numbers of occurrences of these mistakes are shown in Figure~\ref{fig:concept-cand-mistakes}.
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=0.5\textwidth]{subconcepts-mistakes}
+  \caption{Subconcept candidate mistakes}
+  \label{fig:subconcept-cands}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=0.5\textwidth]{labeled-relations}
+  \caption{Labeled relation candidates}
+  \label{fig:rel-cands}
+\end{figure}
+
+
+
+\subsection{Comparison with manually-extracted candidates}
 
 \chapter{Analysis}
 \label{chapter:analysis}
