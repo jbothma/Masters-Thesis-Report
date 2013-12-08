@@ -1132,13 +1132,6 @@ I assessed a sample of the extracted candidates for their relevance to the domai
 
 \subsection{Automatically-extracted candidates}
 
-\begin{figure}[p]
-  \centering
-  \includegraphics[width=0.5\textwidth]{concepts}
-  \caption{Concept candidate classification}
-  \label{fig:concept-cands}
-\end{figure}
-
 The top 100 and bottom 100 concept candidates according to C-value were classified with the labels \emph{fault}, \emph{this}, \emph{parent}, or \emph{generic}.
 \emph{This} means the candidate is specific to the domain, namely \emph{Cardiovascular Disease}.
 \emph{Parent} means the concept belongs to one of the relevant parent domains, such as medicine or academic research.
@@ -1146,17 +1139,17 @@ The top 100 and bottom 100 concept candidates according to C-value were classifi
 \emph{Fault} means that the text does not refer to any specific concept at all.
 Figure~\ref{fig:concept-cands} shows the results of this classification.
 
-\begin{figure}[p]
+\begin{figure}
   \centering
-  \includegraphics[width=0.8\textwidth]{concepts-mistakes}
-  \caption{Concept candidate mistakes}
-  \label{fig:concept-cand-mistakes}
+  \includegraphics[width=0.5\textwidth]{concepts}
+  \caption{Concept candidate classification}
+  \label{fig:concept-cands}
 \end{figure}
 
 The candidates classified as \emph{fault} were further classified to describe the nature of the fault.
 The fault categories were defined as follows:
 \begin{itemize}
-  \item \emph{ajd} The candidate is just an adjective
+  \item \emph{adj} The candidate is just an adjective
   \item \emph{adj of qty/qlty} The candidate is an adjective of quantity or quality
   \item \emph{incomplete term} An incomplete of a term meaning nothing iby itself
   \item \emph{insufficient lexical analysis} <-- not a fault term
@@ -1168,14 +1161,40 @@ The fault categories were defined as follows:
 \end{itemize}
 The numbers of occurrences of these mistakes are shown in Figure~\ref{fig:concept-cand-mistakes}.
 
-\begin{figure}[p]
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{concepts-mistakes}
+  \caption{Concept candidate mistakes}
+  \label{fig:concept-cand-mistakes}
+\end{figure}
+
+Subconcept candidates were also classified as \emph{correct} or \emph{mistake}, where 43\% were classified as correct.
+Mistakes were classified as follows:
+
+\begin{itemize}
+  \item \emph{degree} subclass part indicates magnitude of superclass part
+  \item \emph{head not a term} <-- merge with ``not a term''
+  \item \emph{negation} <-- merge with degree
+  \item \emph{not a term} one of the sides of the relation is not a term
+  \item \emph{nounphrase complexity} one of the sides of the relation are incomplete and need support for more complex noun phrases
+  \item \emph{number} <- merged
+  \item \emph{posessive noun} <- the subclass is a posessive noun, not a specialisation
+  \item \emph{self} <- the subclass and superclass are the same
+\end{itemize}
+
+The numbers of these mistakes are shown in Figure~\ref{fig:subconcept-cands}.
+
+\begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{subconcepts-mistakes}
   \caption{Subconcept candidate mistakes}
   \label{fig:subconcept-cands}
 \end{figure}
 
-\begin{figure}[p]
+Labeled relations were classified with \emph{yes}, \emph{no} and \emph{yes too general}, shown in Figure~\ref{fig:rel-cands}.
+\emph{yes too general} means that the relation isn't wrong but the terms are not precise enough for the relation to be useful.
+
+\begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{labeled-relations}
   \caption{Labeled relation candidates}
