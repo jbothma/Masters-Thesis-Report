@@ -1131,6 +1131,7 @@ These candidates were exported as comma separated variable files for analysis.
 I assessed a sample of the extracted candidates for their relevance to the domain and manually extracted candidates from a sample of the corpus to assess how the automated tool compared to a manual effort.
 
 \subsection{Automatically-extracted candidates}
+\label{sec:results:eval:cands}
 
 The top 100 and bottom 100 concept candidates according to C-value were classified with the labels \emph{fault}, \emph{this}, \emph{parent}, or \emph{generic}.
 \emph{This} means the candidate is specific to the domain, namely \emph{Cardiovascular Disease}.
@@ -1223,23 +1224,32 @@ None of them were found by the automatic subclass extraction.
 \chapter{Analysis}
 \label{chapter:analysis}
 
-\section{Implementation}
-
 %%UU-REQ Evidence that the student has made a critical evaluation of the signiﬁcance of the project outcomes, limitations of the results
 %UU-CHAP Data collection and analysis where relevant, or testing of the solution of product.
 %% Critical analysis of the results - show you know its limitations
 
-\subsection{Preprocessing}
+%%\section{Implementation}
+%%
+%%
+%%\subsection{Preprocessing}
 
-I should probably have assumed nicely-formatted input rather than being concerned with handling any bunch of PDFs or whatever.
-Handling all sorts of input, a bit like T2O, is a nice idea for a real life OL system but given that my objective is to focus on learning about OL from Swedish, preprocessing crap was out of scope. 
-\todo{obviously make this more formal and structured, but then also add references to the part of the analysis where I identify bad results due to formatting and unclean input.}
+%%I should probably have assumed nicely-formatted input rather than being concerned with handling any bunch of PDFs or whatever.
+%%Handling all sorts of input, a bit like T2O, is a nice idea for a real life OL system but given that my objective is to focus on learning about OL from Swedish, preprocessing crap was out of scope. 
+%%\todo{obviously make this more formal and structured, but then also add references to the part of the analysis where I identify bad results due to formatting and unclean input.}
+%%
+%%Informally, I didn't use SVENSK because it was difficult to find\footnote{try googling SVENSK language processing, and the URL in \cite{Olsson98SVENSKTagging} is broken, I only just found the old site in the internet archive wayback machine}, I don't think it was mentioned in the BLARK report\todo{check}, and more recent language processing tools existed than those included in SVENSK and better performance from these could be expected.
+%%However, I could have learnt something useful by looking at their lessons learnt.
+%%They also used GATE and talk a lot about what they learnt in trying to make a general purpose language processing tool.
+%%Keeping the preprocessing general in an OL system would probably help in supporting pluggable IE components and might support related research or benefit from easy integration of new preprocessing tools. \todo{formalize this para}
 
-Informally, I didn't use SVENSK because it was difficult to find\footnote{try googling SVENSK language processing, and the URL in \cite{Olsson98SVENSKTagging} is broken, I only just found the old site in the internet archive wayback machine}, I don't think it was mentioned in the BLARK report\todo{check}, and more recent language processing tools existed than those included in SVENSK and better performance from these could be expected.
-However, I could have learnt something useful by looking at their lessons learnt.
-They also used GATE and talk a lot about what they learnt in trying to make a general purpose language processing tool.
-Keeping the preprocessing general in an OL system would probably help in supporting pluggable IE components and might support related research or benefit from easy integration of new preprocessing tools. \todo{formalize this para}
+\subsection{Candidate extraction and recommendation}
 
+The results in Section~\ref{sec:results:eval:cands} indicate several things about the performance of the prototype on candidate extraction and recommendation.
+Most of the candidates extracted do appear to be useful labels for classes, but most of them are more general than the domain at hand.
+Some way of automatically identifying these more-general concepts would be useful to avoid duplicate definitions in OL for similar domains and to improve interoperability of ontologies.
+Domain concepts occurred frequently in both high-confidence and lower-confidence groups.
+This suggests that domain concepts were likely spread throughout the confidence spectrum and more work is needed to prioritise them.
+However, candidates classified as faults were concentrated in the group with lowest confidence, which shows that the confidence measure is already useful in reducing the amount of irrelevant concepts that would need to be inspected to build the ontology.
 
 \chapter{Conclusion}
 %%UU-CHAP Conclusions reached and future enhancement or work that could be conducted to reﬁne the system.
@@ -1253,17 +1263,4 @@ Keeping the preprocessing general in an OL system would probably help in support
 
 If I did it again, I'd start out reading a research guide like Creswell's \cite{creswell2003research}.
 
-The expectations still feel a bit unclear, even though I'm more familiar with the process. It's difficult to bring together the ideas of "master's level doesn't need original reseach", "it's not a programming exercise", "most people go and program something at a company", the thesis course outcomes and the variety of master's level guides - some universities lean more towards a researchy feel and some more towards a software engineering feel. Not to mention the variety in quality and researchyness of reports in Uppsala's DiVA archives. I think the issue about original research comes from the requirement that we must "delimit a scientific problem" ... and once you involve science you involve research methods, which involve novelty for relevance. If this is correct and this rule can be broken, it should be clearer how to break it without breaking some other rule you're not allowed to break.
-
-\todo{check if a section such as this is expected, required, and what is expected of it.}
-
-\clearpage
-%\addcontentsline{toc}{chapter}{References}
-%\renewcommand\bibname{References}
-
-%\renewcommand{\refname}{}
-%\chapter{References}
-\bibliographystyle{unsrt}
-\bibliography{report}
-
-\end{document}
+The expectations still feel a bit unclear, even though I'm more familiar with the process. It's difficult to bring together the ideas of "master's level doesn't need original reseach", "
