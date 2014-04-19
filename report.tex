@@ -1224,6 +1224,8 @@ None of them were found by the automatic subclass extraction.
 \chapter{Analysis}
 \label{chapter:analysis}
 
+The results in Section~\ref{sec:results:eval} indicate several things about the performance of the prototype on candidate extraction and recommendation.
+
 %%UU-REQ Evidence that the student has made a critical evaluation of the signiﬁcance of the project outcomes, limitations of the results
 %UU-CHAP Data collection and analysis where relevant, or testing of the solution of product.
 %% Critical analysis of the results - show you know its limitations
@@ -1244,12 +1246,23 @@ None of them were found by the automatic subclass extraction.
 
 \subsection{Candidate extraction and recommendation}
 
-The results in Section~\ref{sec:results:eval:cands} indicate several things about the performance of the prototype on candidate extraction and recommendation.
-Most of the candidates extracted do appear to be useful labels for classes, but most of them are more general than the domain at hand.
+Most of the concept candidates extracted do appear to be useful labels for classes, but most of them are more general than the domain at hand.
 Some way of automatically identifying these more-general concepts would be useful to avoid duplicate definitions in OL for similar domains and to improve interoperability of ontologies.
 Domain concepts occurred frequently in both high-confidence and lower-confidence groups.
 This suggests that domain concepts were likely spread throughout the confidence spectrum and more work is needed to prioritise them.
 However, candidates classified as faults were concentrated in the group with lowest confidence, which shows that the confidence measure is already useful in reducing the amount of irrelevant concepts that would need to be inspected to build the ontology.
+
+Many of the faults can be excluded using existing tools.
+Names can be identified using Named Entity Recognition and considering whether words start with upper case, and excluded or replaced by a label for the concept of which the name denotes an instance.
+Words in other languages can be identified using word lists.
+Units of measurement can be identified based on known patterns.
+Values with their units can then be recorded as concrete data which might be useful in data sets to accompany an ontology or to indicate what attributes a concept might have.
+
+\subsection{Candidate extraction and recommendation}
+
+The result of 43\% of subconcept candidates being correct is rather disappointing, but the majority of the mistakes can be excluded using simple filters.
+Subclass relations to the concept itself can easily be filtered out by comparing the subject and object.
+A set of domain-independent stop words can be used to exclude candidates which really indicate the degree of some concept, such as olika, många, två, tre, stor, liten.
 
 \chapter{Conclusion}
 %%UU-CHAP Conclusions reached and future enhancement or work that could be conducted to reﬁne the system.
@@ -1263,4 +1276,17 @@ However, candidates classified as faults were concentrated in the group with low
 
 If I did it again, I'd start out reading a research guide like Creswell's \cite{creswell2003research}.
 
-The expectations still feel a bit unclear, even though I'm more familiar with the process. It's difficult to bring together the ideas of "master's level doesn't need original reseach", "
+The expectations still feel a bit unclear, even though I'm more familiar with the process. It's difficult to bring together the ideas of "master's level doesn't need original reseach", "it's not a programming exercise", "most people go and program something at a company", the thesis course outcomes and the variety of master's level guides - some universities lean more towards a researchy feel and some more towards a software engineering feel. Not to mention the variety in quality and researchyness of reports in Uppsala's DiVA archives. I think the issue about original research comes from the requirement that we must "delimit a scientific problem" ... and once you involve science you involve research methods, which involve novelty for relevance. If this is correct and this rule can be broken, it should be clearer how to break it without breaking some other rule you're not allowed to break.
+
+\todo{check if a section such as this is expected, required, and what is expected of it.}
+
+\clearpage
+%\addcontentsline{toc}{chapter}{References}
+%\renewcommand\bibname{References}
+
+%\renewcommand{\refname}{}
+%\chapter{References}
+\bibliographystyle{unsrt}
+\bibliography{report}
+
+\end{document}
