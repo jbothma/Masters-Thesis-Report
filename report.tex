@@ -1258,11 +1258,19 @@ Words in other languages can be identified using word lists.
 Units of measurement can be identified based on known patterns.
 Values with their units can then be recorded as concrete data which might be useful in data sets to accompany an ontology or to indicate what attributes a concept might have.
 
+The terms that were extracted manually show a similar distribution when comparing ranking to domain.
+Most of the specific domain concepts were given lower confidence values, while the parent and general domain concepts received high confidence values.
+This shows that important concepts are being identified, but a lot of time would be wasted considering general concepts, and this is an area where improvement is needed.
+There were also a significant number of terms that were extracted manually but not automatically.
+More work is needed to identify these automatically to cover a target domain properly.
+
 \subsection{Subconcept relation extraction and recommendation}
 
 The result of 43\% of subconcept candidates being correct is rather disappointing, but the majority of the mistakes can be excluded using simple filters.
 Subclass relations to the concept itself can easily be filtered out by comparing the subject and object.
 A set of domain-independent stop words can be used to exclude candidates which really indicate the degree of some concept, such as olika, många, två, tre, stor, liten.
+None of the manually-extracted subclass relations were identified automatically.
+This shows that the low number of automatically-extracted subclass relations is due to limitations in extraction, and not simply their lower occurrence compared to concepts.
 
 \subsection{Labeled relation extraction and recommendation}
 
@@ -1272,6 +1280,9 @@ The category of "yes, too general" included relations like "studie raporterar nj
 While it might be true that some study reported kidney function, it wouldn't be useful to model that all studies report kidney function.
 The relation extraction we used also extracted the relation "studie har begrängsning" which is a sensible general attribute about studies in a model.
 It is therefore important for the relation extraction to indicate more precisely whether it applies to an instance, a subset, or the entire class selected by its arguments.
+As with subconcept relations, several labeled relations were extracted manually.
+None of these were extracted automatically.
+There is a clear need for higher recall in labeled relation extraction.
 
 \chapter{Conclusion}
 %%UU-CHAP Conclusions reached and future enhancement or work that could be conducted to reﬁne the system.
