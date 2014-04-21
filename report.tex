@@ -1313,16 +1313,30 @@ A richer selection of extraction methods should be expected to deliver much bett
 %%UU-REQ Strength of the conclusions reached, including the ability to provide a concise summary of the signiﬁcance of the work and reﬂect on work practice and outcomes with the intent to improve performance in future projects.
 % summarise introduction with detail from Solution and Evaluation
 
+The analysis in Chapter~\ref{chapter:analysis} showed that a tool was produced that could successfully extract and recommend candidates for ontology elements.
+These candidates could then be selected for constructing a domain ontology using the tool.
+As expected, the precision and recall was rather low, but sufficient for demonstrating the feasibility of building an ontology learning system that supports Swedish natural language corpora using available tools and methods.
+This was as a result of the limited selection of methods that could be implemented and integrated in the scope of this project.
+Further work can significantly improve these results.
+
 \section{Further Work}
+
+This tool successfully integrated the GATE, Protege and Korp frameworks.
+Further research into and practice of ontology engineering depends on being able to integrate, select, and combine the results of a multitude of methods throughout the OL pipeline.
+The above frameworks are important building blocks, but an integration layer for easing the integration of OL methods - rather than building them directly into the system as done here - is important to such a system.
+An architecture for such a system is described in~\citep{Cimiano2009OL}, where an array of resource processing, extraction and recommendation tools are available.
+Resource processing tools for a range of languages can be made available in such a framework.
+Many algorithms are already very language-independent, but the combination of evidence across languages - and exactly what an OWL ontology built from multilingual resources would look like - needs to be explored further.
+
 %% show you know what’s missing
 
-\section{Personal reflections}
-
-If I did it again, I'd start out reading a research guide like Creswell's \cite{creswell2003research}.
-
-The expectations still feel a bit unclear, even though I'm more familiar with the process. It's difficult to bring together the ideas of "master's level doesn't need original reseach", "it's not a programming exercise", "most people go and program something at a company", the thesis course outcomes and the variety of master's level guides - some universities lean more towards a researchy feel and some more towards a software engineering feel. Not to mention the variety in quality and researchyness of reports in Uppsala's DiVA archives. I think the issue about original research comes from the requirement that we must "delimit a scientific problem" ... and once you involve science you involve research methods, which involve novelty for relevance. If this is correct and this rule can be broken, it should be clearer how to break it without breaking some other rule you're not allowed to break.
-
-\todo{check if a section such as this is expected, required, and what is expected of it.}
+%%\section{Personal reflections}
+%%
+%%If I did it again, I'd start out reading a research guide like Creswell's \cite{creswell2003research}.
+%%
+%%The expectations still feel a bit unclear, even though I'm more familiar with the process. It's difficult to bring together the ideas of "master's level doesn't need original reseach", "it's not a programming exercise", "most people go and program something at a company", the thesis course outcomes and the variety of master's level guides - some universities lean more towards a researchy feel and some more towards a software engineering feel. Not to mention the variety in quality and researchyness of reports in Uppsala's DiVA archives. I think the issue about original research comes from the requirement that we must "delimit a scientific problem" ... and once you involve science you involve research methods, which involve novelty for relevance. If this is correct and this rule can be broken, it should be clearer how to break it without breaking some other rule you're not allowed to break.
+%%
+%%\todo{check if a section such as this is expected, required, and what is expected of it.}
 
 \clearpage
 %\addcontentsline{toc}{chapter}{References}
