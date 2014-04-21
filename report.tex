@@ -1262,14 +1262,14 @@ The rest of this chapter discusses what can be learnt from from the results in S
 
 \subsection{Concept extraction and recommendation}
 
-Most of the concept candidates extracted do appear to be useful labels for classes, but most of them are more general than the domain at hand.
+Most of the concept candidates extracted do appear to be useful concepts for modelling the domain, but most of them are more general than the domain at hand.
 Some way of automatically identifying these more-general concepts would be useful to avoid duplicate definitions in OL for similar domains and to improve interoperability of ontologies.
 Domain concepts occurred frequently in both high-confidence and lower-confidence groups.
 This suggests that domain concepts were likely spread throughout the confidence spectrum and more work is needed to prioritise them.
 However, candidates classified as faults were concentrated in the group with lowest confidence, which shows that the confidence measure is already useful in reducing the amount of irrelevant concepts that would need to be inspected to build the ontology.
 
 Many of the faults can be excluded using existing tools.
-Names can be identified using Named Entity Recognition and considering whether words start with upper case, and excluded or replaced by a label for the concept of which the name denotes an instance.
+Names can be identified using Named Entity Recognition and excluded or replaced by a label for the concept of which the name denotes an instance.
 Words in other languages can be identified using word lists.
 Units of measurement can be identified based on known patterns.
 Values with their units can then be recorded as concrete data which might be useful in data sets to accompany an ontology or to indicate what attributes a concept might have.
@@ -1279,16 +1279,20 @@ Most of the specific domain concepts were given lower confidence values, while t
 This shows that important concepts are being identified, but a lot of time would be wasted considering general concepts, and this is an area where improvement is needed.
 There were also a significant number of terms that were extracted manually but not automatically.
 More work is needed to identify these automatically to cover a target domain properly.
+It can be expected that coreference resolution would help here, since domain concepts are likely to be the specific concepts being discussed, and thus replaced by coreferences like pronouns, and are thus not being given enough prominence in this prototype.
 
-An example of how the C-value ranking is working well is with the term "typ 2-diabetes". Both the full term and "2-diabetes" were selected as concepts, but the ranking for "typ 2-diabetes" is very high, while the ranking for "2-diabetes" is very low, since it occurs frequently, but only as part of the complete term.
+An example of how the C-value ranking is working well is with the term "typ 2-diabetes". Both the full term and "2-diabetes" were selected as concepts, but the ranking for "typ 2-diabetes" is very high, while the ranking for "2-diabetes" is very low. This is because the latter occurs frequently, but only as part of the complete term.
 
 \subsection{Subconcept relation extraction and recommendation}
 
 The result of 43\% of subconcept candidates being correct is rather disappointing, but the majority of the mistakes can be excluded using simple filters.
 Subclass relations to the concept itself can easily be filtered out by comparing the subject and object.
-A set of domain-independent stop words can be used to exclude candidates which really indicate the degree of some concept, such as olika, många, två, tre, stor, liten.
+A set of domain-independent stop words can be used to exclude candidates which really indicate the magnitude of some concept, such as olika, många, två, tre, stor, liten.
 None of the manually-extracted subclass relations were identified automatically.
 This shows that the low number of automatically-extracted subclass relations is due to limitations in extraction, and not simply their lower occurrence compared to concepts.
+This limitation is clearly related to the simplistic linguistic filter used in this prototype.
+Hyponymy can be expressed in many ways, and a variety of methods should be employed for more realistic modelling.
+The feasibility of one common method was demonstrated here.
 
 \subsection{Labeled relation extraction and recommendation}
 
@@ -1301,6 +1305,8 @@ It is therefore important for the relation extraction to indicate more precisely
 As with subconcept relations, several labeled relations were extracted manually.
 None of these were extracted automatically.
 There is a clear need for higher recall in labeled relation extraction.
+Again, the limitation here was the simplicity of the methods used to demonstrate feasibility, and the compounding effect of errors and low recall earlier in the pipeline.
+A richer selection of extraction methods should be expected to deliver much better results.
 
 \chapter{Conclusion}
 %%UU-CHAP Conclusions reached and future enhancement or work that could be conducted to reﬁne the system.
