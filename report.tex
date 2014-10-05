@@ -943,10 +943,7 @@ Relevant information can be missed and irrelevant information suggested as candi
 \chapter{Results}
 
 The results produced as part of this thesis are an ontology learning system prototype supporting Swedish language corpora, and findings of using this prototype on an example ontology development project.
-Section~\ref{sec:results:prototype} describes the prototype implementation while Section~\ref{sec:results:eval} documents the results of using the prototype for ontology learning.
 
-\section{Prototype}
-\label{sec:results:prototype}
 This section describes the design and implementation of the prototype ontology learning system.
 The design is shown in figure~\ref{fig:prototype-design}.
 
@@ -966,7 +963,7 @@ The project is used to trigger preprocessing and extraction, and hold references
   \label{fig:method-artifact}
 \end{figure}
 
-\subsection{Preprocessing}
+\section{Preprocessing}
 % Remember if we want more detail, look back in git.
 Preprocessing is done partly using the Korp corpus import pipeline, and partly using GATE.
 When a project is created, the corpus can be imported using a filter or simply all files in a given folder.
@@ -977,7 +974,7 @@ When the Korp pipeline finishes processing the corpus, the annotations are impor
 Next, the JAPE rules are run to apply higher-level annotations to the corpus.
 The term candidate JAPE rule is described in the next section, while the labeled relation JAPE rule is discussed in Section~\ref{sec:results:proto:cands}.
 
-\subsubsection{Linguistic Filter for Term Candidates}
+\subsection{Linguistic Filter for Term Candidates}
 \label{sec:results:proto:prepr}
 
 For initial potential terms to be selected by the C-Value method, a linguistic filter of zero or more adjectives, followed by one or more nouns, is used.
@@ -1012,7 +1009,7 @@ The JAPE expression defining the filter is shown in Listing~\ref{lst:termcand}.
 \end{lstlisting}
 \end{Code}
 
-\subsection{Candidate Extraction}
+\section{Candidate Extraction}
 
 For each of the typical layers of ontologies, one or two types of element were extracted to demonstrate some relevant method.
 Methods with an important linguistic component are the most interesting in this case. 
@@ -1020,7 +1017,7 @@ For concepts, labeled concepts were extracted.
 For taxonomic relations, subconcept relations were extracted.
 For non-taxonomic relations, labeled relations between concepts were extracted.
 
-\subsubsection{Concepts}
+\subsection{Concepts}
 
 Concepts are assumed to be represented by terms in the corpus.
 Term candidates are extracted using the C-value part from the C-value NC-value method for extracting multi-word terms.
@@ -1031,7 +1028,7 @@ To be able to use C-value as a relevance measure for single- and multi-word term
 Single-word terms are thus given useful C-values, instead of being totally disregarded.
 The modified C-value is referred to as \emph{confidence}, representing the confidence that a given term is relevant to the domain being modeled.
 
-\subsubsection{Subconcept Relations}
+\subsection{Subconcept Relations}
 
 Two methods for extracting subclass relations were implemented.
 One method uses hierarchical agglomerative clustering, and the other uses a syntactic pattern.
@@ -1077,7 +1074,7 @@ During extraction, we iterate over all SubclassOf annotations, adding a subclass
 \end{lstlisting}
 \end{Code}
 
-\subsubsection{Labeled relations}
+\subsection{Labeled relations}
 \label{sec:results:proto:cands}
 
 Labeled relation extraction was based on syntactic dependency relations - one per sentence - where the appropriate annotations are found.
@@ -1090,7 +1087,7 @@ This value is intended to indicate importance to the domain being modeled.
 The value is calculated as the sum of the confidence of the domain and range term candidates for each occurrence of the relation.
 Relations between important term candidates are thus favoured, as are frequently-occurring relations.
 
-\subsection{Ontology Construction}
+\section{Ontology Construction}
 
 The Ontology Construction component is responsible for modelling the domain in an OWL ontology based on the extracted ontology element candidates.
 The user can either add all candidates to the ontology in one step, or select specific candidates and add only them to the ontology.
@@ -1111,8 +1108,10 @@ An alternative way to model these relations would be to create an anonymous clas
 That way of modelling it would incorrectly classify any instance with that relation as one of the classes in the union, until that instance's superclass is discovered and added to the union.
 The chosen modelling approach is not always appropriate and more options are needed here.
 
-\section{Ontology learning evaluation}
+\chapter{Results evaluation}
 \label{sec:results:eval}
+
+\section{Evaluation Setup}
 
 The evaluation was performed on a corpus of articles available at \url{http://lakartidningen.se/}.
 All articles categorised under Cardiovascular Disease were selected, as this was one of the largest categories denoting a specific subdomain of medicine available in Swedish in the HTML format.
@@ -1124,6 +1123,8 @@ This processing consisted of
 \item Stripping reference sections by removing all text after a line consisting only of the text ``referenser''
 \item Replacing common punctuation outside the ASCII character range with ASCII equivalents
 \end{enumerate}
+
+\section{Evaluation Results}
 
 The resulting corpus consisted of 108 831 words.
 My ontology learning tool found 11 069 class candidates, 420 subclass relation candidates and 123 labeled relation candidates.
@@ -1221,7 +1222,7 @@ None of them were found by the automatic subclass extraction.
 21 labeled relations were found manually.
 None of them were found by the automatic subclass extraction.
 
-\chapter{Analysis}
+\section{Analysis and discussion}
 \label{chapter:analysis}
 
 %%UU-REQ Evidence that the student has made a critical evaluation of the signiﬁcance of the project outcomes, limitations of the results
