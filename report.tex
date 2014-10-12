@@ -947,7 +947,9 @@ The first two objectives of this project were were to develop a prototype system
 This chapter describes how such a system was implemented.
 The work towards the first objective of suggesting concepts and relations for a domain ontology is described in section~\ref{sec:results:proto:cands}.
 The implementation for the second objective of semi-automatic ontology construction is described in section~\ref{sec:results:proto:contruction}.
-The design is shown in figure~\ref{fig:prototype-design}.
+The design is shown in figure~\ref{fig:prototype-design} and described in the next section.
+
+\section{Design}
 
 \begin{figure}
   \includegraphics[width=10cm]{graphics/protege-plugin-components-simple.png}
@@ -957,7 +959,13 @@ The design is shown in figure~\ref{fig:prototype-design}.
 
 Designed as a plugin to the Protege ontology editor, it can be embedded inside the Protege editor window alongside other plugins designed to ease ontology development and maintenance.
 The plugin consists of Protege integration, a graphical user interface and an ontology learning project instance.
-The project is used to trigger preprocessing and extraction, and hold references to storage of the corpus and ontology element candidates. After candidate extraction, the Ontology Construction component is used to model the domain in the current OWL ontology in Protege. The project can also be used to extract candidates for use outside of this system.
+The dependencies between components are depicted as arrows in figure~\ref{fig:prototype-design}.
+When is installed, Protege initialises the Protege Ontology Learning Plugin.
+The user can then set up and create an ontology learning Project instance.
+The project is used to trigger preprocessing and extraction, and hold references to storage of the corpus and ontology element candidates.
+After candidate extraction, the Ontology Construction component is used to model the domain in the current OWL ontology in Protege.
+This component calls into the Protege system to add elements to the currently-open ontology which is available to all plugins in the Protege system.
+The ontology can be stored for later use using Protege's built-in ontology management facilities, and the project can be used to extract candidates for use outside of this system.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{graphics/method-element-dependencies.png}
