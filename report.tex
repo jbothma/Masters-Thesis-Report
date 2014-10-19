@@ -976,12 +976,14 @@ The ontology can be stored for later use using Protege's built-in ontology manag
 \section{Preprocessing}
 \label{sec:results:proto:prepr}
 % Remember if we want more detail, look back in git.
-Preprocessing is done partly using the Korp corpus import pipeline, and partly using GATE.
-When a project is created, the corpus can be imported using a filter or simply all files in a given folder.
+Preprocessing is done partly using the Korp corpus import pipeline~(\ref{sec:background:korp}, and partly using GATE~(\ref{sec:background:gate}).
+When a project is created, the corpus can be imported using a filter on filename or simply all files in a given folder.
 This adds the documents to a GATE corpus, which extracts the text from various document formats.
+I created a graphical user interface as part of the Preprocessing compoto select the project directory and corpus files, and trigger the import.
 For syntactic annotation, the corpus is exported to a directory where the Korp pipeline can take it as input.
 The Korp pipeline was configured to annotate the corpus with part of speech tags, lemmas, word boundaries, sentence boundaries, and syntactic dependencies.
 When the Korp pipeline finishes processing the corpus, the annotations are imported to the working GATE corpus.
+GATE automatically picks up the annotations in the Korp output and stores them in the GATE corpus.
 Next, the JAPE rules are run to apply higher-level annotations to the corpus.
 The term candidate JAPE rule is described in the next section, while the labeled relation JAPE rule is discussed in Section~\ref{sec:results:proto:cands}.
 
@@ -998,10 +1000,10 @@ Selecting the head noun in certain noun phrase forms such as DetAdj*Noun+PrepNou
 The Adj*Noun+ form performed well for English in the evaluation of C-Value in \cite{Frantzi98CNCValue} and many Swedish noun phrases take this form \todo{cite swedish noun phrase book} so this was a reasonable approximation for the objective of this thesis.
 For better results, more experimentation is needed to identify more effective linguistic filters for Swedish, but as with all patterns and models, the ideal can vary between domains and corpora.
 
-The initial term candidate selection was performed as annotations in the corpus along with syntactic feature annotation for convenience.
-This was performed using JAPE expressions matching on parts of speech annotations in the corpus.
+The initial term candidate selection is performed as annotations in the corpus along with syntactic feature annotation for convenience.
+This is performed using JAPE expressions which I wrote, matching on parts of speech annotations in the corpus.
 This implementation made it easy to implement and verify that it is working as intended.
-The JAPE expression is written in a plain text file which can easily be modified to experiment with different patterns, and separates the concerns of the Java code controlling the entire tool and the linguistic filter itself.
+A JAPE expression is written in a plain text file which can easily be modified to experiment with different patterns, and separates the concerns of the Java code controlling the entire tool and the linguistic filter itself.
 The JAPE expression defining the filter is shown in Listing~\ref{lst:termcand}.
 
 \begin{Code}
@@ -1031,33 +1033,35 @@ For non-taxonomic relations, labeled relations between concepts were extracted.
 \subsection{Concepts}
 
 Concepts are assumed to be represented by terms in the corpus.
-Term candidates are extracted using the C-value part from the C-value NC-value method for extracting multi-word terms.
+Term candidates are extracted using the C-value part from the C-value NC-value method for extracting multi-word terms~(\ref{sec:background:cval}.
 The C-value method is applied to the strings annotated with the TermCandidate annotation as described in Section~\ref{sec:results:proto:prepr}.
 The C-value is always a product of \(log_{2} |a|\) where \(a\) is the candidate string and \(|a|\) is the number of words in the string.
 For single-word terms, C-value would normally be \(0\).
 To be able to use C-value as a relevance measure for single- and multi-word terms, we calculate C-value as a product of \(log_{2} (|a|+1)\) instead.
 Single-word terms are thus given useful C-values, instead of being totally disregarded.
 The modified C-value is referred to as \emph{confidence}, representing the confidence that a given term is relevant to the domain being modeled.
+I could not find a suitable implementation of this method so I implemented this myself.
 
 \subsection{Subconcept Relations}
 
 Two methods for extracting subclass relations were implemented.
 One method uses hierarchical agglomerative clustering, and the other uses a syntactic pattern.
 
-The hierarchical agglomerative clustering method used takes term candidates as input and creates subclass relations from one term candidate to another.
+It was faster to implement a simple hierarchical agglomerative clustering library myself with the necessary behaviour than to use an existing library.
+This library takes term candidates as input and creates subclass relations from one term candidate to another.
 The similarity measure is that used in~\cite{Drymonas10OntoGain}.
 Merging for a given cluster stops when no other cluster has a common noun phrase head.
 The noun phrase head is taken as the superconcept of all terms in the cluster.
 Thus a subclass relation candidate is created between each term and its noun phrase head.
 This method is only used on the 1000 term candidates with highest confidence since the implementation has time complexity of \(\mathcal{O}(n^{3})\).
 
-The syntactic pattern method used a translation of one pattern used in Text2Onto\cite{Cimiano2005Text2Onto}.
-The pattern \(NP such as (NP, |NP and)* NP\) has been implemented with \emph{such as} replaced with \emph{såsom} as shown in Listing~\ref{lst:saasom}.
+The syntactic pattern method used was one that I translated to Swedish from those in Text2Onto\cite{Cimiano2005Text2Onto}.
+I implemented the pattern \(NP such as (NP, |NP and)* NP\) with \emph{such as} replaced with \emph{såsom} as shown in Listing~\ref{lst:saasom}.
 The JAPE code before the \verb+-->+ works like a regular expression on annotations.
 The regular expression tries to match one TermCandidate annotation, followed by zero or more commas, then the string "såsom", followed by one or more TermCandidate annotations separated by comma, "och" or "eller".
 Each time this regular expression matches, the part after the \verb+-->+ adds new annotations.
 The first matching term candidate is annotated with "Range".
-The subsequent term candidates are annoted with "Domain".
+The subsequent term candidates are annotated with "Domain".
 The entire matching region is annotated with "SubclassOf".
 This JAPE rule is executed during preprocessing after the other JAPE rules for convenience.
 During extraction, we iterate over all SubclassOf annotations, adding a subclass relation to the term annotated with Range for each term candidate in the contained Domain annotation.
@@ -1090,12 +1094,15 @@ During extraction, we iterate over all SubclassOf annotations, adding a subclass
 Labeled relation extraction was based on syntactic dependency relations - one per sentence - where the appropriate annotations are found.
 The domain of the relation is the term candidate with a subject relation (SS) to the root.
 The range of the relation is the term candidate with an object relation (OO) to the root.
-The label of the relation is dependency root of the sentence, if it is a verb (VB), potentially followed by an additional verb which has a verb group relation (VG) to the root if one exists.
+The label of the relation is the dependency root of the sentence, if it is a verb (VB), potentially followed by an additional verb which has a verb group relation (VG) to the root if one exists.
+I chose one pattern to demonstrate the approach based on example patterns in~\cite{Zouaq11OntoCmaps}.
+The Candidate Extraction component shown in~\ref{fig:prototype-design} creates labeled relation candidates from the text with annotations matching this pattern and adds them to the candidate store.
 
 To ease the task of selecting relevant candidates to be used in constructing the ontology, an \emph{importance} value is calculated for each labeled relation candidate.
 This value is intended to indicate importance to the domain being modeled.
 The value is calculated as the sum of the confidence of the domain and range term candidates for each occurrence of the relation.
 Relations between important term candidates are thus favoured, as are frequently-occurring relations.
+I chose this method based on the finding in~\cite{Zouaq11OntoCmaps} that concept importance was one of the best indicators of relation importance in the methods evaluated there.
 
 \section{Ontology Construction}
 \label{sec:results:proto:contruction}
@@ -1114,7 +1121,7 @@ Labeled relations are modeled using OWL Object Properties.
 For a relation \(r\) from concept \(a\) to concept \(b\), we express in OWL that \(a\) is a subclass of an anonymous class whose instances have a relation \(r\) to at least one instance of \(b\).
 This does not imply that all instances which have relation \(r\) to an instance of \(b\) are instances of \(a\).
 It only expresses that it is necessary to have a relation \(r\) to an instance of \(b\) to be an instance of \(a\).
-This way of modelling the relation ers on the side of making a weak assertion but remaining correct until more information is available.
+I chose this way of modelling the relation to er on the side of making a weak assertion but remaining correct until more information is available.
 An alternative way to model these relations would be to create an anonymous class for the domain and range of each relation, where the anonymous class is the union of all classes which are in the subject or object position of that relation, respectively.
 That way of modelling it would incorrectly classify any instance with that relation as one of the classes in the union, until that instance's superclass is discovered and added to the union.
 The chosen modelling approach is not always appropriate and more options are needed here.
