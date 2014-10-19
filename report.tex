@@ -3,6 +3,7 @@
 \usepackage[numbers]{natbib} % scientific references in the bibliography
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage[space]{grffile} % support spaces in gfx path
 %\usepackage{datetime}
 \usepackage{color}
 \usepackage{perpage} %the perpage package
@@ -21,7 +22,6 @@
 }
 \lstset{extendedchars=\true}
 \lstset{inputencoding=ansinew}
-
 
 \newcommand{\todo}[1]{\footnote{{\color{red} TODO: #1}}}
 
@@ -1095,7 +1095,7 @@ Labeled relation extraction was based on syntactic dependency relations - one pe
 The domain of the relation is the term candidate with a subject relation (SS) to the root.
 The range of the relation is the term candidate with an object relation (OO) to the root.
 The label of the relation is the dependency root of the sentence, if it is a verb (VB), potentially followed by an additional verb which has a verb group relation (VG) to the root if one exists.
-I chose one pattern to demonstrate the approach based on example patterns in~\cite{Zouaq11OntoCmaps}.
+I to demonstrate the approach based on example patterns in~\cite{Zouaq11OntoCmaps}.
 The Candidate Extraction component shown in~\ref{fig:prototype-design} creates labeled relation candidates from the text with annotations matching this pattern and adds them to the candidate store.
 
 To ease the task of selecting relevant candidates to be used in constructing the ontology, an \emph{importance} value is calculated for each labeled relation candidate.
@@ -1125,6 +1125,99 @@ I chose this way of modelling the relation to er on the side of making a weak as
 An alternative way to model these relations would be to create an anonymous class for the domain and range of each relation, where the anonymous class is the union of all classes which are in the subject or object position of that relation, respectively.
 That way of modelling it would incorrectly classify any instance with that relation as one of the classes in the union, until that instance's superclass is discovered and added to the union.
 The chosen modelling approach is not always appropriate and more options are needed here.
+
+\section{Walkthrough}
+
+This section shows how to install and use the prototype while demonstrating it with a sample of the evaluation corpus.
+
+\subsection{Dependencies}
+
+\begin{itemize}
+\item Korp Corpus Pipeline\footnote{http://spraakbanken.gu.se/eng/research/infrastructure/korp/distribution/corpuspipeline}
+\item HunPOS\footnote{http://hunpos.googlecode.com/files/hunpos-1.0-linux.tgz}
+\item Protege 4.1 or later\footnote{http://protege.stanford.edu/download/protege/4.1/installanywhere/Web\_Installers/InstData/Linux\_64bit/VM/install\_protege\_4.1.bin}
+\item Gate 7.0 \footnote{http://downloads.sourceforge.net/project/gate/gate/7.0/gate-7.0-build4195-installer-other.jar}
+\item GNU make
+\item Subversion - Korp uses it to download and update its language models
+\end{itemize}
+
+\subsection{Environment Variables}
+
+The following environment variables need to be available to Protege and all its subprocesses.
+If Protege is started from the command line shell you can set them in the shell.
+If Protege is started from a GUI shortcut, the environment variables need to be set up set somewhere like \~/.pam\_environment on Ubuntu or launchd.conf in OS X.
+Since the latter files don't run as scripts but are simple assignments, the \$KORP\_INSTALL path might have to be expanded manually.
+
+\begin{itemize}
+\item KORP\_INSTALL - used within the OLST plugin and for setting the Korp Pipeline paths
+\item GATE\_HOME - used within the OLST plugin
+\item PATH - used by Korp for make, the Malt Parser JARs, and hunpos      
+\end{itemize}
+
+\begin{Code}
+\lstset{caption={Example environment variable setup for starting Protege from the command line},
+           captionpos=b
+}
+\begin{lstlisting}[frame=single]
+export KORP_INSTALL=/path-to-your-scripts/korp
+export PATH=$KORP_INSTALL/annotate/bin:/path-to-your-scripts/hunpos/hunpos-1.0-macosx:$PATH
+export PYTHONPATH=$KORP_INSTALL/annotate/python:$PYTHONPATH
+export SB_MODELS=$KORP_INSTALL/annotate/models
+export GATE_HOME=/path-to-your/gate-7.0-build4195-ALL/
+\end{lstlisting}
+\end{Code}
+
+\subsection{OL Prototype plugin}
+
+The plugin JAR file\footnote{https://github.com/downloads/jbothma/ontology-learning-protege/uk.co.jbothma.protege.ontology-learning.jar} must be downloaded and placed in the Protege plugins directory.
+The source code for the plugin is available at the project source repository\footnote{https://github.com/downloads/jbothma/ontology-learning-protege}.
+
+\subsection{Usage}
+\begin{figure}
+  \includegraphics[width=10cm]{graphics/1._Open_Protege.png}
+  \caption{Open Protege}
+  \label{fig:walkthrough1}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=10cm]{graphics/2._Show_OL_plugin_tab.png}
+  \caption{Show OL plugin tab}
+  \label{fig:walkthrough2}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=10cm]{graphics/3._Select_OL_Tab.png}
+  \caption{Select OL Tab}
+  \label{fig:walkthrough3}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=10cm]{graphics/4._Select_new_OL_project_directory.png}
+  \caption{Select new OL project directory}
+  \label{fig:walkthrough4}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=10cm]{graphics/5._Select_directory_containing_corpus_input.png}
+  \caption{Select directory containing corpus input}
+  \label{fig:walkthrough5}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=10cm]{graphics/6._Filter_corpus_by_suffix.png}
+  \caption{Filter corpus by suffix}
+  \label{fig:walkthrough6}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=10cm]{graphics/7._Buttons_disabled_while_working.png}
+  \caption{Buttons disabled while working}
+  \label{fig:walkthrough7}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=10cm]{graphics/8._Extracted_terms_and_relations_shown_when_finished.png}
+  \caption{Extracted terms and relations shown when finished}
+  \label{fig:walkthrough8}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=10cm]{graphics/9._Non-taxonomic_relations_tab.png}
+  \caption{Non-taxonomic relations tab}
+  \label{fig:walkthrough9}
+\end{figure}
 
 \chapter{Results evaluation}
 \label{chap:eval}
