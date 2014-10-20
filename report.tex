@@ -951,7 +951,7 @@ The design is shown in figure~\ref{fig:prototype-design} and described in the ne
 
 \section{Design}
 
-\begin{figure}
+\begin{figure}[H]
   \includegraphics[width=10cm]{graphics/protege-plugin-components-simple.png}
   \caption{Prototype design}
   \label{fig:prototype-design}
@@ -1128,7 +1128,7 @@ The chosen modelling approach is not always appropriate and more options are nee
 
 \section{Walkthrough}
 
-This section shows how to install and use the prototype while demonstrating it with a sample of the evaluation corpus.
+This section shows how to install and use the prototype while demonstrating it with a sample corpus.
 
 \subsection{Dependencies}
 
@@ -1173,51 +1173,82 @@ The plugin JAR file\footnote{https://github.com/downloads/jbothma/ontology-learn
 The source code for the plugin is available at the project source repository\footnote{https://github.com/downloads/jbothma/ontology-learning-protege}.
 
 \subsection{Usage}
-\begin{figure}
-  \includegraphics[width=10cm]{graphics/1._Open_Protege.png}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.69\textwidth]{graphics/1._Open_Protege.png}
   \caption{Open Protege}
   \label{fig:walkthrough1}
 \end{figure}
-\begin{figure}
-  \includegraphics[width=10cm]{graphics/2._Show_OL_plugin_tab.png}
+After installation, Protege can be opened and will now load the plugin. Select "Create new OWL ontology" since the the discovered terms and relations will be added to the currently-open ontology.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{graphics/2._Show_OL_plugin_tab.png}
   \caption{Show OL plugin tab}
   \label{fig:walkthrough2}
 \end{figure}
-\begin{figure}
-  \includegraphics[width=10cm]{graphics/3._Select_OL_Tab.png}
+On first use, the OL plugin tab needs to be selected from the Window menu. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{graphics/3._Select_OL_Tab.png}
   \caption{Select OL Tab}
   \label{fig:walkthrough3}
 \end{figure}
-\begin{figure}
-  \includegraphics[width=10cm]{graphics/4._Select_new_OL_project_directory.png}
+When the OL plugin tab is selected, it will load the relevant code and start the GATE framework in the background.
+When it's finished loading, all the buttons will be enabled. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.6\textwidth]{graphics/4._Select_new_OL_project_directory.png}
   \caption{Select new OL project directory}
   \label{fig:walkthrough4}
 \end{figure}
-\begin{figure}
-  \includegraphics[width=10cm]{graphics/5._Select_directory_containing_corpus_input.png}
+Select "Populate from directory".
+This can only be done once so make sure everything that should constitute the corpus is within this directory.
+It can recurse down a directory tree and filter specific file types.
+Plain text, PDF, MS Word and HTML documents should all work but it's best to use only full-sentence text with minimal noise of references, page headers/footers etc. that might exist in original documents. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{graphics/5._Select_directory_containing_corpus_input.png}
   \caption{Select directory containing corpus input}
   \label{fig:walkthrough5}
 \end{figure}
-\begin{figure}
-  \includegraphics[width=10cm]{graphics/6._Filter_corpus_by_suffix.png}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.5\textwidth]{graphics/6._Filter_corpus_by_suffix.png}
   \caption{Filter corpus by suffix}
   \label{fig:walkthrough6}
 \end{figure}
-\begin{figure}
-  \includegraphics[width=10cm]{graphics/7._Buttons_disabled_while_working.png}
+In the example shown in Figure~\ref{fig:walkthrough6} only .pdf files will be imported. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{graphics/7._Buttons_disabled_while_working.png}
   \caption{Buttons disabled while working}
   \label{fig:walkthrough7}
 \end{figure}
-\begin{figure}
-  \includegraphics[width=10cm]{graphics/8._Extracted_terms_and_relations_shown_when_finished.png}
+When importing is finished a message is printed in the notice box and the user can click "Preprocess". 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{graphics/8._Extracted_terms_and_relations_shown_when_finished.png}
   \caption{Extracted terms and relations shown when finished}
   \label{fig:walkthrough8}
 \end{figure}
-\begin{figure}
-  \includegraphics[width=10cm]{graphics/9._Non-taxonomic_relations_tab.png}
+When preprocessing is finished, the user can click "Extract Candidates". 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{graphics/9._Non-taxonomic_relations_tab.png}
   \caption{Non-taxonomic relations tab}
   \label{fig:walkthrough9}
 \end{figure}
+When extraction is finished a message will indicate this in the notice box and candidates will be shown in the tables. 
+
+Columns are sortable to help assess the candidates quickly.
 
 \chapter{Results evaluation}
 \label{chap:eval}
