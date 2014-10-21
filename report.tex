@@ -1259,12 +1259,16 @@ Columns are sortable to help assess the candidates quickly.
 \section{Evaluation Setup}
 
 The evaluation was performed on a corpus of articles available at \url{http://lakartidningen.se/}.
-All articles categorised under Cardiovascular Disease were selected, as this was one of the largest categories denoting a specific subdomain of medicine available in Swedish in the HTML format.
+All articles available in HTML format categorised under Cardiovascular Disease were selected, as this was one of the largest categories denoting a specific subdomain of medicine available in Swedish in the HTML format.
 More articles were available in PDF format but it was harder to reliably extract the plain text of the article from the PDF versions.
-115 articles were downloaded as HTML documents and preprocessed into plain text.
+114 articles were downloaded as HTML documents and preprocessed into plain text.
+URLs to these articles are given in Appendix~\ref{chap:eval-corp-links}
+The program used for extracting the article text from the HTML documents is shown in listing~\ref{lst:extract-plain}.
+This uses the common HTML document manipulation library BeautifulSoup to extract text from sections labeled "article-text", which contain the article text.
+The output of this contained some text that was not useful for ontology learning from natural text, like certain punctuation and the reference sections of articles.
+These were removed using the program shown in listing~\ref{lst:cleaner}.
 This processing consisted of
 \begin{enumerate}
-\item Stripping HTML tags and translation of entities to leave only plain text
 \item Stripping reference sections by removing all text after a line consisting only of the text ``referenser''
 \item Replacing common punctuation outside the ASCII character range with ASCII equivalents
 \end{enumerate}
@@ -1492,7 +1496,7 @@ The evaluation of the prototype demonstrated that existing candidate extraction 
 \begin{appendices}
 
 \chapter{Evaluation Corpus URL List}
-
+\label{chap:eval-corp-links}
 \begin{footnotesize}
 
 \url{http://www.lakartidningen.se/Functions/OldArticleView.aspx?articleId=8721}
