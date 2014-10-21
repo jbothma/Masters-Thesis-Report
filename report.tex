@@ -1611,6 +1611,63 @@ The evaluation of the prototype demonstrated that existing candidate extraction 
 \url{http://www.lakartidningen.se/Functions/OldArticleView.aspx?articleId=19515}
 \end{footnotesize}
 
+\chapter{Evaluation Corpus Preprocessing code}
+
+\begin{Code}
+\lstset{caption={Code extracting article as plain text from HTML page},
+           captionpos=b,
+           label={lst:extract-plain}
+}
+\begin{lstlisting}[frame=single]
+#!/usr/bin/python
+# coding=utf8
+# -*- coding: utf-8 -*-
+
+import io, sys
+from bs4 import BeautifulSoup
+
+id = sys.argv[1]
+
+with io.open('html/07engine'+ id,
+             'r',
+             encoding='utf-8') as infile:
+    html = infile.read(-1)
+    infile.close()
+    soup = BeautifulSoup(html)
+    divs = soup.find_all("div", attrs={"class": "article-text"})
+    for div in divs:
+        print div.get_text().encode('utf-8')
+
+\end{lstlisting}
+\end{Code}
+
+\begin{Code}
+\lstset{caption={Code removing irrelevant/harmful text},
+           captionpos=b,
+           label={lst:cleaner}
+}
+\begin{lstlisting}[frame=single]
+#!/usr/bin/perl
+
+$references = 0;
+while($line = <>) {
+    $line =~ s/ \[/[/g;
+    $line =~ s/\[[\d, -]+\]//g;
+    $line =~ s/  +/ /g;
+    $line =~ s/\xe2\x80\x93/-/g;        # dash
+    $line =~ s/\xe2\x80\xa2/- /g;       # bullet
+    $line =~ s/(\xc2\xbb|\xc2\xab)/"/g; # angle quotation marks
+
+    if ($line =~ /^\s*REFERENSER\s*$/i) {
+        $references = 1;
+    }
+    if (!$references) {
+        print $line;
+    }
+}
+\end{lstlisting}
+\end{Code}
+
 \end{appendices}
 
 \clearpage
