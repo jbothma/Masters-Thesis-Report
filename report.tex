@@ -1130,6 +1130,7 @@ That way of modelling it would incorrectly classify any instance with that relat
 The chosen modelling approach is not always appropriate and more options are needed here.
 
 \section{Walkthrough}
+\label{sec:results:walkthrough}
 
 This section shows how to install and use the prototype while demonstrating it with a sample corpus.
 
@@ -1273,6 +1274,9 @@ This processing consisted of
 \item Replacing common punctuation outside the ASCII character range with ASCII equivalents
 \end{enumerate}
 
+The text files produced by this processing were then placed alone in a directory as the input corpus.
+The corpus was imported into an ontology learning project in protege as shown in the walkthrough in section~\ref{sec:results:walkthrough}.
+
 \section{Evaluation Results}
 
 The resulting corpus consisted of 108 831 words.
@@ -1292,7 +1296,7 @@ Figure~\ref{fig:concept-cands} shows the results of this classification.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{graphics/concepts}
+  \includegraphics[width=0.7\textwidth]{graphics/concepts.eps}
   \caption{Concept candidate classification}
   \label{fig:concept-cands}
 \end{figure}
@@ -1312,7 +1316,7 @@ The numbers of occurrences of these mistakes are shown in Figure~\ref{fig:concep
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.9\textwidth]{graphics/concepts-mistakes}
+  \includegraphics[width=0.9\textwidth]{graphics/concepts-mistakes.eps}
   \caption{Concept candidate mistakes}
   \label{fig:concept-cand-mistakes}
 \end{figure}
@@ -1332,7 +1336,7 @@ The numbers of these mistakes are shown in Figure~\ref{fig:subconcept-cands}.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\textwidth]{graphics/subconcepts-mistakes}
+  \includegraphics[width=0.5\textwidth]{graphics/subconcepts-mistakes.eps}
   \caption{Subconcept candidate mistakes}
   \label{fig:subconcept-cands}
 \end{figure}
@@ -1361,7 +1365,7 @@ Figure~\ref{fig:concepts-manual} shows the distribution of the different classes
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{graphics/concepts-manual}
+  \includegraphics[width=0.7\textwidth]{graphics/concepts-manual.eps}
   \caption{Automated rankings of manually-selected concepts}
   \label{fig:concepts-manual}
 \end{figure}
