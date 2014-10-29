@@ -316,6 +316,7 @@ I further added Corpus Management; Method and Evidence Combination; Change Manag
 These areas are defined below with the aim of defining the scope of the work in this thesis and the extent to which each issue is given attention here.
 
 \subsection{Corpus Management}
+\label{sec:background:corp_mgmt}
 
 Corpus management involves selection of suitable corpora and storage of changes and annotations made during Preprocessing and Information Extraction.
 A corpus is a collection of documents compiled for linguistic investigation or processing \citep{KokkinakisGerdin10MedCorp}.
@@ -440,6 +441,7 @@ The relation extraction method in \cite{Kokkinakis08SolidComp} used a glossary o
 A statistical model of the swedish language is used in \citep{Sjobergh04Compounds} to split compounds. This was used for the Swedish compund splitting in \citep{Hjelm09Thesis}.
 
 \subsubsection{The SVENSK language processing toolbox for Swedish}
+\label{sec:background:svensk}
 
 SVENSK is a language processing toolbox for Swedish developed in the late 1990s and 2000\cite{OlssonGamback00SVENSK}. SVENSK aimed to support research and teaching which depended on Swedish language processing by providing common text processing tools such as taggers and parsers in a general purpose language processing framework. SVENSK was based on the GATE language processing framework.
 
@@ -963,7 +965,7 @@ The design is shown in figure~\ref{fig:prototype-design} and described in the ne
 Designed as a plugin to the Protege ontology editor, it can be embedded inside the Protege editor window alongside other plugins designed to ease ontology development and maintenance.
 The plugin consists of Protege integration, a graphical user interface and an ontology learning project instance.
 The dependencies between components are depicted as arrows in figure~\ref{fig:prototype-design}.
-When is installed, Protege initialises the Protege Ontology Learning Plugin.
+When installed, Protege initialises the Protege Ontology Learning Plugin.
 The user can then set up and create an ontology learning Project instance.
 The project is used to trigger preprocessing and extraction, and hold references to storage of the corpus and ontology element candidates.
 After candidate extraction, the Ontology Construction component is used to model the domain in the current OWL ontology in Protege.
@@ -971,7 +973,7 @@ This component calls into the Protege system to add elements to the currently-op
 The ontology can be stored for later use using Protege's built-in ontology management facilities, and the project can be used to extract candidates for use outside of this system.
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{graphics/method-element-dependencies.png}
+  \includegraphics[width=\textwidth]{graphics/method-element-dependencies.eps}
   \caption{Methods and artifacts of the prototype}
   \label{fig:method-artifact}
 \end{figure}
@@ -979,16 +981,18 @@ The ontology can be stored for later use using Protege's built-in ontology manag
 \section{Preprocessing}
 \label{sec:results:proto:prepr}
 % Remember if we want more detail, look back in git.
-Preprocessing is done partly using the Korp corpus import pipeline~(\ref{sec:background:korp}, and partly using GATE~(\ref{sec:background:gate}).
+Preprocessing is done partly using the Korp corpus import pipeline~(\ref{sec:background:corp_mgmt}, POS and Morph analysis in \ref{sec:lit-rev:preproc}), and partly using GATE~(\ref{sec:background:corp_mgmt}, SVENSK in \ref{sec:background:svensk}).
 When a project is created, the corpus can be imported using a filter on filename or simply all files in a given folder.
 This adds the documents to a GATE corpus, which extracts the text from various document formats.
-I created a graphical user interface as part of the Preprocessing compoto select the project directory and corpus files, and trigger the import.
+I created a graphical user interface as part of the Preprocessing component to select the project directory and corpus files, and trigger the import.
 For syntactic annotation, the corpus is exported to a directory where the Korp pipeline can take it as input.
 The Korp pipeline was configured to annotate the corpus with part of speech tags, lemmas, word boundaries, sentence boundaries, and syntactic dependencies.
+This is represented by the Korp box producing the POS, Morph artifact box in figure~\ref{fig:method-artifact}.
 When the Korp pipeline finishes processing the corpus, the annotations are imported to the working GATE corpus.
+This is how the remaining steps access these annotations as shown in in figure~\ref{fig:method-artifact}.
 GATE automatically picks up the annotations in the Korp output and stores them in the GATE corpus.
 Next, the JAPE rules are run to apply higher-level annotations to the corpus.
-The term candidate JAPE rule is described in the next section, while the labeled relation JAPE rule is discussed in Section~\ref{sec:results:proto:cands}.
+The term candidate JAPE rule is described in the next section, while the labeled relation JAPE rule is described in Section~\ref{sec:results:proto:cands}.
 
 \subsection{Linguistic Filter for Term Candidates}
 
@@ -996,8 +1000,9 @@ For initial potential terms to be selected by the C-Value method, a linguistic f
 This filter was depicted as Adj*Noun+ in \cite{Frantzi98CNCValue} by analogy to regular expressions over parts of speech.
 The head of these simplistic noun phrases was selected as the last noun in the phrase, as is common with this form of noun phrases.
 I refer to the noun phrases that were selected as potential terms as \emph{term candidates} and they are used in term extraction, subconcept relation extraction and labeled relaton extraction.
+This is depicted by the Linguistic Filter method box in figure~\ref{fig:method-artifact} producing Term Candidate and Head annotations from the POS annotation artifact produced in the previous step.
 
-I initially experimented with noun phrases extracted using the SweSPARK noun phrase chunker, but the Adj*Noun+ form of noun phrase was most-suited to the similarity measure for Hirarchical Agglomerative Clustering.
+I initially experimented with noun phrases extracted using the SweSPARK noun phrase chunker (Chunking in \ref{chap:eval-corp-links}, but the Adj*Noun+ form of noun phrase was most-suited to the similarity measure for Hirarchical Agglomerative Clustering.
 The chunker provides many forms of noun phrases including determiners and other parts of speech which are not clearly part of terms.
 Selecting the head noun in certain noun phrase forms such as DetAdj*Noun+PrepNoun is more complex than for Adj*Noun+ phrases, and the similarity measure used in \cite{Drymonas10OntoGain} needs to have the head identified.
 The Adj*Noun+ form performed well for English in the evaluation of C-Value in \cite{Frantzi98CNCValue} and many Swedish noun phrases take this form \todo{cite swedish noun phrase book} so this was a reasonable approximation for the objective of this thesis.
@@ -1036,7 +1041,7 @@ For non-taxonomic relations, labeled relations between concepts were extracted.
 \subsection{Concepts}
 
 Concepts are assumed to be represented by terms in the corpus.
-Term candidates are extracted using the C-value part from the C-value NC-value method for extracting multi-word terms~(\ref{sec:background:cval}.
+Term relevance for the domain is estimated using the C-value part from the C-value NC-value method for extracting multi-word terms~(Terms, Concepts and Instances in \ref{sec:lit-rev:preproc}).
 The C-value method is applied to the strings annotated with the TermCandidate annotation as described in Section~\ref{sec:results:proto:prepr}.
 The C-value is always a product of \(log_{2} |a|\) where \(a\) is the candidate string and \(|a|\) is the number of words in the string.
 For single-word terms, C-value would normally be \(0\).
