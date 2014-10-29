@@ -1043,6 +1043,7 @@ For non-taxonomic relations, labeled relations between concepts were extracted.
 Concepts are assumed to be represented by terms in the corpus.
 Term relevance for the domain is estimated using the C-value part from the C-value NC-value method for extracting multi-word terms~(Terms, Concepts and Instances in \ref{sec:lit-rev:preproc}).
 The C-value method is applied to the strings annotated with the TermCandidate annotation as described in Section~\ref{sec:results:proto:prepr}.
+This is depicted by the C-Value method producing the Term Relevance artifact from Term Candidate annotations in figure~\ref{fig:method-artifact}.
 The C-value is always a product of \(log_{2} |a|\) where \(a\) is the candidate string and \(|a|\) is the number of words in the string.
 For single-word terms, C-value would normally be \(0\).
 To be able to use C-value as a relevance measure for single- and multi-word terms, we calculate C-value as a product of \(log_{2} (|a|+1)\) instead.
@@ -1057,6 +1058,7 @@ One method uses hierarchical agglomerative clustering, and the other uses a synt
 
 It was faster to implement a simple hierarchical agglomerative clustering library myself with the necessary behaviour than to use an existing library.
 This library takes term candidates as input and creates subclass relations from one term candidate to another.
+This is depicted by the Hierarchical Clustering method box producing the Subconcept Relation annotation artifacts from Term Candidate annotations and their Heads in figure~\ref{fig:method-artifact}.
 The similarity measure is that used in~\cite{Drymonas10OntoGain}.
 Merging for a given cluster stops when no other cluster has a common noun phrase head.
 The noun phrase head is taken as the superconcept of all terms in the cluster.
@@ -1073,6 +1075,7 @@ The subsequent term candidates are annotated with "Domain".
 The entire matching region is annotated with "SubclassOf".
 This JAPE rule is executed during preprocessing after the other JAPE rules for convenience.
 During extraction, we iterate over all SubclassOf annotations, adding a subclass relation to the term annotated with Range for each term candidate in the contained Domain annotation.
+This is depicted by the Syntactic Pattern method producing Subconcept Relation annotations Term Candidates in figure~\ref{fig:method-artifact}.
 
 \begin{Code}
 \lstset{caption={JAPE for subclass relation annotations by syntactic pattern},
@@ -1103,7 +1106,8 @@ Labeled relation extraction was based on syntactic dependency relations - one pe
 The domain of the relation is the term candidate with a subject relation (SS) to the root.
 The range of the relation is the term candidate with an object relation (OO) to the root.
 The label of the relation is the dependency root of the sentence, if it is a verb (VB), potentially followed by an additional verb which has a verb group relation (VG) to the root if one exists.
-I to demonstrate the approach based on example patterns in~\cite{Zouaq11OntoCmaps}.
+This is depicted in figure~\ref{fig:method-artifact} by the second Syntactic Pattern method which produces Labeled Relations from Term Candidates, Syntactic Dependencies and Part of Speech annotations.
+I chose this pattern to demonstrate the syntactic pattern approach based on example patterns in~\cite{Zouaq11OntoCmaps}.
 The Candidate Extraction component shown in~\ref{fig:prototype-design} creates labeled relation candidates from the text with annotations matching this pattern and adds them to the candidate store.
 
 To ease the task of selecting relevant candidates to be used in constructing the ontology, an \emph{importance} value is calculated for each labeled relation candidate.
@@ -1117,6 +1121,7 @@ I chose this method based on the finding in~\cite{Zouaq11OntoCmaps} that concept
 
 The Ontology Construction component is responsible for modelling the domain in an OWL ontology based on the extracted ontology element candidates.
 The user can either add all candidates to the ontology in one step, or select specific candidates and add only them to the ontology.
+The final artifacts shown in figure~\ref{fig:method-artifact} - Term Candidates, Term Relevance, Subconcept Relations, Labeled Relations, and Labeled Relation Relevance - are used for Ontology Construction.
 
 Concept candidates are added as OWL Classes.
 The IRI of a class is constructed as the concept label in camel case appended to the ontology IRI.
