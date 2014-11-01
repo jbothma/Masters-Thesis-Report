@@ -1287,13 +1287,16 @@ This processing consisted of
 The text files produced by this processing were then placed alone in a directory as the input corpus.
 The corpus was imported into an ontology learning project in protege as shown in the walkthrough in section~\ref{sec:results:walkthrough}.
 The resulting corpus consisted of 108 831 words.
-My ontology learning tool found 11 069 class candidates, 420 subclass relation candidates and 123 labeled relation candidates.
+My ontology learning tool found 11 069 class candidates, 420 subconcept relation candidates and 123 labeled relation candidates.
 These candidates were exported as comma separated variable files for analysis.
 I assessed a sample of the extracted candidates for their relevance to the domain and manually extracted candidates from a sample of the corpus to assess how the automated tool compared to a manual effort.
 A sample of each result set was classified into categories I defined according to my common sense judgement.
 I defined the categories to distinguish between candidates which seem useful for building useful domain ontologies, and those that are not useful at all in my inexpert opinion.
 This was done by looking at the actual candidates in the samples, creating categories that seem relevant to the results.
-I classified the candidates into these categories using common sense.
+I classified the candidates into these categories mostly using common sense alone.
+When I felt that I could not classify a candidate accurately-enough myself, I looked at the candidate in the contexts where it occurred in the corpus.
+When that was not sufficient, I searched for the candidate occurring in similar contexts on the internet.
+I did not require online sources to have any formal authorship.
 The candidates in the useless categories were further classified into categories which could help target further work to create a practical system for ontology learning from text.
 
 The main threats to the validity of the evaluation are my lack of expertise in the fields of ontology learning, cardiovascular disease and the Swedish language; the bias introduced by me evaluating a tool I constructed; and the use of only one evaluator.
@@ -1308,20 +1311,24 @@ The method used in \cite{Zouaq11OntoCmaps} addresses many of these issues, altho
 \section{Evaluation Results}
 
 The following sections explain more specifically how each category was defined and assigned to candidates, along with the results.
+The results are analysed and discussed further in section~\ref{sec:analysis}.
 
 \subsection{Automatically-extracted candidates}
 \label{sec:results:eval:cands}
 
 The top 100 and bottom 100 concept candidates according to C-value were classified with the labels \emph{fault}, \emph{this}, \emph{parent}, or \emph{generic}.
-\emph{This} means the candidate is specific to the domain, namely \emph{Cardiovascular Disease}.
-\emph{Parent} means the concept belongs to one of the relevant parent domains, such as medicine or academic research.
-\emph{Generic} means the concept is not specific to a relevant domain.
-\emph{Fault} means that the text does not refer to any specific concept at all.
+\emph{This} means the candidate is specific to the domain, namely \emph{Cardiovascular Disease}, e.g. "kardiovaskulär händelse" and "ldl-kolesterol".
+It is obvious that the former example is relevant, while the latter looks like a specific kind of cholesterol which is familiar as a compound relevant to heart diseas from popular media.
+LDL-Cholesterol might well be defined as a concept or an instance of a concept in the chemistry domain, but for me it seems like it belongs to this domain at an early stage of the ontology's development, and can be replaced with a reference to another definition when integrating with other ontologies.
+\emph{Parent} means the concept belongs to one of the relevant parent domains, such as medicine or academic research, e.g. "fysisk aktivitet" and "behandling".
+\emph{Generic} means the concept is not specific to a relevant domain, e.g. "år" and "studie".
+This category is of questionable value for building the domain ontology except perhaps using relations to concepts in this category to help integrate this ontology with upper ontologies.
+\emph{Fault} means that the text does not refer to any specific concept at all, meaning these candidates appear to be noise.
 Figure~\ref{fig:concept-cands} shows the results of this classification.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{graphics/concepts.eps}
+  \includegraphics[width=0.8\textwidth]{graphics/concepts.eps}
   \caption{Concept candidate classification}
   \label{fig:concept-cands}
 \end{figure}
@@ -1329,13 +1336,13 @@ Figure~\ref{fig:concept-cands} shows the results of this classification.
 The candidates classified as \emph{fault} were further classified to describe the nature of the fault.
 The fault categories were defined as follows:
 \begin{itemize}
-  \item \emph{adj} The candidate is just an adjective
-  \item \emph{adj of qty/qlty} The candidate is an adjective of quantity or quality without being an important domain term
-  \item \emph{incomplete term} An incomplete of a term meaning nothing by itself
-  \item \emph{name} The candidate is the name of a person
-  \item \emph{not a term} text that doesn't represent a term for some other reason
-  \item \emph{other language} Text in a language other than swedish
-  \item \emph{unit of measurement} e.g. ml, kg
+  \item \emph{adj} The candidate is just an adjective e.g. "omättad" and "intensiv"
+  \item \emph{adj of qty/qlty} The candidate is an adjective of quantity or quality without being an important domain term e.g. "antal studie" and "hög risk"
+  \item \emph{incomplete term} An incomplete of a term meaning nothing by itself e.g. "2-diabetes" and "qt-syndrom"
+  \item \emph{name} The candidate is the name of a person e.g. "linda" and "jan åkesson"
+  \item \emph{not a term} text that doesn't represent a term for some other reason e.g. "bl a" and "et al"
+  \item \emph{other language} Text in a language other than swedish e.g. "heart health charter" and "trialists"
+  \item \emph{unit of measurement} e.g. "ml" and "kg"
 \end{itemize}
 The numbers of occurrences of these mistakes are shown in Figure~\ref{fig:concept-cand-mistakes}.
 
@@ -1346,32 +1353,38 @@ The numbers of occurrences of these mistakes are shown in Figure~\ref{fig:concep
   \label{fig:concept-cand-mistakes}
 \end{figure}
 
-Subconcept candidates were also classified as \emph{correct} or \emph{mistake}, where 43\% were classified as correct.
-Mistakes were classified as follows:
+All 420 subconcept candidates were classified as \emph{correct} or \emph{mistake}, where 43\% were classified as correct.
+Correct means that I believe the candidate is useful for building a domain ontology while mistakes are not useful.
+The concepts did not have to be relevant to the domain for the relation to be classified as correct.
+Examples of candidates classified as correct are "aktuell studie" \(\rightarrow\) "studie", "yrsel" \(\rightarrow\) "symptom" and "kronisk smärta" \(\rightarrow\) "smärta".
+
+Mistakes were further classified as follows:
 
 \begin{itemize}
-  \item \emph{degree} Subclass part indicates magnitude of superclass part
-  \item \emph{not a term} One of the sides of the relation is not a term
-  \item \emph{nounphrase complexity} One of the sides of the relation are incomplete and need support for more complex noun phrases
-  \item \emph{posessive noun} The subclass is a posessive noun, not a specialisation
-  \item \emph{self} The subclass and superclass are the same
+  \item \emph{degree} Subclass part indicates magnitude of superclass part e.g. `hög blogtryck' \(\rightarrow\) `blodtryck'
+  \item \emph{not a term} One of the sides of the relation is not a term e.g. `mången gång" \(\rightarrow\) `gång' e.g. from `många gånger'
+  \item \emph{nounphrase complexity} One of the sides of the relation are incomplete and need support for more complex noun phrases e.g. `rökning' \(\rightarrow\) `hjärt-kärlsjukdom' where the superclass could be a specific `livsstilfaktor' concept which represents the phrase `livsstilsfaktorer som utgör riskfaktorer för hjärt-kärlsjukdom'
+  \item \emph{posessive noun} The subclass is a possessive noun, not a specialisation e.g. `kolesterol' \(\rightarrow\) `roll' where the un-lemmatised form is `kolesterols roll'.
+  \item \emph{self} The subclass and superclass are the same e.g. `prognos' \(\rightarrow\) `pronos'
 \end{itemize}
 
-The numbers of these mistakes are shown in Figure~\ref{fig:subconcept-cands}.
+The numbers of candidates in these mistake categories are shown in Figure~\ref{fig:subconcept-cands}.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\textwidth]{graphics/subconcepts-mistakes.eps}
+  \includegraphics[width=0.6\textwidth]{graphics/subconcepts-mistakes.eps}
   \caption{Subconcept candidate mistakes}
   \label{fig:subconcept-cands}
 \end{figure}
 
-Labeled relations were classified with \emph{yes}, \emph{no} and \emph{yes too general}, shown in Figure~\ref{fig:rel-cands}.
-\emph{yes too general} means that the relation makes sense on manual inspection but the terms are not precise enough for the relation to be immediately useful for ontology construction.
+Labeled relations were classified \emph{yes}, \emph{no} or \emph{yes too general}, as shown in Figure~\ref{fig:rel-cands}.
+\emph{yes} means the candidate is relevant and useful for ontology construction, e.g. `patient \emph{har} pulstryck' or `kvinna \emph{får} bröstsmärtor'.
+\emph{yes too general} means that the relation makes sense on manual inspection of its context in the corpus but the terms are not precise enough for the relation to be immediately useful for ontology construction e.g. `resultat \emph{understryker} betydelse'.
+\emph{no} means the candidate is not at all relevant to the domain, or doesn't make sense as a labeled relation at all, e.g. `alkohol \emph{minska} tillgång'.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.6\textwidth]{graphics/labeled-relations}
+  \includegraphics[width=0.7\textwidth]{graphics/labeled-relations}
   \caption{Labeled relation candidates}
   \label{fig:rel-cands}
 \end{figure}
@@ -1390,7 +1403,7 @@ Figure~\ref{fig:concepts-manual} shows the distribution of the different classes
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{graphics/concepts-manual.eps}
+  \includegraphics[width=0.8\textwidth]{graphics/concepts-manual.eps}
   \caption{Automated rankings of manually-selected concepts}
   \label{fig:concepts-manual}
 \end{figure}
@@ -1398,7 +1411,7 @@ Figure~\ref{fig:concepts-manual} shows the distribution of the different classes
 Manual extraction found 8 subclass relations visible in the article.
 None of them were found by the automatic subclass extraction.
 21 labeled relations were found manually.
-None of them were found by the automatic subclass extraction.
+None of them were found by the automatic labeled relation extraction.
 
 \section{Analysis and discussion}
 \label{sec:analysis}
