@@ -83,7 +83,7 @@ This research is showing useful results and has been applied successfully in var
 There appears to be no ontology learning software system that has been applied to learn ontologies from Swedish text.
 \todo{Hjelm's thesis\cite{Hjelm09Thesis} learnt a "prototypal" ontology from several languages including swedish.
 We can learn a bit from it, but he used terms from an existing ontology, and we need to check if the relations they learnt are applicable.}
-While most scientific research in Sweden is now published in English and many businesses are using English internally, there is still a wealth of existing and new literature from the business and scientific domain which would be valuable in semantically-enabled software.
+While most scientific research in Sweden is now published in English and many businesses are using English internally, there is still a wealth of existing and new literature in Swedish from the business and scientific domain which would be valuable in semantically-enabled software.
 The problem is therefore that ontology learning should be extended to support Swedish text, making use of existing research in natural language processing and information extraction for Swedish where necessary.
  
 \section{Objective}
@@ -167,7 +167,7 @@ Ontology Learning is related with Knowledge Acquisition and Representation as a 
 Some of the parts Ontology Learning plays in Ontology Engineering are identified, and finally the broader field of Ontology Learning is described, leading to a definition of Ontology Learning from Text.
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{graphics/related-research-fields.png}
+  \includegraphics[width=\textwidth]{graphics/related-research-fields.eps}
   \caption{Related research fields}
   \label{fig:related-research}
 \end{figure}
@@ -208,7 +208,7 @@ This corresponds to the acquisition part of Knowledge Management and is a precur
 
 \subsection{Knowledge Representation}
 
-Knowledge Representation is the discipline of encoding knowledge in a form that facilitates computer inference based on that knowledge, drawing conclusions not explicitly present in already.
+Knowledge Representation is the discipline of encoding knowledge in a form that facilitates computer inference based on that knowledge, drawing conclusions not explicitly present already.
 In this thesis we focus on ontology-based knowledge representation.
 
 \subsection{Ontologies}
@@ -273,7 +273,7 @@ The typical tasks and their outputs are shown in Fig.\ref{fig:output-task-techni
 \subsection{Machine Reading}
 
 Machine Reading is the automatic, unsupervised \emph{'understanding'} of text where understanding means formation of beliefs supporting some level of reasoning from a textual corpus \citep{EtzioniEtAll06MachineReading}.
-Machine Reading is distinguished from Information Retrieval where this is done in a in a highly supervised, manual manner - for example where patterns for extracting desired entities are hand-written or manually selected from an extracted list.
+Machine Reading is distinguished from Information Retrieval where this is done in a highly supervised, manual manner - for example where patterns for extracting desired entities are hand-written or manually selected from an extracted list.
 Machine reading strives instead for extracting arbitrary semantic relations without human supervision \citep{EtzioniEtAll06MachineReading}.
 
 While Cimiano concluded that some level of supervision is necessary in Ontology Learning from Text \citep{Cimiano06}, recent work in Ontology Learning from Text such as OntoUSP\citep{Poon2010OntoUSP} and OntoCMaps \citep{Zouaq11OntoCmaps} shows progress towards learning arbitrary relations with high precision and recall in an unsupervised manner, which is much closer to machine reading than earlier work in the field.
@@ -289,7 +289,7 @@ The key issues for ontology learning from text are shown in \ref{fig:ol-issues}.
 OL from text starts with collecting and preparing text corpora.
 The corpora must be preprocessed as needed by the information extraction methods.
 Evidence for potential ontology elements might be combined from various methods with overlapping scope.
-An ontology is constructed using the extracted information, which is generally evaluated during or following construction.
+An ontology is constructed using the extracted information, and is generally evaluated during or following construction.
 As with ontology engineering, change management and user interaction are important aspects throughout the process.
 
 Methods were chosen for inclusion in this review based on their relevance to this thesis and research in general.
@@ -300,7 +300,7 @@ While general domain knowledge bases such as WordNet and Cyc\cite{Lenat95Cyc} ca
 Their consideration is left for further research.
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{graphics/ontology-learning-system-issues.png}
+  \includegraphics[width=\textwidth]{graphics/ontology-learning-system-issues.eps}
   \caption{Issues for Ontology Learning systems}
   \label{fig:ol-issues}
 \end{figure}
@@ -495,19 +495,19 @@ Continuing the ball example, a player can kick a ball.
 The \emph{kicks} relation might represent that players kick balls and not vice versa.
 The player's foot is \emph{part of} the player, ie a meronym of the player.
 
-In addition to identifying relationship between concept, some relationships also need extra work to assign a label to represent the semtantic relationship it represents.
+In addition to identifying relationships between concepts, some relationships also need extra work to assign a label to represent the semantic relationship it represents.
 Some approaches to relation learning stem from the label's occurrence in the corpus, like the \emph{kicks} relation above.
 Others might merely be identified by some correlation of the concepts' occurrence in the corpus.
-The difficulty in automating the labelling task means it is sometimes left to domain experts to do manually.
+The difficulty in automating the labeling task means it is sometimes left to domain experts to do manually.
 
 \medskip
 Common approaches to extracting taxonomic relations are \emph{lexico-syntactic patterns}, \emph{agglomerative hierarchical clustering}, \emph{distributional similarity} and \emph{formal concept analysis} (FCA).
 
-{\bfseries Lexico-syntactic patterns} define a pattern on lexical annotations on a corpus which are likely to represent intances of particular relations.
+{\bfseries Lexico-syntactic patterns} define a pattern on lexical annotations on a corpus which are likely to represent instances of particular relations.
 An example of such a pattern for English is $NP_{super}\ such\ as\ ((NP_{sub}, )* (NP_{sub}\ and))* NP_{sub}$.
 Given a sentence ``Racquet sports such as squash, tennis and badminton are highly challenging", the above pattern would identify squash, tennis and badminton as subclasses of the concept \emph{racquet sport}.
 Lexico-syntactic pattern tend to give high precision but low recall because of the variety of ways these relations can be expressed in natural language.
-Variou approaches for mining these patterns have been developed.
+Various approaches for mining these patterns have been developed.
 
 {\bfseries Agglomerative Hierarchical Clustering} of concepts builds a hierarchy of clusters, starting with each concept as a distinct cluster.
 Each clustering step compares each pair of clusters according to some \emph{similarity measure}, and the pair with the highest similarity are merged.
@@ -714,7 +714,7 @@ Change management for ontology evolution can involve organisational practices an
 The environment around the ontology is often not stable \cite{Blomqvist09Thesis}.
 Once deployed in an application, changes might need to be applied in a controlled manner to evaluate and understand the effects of keeping the ontology up to date with its environment\cite{HOO2009OntEngMeth}.
 Depending on the agility of the organisation, manual evolution of the ontology might not be sufficient\cite{Blomqvist09Thesis}.
-\cite{Cimiano2009OL} states "As the underlying data changes, the learned ontology should change as well and this requires not only incremental ontology learning algorithms, but also some support for ontology evolution at the ontology management level".
+\cite{Cimiano2009OL} states ``As the underlying data changes, the learned ontology should change as well and this requires not only incremental ontology learning algorithms, but also some support for ontology evolution at the ontology management level".
 
 There are many pieces of information that are pertinent to many tasks around ontology engineering.
 Ontology engineering methodologies suggest keeping track of who by, when and why changes were made \cite{HOO2009OntEngMeth}.
@@ -739,7 +739,7 @@ These endeavors rely on optimising certain criteria\cite{Cimiano2009OL}.
 
 Evaluation should be granular.
 Each stage in OL might introduce errors which might be propagated through the pipeline\cite{Zouaq11OntoCmaps, Hjelm09Thesis}.
-It is therefore important to evaluate each stage separately with controlled input to understand  the effect of errors to its input on its output.
+It is therefore important to evaluate each stage separately with controlled input to understand the effect of errors in its input on its output.
 On the other hand, it is important not to confuse the results with highly accurate input with performance with real life data that might contain many errors.
 
 Evaluation should be frequent.
@@ -758,7 +758,7 @@ As it becomes easier to build more formal ontologies than simple taxonomies, and
 
 Several tools have shown benefits of exploiting existing structured data.
 Such data might involve significant organised effort to produce such as WordNet\cite{Fellbaum98WordNet} or has been generated via "croud-sourcing", for example using user-generated categories in Wikipedia or keywords from "tags"\cite{Wong11Survey}.
-As OL tools improve in support for building on existing ontologies, they might both support ontology maintenance, and upgrading lexical ontologies to more formal ontologies\cite{Wong11Survey}.
+As OL tools improve in support for building on existing ontologies, they might support both ontology maintenance, and upgrading lexical ontologies to more formal ontologies\cite{Wong11Survey}.
 
 \section{Why Swedish?}
 \label{sec:background:swedish}
