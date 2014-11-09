@@ -821,7 +821,7 @@ If all domains the prototype is evaluated against are modeled perfectly, no more
 However it is beyond the scope of this project to try and demonstrate perfect ontology learning in every aspect.
 Furthermore, as stated in section~\ref{sec:background:eval}, different criteria for evaluation work against each other and the criteria to optimise should be chosen for the specific application.
 
-The criteria for the are accuracy and completeness.
+The criteria for the evaluation in this project are accuracy and completeness.
 With accuracy, we will identify whether the concepts and relations extracted from the corpora and added to the ontology are relevant to the domain.
 We will also see what percentage of the extracted concepts and relations are irrelevant or completely invalid (noise).
 With completeness, we will identify whether the concepts and relations that are important to the domain, were extracted and added to the ontology.
@@ -856,8 +856,7 @@ This chapter introduces relevant research method theory and the methods applied 
 Conflicting philosophical perspectives on research exist.
 The positivist perspective asserts that knowledge of the reality which exists apart from the researcher is gained through observations.
 This perspective tends to favour quantitative methods of data collection and analysis.
-Positivist approaches begin with a theory which is then supported or contradicted by the evidence.
-\cite[p.6-7]{creswell2003research}\todo{perhaps update to Creswell 2009}
+Positivist approaches begin with a theory which is then supported or contradicted by the evidence \cite[p.6-7]{creswell2003research}\todo{perhaps update to Creswell 2009}
 The interpretivist perspective builds a theory out of the understandings and views of individuals.
 This perspective tends to use qualitative methods, engaging with human subjects to gain knowledge.
 \cite[p.7-9]{creswell2003research}
@@ -903,7 +902,7 @@ The suitability of system building as the approach is discussed in this chapter 
 \item The evaluation design of this thesis is discussed in section~\ref{sec:methods:evaluation}.
 \todo{Acknowledge that this doesn't cover the validity of the suggestions derived; look up validity of exploratory research and see what's needed for that}
 \item The novelty of the work in this thesis is described in section~\ref{sec:background:objectives}.
-\item Experience from this thesis is analysed and generalised in chapter~\ref{chapter:analysis}, although this thesis does not set out to evaluate this output.
+\item Experience from this thesis is analysed and generalised in chapter~\ref{chap:eval-corp-links}f{sec:analysis}, although this thesis does not set out to evaluate this output.
 \end{enumerate}
 
 \section{Practical method}
@@ -989,7 +988,7 @@ For syntactic annotation, the corpus is exported to a directory where the Korp p
 The Korp pipeline was configured to annotate the corpus with part of speech tags, lemmas, word boundaries, sentence boundaries, and syntactic dependencies.
 This is represented by the Korp box producing the POS, Morph artifact box in figure~\ref{fig:method-artifact}.
 When the Korp pipeline finishes processing the corpus, the annotations are imported to the working GATE corpus.
-This is how the remaining steps access these annotations as shown in in figure~\ref{fig:method-artifact}.
+This is how the remaining steps access these annotations as shown in figure~\ref{fig:method-artifact}.
 GATE automatically picks up the annotations in the Korp output and stores them in the GATE corpus.
 Next, the JAPE rules are run to apply higher-level annotations to the corpus.
 The term candidate JAPE rule is described in the next section, while the labeled relation JAPE rule is described in Section~\ref{sec:results:proto:cands}.
@@ -1002,7 +1001,7 @@ The head of these simplistic noun phrases was selected as the last noun in the p
 I refer to the noun phrases that were selected as potential terms as \emph{term candidates} and they are used in term extraction, subconcept relation extraction and labeled relaton extraction.
 This is depicted by the Linguistic Filter method box in figure~\ref{fig:method-artifact} producing Term Candidate and Head annotations from the POS annotation artifact produced in the previous step.
 
-I initially experimented with noun phrases extracted using the SweSPARK noun phrase chunker (Chunking in \ref{chap:eval-corp-links}, but the Adj*Noun+ form of noun phrase was most-suited to the similarity measure for Hirarchical Agglomerative Clustering.
+I initially experimented with noun phrases extracted using the SweSPARK noun phrase chunker (Chunking in \ref{sec:lit-rev:preproc}), but the Adj*Noun+ form of noun phrase was most-suited to the similarity measure for Hirarchical Agglomerative Clustering.
 The chunker provides many forms of noun phrases including determiners and other parts of speech which are not clearly part of terms.
 Selecting the head noun in certain noun phrase forms such as DetAdj*Noun+PrepNoun is more complex than for Adj*Noun+ phrases, and the similarity measure used in \cite{Drymonas10OntoGain} needs to have the head identified.
 The Adj*Noun+ form performed well for English in the evaluation of C-Value in \cite{Frantzi98CNCValue} and many Swedish noun phrases take this form \todo{cite swedish noun phrase book} so this was a reasonable approximation for the objective of this thesis.
