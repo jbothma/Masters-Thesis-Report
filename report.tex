@@ -1272,10 +1272,10 @@ The evaluation was performed on a corpus of articles available at \url{http://la
 All articles available in HTML format categorised under Cardiovascular Disease were selected, as this was one of the largest categories denoting a specific subdomain of medicine available in Swedish in the HTML format.
 More articles were available in PDF format but it was harder to reliably extract the plain text of the article from the PDF versions.
 114 articles were downloaded as HTML documents and preprocessed into plain text.
-URLs to these articles are given in Appendix~\ref{chap:eval-corp-links}
+URLs to these articles are given in Appendix~\ref{chap:eval-corp-links}.
 The program used for extracting the article text from the HTML documents is shown in listing~\ref{lst:extract-plain}.
-This uses the common HTML document manipulation library BeautifulSoup to extract text from sections labeled "article-text", which contain the article text.
-The output of this contained some text that was not useful for ontology learning from natural text, like certain punctuation and the reference sections of articles.
+This uses the common HTML document manipulation library BeautifulSoup to extract text from sections labeled ``article-text", which contain the article text.
+The output of this contained some text that was not useful for ontology learning from natural language, like certain punctuation and the reference sections of articles.
 These were removed using the program shown in listing~\ref{lst:cleaner}.
 This processing consisted of
 \begin{enumerate}
@@ -1303,11 +1303,12 @@ Lack of expertise can result in misjudging the meaning or usefulness of a candid
 It can also result in missing out on important learnings that could have led to improvements in the field.
 At this stage of the work, there appear to be enough low-hanging fruit so that this method results in valuable learnings, but there is also value in repeating the experiment with more expert support.
 Personal bias could result in a tendancy to consider candidates more useful than they really are.
-Since one of the main goals of this thesis is to identify areas where further research is needed, the risk of personal bias countered to some extent by the need to define specific, systematic issues with the quality of the output of the tool.
+Since one of the main goals of this thesis is to identify areas where further research is needed, the risk of personal bias is countered to some extent by the need to define specific, systematic issues with the quality of the output of the tool.
 As with the lack of expertise and risk of personal bias, using a single evaluator misses out on multiple viewpoints and tempering of outlying results.
 The method used in \cite{Zouaq11OntoCmaps} addresses many of these issues, although it largely depends on the availability of gold standards.
 
 \section{Evaluation Results}
+\label{sec:results:eval}
 
 The following sections explain more specifically how each category was defined and assigned to candidates, along with the results.
 The results are analysed and discussed further in section~\ref{sec:analysis}.
@@ -1337,7 +1338,7 @@ The fault categories were defined as follows:
 \begin{itemize}
   \item \emph{adj} The candidate is just an adjective e.g. "omättad" and "intensiv"
   \item \emph{adj of qty/qlty} The candidate is an adjective of quantity or quality without being an important domain term e.g. "antal studie" and "hög risk"
-  \item \emph{incomplete term} An incomplete of a term meaning nothing by itself e.g. "2-diabetes" and "qt-syndrom"
+  \item \emph{incomplete term} A part of a term meaning nothing by itself e.g. "2-diabetes" and "qt-syndrom"
   \item \emph{name} The candidate is the name of a person e.g. "linda" and "jan åkesson"
   \item \emph{not a term} text that doesn't represent a term for some other reason e.g. "bl a" and "et al"
   \item \emph{other language} Text in a language other than swedish e.g. "heart health charter" and "trialists"
@@ -1394,9 +1395,9 @@ Ontology elements were extracted manually from a single randomly-chosen article 
 The article consisted of 349 words in 22 sentences.
 
 69 terms were identified.
-They were then classified as pertaining to \emph{generic}, \emph{parent} or \emph{this} domain, as with the automatically-extracted concepts.
+They were then classified as pertaining to the \emph{generic}, the \emph{parent} or \emph{this} domain, as with the automatically-extracted concepts.
 The c-value of the automatically-extracted counterparts were assigned to the manually-extracted terms.
-9 terms were not automatically-extracted.
+9 terms were not automatically-extracted, e.g. `självrapporterade förekomst' in the context `självrapporterade förekomsten av hjärtinfarkt'.
 The terms that were also extracted automatically were ordered by c-value.
 Figure~\ref{fig:concepts-manual} shows the distribution of the different classes of terms - one series for the terms with the highest c-value, and one series for the terms with the lowest c-value.
 
@@ -1474,7 +1475,7 @@ It can be expected that coreference resolution would help here, since domain con
 
 An example of how the C-value ranking is working well is with the term "typ 2-diabetes". Both the full term and "2-diabetes" were selected as concepts, but the ranking for "typ 2-diabetes" is very high, while the ranking for "2-diabetes" is very low. This is because the latter occurs frequently, but only as part of the complete term.
 
-\subsection{Subconcept relation extraction and recommendation}
+\subsection{Relation extraction and recommendation}
 
 The result of 43\% of subconcept candidates being correct is rather disappointing, but the majority of the mistakes can be excluded using simple filters.
 Subclass relations to the concept itself can easily be filtered out by comparing the subject and object.

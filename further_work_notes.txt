@@ -1,0 +1,132 @@
+Preprocessing
+-------------
+
+* would be better and cleaning text from various sources into nice simple natural language that all the tools are happy with (4.2)
+
+* Use compound splitting (2.2.3)
+** Methods used for English might need tweaking to work beter with compound-split words
+** relevant to subconcept relation extraction (5.2.1)
+
+* Use Named Entity Recognition (2.2.3, 5.2.1)
+** names probably usually refer to important relevant entities, often researchers/actors in business
+** names probably shouldn't be concepts
+
+* Use Coreference Resolution (2.2.3)
+
+* language detection (5.2.1)
+
+Evidence sources
+----------------
+
+* get evidence from text in more than one language (1.1)
+** more disambiguation from things expressed in different ways
+** more candidates perhaps not picked up in one language
+
+* get evidence for same kind of candidates from different methods (1.3, 2.3)
+** evidence combination becomes important
+** can compliment each others' weaknesses and cover domain better
+** e.g. OntoUSP, OntoCMaps (2.1.9)
+** Bootstrap models, perhaps iterate with the output of one round informing the next
+*** iterations might converge towards a maximal score of an automated evaluation, like OntoUSP converges to a mathematical ideal set of edge weights
+** perhaps improve accuracy, e.g. cascading error from POS onwards (5.2.1)
+
+* simply implement more of the available methods (5.2.1)
+
+* support more complex noun phrases (4.2.1)
+** cos there's a cool chunker available?
+
+* Use NC-part of C-Value/NC-Value (2.2.4)
+
+* get evidence from online sources (1.3)
+
+* get evidence from structured data (1.3)
+  ** e.g. WordNet (2.2)
+
+* instead of stripping out reference sections, use for provenance or perhaps finding more relevant sources (5.1)
+
+* extract a bigger variety of candidates (1.2)
+** Attributes of concepts, not just labeled relations
+*** e.g. a lot of figures and their units were picked up in candidates but they are properties of instances (5.2.1)
+** other taxonomic relations
+** Axioms e.g. generalising properties about concepts
+** distinguish between concepts and instances (5.2.1)
+*** the intended application of the ontology probably impacts this distinction
+
+* awareness of intended application of ontology (1.3, 2.3)
+** could streamline extraction
+** could guide construction
+** ontology patterns might help
+
+* would be nice if UI tracked extraction progress in more detail to give better impression of time remaining and what takes long (2.2.8)
+
+* perhaps support easily filtering out systematic errors (5.2.1)
+** ie could make jape scripting available at this level, and could help package jape scripts for reuse
+
+Construction
+------------
+
+* candidate presentation for ontology construction (1.2), (2.2.8)
+** show more context
+** preview effect on ontology if added
+** show original forms (not just lemmas)
+** show annotations
+** refer to methods that provided the evidence
+
+* ground in / link to other ontologyes (construction) (1.3, 5.2.1)
+** avoid duplicating ontology elements / work
+** improve interoperability
+** keep domain ontology concise and maintainable
+
+* Refer to evidence sources to explain why an ontology element was suggested as a candidate in the first place (2.2.2)
+** See Open Provenance Model
+
+* More guidance and options when constructing the ontology from candidates (2.2.5)
+** many ways of modelling things, implications aren't obvious
+** I think ontology design patterns apply here
+
+* Support iterative addition of corpus and thus construction as new inputs become available or evolve (2.3)
+
+Evaluation
+----------
+
+* Could automate a lot of the evaluation (2.2.6, 2.3)
+** Could run this during construction cf test-driven development in software development domain
+
+* Could support some evaluation inside the tool, but perhpas not everything (5.1)
+** why re-impement common stats tools for more custom evaluation
+** perhaps improve data export
+** right now only candidates exported, only as lemmas, in csv
+
+* evaluate with domain experts (5.1)
+** can comment on what's actually important in the domain
+
+* ontology construction experts  (5.1)
+** can comment on the impact of modelling stuff in a certain way
+
+
+
+Framework extension proposal
+----------------------------
+
+* Interoperability is needed between different tools which solve one specific problem (2.2.2)
+** I glued methods together by hand-coding a system that glues them together
+** Perhaps base this on GATE's corpus format
+*** Each tool describes what inputs it depends on and outputs it provides
+*** Need a machine-readable way to describe inputs/outputs
+*** under which annotation sets/namespaces they can be found
+*** and what format the values are in
+** Speed up iterative development, method/evidence combination (2.3)
+
+Tool improvements
+-----------------
+
+* support pausing, and restarting processing at any point (4.1, 4.5.4)
+** Even when well-optimised, processing a large corpus might take a long time and ontology construction very long, not just one session
+
+* support distributing processing (4.1)
+** user's computer shouldn't need to have a lot of power
+** ideal to parallelise the processing that can be parallel
+** could be automated if the inputs and outputs of the methods are well-defined and the plugins are portable/modular/isolated
+
+* make installation easier (4.5.1)
+** perhaps bundle dependencies and set up more of their environment automatically
