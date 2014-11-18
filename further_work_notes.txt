@@ -1,74 +1,74 @@
 Preprocessing
 -------------
 
-* would be better and cleaning text from various sources into nice simple natural language that all the tools are happy with (4.2)
+.* would be better and cleaning text from various sources into nice simple natural language that all the tools are happy with (4.2)
 
-* better POS tagging
+.* better POS tagging
 
-* stop words (5.2.1, 5.3.2)
-** stop things like bl.a. (bland annat) from being treated like normal words
+.* stop words (5.3.2)
 
-* Use compound splitting (2.2.3)
-** Methods used for English might need tweaking to work beter with compound-split words
-** relevant to subconcept relation extraction (5.2.1)
+.* Use compound splitting (2.2.3)
+.** Methods used for English might need tweaking to work beter with compound-split words
+.** relevant to subconcept relation extraction (5.2.1)
 
-* Use Named Entity Recognition (2.2.3, 5.2.1, 5.3.1)
-** names probably usually refer to important relevant entities, often researchers/actors in business
-** names probably shouldn't be concepts
+.* Use Named Entity Recognition (2.2.3, 5.2.1, 5.3.1)
+.** names probably usually refer to important relevant entities, often researchers/actors in business
+.** names probably shouldn't be concepts
 
-* Use Coreference Resolution (2.2.3)
-** abbreviations
+.* Use Coreference Resolution (2.2.3)
+.** stop things like bl.a. (bland annat) from being treated like normal words (5.2.1)
+.** abbreviations
 
-* language detection (5.2.1, 5.3.1)
+.* language detection (5.2.1, 5.3.1)
 
 Evidence sources
 ----------------
 
-* get evidence from text in more than one language (1.1)
-** more disambiguation from things expressed in different ways
-** more candidates perhaps not picked up in one language
+.* get evidence from text in more than one language (1.1)
+.** more disambiguation from things expressed in different ways
+.** more candidates perhaps not picked up in one language
 
-* get evidence for same kind of candidates from different methods (1.3, 2.3)
-** evidence combination becomes important
-** can compliment each others' weaknesses and cover domain better
-** e.g. OntoUSP, OntoCMaps (2.1.9)
-** Bootstrap models, perhaps iterate with the output of one round informing the next
-*** iterations might converge towards a maximal score of an automated evaluation, like OntoUSP converges to a mathematical ideal set of edge weights
-** perhaps improve accuracy, e.g. cascading error from POS onwards (5.2.1)
-*** higher accuracy and stricter filtering at each stage. make these parameters tweakable      [tweakable params]
+.* get evidence for same kind of candidates from different methods (1.3, 2.3)
+.** evidence combination becomes important
+.** can compliment each others' weaknesses and cover domain better
+.** e.g. OntoUSP, OntoCMaps (2.1.9)
+.** Bootstrap models, perhaps iterate with the output of one round informing the next
+.*** iterations might converge towards a maximal score of an automated evaluation, like OntoUSP converges to a mathematical ideal set of edge weights
+.** perhaps improve accuracy, e.g. cascading error from POS onwards (5.2.1)
+.*** higher accuracy and stricter filtering at each stage. make these parameters tweakable      [tweakable params]
 
 * simply implement more of the available methods (5.2.1)
 
-* support more complex noun phrases (4.2.1)
-** cos there's a cool chunker available?
-** fewer erroneous or partially-extracted results like in (5.2.1)
-*** have to classify noun phrase forms - some methods wouldn't be compatible with different noun phrase forms, e.g. hierarchical agglomerative clustering
+.* support more complex noun phrases (4.2.1)
+.** cos there's a cool chunker available?
+.** fewer erroneous or partially-extracted results like in (5.2.1)
+.*** have to classify noun phrase forms - some methods wouldn't be compatible with different noun phrase forms, e.g. hierarchical agglomerative clustering
 
-* utlise more of the granularity of the POS tags we have
-** e.g. to not classify posessive nouns as noun phrase specialisations e.g. "kolesterols roll" (5.2.1)
+.* utlise more of the granularity of the POS tags we have
+.** e.g. to not classify posessive nouns as noun phrase specialisations e.g. "kolesterols roll" (5.2.1)
 
-* Use NC-part of C-Value/NC-Value (2.2.4)
+.* Use NC-part of C-Value/NC-Value (2.2.4)
 
-* get evidence from online sources (1.3)
+.* get evidence from online sources (1.3)
 
 * get evidence from structured data (1.3)
   ** e.g. WordNet (2.2)
 
-* instead of stripping out reference sections, use for provenance or perhaps finding more relevant sources (5.1)
+.* instead of stripping out reference sections, use for provenance or perhaps finding more relevant sources (5.1)
 
-* extract a bigger variety of candidates (1.2)
-** Attributes of concepts, not just labeled relations
-*** e.g. a lot of figures and their units were picked up in candidates but they are properties of instances (5.2.1)
-** other taxonomic relations
-** Axioms e.g. generalising properties about concepts (5.3.3)
-** distinguish between concepts and instances (5.2.1)
-*** the intended application of the ontology probably impacts this distinction
+.* extract a bigger variety of candidates (1.2)
+.** Attributes of concepts, not just labeled relations
+.*** e.g. a lot of figures and their units were picked up in candidates but they are properties of instances (5.2.1)
+.** other taxonomic relations
+.** Axioms e.g. generalising properties about concepts (5.3.3)
+.** distinguish between concepts and instances (5.2.1)
+.*** the intended application of the ontology probably impacts this distinction
 ** (5.2.2) självrapporterade förekomsten av hjärtinfarkt
 ** (5.3.2) hyponymy expressed in many forms in language
 
-* awareness of intended application of ontology (1.3, 2.3)    [tweaking params]
-** could streamline extraction
-** could guide construction
+.* awareness of intended application of ontology (1.3, 2.3)    [tweaking params]
+.** could streamline extraction
+.** could guide construction
 ** ontology patterns might help
 
 * would be nice if UI tracked extraction progress in more detail to give better impression of time remaining and what takes long (2.2.8)
@@ -81,12 +81,12 @@ Evidence sources
 Construction
 ------------
 
-* candidate presentation for ontology construction (1.2), (2.2.8)
-** show more context (5.2.1)
-** preview effect on ontology if added
-** show original forms (not just lemmas)
-** show annotations
-** refer to methods that provided the evidence
+.* candidate presentation for ontology construction (1.2), (2.2.8)
+.** show more context (5.2.1)
+.** preview effect on ontology if added
+.** show original forms (not just lemmas)
+.** show annotations
+.** refer to methods that provided the evidence
 *** full traceability - ontocmaps evaluators confused specific and specification
 
 * ground in / link to other ontologyes (construction) (1.3, 5.2.1, 5.3.1)
@@ -160,3 +160,5 @@ Tool improvements
 * show more context (5.3)
 
 * support manually assigning labels when adding to ontology
+
+* [tweakable params]

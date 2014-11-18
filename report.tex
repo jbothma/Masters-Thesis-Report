@@ -1502,6 +1502,7 @@ Hyponymy can be expressed in many ways, and a variety of methods should be emplo
 The feasibility of one common method was demonstrated here.
 
 \subsection{Labeled relation extraction and recommendation}
+\label{subsec:analysis:labeled_rels}
 
 Almost half of the labeled relation candidates did not make sense as labeled relations.
 Most of the remainder were classified "yes, too general" and need further work to be useful.
@@ -1519,13 +1520,58 @@ A richer selection of extraction methods should be expected to deliver much bett
 \label{chap:further}
 
 The third objective of this project is to identify issues for the further development of a tool for ontology learning from Swedish text such as that prototyped as part of this project.
-These issues are enumerated here, based on the implementation choices described in chapter~\ref{chap:results} and the evaluation findings in chapter~\ref{chap:eval}.
+These issues are discussed here, based on the implementation choices described in chapter~\ref{chap:results} and the evaluation findings in chapter~\ref{chap:eval}.
 
 \section{Preprocessing}
 
-\ref{sec:results:proto:prepr}
+Many more preprocessing tools can be used and developed to improve accuracy and recall.
+The corpus cleaning described in Section~\ref{sec:results:proto:prepr} was not built into the tool and was tailored to corpus at hand to perform a fair evaluation of the extraction part of the pipeline relevant here.
+In a general tool, it is important to support as wide a variety of corpus formats as possible so it is important to be able to extract the natural language part of documents cleanly.
+Better Part of Speech tagging is important, as shown in the results in Section~\ref{sec:results:eval:cands} where errors in POS annotation cascade through the pipeline.
+Various taggers are available, and various models are available for these models with different characteristics.
+Custom tagger models can also be generated for special domains.
+It might also be useful to combine evidence from multiple taggers, or be able to configure a threshold for the confidence a tagger needs to have in a particular annotation before it would be accepted by later stages.
+Stop word lists would be useful for many tasks, including rejecting certain words from classification as parts in certain cadidates, like in the C-value/NC-value method and the adjectives of quantity discussed in Section~\ref{subsec:analysis:subconcepts}.
+Compound Splitting (\ref{sec:lit-rev:preproc}) is important in compounding languages like Swedish.
+Methods developed for English might need some adaptation when used on compound-split words in Swedish but many might still be applicable.
+Compounded words are often equivalent to the noun phrases used in this prototype and treating them as such could lead to finding more candidates (See \ref{sec:results:eval:cands}).
+Named Entity Recognition (\ref{sec:lit-rev:preproc}) would be useful for reducing errors from names being misclassified (\ref{sec:results:eval:cands}) and for modeling other aspects of the domain not supported in this prototype (\ref{subsec:analysis:concepts}).
+Coreference Resolution (\ref{sec:lit-rev:preproc}) would improve precision and recall a lot by getting a more accurate impression of where each concept is referenced.
+Misclassified text like abbreviations would also be classified correctly reducing many of the errors mentioned in Section~\ref{sec:results:eval:cands}.
+Language detection would allow application of langage-specific tools to sections of text in other language, removing another common source of error (See \ref{sec:results:eval:cands}, \ref{chap:eval-corp-links}pts}).
+
 \section{Evidence sources and candidate extraction}
+
+Many other sources of evidence for candidate extraction and clarification are available.
+For example, some of the granularity of the POS tags available was ignored here for simplicity, but could reduce errors like miss-classifying ´´cholesterols roll`` (\ref{sec:results:eval:cands}) by defining more specific linguistic filters.
+The NC-value part of the C-value/NC-value method was also skipped for simplicity.
+Many other methods are available, as discussed in Section~\ref{subsec:background:info_extraction}.
+Using evidence from multiple languages (\ref{sec:intro:problem}) has shown good results and could improve recall and reduce ambiguity.
+Evidence can also be gathered from structured data like Wordnet (\ref{sec:lit-rev:immediate}) and online data (See \ref{sec:intro:delimitations}, \ref{sec:background:open-areas}).
+Evidence for the same candidates can be combined from multiple sources (Evidence Combination, \ref{sec:background:open-areas}) and showed good results in OntoCMaps (See \ref{subsec:background:machine_reading}).
+This is also relevant to boostrapping approaches where models (e.g. POS tagger or ontologies) are bootstrapped and iterated upon, perhaps automatically converging towards an optimal configuration  (See OntoUSP \ref{subsec:background:machine_reading}).
+The reference sections stripped out in Section~\ref{sec:eval:setup} could really be used for encoding provenance and expanding the corpus.
+Support for more complex noun phrases (See SweSPARK, \ref{subsec:results:term_cand_ling_filt}) would improve recall and reduce errors where complex noun phrases incorrectly match the current linguistic filter (\ref{sec:results:eval:cands}).
+This would also require further development of candidate extraction techniques since methods like hierarchical agglomerative clustering used here would not be compatible with all noun phrase forms.
+We could also extract a larger variety of candidate types to be able to model the domain more richly.
+We have not modeled attributes of concepts here - only some relations between them.
+Nor have we modeled all kinds of taxonomic relations.
+A lot of figures and their units were extracted and annotated incorrectly resulting in errors, but these could really be used to define properties of and restrictions on concepts or their instances (\ref{sec:results:eval:cands}, \ref{subsec:analysis:labeled_rels}).
+We have also not distinguished between concepts and instances, while this is very important in practice.
+This could streamline the preprocessing and extraction phase by skipping extraction of things not relevant to that kind of ontology.
+It could have a large impact on how this distinction is made construction of a given ontology, so support would be needed to define this for the tool to help the user make this distinction.
+With many sources of evidence, it becomes even more important to have some traceability for the user to be able to understand why a candidate is recommended.
+
 \section{Ontology Construction}
+
+During ontology construction, it would be extremely helpful if more information of the candidates are available to the user (\ref{sec:intro:objective}, \ref{subsec:background:ui}, \ref{sec:results:eval:cands}).
+From the experience gained in this thesis, it was important to see the contexts in the corpus where candidates occurred, their original forms (not just lemmas), the annotations on the corpus, and the methods that played a role in the recommendation.
+This was also an important issue identified in the OntoCMaps evaluation where limited information about candidates resulted in unexpected classifications by evaluators.
+It might also be very useful to be able to preview how a candidate would be modeled in the ontology and the impact this would have on the ontology.
+
+Support for grounding the ontology in existing ontologies would 
+
+
 \section{Evaluation}
 \section{User interface and tool improvements}
 \section{Framework extension}

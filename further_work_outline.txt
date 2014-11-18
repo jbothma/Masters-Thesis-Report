@@ -26,7 +26,7 @@
 4.5.4   \ref{subsec:results:usage}
         
 5.1     \ref{sec:eval:setup}
-5.2.1   \ref{sec:results:eval:cands}
+5.2.1   \ref{sec:results:eval:cands}    
 5.2.2   \ref{sec:results:eval:cands_manual}
 5.3     \ref{sec:analysis}
 5.3.1   \ref{subsec:analysis:concepts}
