@@ -76,6 +76,7 @@ Ontology learning from text tends to employ a variety of natural language proces
 Some systems attempt to automatically construct ontologies in formats ready for application in semantically-enabled software, while others present the evidence as an aid to human experts who can then build such ontologies with significantly-reduced effort compared to a manual approach.
 
 \section{Problem}
+\label{sec:intro:problem}
 %ONE-SENT Hoewever, there is no Ontology Learning System for learning ontologies from Swedish text.
 
 Most ontology learning research forcuses on English language.
@@ -87,6 +88,7 @@ While most scientific research in Sweden is now published in English and many bu
 The problem is therefore that ontology learning should be extended to support Swedish text, making use of existing research in natural language processing and information extraction for Swedish where necessary.
  
 \section{Objective}
+\label{sec:intro:objective}
 
 The objective of this thesis is to develop a system for ontology learning from Swedish text.
 Given the time constraint, only a prototype will be built which will apply a small selection of methods, with the objectives of
@@ -97,6 +99,7 @@ Given the time constraint, only a prototype will be built which will apply a sma
 \end{enumerate}
 
 \section{Delimitations}
+\label{sec:intro:delimitations}
 
 The restriction to a small selection of methods means that only certain kinds of concepts and relations can be extracted and important things might be missed.
 This is because certain methods are only suited to particular syntactic or semantic forms.
@@ -271,6 +274,7 @@ The typical tasks and their outputs are shown in Fig.\ref{fig:output-task-techni
 
 
 \subsection{Machine Reading}
+\label{subsec:background:machine_reading}
 
 Machine Reading is the automatic, unsupervised \emph{'understanding'} of text where understanding means formation of beliefs supporting some level of reasoning from a textual corpus \citep{EtzioniEtAll06MachineReading}.
 Machine Reading is distinguished from Information Retrieval where this is done in a highly supervised, manual manner - for example where patterns for extracting desired entities are hand-written or manually selected from an extracted list.
@@ -446,6 +450,7 @@ A statistical model of the swedish language is used in \citep{Sjobergh04Compound
 SVENSK is a language processing toolbox for Swedish developed in the late 1990s and 2000\cite{OlssonGamback00SVENSK}. SVENSK aimed to support research and teaching which depended on Swedish language processing by providing common text processing tools such as taggers and parsers in a general purpose language processing framework. SVENSK was based on the GATE language processing framework.
 
 \subsection{Information Extraction}
+\label{subsec:background:info_extraction}
 
 Information Extraction is the task of extracting structured information from a corpus of text.
 The units of information generally extracted are terms, concepts, attributes, relations and axioms.
@@ -640,6 +645,7 @@ Change management is generally an organisational process of transitioning from o
 In Ontology Engineering, that means making and tracking the changes to the ontology during construction and ongoing maintenance.
 
 \subsection{User Interaction}
+\label{subsec:background:ui}
 
 User interfaces need to support non-ontology-engineer users in selecting and configuring appropriate methods, and then help them access important subsets of a potentially large amount of information extracted.
 User interfaces can further help understanding the evidence for parts of the ontology and visualise the ontology's structure.
@@ -954,6 +960,7 @@ The implementation for the second objective of semi-automatic ontology construct
 The design is shown in figure~\ref{fig:prototype-design} and described in the next section.
 
 \section{Design}
+\label{sec:results:design}
 
 \begin{figure}[H]
   \includegraphics[width=10cm]{graphics/protege-plugin-components-simple.png}
@@ -994,6 +1001,7 @@ Next, the JAPE rules are run to apply higher-level annotations to the corpus.
 The term candidate JAPE rule is described in the next section, while the labeled relation JAPE rule is described in Section~\ref{sec:results:proto:cands}.
 
 \subsection{Linguistic Filter for Term Candidates}
+\label{subsec:results:term_cand_ling_filt}
 
 For initial potential terms to be selected by the C-Value method, a linguistic filter of zero or more adjectives, followed by one or more nouns, is used.
 This filter was depicted as Adj*Noun+ in \cite{Frantzi98CNCValue} by analogy to regular expressions over parts of speech.
@@ -1144,6 +1152,7 @@ The chosen modelling approach is not always appropriate and more options are nee
 This section shows how to install and use the prototype while demonstrating it with a sample corpus.
 
 \subsection{Dependencies}
+\label{subsec:results:deps}
 
 \begin{itemize}
 \item Korp Corpus Pipeline\footnote{http://spraakbanken.gu.se/eng/research/infrastructure/korp/distribution/corpuspipeline}
@@ -1186,6 +1195,8 @@ The plugin JAR file\footnote{https://github.com/downloads/jbothma/ontology-learn
 The source code for the plugin is available at the project source repository\footnote{https://github.com/downloads/jbothma/ontology-learning-protege}.
 
 \subsection{Usage}
+\label{subsec:results:usage}
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=.69\textwidth]{graphics/1._Open_Protege.png}
@@ -1267,6 +1278,7 @@ Columns are sortable to help assess the candidates quickly.
 \label{chap:eval}
 
 \section{Evaluation Setup}
+\label{sec:eval:setup}
 
 The evaluation was performed on a corpus of articles available at \url{http://lakartidningen.se/}.
 All articles available in HTML format categorised under Cardiovascular Disease were selected, as this was one of the largest categories denoting a specific subdomain of medicine available in Swedish in the HTML format.
@@ -1390,6 +1402,7 @@ Labeled relations were classified \emph{yes}, \emph{no} or \emph{yes too general
 \end{figure}
 
 \subsection{Manually-extracted candidates}
+\label{sec:results:eval:cands_manual}
 
 Ontology elements were extracted manually from a single randomly-chosen article from the corpus used in the evaluation.
 The article consisted of 349 words in 22 sentences.
@@ -1453,6 +1466,7 @@ The rest of this chapter discusses what can be learnt from from the results in S
 
 
 \subsection{Concept extraction and recommendation}
+\label{subsec:analysis:concepts}
 
 Most of the concept candidates extracted do appear to be useful concepts for modelling the domain, but most of them are more general than the domain at hand.
 Some way of automatically identifying these more-general concepts would be useful to avoid duplicate definitions in OL for similar domains and to improve interoperability of ontologies.
@@ -1476,6 +1490,7 @@ It can be expected that coreference resolution would help here, since domain con
 An example of how the C-value ranking is working well is with the term "typ 2-diabetes". Both the full term and "2-diabetes" were selected as concepts, but the ranking for "typ 2-diabetes" is very high, while the ranking for "2-diabetes" is very low. This is because the latter occurs frequently, but only as part of the complete term.
 
 \subsection{Subconcept relation extraction and recommendation}
+\label{subsec:analysis:subconcepts}
 
 The result of 43\% of subconcept candidates being correct is rather disappointing, but the majority of the mistakes can be excluded using simple filters.
 Subclass relations to the concept itself can easily be filtered out by comparing the subject and object.
@@ -1506,9 +1521,14 @@ A richer selection of extraction methods should be expected to deliver much bett
 The third objective of this project is to identify issues for the further development of a tool for ontology learning from Swedish text such as that prototyped as part of this project.
 These issues are enumerated here, based on the implementation choices described in chapter~\ref{chap:results} and the evaluation findings in chapter~\ref{chap:eval}.
 
-\begin{itemize}
-\item Improve efficiency to scale better with corpus size
-\end{itemize}
+\section{Preprocessing}
+
+\ref{sec:results:proto:prepr}
+\section{Evidence sources and candidate extraction}
+\section{Ontology Construction}
+\section{Evaluation}
+\section{User interface and tool improvements}
+\section{Framework extension}
 
 This tool successfully integrated the GATE, Protege and Korp frameworks.
 Further research into and practice of ontology engineering depends on being able to integrate, select, and combine the results of a multitude of methods throughout the OL pipeline.
