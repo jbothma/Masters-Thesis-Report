@@ -3,17 +3,23 @@ Preprocessing
 
 * would be better and cleaning text from various sources into nice simple natural language that all the tools are happy with (4.2)
 
+* better POS tagging
+
+* stop words (5.2.1, 5.3.2)
+** stop things like bl.a. (bland annat) from being treated like normal words
+
 * Use compound splitting (2.2.3)
 ** Methods used for English might need tweaking to work beter with compound-split words
 ** relevant to subconcept relation extraction (5.2.1)
 
-* Use Named Entity Recognition (2.2.3, 5.2.1)
+* Use Named Entity Recognition (2.2.3, 5.2.1, 5.3.1)
 ** names probably usually refer to important relevant entities, often researchers/actors in business
 ** names probably shouldn't be concepts
 
 * Use Coreference Resolution (2.2.3)
+** abbreviations
 
-* language detection (5.2.1)
+* language detection (5.2.1, 5.3.1)
 
 Evidence sources
 ----------------
@@ -29,11 +35,17 @@ Evidence sources
 ** Bootstrap models, perhaps iterate with the output of one round informing the next
 *** iterations might converge towards a maximal score of an automated evaluation, like OntoUSP converges to a mathematical ideal set of edge weights
 ** perhaps improve accuracy, e.g. cascading error from POS onwards (5.2.1)
+*** higher accuracy and stricter filtering at each stage. make these parameters tweakable
 
 * simply implement more of the available methods (5.2.1)
 
 * support more complex noun phrases (4.2.1)
 ** cos there's a cool chunker available?
+** fewer erroneous or partially-extracted results like in (5.2.1)
+*** have to classify noun phrase forms - some methods wouldn't be compatible with different noun phrase forms, e.g. hierarchical agglomerative clustering
+
+* utlise more of the granularity of the POS tags we have
+** e.g. to not classify posessive nouns as noun phrase specialisations e.g. "kolesterols roll" (5.2.1)
 
 * Use NC-part of C-Value/NC-Value (2.2.4)
 
@@ -48,9 +60,11 @@ Evidence sources
 ** Attributes of concepts, not just labeled relations
 *** e.g. a lot of figures and their units were picked up in candidates but they are properties of instances (5.2.1)
 ** other taxonomic relations
-** Axioms e.g. generalising properties about concepts
+** Axioms e.g. generalising properties about concepts (5.3.3)
 ** distinguish between concepts and instances (5.2.1)
 *** the intended application of the ontology probably impacts this distinction
+** (5.2.2) självrapporterade förekomsten av hjärtinfarkt
+** (5.3.2) hyponymy expressed in many forms in language
 
 * awareness of intended application of ontology (1.3, 2.3)
 ** could streamline extraction
@@ -61,21 +75,27 @@ Evidence sources
 
 * perhaps support easily filtering out systematic errors (5.2.1)
 ** ie could make jape scripting available at this level, and could help package jape scripts for reuse
+** e.g. hacky fix for subconcept == superconcept
+
 
 Construction
 ------------
 
 * candidate presentation for ontology construction (1.2), (2.2.8)
-** show more context
+** show more context (5.2.1)
 ** preview effect on ontology if added
 ** show original forms (not just lemmas)
 ** show annotations
 ** refer to methods that provided the evidence
+*** full traceability - ontocmaps evaluators confused specific and specification
 
-* ground in / link to other ontologyes (construction) (1.3, 5.2.1)
+* ground in / link to other ontologyes (construction) (1.3, 5.2.1, 5.3.1)
 ** avoid duplicating ontology elements / work
 ** improve interoperability
 ** keep domain ontology concise and maintainable
+** e.g. searching for candidates in other ontologies
+** (5.2.2) many highly-ranked terms belong in neighbouring ontologoes
+** start automatically distinguishing between domain and general concepts (5.3.1)
 
 * Refer to evidence sources to explain why an ontology element was suggested as a candidate in the first place (2.2.2)
 ** See Open Provenance Model
@@ -103,6 +123,8 @@ Evaluation
 * ontology construction experts  (5.1)
 ** can comment on the impact of modelling stuff in a certain way
 
+* sample was very very small (5.2.2)
+** repeat with bigger sample
 
 
 Framework extension proposal
@@ -116,12 +138,14 @@ Framework extension proposal
 *** under which annotation sets/namespaces they can be found
 *** and what format the values are in
 ** Speed up iterative development, method/evidence combination (2.3)
+* dependency management
 
 Tool improvements
 -----------------
 
 * support pausing, and restarting processing at any point (4.1, 4.5.4)
 ** Even when well-optimised, processing a large corpus might take a long time and ontology construction very long, not just one session
+** current tool takes a lot of time for a fairly small corpus (5.3)
 
 * support distributing processing (4.1)
 ** user's computer shouldn't need to have a lot of power
@@ -130,3 +154,7 @@ Tool improvements
 
 * make installation easier (4.5.1)
 ** perhaps bundle dependencies and set up more of their environment automatically
+
+* show more context (5.3)
+
+* support manually assigning labels when adding to ontology
