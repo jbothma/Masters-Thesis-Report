@@ -89,19 +89,19 @@ Construction
 .** refer to methods that provided the evidence
 *** full traceability - ontocmaps evaluators confused specific and specification
 
-* ground in / link to other ontologyes (construction) (1.3, 5.2.1, 5.3.1)
-** avoid duplicating ontology elements / work
-** improve interoperability
-** keep domain ontology concise and maintainable
+.* ground in / link to other ontologyes (construction) (1.3, 5.2.1, 5.3.1)
+.** avoid duplicating ontology elements / work
+.** improve interoperability
+.** keep domain ontology concise and maintainable
 ** e.g. searching for candidates in other ontologies
-** (5.2.2) many highly-ranked terms belong in neighbouring ontologoes
+.** (5.2.2) many highly-ranked terms belong in neighbouring ontologoes
 ** start automatically distinguishing between domain and general concepts (5.3.1)
 
-* Refer to evidence sources to explain why an ontology element was suggested as a candidate in the first place (2.2.2)
+.* Refer to evidence sources to explain why an ontology element was suggested as a candidate in the first place (2.2.2)
 ** See Open Provenance Model
 
-* More guidance and options when constructing the ontology from candidates (2.2.5)
-** many ways of modelling things, implications aren't obvious
+.* More guidance and options when constructing the ontology from candidates (2.2.5)
+.** many ways of modelling things, implications aren't obvious
 ** I think ontology design patterns apply here
 
 * Support iterative addition of corpus and thus construction as new inputs become available or evolve (2.3)
@@ -109,22 +109,22 @@ Construction
 Evaluation
 ----------
 
-* Could automate a lot of the evaluation (2.2.6, 2.3)
-** Could run this during construction cf test-driven development in software development domain
+.* Could automate a lot of the evaluation (2.2.6, 2.3)
+.** Could run this during construction cf test-driven development in software development domain
 
-* Could support some evaluation inside the tool, but perhpas not everything (5.1)
-** why re-impement common stats tools for more custom evaluation
-** perhaps improve data export
-** right now only candidates exported, only as lemmas, in csv
+.* Could support some evaluation inside the tool, but perhpas not everything (5.1)
+.** why re-impement common stats tools for more custom evaluation
+.** perhaps improve data export
+.** right now only candidates exported, only as lemmas, in csv
 
-* evaluate with domain experts (5.1)
-** can comment on what's actually important in the domain
+.* evaluate with domain experts (5.1)
+.** can comment on what's actually important in the domain
 
-* ontology construction experts  (5.1)
-** can comment on the impact of modelling stuff in a certain way
+.* ontology construction experts  (5.1)
+.** can comment on the impact of modelling stuff in a certain way
 
-* sample was very very small (5.2.2)
-** repeat with bigger sample
+.* sample was very very small (5.2.2)
+.** repeat with bigger sample
 
 
 Framework extension proposal
@@ -145,20 +145,20 @@ Framework extension proposal
 Tool improvements
 -----------------
 
-* support pausing, and restarting processing at any point (4.1, 4.5.4)
-** Even when well-optimised, processing a large corpus might take a long time and ontology construction very long, not just one session
-** current tool takes a lot of time for a fairly small corpus (5.3)
+.* support pausing, and restarting processing at any point (4.1, 4.5.4)
+.** Even when well-optimised, processing a large corpus might take a long time and ontology construction very long, not just one session
+.** current tool takes a lot of time for a fairly small corpus (5.3)
 
-* support distributing processing (4.1)
-** user's computer shouldn't need to have a lot of power
-** ideal to parallelise the processing that can be parallel
+.* support distributing processing (4.1)
+.** user's computer shouldn't need to have a lot of power
+.** ideal to parallelise the processing that can be parallel
 ** could be automated if the inputs and outputs of the methods are well-defined and the plugins are portable/modular/isolated
 
-* make installation easier (4.5.1)
-** perhaps bundle dependencies and set up more of their environment automatically
+.* make installation easier (4.5.1)
+.** perhaps bundle dependencies and set up more of their environment automatically
 
-* show more context (5.3)
+.* show more context (5.3)
 
-* support manually assigning labels when adding to ontology
+.* support manually assigning labels when adding to ontology
 
 * [tweakable params]
