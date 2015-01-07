@@ -130,16 +130,16 @@ Evaluation
 Framework extension proposal
 ----------------------------
 
-* Interoperability is needed between different tools which solve one specific problem (2.2.2)
-** I glued methods together by hand-coding a system that glues them together
-** Perhaps base this on GATE's corpus format
-*** Each tool describes what inputs it depends on and outputs it provides
-*** Need a machine-readable way to describe inputs/outputs
-*** under which annotation sets/namespaces they can be found
-*** and what format the values are in
-** Speed up iterative development, method/evidence combination (2.3)
-* dependency management
-* it was the hardcoded for english and then hacked for spanish which made text2onto hard to reuse for swedish
+.* Interoperability is needed between different tools which solve one specific problem (2.2.2)
+.** I glued methods together by hand-coding a system that glues them together
+.** Perhaps base this on GATE's corpus format
+.*** Each tool describes what inputs it depends on and outputs it provides
+.*** Need a machine-readable way to describe inputs/outputs
+.*** under which annotation sets/namespaces they can be found
+.*** and what format the values are in
+.** Speed up iterative development, method/evidence combination (2.3)
+.* dependency management
+.* it was the hardcoded for english and then hacked for spanish which made text2onto hard to reuse for swedish
 * construction support tools must be decoupled from candidates and plugable to support experimentation there
 
 Tool improvements
