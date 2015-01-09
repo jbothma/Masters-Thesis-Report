@@ -341,7 +341,7 @@ For example, the XML formats of the Genia corpus \citep{KimEtAl03GeniaCorpus}, t
 
 Existing corpora and common document formats often already contain features and annotations that can be useful in ontology learning.
 For example, section headings can be extracted from HTML, PDF and Word documents, and coreferences (See Sec.\ref{sec:lit-rev:preproc}) are identified using XML in the Genia corpus.
-GATE can accept a variety of input document formats and normalises the structure of non-plain-text formats like HTML, Microsoft Word documents and PDF to its internal annotation format with common labels for annotation types among all normalised input formats \citep{Cunningham2011GATEBook}.
+The GATE tool can accept a variety of input document formats and normalises the structure of non-plain-text formats like HTML, Microsoft Word documents and PDF to its internal annotation format with common labels for annotation types among all normalised input formats \citep{Cunningham2011GATEBook}.
 The Korp annotation pipeline can accept various XML formats, and strip, copy or ignore and in some cases use existing annotations \cite{Borin12Korp}.
 
 The multitude of annotation formats forming input and output of the numerous tools creates a challenge for corpus management.
@@ -400,7 +400,7 @@ Stemming removes common prefixes and suffixes, leaving the 'stem' behind which m
 Lemmatisation modifies words to their lemma, or uninflected form, changing \emph{klostret} to \emph{kloster} and leaving \emph{kloster} as it is.
 
 Lemmatisation is preferred in ontology learning since it is useful to distinguish different senses of a word while coalescing different inflections of the same sense.
-Stemming is usually quite a course, rule-based approach which can lose important parts of words that look like pre- or suffixes but are part of the lemma \todo{ought to cite this, \citep{Gacitua08OntoLancs} says \citep{Alkula01MeaningWords} deals with this.}, meaning many more senses of the same word would be coalesced than with lemmatisation.
+Stemming is usually quite a course, rule-based approach which can lose important parts of words that look like pre- or suffixes but are part of the lemma,\todo{ought to cite this, \citep{Gacitua08OntoLancs} says \citep{Alkula01MeaningWords} deals with this.} meaning many more senses of the same word would be coalesced than with lemmatisation.
 The Saldo lexicon \cite{Borin09Saldo} goes a step further, by assigning unique identifiers based on the lemma to distinguish between different senses of words with the same lemma.
 
 When lemmatising words, the appropriate sense of the word must be chosen to select the correct lemma.
@@ -484,8 +484,8 @@ The number of words in a candidate string contributes by its logarithm.
 The occurrence of a candidate string nested in longer candidate strings contributes negatively to its C-Value.
 The occurence of nested candidates within a candidate contributes negatively to the C-Value of that candidate.
 These factors encourage longer candidates over shorter ones with the reasoning that longer terms are more specific and thus occur less frequently, and aren't represented fairly by frequency alone.
-Meanwhile nested terms may be more general than terms containing them, or may they may not be terms by themselves at all.
-Candidates which occur frequently within longer candidates but never by themselves are thus discouraged.
+Meanwhile nested terms may be more general than terms containing them, or may not be terms by themselves at all.
+Candidates which occur frequently within longer candidates but never by themselves are thus penalised.
 
 \subsubsection{Attributes and Relations}
 
@@ -493,7 +493,7 @@ Relations define the interactions between, and attributes of concepts.
 A concept \emph{ball} might have the attribute \emph{colour}, where an intance of the ball has the color \emph{blue}.
 Relations are typically classified as taxonomic or non-taxonomic.
 Taxonomic relations include equivalence and hypynomy.
-In the ball example, ball could be said to be a hyponym of sports equipment in a sports domain, while blue \emph{is a} colour.
+In the ball example, ball could be said to be a hyponym of sports equipment (is a) in a sports domain, while blue \emph{is a} colour and the concept ball \emph{has a} colour.
 
 Non-taxonomic relations then represent other interactions between concepts.
 This can include merynomy - part-of relations - as well as representing how one concept can act upon another in the given domain.
@@ -1284,6 +1284,8 @@ Columns are sortable to help assess the candidates quickly.
 The evaluation was performed on a corpus of articles available at \url{http://lakartidningen.se/}.
 All articles available in HTML format categorised under Cardiovascular Disease were selected, as this was one of the largest categories denoting a specific subdomain of medicine available in Swedish in the HTML format.
 More articles were available in PDF format but it was harder to reliably extract the plain text of the article from the PDF versions.
+As discussed in \ref{sec:background:eval}, open-domain capability is usually demonstrated by evaluating on more then one domain.
+This is not done here for lack of time and the restriction of scope.
 114 articles were downloaded as HTML documents and preprocessed into plain text.
 URLs to these articles are given in Appendix~\ref{chap:eval-corp-links}.
 The program used for extracting the article text from the HTML documents is shown in listing~\ref{lst:extract-plain}.
