@@ -130,26 +130,14 @@ To fulfill this objective, this report attempts to answer the following research
 \section{Approach}
 %ONE-SENT
 
-This section needs to identify and show how we avoid possible sources of bias.
+%This section needs to identify and show how we avoid possible sources of bias.
+This thesis approaches the objectives based on the systems development research process, as described in Section~\ref{sec:methods:practical}.
+A prototype system is built using a subset of available tools and methods described in Section~\ref{sec:lit-rev:immediate}, and the evaluated (Chap.~\ref{chap:eval}) similarly to other systems in this field (Sec.~\ref{sec:background:eval}).
+The architecture and design of this system is based on that proposed in \cite{Cimiano2009OL}, and is described in detail in Section~\ref{sec:results:design}.
+The implementation is integrated with the Protege 4 ontology engineering system to make use of its modern ontology management libraries, tools and plugin framework.
+This is also important since the goal of systems such as that developed here is to support ontology engineering.
+The tool itself demonstrates feasibility, and the experience and observations during method selection, tool construction, evaluation and analysis allow the objectives to be met.
 
-The basis of our method is how OL has been applied to other comparable languages like German with its compounding, and what's been learnt from the existing work on information extraction from Swedish.
-
-The implementation should probably be based on the architecture proposed in \cite{Cimiano2009OL}
-
-NLP tools for the common annotations are available and under further development, partly as a result of the BLARK for Swedish project.
-
-The procedure is something like set up preprocessing, apply existing methods to swedish, evaluate, tweak for swedish, evaluate.
-
-Ideally we can repeat an experiment for English and reproduce their results, to support the assertion that our implementation is ok.
-
-I think I'll evaluate taxonomy extraction against the Eurovoc thesaurus since I can probably get hold of corpora for one or more of the topics they cover.
-
-The implementation will probably be integrated with some OE system.
-Protege 4+ looks nice since it has decent, modern libraries and tools and plugin framework.
-
-
-
-%%\section{Report Structure}
 
 \chapter{Background}
 %%UU-CHAP Overview of relevant research and development that is used in specifying the problem and obtaining and evaluating appropriate solutions.
@@ -653,11 +641,11 @@ User interfaces can further help understanding the evidence for parts of the ont
 
 \subsection{Ontology learning systems}
 
-Ontology learning systems are implementations combining several tasks for actual use or evaluating ontology learning methods. Several recent or significant ontology learning systems are discussed in this section.
+Ontology learning systems are implementations combining several tasks for actual use or evaluation of ontology learning methods. Several recent or significant ontology learning systems are discussed in this section.
 
 \subsubsection{Text2Onto}
 
-Text2Onto is the successor to TextToOnto, and its main contribution is a Probabilistic Ontology Model.
+Text2Onto\citep{Cimiano2005Text2Onto} is the successor to TextToOnto, and its main contribution is a Probabilistic Ontology Model.
 Evidence for ontology elements extracted via various available methods is stored with an associated \emph{confidence} value as a percentage, as given by the the extraction method and the evidence combination strategy selected when multiple methods for the same kind of elements are selected.
 Evidence can then be reviewed along with its confidence and exported to an OWL ontology.
 
@@ -685,10 +673,6 @@ OntoUSP achieved significantly higher precision and recall than the state of the
 I discovered by email correspondence with Hoifung Poon, PhD (2012-02-29) that the Stanford parser\cite{Klein03PCFGParser} used for annotating the corpus in this evaluation was trained on the GENIA Treebank\cite{Tatseisi05GENIATB}.
 For this reason, it is unclear how well OntoUSP would perform using a general domain parser, or whether the other systems in the evaluation were also trained for this domain.
 This is important since domain-specific parsers or treebanks are not normally available, and this treebank was constructed from the GENIA corpus.
-
-\subsubsection{Cross-Language OL}
-
-While not implemented as an OL system, Helm's research into using evidence from multiple languages introduced a new form on evidence combination and showed this to be an improvement on using the same techniques on a corpus of a single language.
 
 \section{Open research areas}
 \label{sec:background:open-areas}
@@ -913,6 +897,7 @@ The suitability of system building as the approach is discussed in this chapter 
 \end{enumerate}
 
 \section{Practical method}
+\label{sec:methods:practical}
 
 As a systems development research process, \cite{NunamakerChen90SDResearch} proposes the following stages:
 
