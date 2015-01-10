@@ -44,6 +44,19 @@
 \maketitle
 
 \begin{abstract}
+% motivation
+% problem
+Ontology learning from text generally consists roughly of NLP, knowledge extraction and ontology construction.
+While NLP and information extraction for Swedish is approaching that of English, these methods have not been assembled into the full ontology learning pipeline.
+This means that there is currently very little automated support for using knowledge from Swedish literature in semantically-enabled systems.
+% statement
+This thesis demonstrates the feasibility of using some existing OL methods for Swedish text and elicits proposals for further work toward building and studying open domain ontology learning systems for Swedish and perhaps multiple languages.
+% approach
+This is done by building a prototype ontology learning system based on the state of the art architecture of such systems, using the Korp NLP framework for Swedish text, the GATE system for corpus and annotation management, and embedding it as a self-contained plugin to the Protege ontology engineering framework.
+% results
+The prototype is evaluated similarly to other OL systems. As expected, it is found that while sufficient for demonstrating feasibility, the ontology produced in the evaluation is not usable in practise, since many more methods and fewer cascading errors are necessary to richly and accurately model the domain.
+% conclusions
+In addition to simply implementing more methods to extract more ontology elements, a framework for programmatically defining knowledge extraction and ontology construction methods and their dependencies is recommended to enable more effective research and application of ontology learning.
 \end{abstract}	
 
 \tableofcontents
@@ -109,15 +122,14 @@ The construction of an ontology usually needs to take the end application of the
 For example, decisions about which relations should be included, or whether a term is a general concept or a concrete instance, usually depend on the intended application.
 We do not want to favour a particular application and do not make providing such flexibility an explicit objective for this prototype, but will instead attempt to produce a general representation of the domain.
 
-\todo{not sure if the following is relevant to this section but leaving here for now.}
-it'd be nice but I probably won't be able to ground my ontologies in any upper ontologies (ontology matching and ontological architecture).
-Maybe this is easy or critical and I can revise this entry.
-
-There's a lot of research into using internet phenomena like croud sourced data and stuff.
-We're focusing in extracting information from any Swedish text.
+There is a lot of research into using internet phenomena like croud-sourced data for ontology learning.
+We are focusing on extracting information from any Swedish text.
 This means we can produce results for domains that have very little or unrepresentative data online (but depends on finding some representative corpus).
 These approaches also have issues like access to the services and reliability of the data.
-For these reasons, we're not trying the web-sourced stuff specifically.
+For these reasons, we are not using the web-based aspect specifically, although the corpus used was downloaded from the internet.
+
+To demonstrate cross-domain capability, we would need evaluate the tool on multiple domains.
+We only have time to evaluate on once domain which shows that the prototype is useful for some domain, but cannot claim that it supports cross-domain ontology learning.
 
 \section{Research Questions}
 
@@ -1628,7 +1640,7 @@ Some might then be completely automatic, with others requiring user interaction.
 
 The first objective of this thesis was to produce a prototype tool which could extract and recommend concepts and relations for an ontology from swedish text.
 The second objective was for the tool to support semi-automatic ontology construction from these ontology elements.
-The analysis in Chapter~\ref{chap:eval} showed that a tool was produced that could successfully met these objectives.
+The analysis in Chapter~\ref{chap:eval} showed that a tool was produced that could successfully meet these objectives.
 As expected, the precision and recall was rather low, but sufficient for demonstrating the feasibility of building an ontology learning system that supports Swedish natural language corpora using available tools and methods.
 This was as a result of the limited selection of methods that could be implemented and integrated in the scope of this project.
 The third and final objective of this thesis was to identify issues for further development of such a system.
