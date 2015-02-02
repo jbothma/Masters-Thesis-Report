@@ -15,6 +15,7 @@
 \usepackage{pgfplots}
 \usepackage[toc,page]{appendix}
 \usepackage{courier}
+\usepackage{afterpage}
 
 \floatstyle{plain} % optionally change the style of the new float
 \newfloat{Code}{H}{myc}
@@ -29,6 +30,12 @@
 %\newcommand{\todo}[1]{\footnote{{\color{red} TODO: #1}}}
 \newcommand{\todo}[1]{}
 
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
 % ------------------------------------------------------------------------------
 % Metadata
 % ------------------------------------------------------------------------------
@@ -42,6 +49,8 @@
 \begin{document}
 
 \maketitle
+
+\clearpage\mbox{}\pagenumbering{gobble}\addtocounter{page}{-1}\clearpage\pagenumbering{arabic}
 
 \begin{abstract}
 % motivation
@@ -61,6 +70,8 @@ As expected, it is found that while sufficient for demonstrating feasibility, th
 % conclusions
 In addition to simply implementing more methods to extract more ontology elements, a framework for programmatically defining knowledge extraction and ontology construction methods and their dependencies is recommended to enable more effective research and application of ontology learning.
 \end{abstract}	
+
+\afterpage{\blankpage}
 
 \tableofcontents
 
