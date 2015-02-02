@@ -49,12 +49,15 @@
 Ontology learning from text generally consists roughly of NLP, knowledge extraction and ontology construction.
 While NLP and information extraction for Swedish is approaching that of English, these methods have not been assembled into the full ontology learning pipeline.
 This means that there is currently very little automated support for using knowledge from Swedish literature in semantically-enabled systems.
+
 % statement
 This thesis demonstrates the feasibility of using some existing OL methods for Swedish text and elicits proposals for further work toward building and studying open domain ontology learning systems for Swedish and perhaps multiple languages.
 % approach
 This is done by building a prototype ontology learning system based on the state of the art architecture of such systems, using the Korp NLP framework for Swedish text, the GATE system for corpus and annotation management, and embedding it as a self-contained plugin to the Protege ontology engineering framework.
+
 % results
-The prototype is evaluated similarly to other OL systems. As expected, it is found that while sufficient for demonstrating feasibility, the ontology produced in the evaluation is not usable in practise, since many more methods and fewer cascading errors are necessary to richly and accurately model the domain.
+The prototype is evaluated similarly to other OL systems.
+As expected, it is found that while sufficient for demonstrating feasibility, the ontology produced in the evaluation is not usable in practice, since many more methods and fewer cascading errors are necessary to richly and accurately model the domain.
 % conclusions
 In addition to simply implementing more methods to extract more ontology elements, a framework for programmatically defining knowledge extraction and ontology construction methods and their dependencies is recommended to enable more effective research and application of ontology learning.
 \end{abstract}	
@@ -73,21 +76,21 @@ The precise meaning of data is often encoded directly in the software, which mea
 Software systems can help with smaller tasks, but the combination of various systems is again either done manually by the user, or the interpretation of the systems is encoded in more software.
 
 By encoding semantic information about the world in a form that can be processed by computers, computers can provide better support in many tasks, with less manual and repeated definition of the meaning of the data being exchanged.
-In a hypothetical example of this given in \cite{TBL01SciAm}, a brother and sister try to schedule when they can drive their mother to medical facilities can treat her illness and is covered by her medical insurance.
-Instead of manually gathering the data and doing the scheduling, the siblings give the problem to "agents", or computerised actors which together solve the problem using shared ontologies of treatments and facilities, insurance and scheduling, and data from all the parties anotated with relationships to those ontologies.
+In a hypothetical example of this given in \cite{TBL01SciAm}, a brother and sister try to schedule when they can drive their mother to medical facilities that can treat her illness and are covered by her medical insurance.
+Instead of manually gathering the data and doing the scheduling, the siblings give the problem to "agents", or computerised actors which together solve the problem using shared ontologies of treatments and facilities, insurance and scheduling, and data from all the parties annotated with relationships to those ontologies.
 
 The task of annotating data with semantics and building the ontologies that define it is a time-consuming process.
-Domain experts are needed to accurately describe the important semantics of each domain.
-Ontology engineers are needed to concisely encode these semantics in a manner that is useful for automated reasoning.
+Domain experts are needed to describe the important semantics of each domain accurately.
+Ontology engineers are needed to encode these semantics concisely, in a manner that is useful for automated reasoning.
 Mistakes in defining ontologies can result in ontologies from which incorrect or insufficient conclusions are drawn, and can make it difficult to maintain the ontology.
 
 One approach to reduce the demands on domain experts and ontology engineers is ontology learning.
-Ontology learning aims to automatically or semi-automatically construct ontologies, with little or no supervision.
+Ontology learning aims to construct ontologies automatically or semi-automatically, with little or no supervision.
 Ontology learning from text specifically does this from natural language text.
 This is an important area of research because much of the knowledge that would be useful if encoded in ontologies, is already recorded in text documents, for example business memoranda and communication, and scientific papers.
 
 Ontology learning from text tends to employ a variety of natural language processing techniques to identify syntactic features in the text, then use stastical and linguistics-based methods for extracting evidence of concepts of the domain, and their relationships and properties.
-Some systems attempt to automatically construct ontologies in formats ready for application in semantically-enabled software, while others present the evidence as an aid to human experts who can then build such ontologies with significantly-reduced effort compared to a manual approach.
+Some systems attempt to construct ontologies automatically in formats ready for application in semantically-enabled software, while others present the evidence as an aid to human experts who can then build such ontologies with significantly-reduced effort compared to a manual approach.
 
 \section{Problem}
 \label{sec:intro:problem}
@@ -108,7 +111,7 @@ The objective of this thesis is to develop a system for ontology learning from S
 Given the time constraint, only a prototype will be built which will apply a small selection of methods, with the objectives of
 \begin{enumerate}
   \item Suggesting concepts and relations for building a domain ontology given a corpus of domain text
-  \item Supporting the semi-automatic constuction of such an ontology
+  \item Supporting the semi-automatic construction of such an ontology
   \item Identifying issues for the further development of such a system
 \end{enumerate}
 
@@ -129,7 +132,7 @@ These approaches also have issues like access to the services and reliability of
 For these reasons, we are not using the web-based aspect specifically, although the corpus used was downloaded from the internet.
 
 To demonstrate cross-domain capability, we would need evaluate the tool on multiple domains.
-We only have time to evaluate on once domain which shows that the prototype is useful for some domain, but cannot claim that it supports cross-domain ontology learning.
+We only have time to evaluate on one domain which shows that the prototype is useful for some domain, but cannot claim that it supports cross-domain ontology learning.
 
 \section{Research Questions}
 
@@ -144,7 +147,7 @@ To fulfill this objective, this report attempts to answer the following research
 
 %This section needs to identify and show how we avoid possible sources of bias.
 This thesis approaches the objectives based on the systems development research process, as described in Section~\ref{sec:methods:practical}.
-A prototype system is built using a subset of available tools and methods described in Section~\ref{sec:lit-rev:immediate}, and the evaluated (Chap.~\ref{chap:eval}) similarly to other systems in this field (Sec.~\ref{sec:background:eval}).
+A prototype system is built using a subset of available tools and methods described in Section~\ref{sec:lit-rev:immediate}, and evaluated (Chap.~\ref{chap:eval}) similarly to other systems in this field (Sec.~\ref{sec:background:eval}).
 The architecture and design of this system is based on that proposed in \cite{Cimiano2009OL}, and is described in detail in Section~\ref{sec:results:design}.
 The implementation is integrated with the Protege 4 ontology engineering system to make use of its modern ontology management libraries, tools and plugin framework.
 This is also important since the goal of systems such as that developed here is to support ontology engineering.
@@ -391,7 +394,7 @@ These tagsets support common morphosyntactic categories, for example a common si
 
 Many taggers are available, and they can often be configured to use custom language models.
 Such language models are specific to the language being tagged and are usually generated from a treebank - a corpus with annotations produced with high-enough accuracy to be used as training data for building language models and performing linguistics research.
-Models for tagging Swedish text are available from Eva Forsbom \footnote{http://stp.lingfil.uu.se/~evafo/resources/taggermodels/models.html} and Beata Megyesi \footnote{http://stp.lingfil.uu.se/~bea/resources/} and embedded in the Korp pipeline. \todo{maybe something about tagger accuracy, some literature, this is lit-rev after all}
+Models for tagging Swedish text are available from Eva Forsbom \footnote{http://stp.lingfil.uu.se/{\textasciitilde}evafo/resources/taggermodels/models.html} and Beata Megyesi \footnote{http://stp.lingfil.uu.se/{\textasciitilde}bea/resources/} and embedded in the Korp pipeline. \todo{maybe something about tagger accuracy, some literature, this is lit-rev after all}
 
 \subsubsection{Lemmatisation and stemming}
 
@@ -1373,7 +1376,7 @@ Examples of candidates classified as correct are "aktuell studie" \(\rightarrow\
 Mistakes were further classified as follows:
 
 \begin{itemize}
-  \item \emph{degree} Subclass part indicates magnitude of superclass part e.g. `hög blogtryck' \(\rightarrow\) `blodtryck'
+  \item \emph{degree} Subclass part indicates magnitude of superclass part e.g. `hög blodtryck' \(\rightarrow\) `blodtryck'
   \item \emph{not a term} One of the sides of the relation is not a term e.g. `mången gång" \(\rightarrow\) `gång' e.g. from `många gånger'
   \item \emph{nounphrase complexity} One of the sides of the relation are incomplete and need support for more complex noun phrases e.g. `rökning' \(\rightarrow\) `hjärt-kärlsjukdom' where the superclass could be a specific `livsstilfaktor' concept which represents the phrase `livsstilsfaktorer som utgör riskfaktorer för hjärt-kärlsjukdom'
   \item \emph{posessive noun} The subclass is a possessive noun, not a specialisation e.g. `kolesterol' \(\rightarrow\) `roll' where the un-lemmatised form is `kolesterols roll'.
@@ -1582,7 +1585,7 @@ Finally, since many documents in a corpus might evolve as living documents or ne
 
 Much of the evaluation on an ontology can be automated (See \ref{sec:background:eval}, \ref{sec:background:open-areas}).
 This can be executed during construction similarly to test-driven development in software engineering and could contribute toward method combination and parameter refinement.
-While a lot of evaluation could be implemented as part of the tool, it is also important to be able to evaluation outside the tool, for example to experiment with new evaluation approaches and to avoid re-implementing statistics tools like Excel and R.
+While a lot of evaluation could be implemented as part of the tool, it is also important to be able to perform evaluation outside the tool, for example to experiment with new evaluation approaches and to avoid re-implementing statistics tools like Excel and R.
 In this prototype, only candidate labels could be exported with their recommendation scores as CSV (\ref{sec:eval:setup}).
 Perhaps other export formats with more information would be useful, and some way to link with the evidence contributing the candidate recommendation.
 Another evaluation should be carried out with domain experts to be able to discuss the ability of extracting knowledge relevant to the domain more thoroughly.
@@ -1614,9 +1617,8 @@ This project also hard-coded the employed methods for simplicity of the design a
 An architecture for such a modular system is described in~\citep{Cimiano2009OL}, where an array of resource processing, extraction and recommendation tools are available for selection and reuse.
 Resource processing tools for a range of languages can be made available in such a framework.
 Many algorithms are already very language-independent, but the combination of evidence across languages - and exactly what an OWL ontology built from multilingual resources would look like - needs to be explored further.
-Interoperability between different processing method which each solve one specific problem.
-In addition to the framework described in~\citep{Cimiano2009OL}, a way of describing the inputs and outputs of each processing method is needed, similarly to that shown in figure~\ref{fig:method-artifact}.
-However, as identified in this chapter, not all methods are compatible with the same noun phrases, or POS annotations.
+In addition to the framework described in~\citep{Cimiano2009OL}, a way of describing the inputs and outputs of each processing method is needed, which would formalise depencies like those shown in figure~\ref{fig:method-artifact} such that a computer can construct such a graph automatically.
+As identified in this chapter, not all methods are compatible with the same noun phrases, or POS annotations.
 Many tools support multiple formats, and some of them are sometimes compatible (\ref{sec:background:corp_mgmt}).
 Therefore a precise way of describing what artifacts each method provides and depends on is needed, more specifically than a high-level candidate or annotation type.
 Each artifact's dependency on language should also be specified explicitly.
@@ -1638,7 +1640,7 @@ Some might then be completely automatic, with others requiring user interaction.
 %%UU-REQ Strength of the conclusions reached, including the ability to provide a concise summary of the signiﬁcance of the work and reﬂect on work practice and outcomes with the intent to improve performance in future projects.
 % summarise introduction with detail from Solution and Evaluation
 
-The first objective of this thesis was to produce a prototype tool which could extract and recommend concepts and relations for an ontology from swedish text.
+The first objective of this thesis was to produce a prototype tool which could extract and recommend concepts and relations for an ontology from Swedish text.
 The second objective was for the tool to support semi-automatic ontology construction from these ontology elements.
 The analysis in Chapter~\ref{chap:eval} showed that a tool was produced that could successfully meet these objectives.
 As expected, the precision and recall was rather low, but sufficient for demonstrating the feasibility of building an ontology learning system that supports Swedish natural language corpora using available tools and methods.
