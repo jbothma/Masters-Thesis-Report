@@ -741,7 +741,7 @@ Evaluation can be extended in OL research and in practice during ontology develo
 
 Common issues suggested for further research are the optimisation of parameters \cite{Hjelm09Thesis} and experimentation with combinations of methods \cite{Cimiano2005Text2Onto,Zouaq11OntoCmaps}, requiring comparative evaluation.
 It is also suggested that certain methods or parameters might be more suited to different applications\cite{Gulla08LOUIE, Cimiano06}.
-These endeavors rely on optimising certain criteria\cite{Cimiano2009OL}.
+These endeavours rely on optimising certain criteria\cite{Cimiano2009OL}.
 
 Evaluation should be granular.
 Each stage in OL might introduce errors which might be propagated through the pipeline\cite{Zouaq11OntoCmaps, Hjelm09Thesis}.
@@ -763,7 +763,7 @@ As it becomes easier to build more formal ontologies than simple taxonomies, and
 \subsubsection{Exploit structured and web data}
 
 Several tools have shown benefits of exploiting existing structured data.
-Such data might involve significant organised effort to produce such as WordNet\cite{Fellbaum98WordNet} or has been generated via "croud-sourcing", for example using user-generated categories in Wikipedia or keywords from "tags"\cite{Wong11Survey}.
+Such data might involve significant organised effort to produce such as WordNet\cite{Fellbaum98WordNet} or has been generated via "crowd-sourcing", for example using user-generated categories in Wikipedia or keywords from "tags"\cite{Wong11Survey}.
 As OL tools improve in support for building on existing ontologies, they might support both ontology maintenance, and upgrading lexical ontologies to more formal ontologies\cite{Wong11Survey}.
 
 \section{Why Swedish?}
@@ -803,12 +803,12 @@ Such a prototype implementation is well-suited to identifying specific research 
 Future research might ask questions such as \emph{which algorithms are more suited to Swedish?} or \emph{which Swedish-specific modifications to IE are needed for OL?}.
 The analysis of the construction and evaluation of this prototype hopes to direct research towards such questions.
 
-\todo{Perhaps add specifically that the prototyp should do terms=concepts, taxonomic and nontaxonomic relations, and actually build an OWL ontology. I find the OWL ontology part important since it's really a sneaky thing to leave out and say you're making ontologies a la OntoGain - do you assume relation equivalence?}
+\todo{Perhaps add specifically that the prototype should do terms=concepts, taxonomic and non-taxonomic relations, and actually build an OWL ontology. I find the OWL ontology part important since it's really a sneaky thing to leave out and say you're making ontologies a la OntoGain - do you assume relation equivalence?}
 
 \subsubsection{Scope restriction versus interesting contribution}
 
 A necessary compromise exists between restricting scope to a practical breadth and starting towards an interesting contribution to the field.
-OL inherently involves methods from several subfields of linguistics and computer science in a potentially complex pipeline, where the most-interesting artifacts for evaluation are produced towards the end of the pipeline.
+OL inherently involves methods from several sub-fields of linguistics and computer science in a potentially complex pipeline, where the most-interesting artefacts for evaluation are produced towards the end of the pipeline.
 In extending OL to support Swedish, the most language-dependent methods are towards the beginning of the pipeline, while the ontologies are towards the end.
 Reducing scope to a smaller part of the pipeline might mean, for example, focusing on the IE methods.
 This is also an active and interesting research area, but comes short of the goal of studying the ontology output as end product.
@@ -823,7 +823,7 @@ This latter feature will be considered for inclusion although it is not an end i
 
 Evaluation is important for understanding if, and how well, the prototype has managed to model the domain from Swedish text.
 The limitations of the prototype discovered though evaluation (in addition to conscious design decisions) can identify areas where OL for Swedish text can be improved.
-If all domains the prototype is evaluated against are modeled perfectly, no more research is needed for OL for those domains.
+If all domains the prototype is evaluated against are modelled perfectly, no more research is needed for OL for those domains.
 However it is beyond the scope of this project to try and demonstrate perfect ontology learning in every aspect.
 Furthermore, as stated in section~\ref{sec:background:eval}, different criteria for evaluation work against each other and the criteria to optimise should be chosen for the specific application.
 
@@ -876,8 +876,8 @@ When theories are difficult or impossible to prove logically, they can still be 
 \todo{possibly expand on this. right now it seems like it's just dumped here out of context. expanding on experimental impl and eval in OL might help}
 
 The outputs of research in the field of Ontology Learning from text are generally new or improved ontology learning methods, algorithms, software systems, or approaches for the evaluation of the above \cite{Wong11Survey}.
-Similarly to evaluation in ontology engineering, ontology learning is generally evaluated with respect to a specific application, the coverage of the modeled domain, or according to a predefined set of criteria\cite{Wong11Survey} (See section~\ref{sec:background:eval}).
-\todo{perhaps expand on these. bring out the issue of mutliple corpora and gold standards and (un)generalizability (but evidence towards it)}
+Similarly to evaluation in ontology engineering, ontology learning is generally evaluated with respect to a specific application, the coverage of the modelled domain, or according to a predefined set of criteria\cite{Wong11Survey} (See section~\ref{sec:background:eval}).
+\todo{perhaps expand on these. bring out the issue of multiple corpora and gold standards and (un)generalizability (but evidence towards it)}
 While quantitative methods are valued for the ease with which OL methods can be compared in various aspects, the fact that human experts are the ultimate benchmark for the model means there is an intrinsic qualitative part to ontology learning evaluation \todo{cite this synthesis/opinion/whatever}.
 
 The objectives of this thesis are to investigate Ontology Learning from Swedish texts and identify areas of further research.
@@ -919,7 +919,7 @@ As a systems development research process, \cite{NunamakerChen90SDResearch} prop
 \begin{itemize}
 \item Construct a Conceptual Framework
 \item Develop a System Architecture
-\item Analyze and Design the System
+\item Analyse and Design the System
 \item Build the Prototype System
 \item Observe and Evaluate the System
 \end{itemize}
@@ -929,10 +929,10 @@ As a systems development research process, \cite{NunamakerChen90SDResearch} prop
 The practical approach taken in this thesis takes inspiration from this process, but applied to iterative software development practice.
 The question this thesis seeks to answer is how ontology learning can be applied to Swedish text.
 This thesis leans on the work done in ontology learning in other languages, and stems from the conceptual framework developed there.
-Step-by-step, methods are implemented to support another artifact of ontology learning and evaluated informally.
+Step-by-step, methods are implemented to support another artefact of ontology learning and evaluated informally.
 When the typical facilities of ontology learning systems are demonstrable, the system is evaluated as a whole.
 Priority is given to methods which have some dependency on language processing as it is the application to a new language where this thesis deviates from existing work.
-Throughout the process, observations are noted to be presented along with the software artifact of this thesis to contribute to further work in this field.
+Throughout the process, observations are noted to be presented along with the software artefact of this thesis to contribute to further work in this field.
 The observations and knowledge gained through the implementation and evaluation of the prototype are further analysed.
 This analysis shows how the research question is answered and abstracts the knowledge gained via this thesis.
 
@@ -944,7 +944,7 @@ By the systems development approach described above, we set out to demonstrate s
 We then need to demonstrate that the approach we describe does successfully use Swedish text for ontology learning.
 
 Typical ontology learning research sets out to demonstrate that a new method is better than existing methods in some way.
-The precision and recall measures are commonly used, applied to various kinds of artifacts of ontologies.
+The precision and recall measures are commonly used, applied to various kinds of artefacts of ontologies.
 These measures are used to show improvement compared to other methods applied to the same corpus.
 We primarily set out to show that the methods used in this prototype work at all.
 To show this, we look at whether the suggested candidate ontology elements are relevant to the domain, and whether important information was not discovered by the prototype.
@@ -957,7 +957,7 @@ Relevant information can be missed and irrelevant information suggested as candi
 The first two objectives of this project were were to develop a prototype system for ontology learning from Swedish text.
 This chapter describes how such a system was implemented.
 The work towards the first objective of suggesting concepts and relations for a domain ontology is described in section~\ref{sec:results:proto:cands}.
-The implementation for the second objective of semi-automatic ontology construction is described in section~\ref{sec:results:proto:contruction}.
+The implementation for the second objective of semi-automatic ontology construction is described in section~\ref{sec:results:proto:construction}.
 The design is shown in figure~\ref{fig:prototype-design} and described in the next section.
 
 \section{Design}
@@ -981,7 +981,7 @@ The ontology can be stored for later use using Protege's built-in ontology manag
 
 \begin{figure}
   \includegraphics[width=\textwidth]{graphics/method-element-dependencies.eps}
-  \caption{Methods and artifacts of the prototype}
+  \caption{Methods and artefacts of the prototype}
   \label{fig:method-artifact}
 \end{figure}
 
@@ -994,12 +994,12 @@ This adds the documents to a GATE corpus, which extracts the text from various d
 I created a graphical user interface as part of the Preprocessing component to select the project directory and corpus files, and trigger the import.
 For syntactic annotation, the corpus is exported to a directory where the Korp pipeline can take it as input.
 The Korp pipeline was configured to annotate the corpus with part of speech tags, lemmas, word boundaries, sentence boundaries, and syntactic dependencies.
-This is represented by the Korp box producing the POS, Morph artifact box in figure~\ref{fig:method-artifact}.
+This is represented by the Korp box producing the POS, Morph artefact box in figure~\ref{fig:method-artefact}.
 When the Korp pipeline finishes processing the corpus, the annotations are imported to the working GATE corpus.
-This is how the remaining steps access these annotations as shown in figure~\ref{fig:method-artifact}.
+This is how the remaining steps access these annotations as shown in figure~\ref{fig:method-artefact}.
 GATE automatically picks up the annotations in the Korp output and stores them in the GATE corpus.
 Next, the JAPE rules are run to apply higher-level annotations to the corpus.
-The term candidate JAPE rule is described in the next section, while the labeled relation JAPE rule is described in Section~\ref{sec:results:proto:cands}.
+The term candidate JAPE rule is described in the next section, while the labelled relation JAPE rule is described in Section~\ref{sec:results:proto:cands}.
 
 \subsection{Linguistic Filter for Term Candidates}
 \label{subsec:results:term_cand_ling_filt}
@@ -1007,10 +1007,10 @@ The term candidate JAPE rule is described in the next section, while the labeled
 For initial potential terms to be selected by the C-Value method, a linguistic filter of zero or more adjectives, followed by one or more nouns, is used.
 This filter was depicted as Adj*Noun+ in \cite{Frantzi98CNCValue} by analogy to regular expressions over parts of speech.
 The head of these simplistic noun phrases was selected as the last noun in the phrase, as is common with this form of noun phrases.
-I refer to the noun phrases that were selected as potential terms as \emph{term candidates} and they are used in term extraction, subconcept relation extraction and labeled relaton extraction.
-This is depicted by the Linguistic Filter method box in figure~\ref{fig:method-artifact} producing Term Candidate and Head annotations from the POS annotation artifact produced in the previous step.
+I refer to the noun phrases that were selected as potential terms as \emph{term candidates} and they are used in term extraction, subconcept relation extraction and labelled relation extraction.
+This is depicted by the Linguistic Filter method box in figure~\ref{fig:method-artefact} producing Term Candidate and Head annotations from the POS annotation artefact produced in the previous step.
 
-I initially experimented with noun phrases extracted using the SweSPARK noun phrase chunker (Chunking in \ref{sec:lit-rev:preproc}), but the Adj*Noun+ form of noun phrase was most-suited to the similarity measure for Hirarchical Agglomerative Clustering.
+I initially experimented with noun phrases extracted using the SweSPARK noun phrase chunker (Chunking in \ref{sec:lit-rev:preproc}), but the Adj*Noun+ form of noun phrase was most-suited to the similarity measure for Hierarchical Agglomerative Clustering.
 The chunker provides many forms of noun phrases including determiners and other parts of speech which are not clearly part of terms.
 Selecting the head noun in certain noun phrase forms such as DetAdj*Noun+PrepNoun is more complex than for Adj*Noun+ phrases, and the similarity measure used in \cite{Drymonas10OntoGain} needs to have the head identified.
 The Adj*Noun+ form performed well for English in the evaluation of C-Value in \cite{Frantzi98CNCValue} and many Swedish noun phrases take this form \todo{cite swedish noun phrase book} so this was a reasonable approximation for the objective of this thesis.
@@ -1042,21 +1042,21 @@ The JAPE expression defining the filter is shown in Listing~\ref{lst:termcand}.
 
 For each of the typical layers of ontologies, one or two types of element were extracted to demonstrate some relevant method.
 Methods with an important linguistic component are the most interesting in this case. 
-For concepts, labeled concepts were extracted.
+For concepts, labelled concepts were extracted.
 For taxonomic relations, subconcept relations were extracted.
-For non-taxonomic relations, labeled relations between concepts were extracted.
+For non-taxonomic relations, labelled relations between concepts were extracted.
 
 \subsection{Concepts}
 
 Concepts are assumed to be represented by terms in the corpus.
 Term relevance for the domain is estimated using the C-value part from the C-value NC-value method for extracting multi-word terms~(Terms, Concepts and Instances in \ref{sec:lit-rev:preproc}).
 The C-value method is applied to the strings annotated with the TermCandidate annotation as described in Section~\ref{sec:results:proto:prepr}.
-This is depicted by the C-Value method producing the Term Relevance artifact from Term Candidate annotations in figure~\ref{fig:method-artifact}.
+This is depicted by the C-Value method producing the Term Relevance artefact from Term Candidate annotations in figure~\ref{fig:method-artefact}.
 The C-value is always a product of \(log_{2} |a|\) where \(a\) is the candidate string and \(|a|\) is the number of words in the string.
 For single-word terms, C-value would normally be \(0\).
 To be able to use C-value as a relevance measure for single- and multi-word terms, we calculate C-value as a product of \(log_{2} (|a|+1)\) instead.
 Single-word terms are thus given useful C-values, instead of being totally disregarded.
-The modified C-value is referred to as \emph{confidence}, representing the confidence that a given term is relevant to the domain being modeled.
+The modified C-value is referred to as \emph{confidence}, representing the confidence that a given term is relevant to the domain being modelled.
 I could not find a suitable implementation of this method so I implemented this myself.
 
 \subsection{Subconcept Relations}
@@ -1066,7 +1066,7 @@ One method uses hierarchical agglomerative clustering, and the other uses a synt
 
 It was faster to implement a simple hierarchical agglomerative clustering library myself with the necessary behaviour than to use an existing library.
 This library takes term candidates as input and creates subclass relations from one term candidate to another.
-This is depicted by the Hierarchical Clustering method box producing the Subconcept Relation annotation artifacts from Term Candidate annotations and their Heads in figure~\ref{fig:method-artifact}.
+This is depicted by the Hierarchical Clustering method box producing the Subconcept Relation annotation artefacts from Term Candidate annotations and their Heads in figure~\ref{fig:method-artefact}.
 The similarity measure is that used in~\cite{Drymonas10OntoGain}.
 Merging for a given cluster stops when no other cluster has a common noun phrase head.
 The noun phrase head is taken as the superconcept of all terms in the cluster.
@@ -1083,7 +1083,7 @@ The subsequent term candidates are annotated with "Domain".
 The entire matching region is annotated with "SubclassOf".
 This JAPE rule is executed during preprocessing after the other JAPE rules for convenience.
 During extraction, we iterate over all SubclassOf annotations, adding a subclass relation to the term annotated with Range for each term candidate in the contained Domain annotation.
-This is depicted by the Syntactic Pattern method producing Subconcept Relation annotations Term Candidates in figure~\ref{fig:method-artifact}.
+This is depicted by the Syntactic Pattern method producing Subconcept Relation annotations Term Candidates in figure~\ref{fig:method-artefact}.
 
 \begin{Code}
 \lstset{caption={JAPE for subclass relation annotations by syntactic pattern},
@@ -1108,18 +1108,18 @@ This is depicted by the Syntactic Pattern method producing Subconcept Relation a
 \end{lstlisting}
 \end{Code}
 
-\subsection{Labeled relations}
+\subsection{Labelled relations}
 
-Labeled relation extraction was based on syntactic dependency relations - one per sentence - where the appropriate annotations are found.
+Labelled relation extraction was based on syntactic dependency relations - one per sentence - where the appropriate annotations are found.
 The domain of the relation is the term candidate with a subject relation (SS) to the root.
 The range of the relation is the term candidate with an object relation (OO) to the root.
 The label of the relation is the dependency root of the sentence, if it is a verb (VB), potentially followed by an additional verb which has a verb group relation (VG) to the root if one exists.
-This is depicted in figure~\ref{fig:method-artifact} by the second Syntactic Pattern method which produces Labeled Relations from Term Candidates, Syntactic Dependencies and Part of Speech annotations.
+This is depicted in figure~\ref{fig:method-artefact} by the second Syntactic Pattern method which produces Labelled Relations from Term Candidates, Syntactic Dependencies and Part of Speech annotations.
 I chose this pattern to demonstrate the syntactic pattern approach based on example patterns in~\cite{Zouaq11OntoCmaps}.
-The Candidate Extraction component shown in~\ref{fig:prototype-design} creates labeled relation candidates from the text with annotations matching this pattern and adds them to the candidate store.
+The Candidate Extraction component shown in~\ref{fig:prototype-design} creates labelled relation candidates from the text with annotations matching this pattern and adds them to the candidate store.
 
-To ease the task of selecting relevant candidates to be used in constructing the ontology, an \emph{importance} value is calculated for each labeled relation candidate.
-This value is intended to indicate importance to the domain being modeled.
+To ease the task of selecting relevant candidates to be used in constructing the ontology, an \emph{importance} value is calculated for each labelled relation candidate.
+This value is intended to indicate importance to the domain being modelled.
 The value is calculated as the sum of the confidence of the domain and range term candidates for each occurrence of the relation.
 Relations between important term candidates are thus favoured, as are frequently-occurring relations.
 I chose this method based on the finding in~\cite{Zouaq11OntoCmaps} that concept importance was one of the best indicators of relation importance in the methods evaluated there.
@@ -1129,16 +1129,16 @@ I chose this method based on the finding in~\cite{Zouaq11OntoCmaps} that concept
 
 The Ontology Construction component is responsible for modelling the domain in an OWL ontology based on the extracted ontology element candidates.
 The user can either add all candidates to the ontology in one step, or select specific candidates and add only them to the ontology.
-The final artifacts shown in figure~\ref{fig:method-artifact} - Term Candidates, Term Relevance, Subconcept Relations, Labeled Relations, and Labeled Relation Relevance - are used for Ontology Construction.
+The final artefacts shown in figure~\ref{fig:method-artefact} - Term Candidates, Term Relevance, Subconcept Relations, Labelled Relations, and Labelled Relation Relevance - are used for Ontology Construction.
 
 Concept candidates are added as OWL Classes.
 The IRI of a class is constructed as the concept label in camel case appended to the ontology IRI.
 Thus a term "akut hjärtinfarkt" could be a class with the IRI fragment as \#AkutHjärtinfarkt.
 
-Subconcept relations are modeled as RDFS subClassOf relations.
+Subconcept relations are modelled as RDFS subClassOf relations.
 This implies that all properties of the superclass are also properties of its subclasses.
 
-Labeled relations are modeled using OWL Object Properties.
+Labelled relations are modelled using OWL Object Properties.
 For a relation \(r\) from concept \(a\) to concept \(b\), we express in OWL that \(a\) is a subclass of an anonymous class whose instances have a relation \(r\) to at least one instance of \(b\).
 This does not imply that all instances which have relation \(r\) to an instance of \(b\) are instances of \(a\).
 It only expresses that it is necessary to have a relation \(r\) to an instance of \(b\) to be an instance of \(a\).
@@ -1166,7 +1166,7 @@ This section shows how to install and use the prototype while demonstrating it w
 
 \subsection{Environment Variables}
 
-The following environment variables need to be available to Protege and all its subprocesses.
+The following environment variables need to be available to Protege and all its sub-processes.
 If Protege is started from the command line shell you can set them in the shell.
 If Protege is started from a GUI shortcut, the environment variables need to be set up set somewhere like \~/.pam\_environment on Ubuntu or launchd.conf in OS X.
 Since the latter files don't run as scripts but are simple assignments, the \$KORP\_INSTALL path might have to be expanded manually.
@@ -1289,7 +1289,7 @@ This is not done here for lack of time and the restriction of scope.
 114 articles were downloaded as HTML documents and preprocessed into plain text.
 URLs to these articles are given in Appendix~\ref{chap:eval-corp-links}.
 The program used for extracting the article text from the HTML documents is shown in listing~\ref{lst:extract-plain}.
-This uses the common HTML document manipulation library BeautifulSoup to extract text from sections labeled ``article-text", which contain the article text.
+This uses the common HTML document manipulation library BeautifulSoup to extract text from sections labelled ``article-text", which contain the article text.
 The output of this contained some text that was not useful for ontology learning from natural language, like certain punctuation and the reference sections of articles.
 These were removed using the program shown in listing~\ref{lst:cleaner}.
 This processing consisted of
@@ -1301,7 +1301,7 @@ This processing consisted of
 The text files produced by this processing were then placed alone in a directory as the input corpus.
 The corpus was imported into an ontology learning project in protege as shown in the walkthrough in section~\ref{sec:results:walkthrough}.
 The resulting corpus consisted of 108 831 words.
-My ontology learning tool found 11 069 class candidates, 420 subconcept relation candidates and 123 labeled relation candidates.
+My ontology learning tool found 11 069 class candidates, 420 subconcept relation candidates and 123 labelled relation candidates.
 These candidates were exported as comma separated variable files for analysis.
 I assessed a sample of the extracted candidates for their relevance to the domain and manually extracted candidates from a sample of the corpus to assess how the automated tool compared to a manual effort.
 A sample of each result set was classified into categories I defined according to my common sense judgement.
@@ -1310,14 +1310,14 @@ This was done by looking at the actual candidates in the samples, creating categ
 I classified the candidates into these categories mostly using common sense alone.
 When I felt that I could not classify a candidate accurately-enough myself, I looked at the candidate in the contexts where it occurred in the corpus.
 When that was not sufficient, I searched for the candidate occurring in similar contexts on the internet.
-I did not require online sources to have any formal authorship.
+I did not require on-line sources to have any formal authorship.
 The candidates in the useless categories were further classified into categories which could help target further work to create a practical system for ontology learning from text.
 
 The main threats to the validity of the evaluation are my lack of expertise in the fields of ontology learning, cardiovascular disease and the Swedish language; the bias introduced by me evaluating a tool I constructed; and the use of only one evaluator.
 Lack of expertise can result in misjudging the meaning or usefulness of a candidate and thus classifying them incorrectly.
 It can also result in missing out on important learnings that could have led to improvements in the field.
 At this stage of the work, there appear to be enough low-hanging fruit so that this method results in valuable learnings, but there is also value in repeating the experiment with more expert support.
-Personal bias could result in a tendancy to consider candidates more useful than they really are.
+Personal bias could result in a tendency to consider candidates more useful than they really are.
 Since one of the main goals of this thesis is to identify areas where further research is needed, the risk of personal bias is countered to some extent by the need to define specific, systematic issues with the quality of the output of the tool.
 As with the lack of expertise and risk of personal bias, using a single evaluator misses out on multiple viewpoints and tempering of outlying results.
 The method used in \cite{Zouaq11OntoCmaps} addresses many of these issues, although it largely depends on the availability of gold standards.
@@ -1333,7 +1333,7 @@ The results are analysed and discussed further in section~\ref{sec:analysis}.
 
 The top 100 and bottom 100 concept candidates according to C-value were classified with the labels \emph{fault}, \emph{this}, \emph{parent}, or \emph{generic}.
 \emph{This} means the candidate is specific to the domain, namely \emph{Cardiovascular Disease}, e.g. "kardiovaskulär händelse" and "ldl-kolesterol".
-It is obvious that the former example is relevant, while the latter looks like a specific kind of cholesterol which is familiar as a compound relevant to heart diseas from popular media.
+It is obvious that the former example is relevant, while the latter looks like a specific kind of cholesterol which is familiar as a compound relevant to heart disease from popular media.
 LDL-Cholesterol might well be defined as a concept or an instance of a concept in the chemistry domain, but for me it seems like it belongs to this domain at an early stage of the ontology's development, and can be replaced with a reference to another definition when integrating with other ontologies.
 \emph{Parent} means the concept belongs to one of the relevant parent domains, such as medicine or academic research, e.g. "fysisk aktivitet" and "behandling".
 \emph{Generic} means the concept is not specific to a relevant domain, e.g. "år" and "studie".
@@ -1379,8 +1379,8 @@ Mistakes were further classified as follows:
   \item \emph{degree} Subclass part indicates magnitude of superclass part e.g. `hög blodtryck' \(\rightarrow\) `blodtryck'
   \item \emph{not a term} One of the sides of the relation is not a term e.g. `mången gång" \(\rightarrow\) `gång' e.g. from `många gånger'
   \item \emph{nounphrase complexity} One of the sides of the relation are incomplete and need support for more complex noun phrases e.g. `rökning' \(\rightarrow\) `hjärt-kärlsjukdom' where the superclass could be a specific `livsstilfaktor' concept which represents the phrase `livsstilsfaktorer som utgör riskfaktorer för hjärt-kärlsjukdom'
-  \item \emph{posessive noun} The subclass is a possessive noun, not a specialisation e.g. `kolesterol' \(\rightarrow\) `roll' where the un-lemmatised form is `kolesterols roll'.
-  \item \emph{self} The subclass and superclass are the same e.g. `prognos' \(\rightarrow\) `pronos'
+  \item \emph{possessive noun} The subclass is a possessive noun, not a specialisation e.g. `kolesterol' \(\rightarrow\) `roll' where the un-lemmatised form is `kolesterols roll'.
+  \item \emph{self} The subclass and superclass are the same e.g. `prognos' \(\rightarrow\) `prognos'
 \end{itemize}
 
 The numbers of candidates in these mistake categories are shown in Figure~\ref{fig:subconcept-cands}.
@@ -1392,15 +1392,15 @@ The numbers of candidates in these mistake categories are shown in Figure~\ref{f
   \label{fig:subconcept-cands}
 \end{figure}
 
-Labeled relations were classified \emph{yes}, \emph{no} or \emph{yes too general}, as shown in Figure~\ref{fig:rel-cands}.
+Labelled relations were classified \emph{yes}, \emph{no} or \emph{yes too general}, as shown in Figure~\ref{fig:rel-cands}.
 \emph{yes} means the candidate is relevant and useful for ontology construction, e.g. `patient \emph{har} pulstryck' or `kvinna \emph{får} bröstsmärtor'.
 \emph{yes too general} means that the relation makes sense on manual inspection of its context in the corpus but the terms are not precise enough for the relation to be immediately useful for ontology construction e.g. `resultat \emph{understryker} betydelse'.
-\emph{no} means the candidate is not at all relevant to the domain, or doesn't make sense as a labeled relation at all, e.g. `alkohol \emph{minska} tillgång'.
+\emph{no} means the candidate is not at all relevant to the domain, or doesn't make sense as a labelled relation at all, e.g. `alkohol \emph{minska} tillgång'.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{graphics/labeled-relations}
-  \caption{Labeled relation candidates}
+  \includegraphics[width=0.7\textwidth]{graphics/labelled-relations}
+  \caption{Labelled relation candidates}
   \label{fig:rel-cands}
 \end{figure}
 
@@ -1426,8 +1426,8 @@ Figure~\ref{fig:concepts-manual} shows the distribution of the different classes
 
 Manual extraction found 8 subclass relations visible in the article.
 None of them were found by the automatic subclass extraction.
-21 labeled relations were found manually.
-None of them were found by the automatic labeled relation extraction.
+21 labelled relations were found manually.
+None of them were found by the automatic labelled relation extraction.
 
 \section{Analysis and discussion}
 \label{sec:analysis}
@@ -1504,18 +1504,18 @@ This limitation is clearly related to the simplistic linguistic filter used in t
 Hyponymy can be expressed in many ways, and a variety of methods should be employed for more realistic modelling.
 The feasibility of one common method was demonstrated here.
 
-\subsection{Labeled relation extraction and recommendation}
-\label{subsec:analysis:labeled_rels}
+\subsection{Labelled relation extraction and recommendation}
+\label{subsec:analysis:labelled_rels}
 
-Almost half of the labeled relation candidates did not make sense as labeled relations.
+Almost half of the labelled relation candidates did not make sense as labelled relations.
 Most of the remainder were classified "yes, too general" and need further work to be useful.
 The category of "yes, too general" included relations like "studie raporterar njurfunction".
 While it might be true that some study reported kidney function, it wouldn't be useful to model that all studies report kidney function.
 The relation extraction we used also extracted the relation "studie har begrängsning" which is a sensible general attribute about studies in a model.
 It is therefore important for the relation extraction to indicate more precisely whether it applies to an instance, a subset, or the entire class selected by its arguments.
-As with subconcept relations, several labeled relations were extracted manually.
+As with subconcept relations, several labelled relations were extracted manually.
 None of these were extracted automatically.
-There is a clear need for higher recall in labeled relation extraction.
+There is a clear need for higher recall in labelled relation extraction.
 Again, the limitation here was the simplicity of the methods used to demonstrate feasibility, and the compounding effect of errors and low recall earlier in the pipeline.
 A richer selection of extraction methods should be expected to deliver much better results.
 
@@ -1559,7 +1559,7 @@ This would also require further development of candidate extraction techniques s
 We could also extract a larger variety of candidate types to be able to model the domain more richly.
 We have not modeled attributes of concepts here - only some relations between them.
 Nor have we modeled all kinds of taxonomic relations.
-A lot of figures and their units were extracted and annotated incorrectly resulting in errors, but these could really be used to define properties of and restrictions on concepts or their instances (\ref{sec:results:eval:cands}, \ref{subsec:analysis:labeled_rels}).
+A lot of figures and their units were extracted and annotated incorrectly resulting in errors, but these could really be used to define properties of and restrictions on concepts or their instances (\ref{sec:results:eval:cands}, \ref{subsec:analysis:labelled_rels}).
 We have also not distinguished between concepts and instances, while this is very important in practice.
 This could streamline the preprocessing and extraction phase by skipping extraction of things not relevant to that kind of ontology.
 It could have a large impact on how this distinction is made construction of a given ontology, so support would be needed to define this for the tool to help the user make this distinction.
