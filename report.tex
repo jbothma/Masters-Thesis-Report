@@ -703,6 +703,9 @@ The source code was not available to build upon.
 
 OntoGain\citep{Drymonas10OntoGain} compares two methods for taxonomic relations, and two for non-taxonomic relation extraction.
 Comparative evaluation of the two methods at each ontology learning step is performed.
+For concept extraction, the C-value/NC-value method is used.
+For subsumption relations, agglomerative hierarchical clustering with a lexical similatiry measure, and formal concept analysis with a conditional probability measure is used.
+The non-taxonomic relation extraction methods are an association rules algorithm using the predictive apriori implementation in the WEKA framework and a method based on conditional probability of dependency relations.
 
 OntoGain proposes its output directly to OWL as an advantage over Text2Onto's abstract representation in the POM which is exported by translators to specific ontology languages.
 It is however unclear exactly how OntoGain expresses its results in OWL and how that affects reasoning.
