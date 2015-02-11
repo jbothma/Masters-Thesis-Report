@@ -671,23 +671,42 @@ Ontology learning systems are implementations combining several tasks for actual
 
 \subsubsection{Text2Onto}
 
-Text2Onto\citep{Cimiano2005Text2Onto} is the successor to TextToOnto, and its main contribution is a Probabilistic Ontology Model.
-Evidence for ontology elements extracted via various available methods is stored with an associated \emph{confidence} value as a percentage, as given by the the extraction method and the evidence combination strategy selected when multiple methods for the same kind of elements are selected.
-Evidence can then be reviewed along with its confidence and exported to an OWL ontology.
+Text2Onto\citep{Cimiano2005Text2Onto} is the successor to TextToOnto, and its main contribution is a Probabilistic Ontology Model (POM).
+It is a modular system that allows integration of various knowledge extraction and evidence combination strategies.
+Evidence for ontology elements extracted via various available methods is stored in the POM with an associated \emph{confidence} value as given by the the extraction methods and the evidence combination strategy selected by the user.
+Evidence can then be reviewed along with the confidence assigned by the algoithm(s) suggesting it, and exported to various ontology languages.
+
+For concept extraction, the Relative Term Frequencey, TFIDF, Entropy and C-value NC-Value methods are provided.
+For taxonomic relations, lexico-syntactic patterns and the WordNet knowledge base are available.
+For general relations, a method based on subcategorisation frames and lexico-syntactic patterns is provided.
+
+It is not clear exactly how the knowledge is represented in the ontologies and how that affects reasoning.
 
 Text2Onto has been adapted to support OL from English, German and Spanish text.
+In some ways Text2Onto was a great candidate for extending for this thesis, but tight coupling between the methods, language adaptations and method-specific preprocessing needs would have made it very complex to add yet another language and understand its behaviour.
 
 \subsubsection{OntoCMaps}
 
-OntoCMaps constructs a graph where noun phrases are vertices and syntactic dependencies are edges.
-It then applies various methods from graph theory for determining the importance of edges and nodes.
-Various voting schemes were used for combining evidence from the various methods.
-The performance of each method individually and voting scheme was evaluated.
+OntoCMaps is organised into an extraction phase, an integration phase and a filtering phase.
+The extraction phase uses a set of patterns on syntactic dependencies to extract semantic entities such as concepts, taxanomic and general relations.
+This phase also does some co-reference resolution.
+The integration phase builds a graph of concept clusters from the semantic entities.
+Finally the filtering phase applies various methods from graph theory such as PageRank and Degree Centrality for determining the importance of these entities.
+Various voting schemes are used for combining evidence from the various methods and the domain concepts and relations are filtered out.
+The performance of each method individually and each voting scheme was evaluated.
+
+It is not explained how the knowledge is encoded in an ontology.
+The source code was not available to build upon.
 
 \subsubsection{OntoGain}
 \label{sec:background:ontogain}
 
-OntoGain is a recent implementation of existing methods, providing comparative evaluation of two methods at each ontology learning step.
+OntoGain\citep{Drymonas10OntoGain} compares two methods for taxonomic relations, and two for non-taxonomic relation extraction.
+Comparative evaluation of the two methods at each ontology learning step is performed.
+
+OntoGain proposes its output directly to OWL as an advantage over Text2Onto's abstract representation in the POM which is exported by translators to specific ontology languages.
+It is however unclear exactly how OntoGain expresses its results in OWL and how that affects reasoning.
+The source code was not available to build upon.
 
 \subsubsection{OntoUSP}
 
